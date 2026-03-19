@@ -1,0 +1,220 @@
+================================================================================
+MESHTASTIC BBS - QSL BOARD FEATURE ADDED
+================================================================================
+
+✅ BUILD SUCCESSFUL - Firmware updated with QSL board functionality
+
+BUILD STATS:
+- Firmware size: 2.1 MB (added ~4KB for QSL feature)
+- Flash usage: 63.0% of available space
+- RAM usage: 40.3% of available space
+- Build time: ~28 seconds
+
+================================================================================
+WHAT IS QSL?
+================================================================================
+
+QSL = "Confirmation of Receipt" (amateur radio terminology)
+
+In Meshtastic context: A public board where operators log which stations they've
+heard from, with signal quality metrics (hop count, SNR, RSSI).
+
+Think of it as a "heard log" for your mesh network - useful for:
+✓ Confirming connectivity across the network
+✓ Documenting signal quality between nodes  
+✓ Coverage mapping and topology visualization
+✓ Troubleshooting reception/relay issues
+✓ Testing repeaters and multi-hop paths
+
+================================================================================
+NEW COMMANDS
+================================================================================
+
+!bbs qsl              - Show first page of QSL board (recent posts)
+!bbs qsl list         - Same as above
+!bbs qsl page N       - View page N of QSL board (5 posts per page)
+!bbs qsl post         - Post your location & current signal info
+
+When you post QSL, the system automatically captures:
+  • Your node name and ID
+  • How many hops away (0=direct, 1=one relay, etc.)
+  • Signal quality: SNR (0-15) and RSSI (dBm)
+  • Your GPS location (if available)
+  • Current timestamp
+
+================================================================================
+EXAMPLE USAGE
+================================================================================
+
+1. VIEW THE QSL BOARD:
+   Send: !bbs qsl
+   Response:
+   === QSL Board Page 1 ===
+   [1] Alice (2 hops) - has location
+   [2] Charlie (1 hop)
+   [3] Bob (0 hops)
+   Use !bbs qsl post to add your location
+
+2. POST YOUR LOCATION:
+   Send: !bbs qsl post
+   Response: Posted QSL #4 - 1 hops away, SNR: 8
+
+3. VIEW NEXT PAGE:
+   Send: !bbs qsl page 2
+   Response:
+   === QSL Board Page 2 ===
+   [5] Dave (3 hops)
+   [6] Eve (0 hops)
+   ...
+
+4. CHECK STATS (includes QSL count):
+   Send: !bbs stats
+   Response:
+   BBS Stats:
+   Bulletins: 12/500
+   Mail: 3 items
+   QSL: 18 posts
+   Free: 2156 bytes
+
+================================================================================
+STORAGE CAPACITY
+================================================================================
+
+PSRAM BOARDS (e.g., Heltec LoRa 32 V3):
+  • 200 QSL posts maximum
+  • Ephemeral (lost on reboot)
+  • Uses ~100KB of PSRAM
+
+FLASH BOARDS (e.g., RAK4631, other ESP32 without PSRAM):
+  • 50 QSL posts maximum  
+  • Persistent across reboots
+  • Uses flash storage
+  • Auto-cleanup: Posts older than 24 hours removed
+
+================================================================================
+SIGNAL QUALITY METRICS
+================================================================================
+
+SNR (Signal-to-Noise Ratio):
+  • 0-4: Poor signal, high noise
+  • 5-9: Fair signal
+  • 10-15: Good signal
+  • Higher = better
+
+RSSI (Received Signal Strength):
+  • Range: -120 dBm (very weak) to -40 dBm (strong)
+  • More negative = weaker signal
+  • Typical range in practice: -80 to -120 dBm
+
+HOP COUNT:
+  • 0 = Direct connection (best)
+  • 1 = One relay in between
+  • 2+ = Multiple relays
+  • Higher = longer path, potential signal loss
+
+================================================================================
+USE CASES
+================================================================================
+
+NETWORK COVERAGE TESTING:
+  Multiple operators post QSL → see full network topology
+  Compare hop counts and SNR values across the network
+
+SIGNAL QUALITY SURVEY:
+  Operators in same area post QSL
+  Compare SNR values to find best antenna positions
+
+REPEATER/RELAY TESTING:
+  Post QSL at different hops from a relay
+  Shows how signal degrades through relay chain
+
+CONNECTIVITY VERIFICATION:
+  Post QSL to confirm bidirectional communication
+  Useful after network changes or moves
+
+================================================================================
+IMPLEMENTATION DETAILS
+================================================================================
+
+New Data Structures:
+  • BBSQSL - full QSL record with location, signal metrics
+  • BBSQSLHeader - lightweight version for listings
+
+New Storage Methods:
+  • storeQSL() - save a new QSL post
+  • listQSL() - retrieve paginated QSL headers
+  • totalActiveQSL() - count posts
+  • pruneExpiredQSL() - remove old posts
+
+New Module Methods:
+  • handleQSLList() - display QSL board
+  • handleQSLPost() - create new QSL entry
+
+Both PSRAM and LittleFS backends fully implemented.
+
+================================================================================
+FILES MODIFIED/CREATED
+================================================================================
+
+Modified:
+  ✓ BBSStorage.h - Added QSL data structures and interface methods
+  ✓ BBSStoragePSRAM.h - Implemented QSL for PSRAM backend
+  ✓ BBSStorageLittleFS.h - Implemented QSL for flash backend
+  ✓ BBSModule_v2.h - Added QSL command handlers
+  ✓ BBSModule_v2.cpp - Implemented QSL logic and command routing
+
+Created:
+  ✓ QSL_EXAMPLES.md - Detailed examples and use cases
+  ✓ QSL_FEATURE_SUMMARY.txt - This file
+
+================================================================================
+TESTING CHECKLIST
+================================================================================
+
+After flashing firmware:
+
+□ Boot test: Device starts normally with "BBS: Module initialized" message
+□ Command test: Send !bbs qsl post
+□ Board test: Send !bbs qsl to view board
+□ Pagination: Send !bbs qsl page 2 (should be empty initially)
+□ Help test: !bbs help should list QSL commands
+□ Stats test: !bbs stats should show "QSL: 1 posts"
+□ Multi-node: Flash second device and test inter-node QSL posts
+□ Hop counting: Verify hop counts match network topology
+□ Signal quality: Check SNR/RSSI values are reasonable (-60 to -120 dBm)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. FLASH THE FIRMWARE:
+   cd ~/Documents/mesh_bbs
+   ./scripts/flash.sh
+
+2. TEST QSL FEATURE:
+   • Send: !bbs qsl post
+   • Send: !bbs qsl list
+   • View signal quality metrics
+   • Test multi-node posts if available
+
+3. DOCUMENT NETWORK:
+   Use QSL posts to map your mesh network topology and signal coverage
+
+4. SHARE FEEDBACK:
+   The QSL board is designed for radio operator workflows - feedback welcome!
+
+================================================================================
+FIRMWARE READY TO DEPLOY 🚀
+================================================================================
+
+Binary location:
+  ~/Documents/mesh_bbs/firmware/.pio/build/heltec-v3/firmware-heltec-v3-2.7.20.016e68e.bin
+
+Flash with:
+  ./scripts/flash.sh
+
+Questions? See:
+  • BUILD_SUMMARY.md - Full feature overview
+  • QSL_EXAMPLES.md - Detailed examples
+  • Module source in module-src/ directory
+
