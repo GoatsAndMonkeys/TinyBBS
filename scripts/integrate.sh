@@ -37,6 +37,8 @@ cp "$MODULE_SRC/BBSStorageLittleFS.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSWordle.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSModule_v2.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSModule_v2.cpp" "$FIRMWARE_MODULES/"
+cp "$MODULE_SRC/FalloutWastelandRPG.h" "$FIRMWARE_MODULES/"
+cp "$MODULE_SRC/FalloutWastelandRPG.cpp" "$FIRMWARE_MODULES/"
 echo "✓ Module files copied"
 
 # Patch Modules.cpp if needed
