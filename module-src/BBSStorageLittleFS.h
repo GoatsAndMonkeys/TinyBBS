@@ -426,6 +426,7 @@ class BBSStorageLittleFS : public BBSStorage {
         f.write((const uint8_t *)&qsl.hopsAway, sizeof(uint8_t));
         f.write((const uint8_t *)&qsl.snr, sizeof(uint8_t));
         f.write((const uint8_t *)&qsl.rssi, sizeof(int8_t));
+        f.write((const uint8_t *)qsl.location, sizeof(qsl.location));
         f.close();
         saveMetadata();
         return true;
@@ -464,6 +465,8 @@ class BBSStorageLittleFS : public BBSStorage {
                 qf.read((uint8_t *)&qsl.hopsAway, sizeof(uint8_t));
                 qf.read((uint8_t *)&qsl.snr, sizeof(uint8_t));
                 qf.read((uint8_t *)&qsl.rssi, sizeof(int8_t));
+                qf.read((uint8_t *)qsl.location, sizeof(qsl.location));
+                qsl.location[sizeof(qsl.location) - 1] = '\0';
                 qf.close();
                 headers[result].id = qsl.id;
                 headers[result].fromNode = qsl.fromNode;
@@ -472,6 +475,8 @@ class BBSStorageLittleFS : public BBSStorage {
                 headers[result].timestamp = qsl.timestamp;
                 headers[result].hopsAway = qsl.hopsAway;
                 headers[result].hasLocation = (qsl.latitude != 0 || qsl.longitude != 0);
+                strncpy(headers[result].location, qsl.location, sizeof(headers[result].location) - 1);
+                headers[result].location[sizeof(headers[result].location) - 1] = '\0';
             }
         }
         return result;

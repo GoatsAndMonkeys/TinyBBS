@@ -111,6 +111,7 @@ struct BBSQSL {
     uint8_t snr;
     int8_t rssi;
     bool active;
+    char location[24];   // reverse-geocoded city/town name, empty if unavailable
 };
 
 /**
@@ -123,6 +124,7 @@ struct BBSQSLHeader {
     uint32_t timestamp;
     uint8_t hopsAway;
     bool hasLocation;
+    char location[24];   // city/town from reverse geocode
 };
 
 /**

@@ -129,6 +129,7 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     void doStats(const meshtastic_MeshPacket &req);
     void doForecast(const meshtastic_MeshPacket &req);
     bool fetchForecast(char *buf, size_t bufLen, float lat, float lon);
+    bool reverseGeocode(float lat, float lon, char *city, size_t cityLen);
 
     // Helpers
     bool sendReply(const meshtastic_MeshPacket &req, const char *text);

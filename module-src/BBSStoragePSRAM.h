@@ -383,6 +383,8 @@ class BBSStoragePSRAM : public BBSStorage {
             headers[result].timestamp = temp[i].timestamp;
             headers[result].hopsAway = temp[i].hopsAway;
             headers[result].hasLocation = (temp[i].latitude != 0 || temp[i].longitude != 0);
+            strncpy(headers[result].location, temp[i].location, sizeof(headers[result].location) - 1);
+            headers[result].location[sizeof(headers[result].location) - 1] = '\0';
         }
 
         return result;

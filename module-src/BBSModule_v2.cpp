@@ -1190,9 +1190,13 @@ void BBSModule::doQSLList(const meshtastic_MeshPacket &req, uint32_t pageNum) {
     snprintf(reply, sizeof(reply), "QSL Board(pg%u):\n", pageNum);
     for (uint32_t i = 0; i < count; i++) {
         char line[100];
-        snprintf(line, sizeof(line), "#%u %s %uhops%s\n",
-                 headers[i].id, headers[i].fromName, headers[i].hopsAway,
-                 headers[i].hasLocation ? " [GPS]" : "");
+        if (headers[i].location[0])
+            snprintf(line, sizeof(line), "#%u %s %s %uhops\n",
+                     headers[i].id, headers[i].fromName, headers[i].location, headers[i].hopsAway);
+        else
+            snprintf(line, sizeof(line), "#%u %s %uhops%s\n",
+                     headers[i].id, headers[i].fromName, headers[i].hopsAway,
+                     headers[i].hasLocation ? " [GPS]" : "");
         strncat(reply, line, sizeof(reply) - strlen(reply) - 1);
     }
     strncat(reply, "[N]ext [P]ost mine", sizeof(reply) - strlen(reply) - 1);
@@ -1211,16 +1215,35 @@ void BBSModule::doQSLPost(const meshtastic_MeshPacket &req) {
     qsl.snr = (req.rx_snr > 15) ? 15 : (req.rx_snr < 0 ? 0 : (uint8_t)req.rx_snr);
     qsl.rssi = req.rx_rssi;
     qsl.active = true;
+    qsl.location[0] = '\0';
 
     const char *name = getNodeShortName(req.from);
     if (name) strncpy(qsl.fromName, name, BBS_SHORT_NAME_LEN - 1);
     else snprintf(qsl.fromName, BBS_SHORT_NAME_LEN, "!%08x", req.from);
     qsl.fromName[BBS_SHORT_NAME_LEN - 1] = '\0';
 
+    // Look up sender's GPS position and reverse geocode to city name
+    float lat = 0, lon = 0;
+    const meshtastic_NodeInfoLite *sender = nodeDB->getMeshNode(req.from);
+    if (sender && sender->has_position &&
+        !(sender->position.latitude_i == 0 && sender->position.longitude_i == 0)) {
+        lat = sender->position.latitude_i / 1e7f;
+        lon = sender->position.longitude_i / 1e7f;
+        qsl.latitude  = sender->position.latitude_i;
+        qsl.longitude = sender->position.longitude_i;
+        qsl.altitude  = sender->position.altitude;
+    }
+    if (lat != 0.0f || lon != 0.0f)
+        reverseGeocode(lat, lon, qsl.location, sizeof(qsl.location));
+
     if (storage_->storeQSL(qsl)) {
-        char reply[120];
-        snprintf(reply, sizeof(reply), "QSL #%u: %s heard %uhop(s) away SNR:%d",
-                 qsl.id, qsl.fromName, qsl.hopsAway, req.rx_snr);
+        char reply[140];
+        if (qsl.location[0])
+            snprintf(reply, sizeof(reply), "QSL #%u: %s (%s)\n%uhop(s) SNR:%d",
+                     qsl.id, qsl.fromName, qsl.location, qsl.hopsAway, req.rx_snr);
+        else
+            snprintf(reply, sizeof(reply), "QSL #%u: %s heard %uhop(s) SNR:%d",
+                     qsl.id, qsl.fromName, qsl.hopsAway, req.rx_snr);
         if (isBroadcast(req.to)) sendToChannel(req, reply);
         else sendReply(req, reply);
     } else {
@@ -1316,6 +1339,52 @@ static const char *wmoToEmoji(int code) {
     if (code <= 82) return "\xE2\x98\x94";  // ☔
     if (code <= 86) return "\xE2\x9D\x84";  // ❄
     return "\xE2\x9B\x88";                  // ⛈
+}
+
+bool BBSModule::reverseGeocode(float lat, float lon, char *city, size_t cityLen) {
+#ifndef ARCH_ESP32
+    (void)lat; (void)lon; (void)city; (void)cityLen;
+    return false;
+#else
+    city[0] = '\0';
+    static char gbuf[512];
+    char gurl[256];
+    snprintf(gurl, sizeof(gurl),
+             "https://nominatim.openstreetmap.org/reverse"
+             "?lat=%.4f&lon=%.4f&format=json&zoom=10&addressdetails=1",
+             lat, lon);
+    WiFiClientSecure gwc;
+    gwc.setInsecure();
+    HTTPClient ghttp;
+    ghttp.setTimeout(8000);
+    ghttp.begin(gwc, gurl);
+    ghttp.addHeader("User-Agent", "MeshBBS/1.0");
+    int gcode = ghttp.GET();
+    printf("[GEO] nominatim code=%d\n", gcode);
+    if (gcode == 200) {
+        String gbody = ghttp.getString();
+        strncpy(gbuf, gbody.c_str(), sizeof(gbuf) - 1);
+        gbuf[sizeof(gbuf) - 1] = '\0';
+        const char *keys[] = {"\"city\":\"", "\"town\":\"", "\"village\":\"", "\"county\":\""};
+        for (const char *key : keys) {
+            const char *cp = strstr(gbuf, key);
+            if (cp) {
+                cp += strlen(key);
+                const char *ce = strchr(cp, '"');
+                if (ce) {
+                    size_t len = ce - cp;
+                    if (len >= cityLen) len = cityLen - 1;
+                    memcpy(city, cp, len);
+                    city[len] = '\0';
+                    break;
+                }
+            }
+        }
+    }
+    ghttp.end();
+    gwc.stop();
+    return city[0] != '\0';
+#endif
 }
 
 bool BBSModule::fetchForecast(char *buf, size_t bufLen, float lat, float lon) {
@@ -1416,45 +1485,7 @@ bool BBSModule::fetchForecast(char *buf, size_t bufLen, float lat, float lon) {
 
     // Reverse geocode lat/lon to get city name via Nominatim (HTTPS)
     char city[48] = {0};
-    {
-        static char gbuf[512];
-        char gurl[256];
-        snprintf(gurl, sizeof(gurl),
-                 "https://nominatim.openstreetmap.org/reverse"
-                 "?lat=%.4f&lon=%.4f&format=json&zoom=10&addressdetails=1",
-                 lat, lon);
-        WiFiClientSecure gwc;
-        gwc.setInsecure();
-        HTTPClient ghttp;
-        ghttp.setTimeout(8000);
-        ghttp.begin(gwc, gurl);
-        ghttp.addHeader("User-Agent", "MeshBBS/1.0");
-        int gcode = ghttp.GET();
-        printf("[FC] nominatim code=%d\n", gcode);
-        if (gcode == 200) {
-            String gbody = ghttp.getString();
-            strncpy(gbuf, gbody.c_str(), sizeof(gbuf) - 1);
-            gbuf[sizeof(gbuf) - 1] = '\0';
-            // Try city, then town, then village, then county
-            const char *keys[] = {"\"city\":\"", "\"town\":\"", "\"village\":\"", "\"county\":\""};
-            for (const char *key : keys) {
-                const char *cp = strstr(gbuf, key);
-                if (cp) {
-                    cp += strlen(key);
-                    const char *ce = strchr(cp, '"');
-                    if (ce) {
-                        size_t len = ce - cp;
-                        if (len >= sizeof(city)) len = sizeof(city) - 1;
-                        memcpy(city, cp, len);
-                        city[len] = '\0';
-                        break;
-                    }
-                }
-            }
-        }
-        ghttp.end();
-        gwc.stop();
-    }
+    reverseGeocode(lat, lon, city, sizeof(city));
 
     size_t pos = 0;
     if (city[0])
