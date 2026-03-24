@@ -20,6 +20,11 @@ static bool _qspi_initialised = false;
 static bool _qspi_hw_init(void) {
     if (_qspi_initialised) return true;
 
+#ifndef PIN_QSPI_SCK
+    // No QSPI pins defined for this board
+    return false;
+#else
+
 #ifndef NRFX_QSPI_DEFAULT_CONFIG_IRQ_PRIORITY
 #define NRFX_QSPI_DEFAULT_CONFIG_IRQ_PRIORITY 6
 #endif
@@ -48,6 +53,7 @@ static bool _qspi_hw_init(void) {
     _qspi_initialised = true;
     LOG_INFO("[ExtFlash] QSPI initialized at 8 MHz\n");
     return true;
+#endif // PIN_QSPI_SCK
 }
 
 // ── LittleFS callbacks ─────────────────────────────────────────────────────

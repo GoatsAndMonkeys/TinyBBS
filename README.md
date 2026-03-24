@@ -1,32 +1,44 @@
 # TinyBBS — Meshtastic Bulletin Board System
 
-A full-featured BBS module for [Meshtastic](https://meshtastic.org/) firmware, built for the **Heltec LoRa 32 V3** (ESP32-S3). Send a DM to the BBS node and get a TC2-style interactive menu system over LoRa mesh radio.
+A full-featured BBS module for [Meshtastic](https://meshtastic.org/) firmware, running on **nRF52840** devices (T-Echo, RAK4631, etc.) and **ESP32** boards (Heltec V3). Send a DM to the BBS node and get a TC2-style interactive menu system over LoRa mesh radio.
 
 ---
 
 ## Features
 
-- **Bulletins** — post and read public messages, organized by board
+- **Bulletins** — post and read public messages, organized by board (General, Info, News, Urgent)
 - **Private Mail** — person-to-person messaging by node name or ID
-- **QSL Board** — ham radio-style signal confirmation log with SNR/RSSI/hops
-- **Wordle** — daily word game with leaderboard announcements
-- **Wastelad RPG** — Fallout-themed text RPG with combat, VATS targeting, hacking minigame, shop, arena PvP, trainer fights, and Chairman Cheng final boss
-- **Casino** — blackjack, roulette, and slots (play money or real in-game caps)
-- **Weather Forecast** — daily weather pulled via Open-Meteo API (requires WiFi)
-- **OLED Status Frame** — live BBS stats on the node's display
-- **Ping Tapback** — responds to "ping" in public channel with 🏓
+- **QSL Board** — signal confirmation log with SNR, RSSI, hops, GPS position
+- **Wordle** — daily word game with score tracking
+- **Vault-Tec Hack** — Fallout-style terminal hacking minigame
+- **Wasteland RPG** — Fallout-themed text RPG with combat, VATS targeting, shop, arena PvP, trainer fights, and Chairman Cheng final boss
+- **Chess by Mail** — full chess with alpha-beta AI, board rendering, Elo ratings, LittleFS persistence
+- **OLED/E-Ink Status Frame** — live BBS stats on the node's display
+- **Hop-Count Tapback** — responds to "test"/"ack" in public channel with number emoji showing hops away
+- **Ping Tapback** — responds to "ping" with 🏓
+
+### nRF52 External Flash
+
+On nRF52840 boards with QSPI flash (T-Echo, RAK4631, etc.), BBS data is stored on the **2MB external flash chip** — completely separate from Meshtastic's internal filesystem. This provides ~2MB of dedicated storage for bulletins, mail, QSL entries, and game saves. Falls back to internal LittleFS automatically on boards without QSPI.
 
 ### Session-Based Interface
+
 DMs use a TC2-style menu state machine — no command prefix needed. Just DM the node and navigate with single-letter commands. Channel messages use `!bbs` prefix for one-shot commands.
 
 ---
 
 ## Supported Hardware
 
-| Board | Status |
-|---|---|
-| Heltec LoRa 32 V3 (ESP32-S3) | ✅ Primary target |
-| Other ESP32 Meshtastic boards | Should work (untested) |
+| Board | Status | Storage |
+|---|---|---|
+| LilyGO T-Echo (nRF52840) | ✅ Primary target | 2MB external QSPI flash |
+| RAK4631 WisBlock (nRF52840) | ✅ Supported | 2MB external QSPI flash |
+| RAK4631 ePaper (nRF52840) | ✅ Supported | 2MB external QSPI flash |
+| Heltec Mesh Node T114 (nRF52840) | ✅ Supported | 2MB external QSPI flash |
+| Nano G2 Ultra (nRF52840) | ✅ Supported | 2MB external QSPI flash |
+| Heltec LoRa 32 V3 (ESP32-S3) | ✅ Supported | LittleFS / PSRAM |
+| Other nRF52840 boards | Should work | Internal LittleFS fallback |
+| Other ESP32 boards | Should work (untested) | LittleFS |
 
 ---
 
@@ -34,25 +46,31 @@ DMs use a TC2-style menu state machine — no command prefix needed. Just DM the
 
 > **Easiest option** — no build environment needed.
 
-Download the latest `firmware-heltec-v3.factory.bin` from the [Releases](https://github.com/GoatsAndMonkeys/TinyBBS/releases) page.
+Download the latest firmware from the [Releases](https://github.com/GoatsAndMonkeys/TinyBBS/releases) page.
 
-### Option A: Web Flasher (easiest)
+### T-Echo (nRF52840)
 
+1. Double-press the reset button on T-Echo → **TECHOBOOT** volume mounts
+2. Copy the UF2 file:
+   ```bash
+   cp TinyBBS-v0.0.260323-alpha-t-echo.uf2 /Volumes/TECHOBOOT/
+   ```
+3. Device reboots automatically (ignore macOS fcopyfile errors — they're harmless)
+
+### Heltec V3 (ESP32-S3)
+
+**Option A: Web Flasher**
 1. Go to [https://flasher.meshtastic.org](https://flasher.meshtastic.org)
 2. Connect your Heltec V3 via USB
 3. Select **Custom Firmware** and upload the `.factory.bin` file
 4. Click Flash
 
-### Option B: esptool (command line)
-
+**Option B: esptool**
 ```bash
 pip install esptool
-
 esptool.py --chip esp32s3 --port /dev/cu.usbserial-0001 \
   --baud 921600 write_flash 0x0 firmware-heltec-v3.factory.bin
 ```
-
-Replace `/dev/cu.usbserial-0001` with your actual port (`COM3` on Windows, `/dev/ttyUSB0` on Linux).
 
 ---
 
@@ -60,7 +78,7 @@ Replace `/dev/cu.usbserial-0001` with your actual port (`COM3` on Windows, `/dev
 
 ### Prerequisites
 
-- [Python 3.x](https://python.org) with pip
+- [Python 3.12+](https://python.org) with pip
 - [PlatformIO](https://platformio.org/) (installed via pip)
 - Git
 
@@ -75,41 +93,41 @@ cd TinyBBS
 
 ```bash
 git clone --recurse-submodules https://github.com/meshtastic/firmware.git
-mv firmware firmware-upstream
 ```
-
-> The build scripts expect the firmware at `../firmware` relative to the repo root. Adjust `scripts/integrate.sh` if your layout differs.
 
 ### 3. Set up Python environment
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python3 -m venv .venv312
+source .venv312/bin/activate   # Windows: .venv312\Scripts\activate
 pip install platformio
 ```
 
-### 4. Integrate, build, and flash
+### 4. Integrate and build
 
 ```bash
-./scripts/integrate.sh   # copies module files into firmware tree
-./scripts/build.sh       # compiles firmware (~25 seconds)
-./scripts/flash.sh       # flashes to connected Heltec V3
+./scripts/integrate.sh   # copies BBS module files into firmware tree
+
+# Build for T-Echo (nRF52840)
+cd firmware
+source ../.venv312/bin/activate
+pio run -e t-echo
+
+# Build for other boards
+pio run -e rak4631
+pio run -e heltec-v3
 ```
 
-If `flash.sh` fails with a port detection error, flash manually:
+### 5. Flash
 
+**T-Echo:** Double-press reset, then copy the UF2:
 ```bash
-source .venv/bin/activate
-cd firmware
+cp .pio/build/t-echo/firmware.uf2 /Volumes/TECHOBOOT/
+```
+
+**Heltec V3:**
+```bash
 pio run -e heltec-v3 -t upload --upload-port /dev/cu.usbserial-0001
-```
-
-### 5. Monitor serial output
-
-```bash
-cd firmware
-source ../.venv/bin/activate
-pio device monitor -b 115200
 ```
 
 ---
@@ -121,9 +139,12 @@ pio device monitor -b 115200
 DM the BBS node from the Meshtastic app. You'll get the main menu:
 
 ```
-TinyBBS: VaultTec Ed.
-[B]ulletins [M]ail
-[Q]SL [G]ames [S]tats
+TinyBBS nRF52
+[B]ulletins
+[M]ail
+[Q]SL
+[G]ames
+[S]tats
 [X]Exit
 ```
 
@@ -139,11 +160,18 @@ Prefix commands with `!bbs`:
 | `!bbs list` | Recent bulletins |
 | `!bbs post <text>` | Post a bulletin |
 | `!bbs stats` | Node stats |
-| `!bbs qsl` | View QSL board |
+| `!bbs qsl` | Log a QSL entry (also announces to channel) |
 
-### Wastelad RPG Commands
+### Games Menu
 
-Once in the RPG (Games → RPG), use these commands:
+| Game | Description |
+|---|---|
+| **[W]ordle** | Daily 5-letter word game, 6 guesses |
+| **[V]ault-Tec Hack** | Fallout terminal hacking — guess the password |
+| **[R]PG Wasteland** | Full RPG: explore, fight, loot, level up |
+| **[C]hess** | Chess by mail with AI opponent |
+
+### Wasteland RPG Commands
 
 | Command | Action |
 |---|---|
@@ -154,13 +182,12 @@ Once in the RPG (Games → RPG), use these commands:
 | `F` | Flee |
 | `S` | Use Stimpak |
 | `DR` | Visit the Doc (free daily heal) |
-| `TR` | Train / level up (when XP threshold met) |
+| `TR` | Train / level up |
 | `SH` | Shop (weapons, armor, stimpaks) |
 | `AR <name>` | Arena PvP (costs 3 AP) |
 | `LB` | Leaderboard |
 | `CH` | Fight Chairman Cheng (final boss, level 12+) |
-| `TV` | Tavern (NPC quotes) |
-| `H` | Help / command reference |
+| `H` | Help |
 | `X` | Exit back to BBS |
 
 ---
@@ -169,30 +196,46 @@ Once in the RPG (Games → RPG), use these commands:
 
 ```
 TinyBBS/
-├── module-src/                 # BBS module source files
-│   ├── BBSModule_v2.h/.cpp     # Main BBS module
-│   ├── BBSStorage.h            # Storage interface
-│   ├── BBSStorageLittleFS.h    # LittleFS backend (persistent)
-│   ├── BBSStoragePSRAM.h       # PSRAM backend (fast, volatile)
-│   ├── BBSWordle.h             # Wordle game
-│   ├── FalloutWastelandRPG.h/.cpp  # Wastelad RPG
-│   └── BBSChess.h/.cpp         # Chess (in development)
+├── module-src/                    # BBS module source files
+│   ├── BBSModule_v2.h/.cpp        # Main module: menus, state machine, all features
+│   ├── BBSStorage.h               # Abstract storage interface
+│   ├── BBSStorageLittleFS.h       # LittleFS backend (ESP32 + nRF52 fallback)
+│   ├── BBSStoragePSRAM.h          # PSRAM backend (ESP32 with PSRAM)
+│   ├── BBSStorageExtFlash.h       # External QSPI flash backend (nRF52840)
+│   ├── BBSExtFlash.h/.cpp         # QSPI flash LittleFS driver
+│   ├── BBSPlatform.h              # Cross-platform macros
+│   ├── BBSWordle.h                # Wordle game + dictionary
+│   ├── BBSChess.h/.cpp            # Chess engine + AI
+│   ├── FalloutWastelandRPG.h/.cpp # Wasteland RPG
+│   ├── MudGame.h/.cpp             # TinyMUD (included, not active)
+│   └── MudWorld.h                 # MUD world data
 ├── scripts/
-│   ├── integrate.sh            # Patch module into firmware tree
-│   ├── build.sh                # PlatformIO build
-│   └── flash.sh                # Flash to device
-└── docs/                       # Additional documentation
+│   ├── integrate.sh               # Patch module into firmware tree
+│   ├── build.sh                   # PlatformIO build
+│   ├── flash.sh                   # Flash to device
+│   ├── gen_geo.py                 # Generate city lookup grid data
+│   ├── gen_bloom.py               # Generate Wordle bloom filter
+│   └── migrate_bbs.py             # Data migration utilities
+└── docs/                          # Additional documentation
 ```
+
+---
+
+## Build Stats (T-Echo nRF52840)
+
+- **Flash:** 98.2% (800KB / 815KB)
+- **RAM:** 30.1% (75KB / 249KB)
+- **External storage:** 2MB QSPI flash for BBS data
 
 ---
 
 ## Technical Notes
 
 - **Message limit**: 200 bytes per Meshtastic packet (multi-part messages split automatically)
-- **Storage**: LittleFS on flash for persistent data (bulletins, mail, RPG saves)
+- **nRF52 storage**: 2MB external QSPI flash via custom LittleFS driver, separate from Meshtastic's internal FS
+- **ESP32 storage**: LittleFS on flash, PSRAM if available (>1MB free)
 - **RPG saves**: stored at `/bbs/frpg/p<nodenum>.bin` on device flash
-- **Daily resets**: midnight Eastern Time (UTC-4/UTC-5)
-- **Meshtastic version**: built against v2.7.20
+- **Meshtastic version**: built against v2.7.x
 
 ---
 

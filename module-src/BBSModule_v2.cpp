@@ -286,8 +286,10 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
                 }
                 return false;
             };
+            // Tapback test/ack messages with hop-count emoji
             if (mp.decoded.reply_id == 0 &&
-                (hasWord(buf, "test") || hasWord(buf, "ack") || hasWord(buf, "acknowledge"))) {
+                (hasWord(buf, "test") || hasWord(buf, "testing") ||
+                 hasWord(buf, "ack") || hasWord(buf, "acknowledge"))) {
                 uint8_t hops = (mp.hop_start >= mp.hop_limit)
                                ? (mp.hop_start - mp.hop_limit) : 0;
                 sendTapBack(mp, hops);
@@ -455,6 +457,7 @@ void BBSModule::sendMainMenu(const meshtastic_MeshPacket &req, BBSSession &sessi
                  "TinyBBS nRF52\n"
                  "[B]ulletins\n"
                  "[M]ail (%u unread)\n"
+                 "[Q]SL\n"
                  "[G]ames\n"
                  "[S]tats\n"
                  "[X]Exit",
@@ -464,6 +467,7 @@ void BBSModule::sendMainMenu(const meshtastic_MeshPacket &req, BBSSession &sessi
                  "TinyBBS nRF52\n"
                  "[B]ulletins\n"
                  "[M]ail\n"
+                 "[Q]SL\n"
                  "[G]ames\n"
                  "[S]tats\n"
                  "[X]Exit");
@@ -599,6 +603,7 @@ ProcessMessage BBSModule::handleStateMain(const meshtastic_MeshPacket &mp, BBSSe
                       "TinyBBS Help:\n"
                       "[B]ulletins\n"
                       "[M]ail\n"
+                      "[Q]SL\n"
                       "[G]ames\n"
                       "[S]tats\n"
                       "[X]Exit");
@@ -1099,6 +1104,23 @@ ProcessMessage BBSModule::handleChannelCmd(const meshtastic_MeshPacket &mp, cons
     }
     if (strncasecmp(cmd, "qsl", 3) == 0) {
         doQSLPost(mp);
+        // Also announce to public channel
+        BBSQSL lastQsl;
+        uint32_t totalQsl = storage_->totalActiveQSL();
+        if (totalQsl > 0) {
+            BBSQSLHeader qh;
+            if (storage_->listQSL(&qh, 1, 0) > 0) {
+                uint8_t hops = qh.hopsAway;
+                char announce[160];
+                if (qh.location[0])
+                    snprintf(announce, sizeof(announce),
+                             "QSL: %s (%s) %u hop(s)", qh.fromName, qh.location, hops);
+                else
+                    snprintf(announce, sizeof(announce),
+                             "QSL: %s %u hop(s)", qh.fromName, hops);
+                sendToPublicChannel(announce);
+            }
+        }
     } else
     if (strncasecmp(cmd, "post", 4) == 0) {
         const char *text = cmd + 4;
