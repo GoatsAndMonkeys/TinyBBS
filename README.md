@@ -230,6 +230,47 @@ TinyBBS/
 - **RAM:** 30.1% (75KB / 249KB)
 - **External storage:** 2MB QSPI flash for BBS data
 
+### BBS Module Sizes
+
+| Module | Flash (KB) | What it contains |
+|---|---|---|
+| BBSModule_v2.cpp | 38.3 | Core BBS: menus, bulletins, mail, QSL, Wordle, Vault-Tec hack, state machine |
+| FalloutWastelandRPG.cpp | 21.4 | Wasteland RPG: combat, VATS, inventory, 12 weapons, 10 armors, 16 enemies |
+| BBSChess.cpp | 8.9 | Chess: move generation, alpha-beta AI, board rendering, Elo, persistence |
+| BBSExtFlash.cpp | 2.6 | QSPI external flash driver + LittleFS |
+| **Total BBS code** | **71.2** | |
+
+### Excluded Meshtastic Modules (T-Echo build)
+
+These Meshtastic modules are excluded to make room for the BBS. They can be re-enabled in `variants/nrf52840/t-echo/platformio.ini` if you don't need all BBS features.
+
+| Excluded Module | Savings (KB) | What it does |
+|---|---|---|
+| ATAK | 3.8 | ATAK/TAK military mapping integration |
+| RangeTest | ~1.5 | Automated range testing |
+| DetectionSensor | 1.6 | PIR/motion sensor support |
+| Power Telemetry | ~2.0 | INA219/INA260 power monitoring |
+| MQTT | ~3.0 | MQTT gateway (requires WiFi/Ethernet) |
+| RemoteHardware | 2.2 | Remote GPIO pin control |
+| StoreForward | ~3.0 | Store-and-forward message relay |
+| Dropzone | ~0.5 | Skydiving altimeter feature |
+| Audio | ~1.0 | Audio modem (SX1280 only) |
+| **Total saved** | **~18.6** | |
+
+### Available Modules to Exclude (not currently excluded)
+
+If you need more flash headroom, these can also be excluded:
+
+| Module | Size (KB) | Risk |
+|---|---|---|
+| CannedMessages | 18.3 | Safe — T-Echo has no keyboard |
+| TraceRoute | 10.9 | Useful for mesh debugging |
+| ExternalNotification | 4.4 | Buzzer/LED alerts |
+| NeighborInfo | 4.1 | Neighbor node sharing |
+| Serial | 2.7 | Serial passthrough |
+| Waypoint | 2.3 | GPS waypoint sharing |
+| KeyVerification | 4.5 | PKI key verification |
+
 ---
 
 ## Technical Notes
