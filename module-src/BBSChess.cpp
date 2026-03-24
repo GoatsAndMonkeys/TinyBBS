@@ -3,6 +3,7 @@
 //             board rendering, LittleFS persistence, Elo ratings.
 
 #include "BBSChess.h"
+#include "BBSPlatform.h"
 #include "FSCommon.h"
 #include "RTC.h"
 #include <Arduino.h>
@@ -810,6 +811,61 @@ static int chessMinimax(ChessSearchState &state, int depth, int alpha, int beta,
 }
 
 // ---------------------------------------------------------------------------
+// chessBuildFEN — encode game state as a FEN string (~50-90 chars)
+// Piece encoding: 1=P,2=N,3=B,4=R,5=Q,6=K (positive=white, negative=black)
+// FEN piece chars indexed by piece+6: "kqrbnp.PNBRQK"
+// ---------------------------------------------------------------------------
+void chessBuildFEN(const BBSChessGame &game, char *buf, size_t bufLen) {
+    static const char fenPiece[] = "kqrbnp.PNBRQK"; // piece+6 → char
+    size_t pos = 0;
+
+    // Part 1: board (rank 8 down to rank 1)
+    for (int rank = 7; rank >= 0 && pos < bufLen - 4; rank--) {
+        int empty = 0;
+        for (int file = 0; file < 8; file++) {
+            int8_t piece = game.board[rank][file];
+            if (piece == 0) {
+                empty++;
+            } else {
+                if (empty > 0) { buf[pos++] = '0' + empty; empty = 0; }
+                buf[pos++] = fenPiece[piece + 6];
+            }
+        }
+        if (empty > 0) buf[pos++] = '0' + empty;
+        if (rank > 0)  buf[pos++] = '/';
+    }
+
+    // Part 2: active color
+    buf[pos++] = ' ';
+    buf[pos++] = (game.toMove == 0) ? 'w' : 'b';
+
+    // Part 3: castling
+    buf[pos++] = ' ';
+    bool anyCastle = false;
+    if (game.castling & 0x01) { buf[pos++] = 'K'; anyCastle = true; }
+    if (game.castling & 0x02) { buf[pos++] = 'Q'; anyCastle = true; }
+    if (game.castling & 0x04) { buf[pos++] = 'k'; anyCastle = true; }
+    if (game.castling & 0x08) { buf[pos++] = 'q'; anyCastle = true; }
+    if (!anyCastle)            buf[pos++] = '-';
+
+    // Part 4: en passant target square
+    buf[pos++] = ' ';
+    if (game.enPassantFile >= 0 && game.enPassantFile < 8) {
+        buf[pos++] = 'a' + game.enPassantFile;
+        buf[pos++] = (game.toMove == 0) ? '6' : '3';
+    } else {
+        buf[pos++] = '-';
+    }
+
+    buf[pos] = '\0';
+
+    // Parts 5 & 6: halfmove clock and fullmove number
+    char clocks[16];
+    snprintf(clocks, sizeof(clocks), " %u %u", game.halfMoveClock, game.fullMoveNumber);
+    strncat(buf + pos, clocks, bufLen - pos - 1);
+}
+
+// ---------------------------------------------------------------------------
 // chessAIMove — compute and apply the AI's move
 // Returns true if a move was made, false if no legal moves (game over).
 // moveOut must be at least 6 bytes.
@@ -854,7 +910,16 @@ bool chessAIMove(BBSChessGame &game, char *moveOut) {
         moveOut[5] = '\0';
     }
 
-    return chessApplyMove(game, moveStr);
+    if (chessApplyMove(game, moveStr)) return true;
+
+    // Best move failed to apply — fall back through all legal moves
+    for (int i = 0; i < count; i++) {
+        char fallback[6];
+        chessMoveToStr(moves[i].fr, moves[i].ff, moves[i].tr, moves[i].tf, moves[i].promo, fallback);
+        if (moveOut) { strncpy(moveOut, fallback, 6); moveOut[5] = '\0'; }
+        if (chessApplyMove(game, fallback)) return true;
+    }
+    return false;
 }
 
 // ---------------------------------------------------------------------------
@@ -935,7 +1000,7 @@ uint32_t chessListGames(uint32_t nodeNum, uint32_t *ids, uint32_t maxIds) {
 
     File dir = FSCom.open(BBS_CHESS_DIR, FILE_O_READ);
     if (!dir) return 0;
-    File f;
+    BBS_FILE_VAR(f);
     while ((f = dir.openNextFile()) && scanCount < MAX_SCAN) {
         if (!f.isDirectory()) {
             const char *name = f.name();
@@ -1163,3 +1228,4 @@ uint32_t chessTopRatings(BBSChessRating *out, uint32_t max) {
     for (uint32_t i = 0; i < result; i++) out[i] = buf[i];
     return result;
 }
+

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BBSStorage.h"
+#include "BBSChess.h"
 #include "FalloutWastelandRPG.h"
 #include "concurrency/OSThread.h"
 #include "graphics/Screen.h"
@@ -23,9 +24,7 @@ enum BBSMenuState : uint8_t {
     BBS_STATE_WORDLE,
     BBS_STATE_VAULT,            // Vault-Tec hacking game
     BBS_STATE_WASTELAND,        // Fallout Wasteland RPG
-    BBS_STATE_CASINO,           // Casino sub-menu
-    BBS_STATE_BLACKJACK,        // Blackjack mid-hand
-    BBS_STATE_ROULETTE,         // Roulette (awaiting bet type)
+    BBS_STATE_CHESS,            // Chess by mail
 };
 
 struct BBSSession {
@@ -46,16 +45,8 @@ struct BBSSession {
     char     vaultWords[12][6]; // 12 displayed words (lowercase)
     uint8_t  vaultAnswer;       // index 0-11 of correct word
     uint8_t  vaultGuesses;      // attempts remaining (starts at 5)
-    // Casino state
-    uint8_t  casinoMode;        // 0=standalone play money, 1=Vegas (real caps)
-    uint16_t casinoChips;       // current chip count
-    uint8_t  bjPlayerVals[6];   // player card values (1-13)
-    uint8_t  bjPlayerCount;
-    uint8_t  bjDealerVals[6];   // dealer card values
-    uint8_t  bjDealerCount;
-    uint8_t  bjDoubled;         // 1 if player doubled down
-    uint8_t  rlBetType;         // 1=red,2=black,3=odd,4=even,5=high,6=low,7=number
-    uint8_t  rlBetNum;          // 1-36 if rlBetType==7
+    // Chess state
+    uint32_t chessGameId;       // current game ID (0 = none selected)
 };
 
 /**
@@ -66,8 +57,8 @@ struct BBSSession {
  */
 class BBSModule : public SinglePortModule, private concurrency::OSThread {
   private:
-    BBSStorage *storage_ = nullptr;
-    BBSSession sessions_[BBS_MAX_SESSIONS];
+    BBSStorage *storage_  = nullptr;
+    BBSSession  sessions_[BBS_MAX_SESSIONS];
 
     static constexpr size_t REPLY_MAX_LEN = 200;
     static constexpr uint32_t PAGE_SIZE = 5;
@@ -100,18 +91,14 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     ProcessMessage handleStateMailSendTo(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     ProcessMessage handleStateMailSendSubject(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     ProcessMessage handleStateMailSendBody(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
-    ProcessMessage handleStateQSL(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     ProcessMessage handleStateWordle(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     ProcessMessage handleStateGames(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
-    ProcessMessage handleStateVault(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     ProcessMessage handleStateWasteland(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
-    ProcessMessage handleStateCasino(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
-    ProcessMessage handleStateBlackjack(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
-    ProcessMessage handleStateRoulette(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
+    ProcessMessage handleStateChess(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
+    void sendChessStatus(const meshtastic_MeshPacket &req, BBSSession &session);
     void sendGamesMenu(const meshtastic_MeshPacket &req);
-    void sendCasinoMenu(const meshtastic_MeshPacket &req, const BBSSession &session);
-    void doSlots(const meshtastic_MeshPacket &req, BBSSession &session);
     void doWordleStart(const meshtastic_MeshPacket &req, BBSSession &session);
+    ProcessMessage handleStateVault(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     void doVaultStart(const meshtastic_MeshPacket &req, BBSSession &session);
     void sendVaultBoard(const meshtastic_MeshPacket &req, const BBSSession &session);
 
@@ -126,10 +113,13 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     void doMailDelete(const meshtastic_MeshPacket &req, uint32_t id);
     void doQSLList(const meshtastic_MeshPacket &req, uint32_t pageNum);
     void doQSLPost(const meshtastic_MeshPacket &req);
+    ProcessMessage handleStateQSL(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     void doStats(const meshtastic_MeshPacket &req);
+#ifndef NRF52_SERIES
     void doForecast(const meshtastic_MeshPacket &req);
     bool fetchForecast(char *buf, size_t bufLen, float lat, float lon);
     bool reverseGeocode(float lat, float lon, char *city, size_t cityLen);
+#endif
 
     // Helpers
     bool sendReply(const meshtastic_MeshPacket &req, const char *text);
@@ -139,14 +129,17 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     uint32_t resolveNode(const char *idOrName);
     const char *getNodeShortName(uint32_t nodeNum);
 
-    // Wordle helpers - score persistence via LittleFS directly (always persistent)
+    // Wordle helpers
     uint32_t wordleDay();  // current day number (9am local boundary)
+#ifndef NRF52_SERIES
+    // Score persistence (ESP32 only — uses FSCom which conflicts on nRF52)
     static void wordleEnsureDir();
     static bool wordleHasPlayed(uint32_t day, uint32_t nodeNum);
     static bool wordleSaveScore(uint32_t day, const BBSWordleScore &score);
     static uint32_t wordleLoadScores(uint32_t day, BBSWordleScore *scores, uint32_t max);
     static void wordlePruneOldDays(uint32_t currentDay);
     void buildStandings(uint32_t day, char *buf, size_t bufLen);
+#endif
     void sendToPublicChannel(const char *text);
 
     // Daily announcement tracking

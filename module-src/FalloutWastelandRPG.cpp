@@ -4,6 +4,7 @@
 // FSCom rules: use FSCom.open/read/write/close, never fopen/fclose.
 
 #include "FalloutWastelandRPG.h"
+#include "BBSPlatform.h"
 #include "FSCommon.h"
 #include "RTC.h"
 #include <Arduino.h>
@@ -192,18 +193,18 @@ bool frpgLoadPlayer(uint32_t nodeNum, FRPGPlayer &p)
 {
     char path[40];
     frpgPath(nodeNum, path, sizeof(path));
-    printf("[FRPG] load path=%s sizeof=%u\n", path, (unsigned)sizeof(FRPGPlayer));
-    fflush(stdout);
+    LOG_DEBUG("[FRPG] load path=%s sizeof=%u\n", path, (unsigned)sizeof(FRPGPlayer));
+    (void)0;
     File f = FSCom.open(path, FILE_O_READ);
     if (!f) {
-        printf("[FRPG] load: file not found\n");
-        fflush(stdout);
+        LOG_DEBUG("[FRPG] load: file not found\n");
+        (void)0;
         return false;
     }
     size_t n = f.read((uint8_t *)&p, sizeof(FRPGPlayer));
     f.close();
-    printf("[FRPG] load: read %u bytes (need %u)\n", (unsigned)n, (unsigned)sizeof(FRPGPlayer));
-    fflush(stdout);
+    LOG_DEBUG("[FRPG] load: read %u bytes (need %u)\n", (unsigned)n, (unsigned)sizeof(FRPGPlayer));
+    (void)0;
     return (n == sizeof(FRPGPlayer));
 }
 
@@ -211,18 +212,18 @@ void frpgSavePlayer(const FRPGPlayer &p)
 {
     char path[40];
     frpgPath(p.nodeNum, path, sizeof(path));
-    printf("[FRPG] save path=%s nodeNum=0x%08x sizeof=%u\n", path, (unsigned)p.nodeNum, (unsigned)sizeof(FRPGPlayer));
-    fflush(stdout);
+    LOG_DEBUG("[FRPG] save path=%s nodeNum=0x%08x sizeof=%u\n", path, (unsigned)p.nodeNum, (unsigned)sizeof(FRPGPlayer));
+    (void)0;
     File f = FSCom.open(path, FILE_O_WRITE);
     if (!f) {
-        printf("[FRPG] save: FAILED to open file\n");
-        fflush(stdout);
+        LOG_DEBUG("[FRPG] save: FAILED to open file\n");
+        (void)0;
         return;
     }
     size_t n = f.write((const uint8_t *)&p, sizeof(FRPGPlayer));
     f.close();
-    printf("[FRPG] save: wrote %u bytes\n", (unsigned)n);
-    fflush(stdout);
+    LOG_DEBUG("[FRPG] save: wrote %u bytes\n", (unsigned)n);
+    (void)0;
 }
 
 void frpgNewPlayer(uint32_t nodeNum, const char *shortName, FRPGPlayer &p)
@@ -273,7 +274,7 @@ uint32_t frpgTopPlayers(FRPGPlayer *out, uint32_t max)
     uint32_t count = 0;
     File dir = FSCom.open(FRPG_DIR, FILE_O_READ);
     if (!dir) return 0;
-    File f;
+    BBS_FILE_VAR(f);
     while ((f = dir.openNextFile()) && count < max) {
         if (f.isDirectory()) { f.close(); continue; }
         const char *nm = f.name();
@@ -1338,7 +1339,7 @@ static void frpgDoArena(FRPGPlayer &p, const char *arg, char *buf, size_t len)
     FRPGPlayer tgt;
     bool found = false;
     if (dir) {
-        File f;
+        BBS_FILE_VAR(f);
         while ((f = dir.openNextFile())) {
             if (f.isDirectory()) { f.close(); continue; }
             if (f.read((uint8_t *)&tgt, sizeof(tgt)) == sizeof(tgt)) {
@@ -1651,3 +1652,5 @@ void frpgCommand(uint32_t nodeNum, const char *text, const char *shortName,
 
     frpgSavePlayer(p);
 }
+
+

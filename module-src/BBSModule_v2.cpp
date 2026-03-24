@@ -2,6 +2,9 @@
 #include "BBSWordle.h"
 #include "BBSStorageLittleFS.h"
 #include "BBSStoragePSRAM.h"
+#ifdef NRF52_SERIES
+#include "BBSStorageExtFlash.h"
+#endif
 #include "Channels.h"
 #include "FSCommon.h"
 #include "MeshService.h"
@@ -28,52 +31,35 @@ static const char BOARD_KEYS[BOARD_COUNT] = {'g', 'i', 'n', 'u'};
 
 BBSModule::BBSModule() : SinglePortModule("bbs", meshtastic_PortNum_TEXT_MESSAGE_APP),
                          concurrency::OSThread("bbs_daily") {
-    printf("[BBS] Constructor called\n");
-    fflush(stdout);
     memset(sessions_, 0, sizeof(sessions_));
 
-    bool initOk = false;
-
 #ifdef ARCH_ESP32
-    printf("[BBS] FreePSRAM=%u\n", (unsigned)ESP.getFreePsram());
-    fflush(stdout);
+    bool initOk = false;
     if (ESP.getFreePsram() > 1024 * 1024) {
         storage_ = new BBSStoragePSRAM();
         if (storage_) {
             initOk = storage_->init();
             if (!initOk) {
-                printf("[BBS] PSRAM init failed, falling back to LittleFS\n");
-                fflush(stdout);
                 delete storage_;
                 storage_ = nullptr;
             }
         }
     }
     if (!storage_) {
-        printf("[BBS] Using LittleFS storage\n");
-        fflush(stdout);
         storage_ = new BBSStorageLittleFS();
         if (storage_) initOk = storage_->init();
     }
-#else
-    storage_ = new BBSStorageLittleFS();
-    if (storage_) initOk = storage_->init();
-#endif
-
-    printf("[BBS] Storage init %s\n", initOk ? "OK" : "FAILED");
-    fflush(stdout);
-
-    // Create RPG dir here too — setup() may not be called before first packet
     frpgEnsureDir();
-    printf("[BBS] frpgEnsureDir done\n");
-    fflush(stdout);
+#endif
+    // nRF52: storage initialized lazily on first message to avoid blocking boot
 }
 
 void BBSModule::setup() {
-    printf("[BBS] setup() called\n");
-    fflush(stdout);
-    wordleEnsureDir(); // ensure /bbs/wdl/ exists regardless of main storage backend
+    LOG_DEBUG("[BBS] setup() called\n");
+#ifndef NRF52_SERIES
+    wordleEnsureDir(); // ensure /bbs/wdl/ exists for Wordle score persistence
     frpgEnsureDir();   // ensure /bbs/frpg/ exists for Wasteland RPG
+#endif
 }
 
 int32_t BBSModule::runOnce() {
@@ -82,6 +68,8 @@ int32_t BBSModule::runOnce() {
     if (t < 1577836800UL) return 60000;
 
     // Refresh UI frame stats every 60 seconds
+    // Skip on nRF52: FS ops in runOnce() cause deadlocks/crashes with external flash
+#ifndef NRF52_SERIES
     if (storage_ && (t - uiStatsLastUpdate_) >= 60) {
         uiStatsLastUpdate_ = t;
         BBSStats stats = storage_->getStats();
@@ -96,6 +84,7 @@ int32_t BBSModule::runOnce() {
             if (t >= bhdrs[i].timestamp && (t - bhdrs[i].timestamp) < week) recent++;
         uiBulletinRecent_ = recent;
     }
+#endif
 
     uint32_t day = wordleDay();
 
@@ -107,11 +96,11 @@ int32_t BBSModule::runOnce() {
         uint32_t seedLocalT = (uint32_t)((int64_t)t + utcOffsetSeconds_);
         lastForecastHour_ = (seedLocalT % 86400) / 3600;
         lastNightlyHour_  = (seedLocalT % 86400) / 3600;
-        printf("[BBS] runOnce: time synced, wordle day=%u\n", day);
-        fflush(stdout);
+        LOG_DEBUG("[BBS] runOnce: time synced, wordle day=%u\n", day);
         return 60000;
     }
 
+#ifndef NRF52_SERIES
     if (day > lastAnnouncedDay_) {
         // New wordle day - announce and show yesterday's standings
         char msg[200] = {0};
@@ -121,21 +110,23 @@ int32_t BBSModule::runOnce() {
         if (strncmp(standings, "No Wordle", 9) == 0) {
             snprintf(msg, sizeof(msg), "New Wordle word ready!\nDM [W] to play.");
         } else {
-            // Yesterday's standings + new word notice
             snprintf(msg, sizeof(msg), "New Wordle word!\n%s\nDM [W] to play.", standings);
         }
         sendToPublicChannel(msg);
 
         wordlePruneOldDays(day);
         lastAnnouncedDay_ = day;
-        printf("[BBS] runOnce: day transition to %u, announced.\n", day);
-        fflush(stdout);
+        LOG_DEBUG("[BBS] runOnce: day transition to %u, announced.\n", day);
     }
+#else
+    lastAnnouncedDay_ = day; // track day even on nRF52 (no announcement)
+#endif
 
     // Use local time for scheduled broadcasts (utcOffsetSeconds_ updated by fetchForecast)
     uint32_t localT = (uint32_t)((int64_t)t + utcOffsetSeconds_);
     uint8_t localHour = (localT % 86400) / 3600;
 
+#ifndef NRF52_SERIES
     // Forecast broadcast at local 6am and 6pm
     if ((localHour == 6 || localHour == 18) && localHour != lastForecastHour_) {
         lastForecastHour_ = localHour;
@@ -149,7 +140,7 @@ int32_t BBSModule::runOnce() {
         lastForecastFetchTime_ = (uint32_t)getTime();
         if (forecastCache_[0] != '\0') {
             sendToPublicChannel(forecastCache_);
-            printf("[BBS] runOnce: sent forecast for local hour %u\n", localHour);
+            LOG_DEBUG("[BBS] runOnce: sent forecast for local hour %u\n", localHour);
         }
     } else if (localHour != 6 && localHour != 18) {
         lastForecastHour_ = 255; // reset so next 6am/6pm fires
@@ -162,6 +153,9 @@ int32_t BBSModule::runOnce() {
     } else if (localHour != 22) {
         lastNightlyHour_ = 255;
     }
+#else
+    (void)localHour;
+#endif
 
     return 60000; // check every 60 seconds
 }
@@ -188,6 +182,11 @@ bool BBSModule::wantPacket(const meshtastic_MeshPacket *p) {
 static const char *SEEN_FILE = "/bbs/seen.bin";
 
 static bool seenUserCheck(uint32_t nodeNum) {
+#ifdef NRF52_SERIES
+    // Skip FSCom on nRF52 — InternalFS mutex contention causes crashes
+    (void)nodeNum;
+    return false;
+#else
     File f = FSCom.open(SEEN_FILE, FILE_O_READ);
     if (!f) return false;
     uint32_t n;
@@ -197,16 +196,43 @@ static bool seenUserCheck(uint32_t nodeNum) {
     }
     f.close();
     return false;
+#endif
 }
 
 static void seenUserAdd(uint32_t nodeNum) {
-    File f = FSCom.open(SEEN_FILE, "a");
+#ifdef NRF52_SERIES
+    // Skip FSCom on nRF52 — InternalFS mutex contention causes crashes
+    (void)nodeNum;
+#else
+    File f = FSCom.open(SEEN_FILE, BBS_FILE_APPEND_MODE);
     if (!f) return;
     f.write((const uint8_t *)&nodeNum, sizeof(uint32_t));
     f.close();
+#endif
 }
 
 ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
+#ifndef ARCH_ESP32
+    // nRF52: lazy storage init — do it once on first message
+    // Try external QSPI flash first (2MB), fall back to internal LittleFS (~28KB)
+    if (!storage_) {
+#ifdef NRF52_SERIES
+        storage_ = new BBSStorageExtFlash();
+        if (storage_ && !storage_->init()) {
+            LOG_WARN("[BBS] External flash failed, falling back to internal FS\n");
+            delete storage_;
+            storage_ = nullptr;
+        }
+#endif
+        if (!storage_) {
+            storage_ = new BBSStorageLittleFS();
+            if (storage_ && !storage_->init()) {
+                delete storage_;
+                storage_ = nullptr;
+            }
+        }
+    }
+#endif
     if (!storage_) return ProcessMessage::CONTINUE;
 
     // ACK the sender immediately, before any BBS processing or delay() calls.
@@ -228,8 +254,7 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
         buf[--len] = '\0';
     }
 
-    printf("[BBS] Rx from=0x%08x to=0x%08x: %s\n", mp.from, mp.to, buf);
-    fflush(stdout);
+    LOG_DEBUG("[BBS] Rx from=0x%08x to=0x%08x: %s\n", mp.from, mp.to, buf);
 
     // Update UI frame tracking
     uiLastMsgTime_ = (uint32_t)getTime();
@@ -261,7 +286,8 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
                 }
                 return false;
             };
-            if (hasWord(buf, "test") || hasWord(buf, "ack") || hasWord(buf, "acknowledge")) {
+            if (mp.decoded.reply_id == 0 &&
+                (hasWord(buf, "test") || hasWord(buf, "ack") || hasWord(buf, "acknowledge"))) {
                 uint8_t hops = (mp.hop_start >= mp.hop_limit)
                                ? (mp.hop_start - mp.hop_limit) : 0;
                 sendTapBack(mp, hops);
@@ -281,6 +307,53 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
                     memcpy(reply->decoded.payload.bytes, pingEmoji, elen);
                     reply->decoded.payload.size = elen;
                     service->sendToMesh(reply);
+                }
+            }
+
+            // 🤖 tapback if message looks like a flight number or mentions being on a plane
+            {
+                bool isFlightMsg = hasWord(buf, "on a plane") ||
+                                   hasWord(buf, "on the plane") ||
+                                   hasWord(buf, "im flying") ||
+                                   hasWord(buf, "i'm flying") ||
+                                   hasWord(buf, "inflight") ||
+                                   hasWord(buf, "in-flight") ||
+                                   hasWord(buf, "in flight");
+
+                // Detect flight number pattern: 2-letter airline code + 1-4 digits (e.g. AA123, UA4567)
+                if (!isFlightMsg) {
+                    for (const char *p = buf; *p && !isFlightMsg; p++) {
+                        if (isupper((unsigned char)p[0]) && isupper((unsigned char)p[1]) &&
+                            isdigit((unsigned char)p[2])) {
+                            // Check it's preceded by start or non-alpha
+                            if (p == buf || !isalpha((unsigned char)p[-1])) {
+                                int digits = 0;
+                                for (int d = 2; d < 6 && isdigit((unsigned char)p[d]); d++) digits++;
+                                // Check followed by non-alpha (end of word)
+                                if (digits >= 1 && digits <= 4 &&
+                                    !isalpha((unsigned char)p[2 + digits])) {
+                                    isFlightMsg = true;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (isFlightMsg) {
+                    static const char *robotEmoji = "\xF0\x9F\xA4\x96"; // 🤖 U+1F916
+                    meshtastic_MeshPacket *reply = allocDataPacket();
+                    if (reply) {
+                        reply->to                    = NODENUM_BROADCAST;
+                        reply->channel               = mp.channel;
+                        reply->want_ack              = false;
+                        reply->decoded.want_response = false;
+                        reply->decoded.emoji         = 1;
+                        reply->decoded.reply_id      = mp.id;
+                        size_t elen = strlen(robotEmoji);
+                        memcpy(reply->decoded.payload.bytes, robotEmoji, elen);
+                        reply->decoded.payload.size = elen;
+                        service->sendToMesh(reply);
+                    }
                 }
             }
         }
@@ -317,7 +390,7 @@ void BBSModule::expireSessions(uint32_t now) {
         if (sessions_[i].nodeNum != 0 &&
             sessions_[i].lastActivity != 0 &&
             (now - sessions_[i].lastActivity) > BBS_SESSION_TIMEOUT_S) {
-            printf("[BBS] Session expired for 0x%08x\n", sessions_[i].nodeNum);
+            LOG_DEBUG("[BBS] Session expired for 0x%08x\n", sessions_[i].nodeNum);
             memset(&sessions_[i], 0, sizeof(BBSSession));
         }
     }
@@ -342,7 +415,11 @@ ProcessMessage BBSModule::dispatchState(const meshtastic_MeshPacket &mp, BBSSess
             bool firstTime = !seenUserCheck(mp.from);
             if (firstTime) {
                 seenUserAdd(mp.from);
+#ifdef NRF52_SERIES
+                sendReply(mp, "Welcome to TinyBBS nRf: A BBS running on an nRF52 node\nSend [H] for help menu.");
+#else
                 sendReply(mp, "Welcome to TinyBBS: VaultTec Ed.!\nSend [H] for help.");
+#endif
             }
             // Always process the text as a main-menu command (or show menu if empty)
             return handleStateMain(mp, session, text);
@@ -359,9 +436,7 @@ ProcessMessage BBSModule::dispatchState(const meshtastic_MeshPacket &mp, BBSSess
         case BBS_STATE_WORDLE:         return handleStateWordle(mp, session, text);
         case BBS_STATE_VAULT:          return handleStateVault(mp, session, text);
         case BBS_STATE_WASTELAND:      return handleStateWasteland(mp, session, text);
-        case BBS_STATE_CASINO:         return handleStateCasino(mp, session, text);
-        case BBS_STATE_BLACKJACK:      return handleStateBlackjack(mp, session, text);
-        case BBS_STATE_ROULETTE:       return handleStateRoulette(mp, session, text);
+        case BBS_STATE_CHESS:          return handleStateChess(mp, session, text);
         default:
             session.state = BBS_STATE_MAIN;
             sendMainMenu(mp, session);
@@ -374,17 +449,34 @@ ProcessMessage BBSModule::dispatchState(const meshtastic_MeshPacket &mp, BBSSess
 void BBSModule::sendMainMenu(const meshtastic_MeshPacket &req, BBSSession &session) {
     uint32_t unread = storage_->countUnreadMail(req.from);
     char menu[200];
+#ifdef NRF52_SERIES
+    if (unread > 0) {
+        snprintf(menu, sizeof(menu),
+                 "TinyBBS nRF52\n"
+                 "[B]ulletins\n"
+                 "[M]ail (%u unread)\n"
+                 "[G]ames\n"
+                 "[S]tats\n"
+                 "[X]Exit",
+                 unread);
+    } else {
+        snprintf(menu, sizeof(menu),
+                 "TinyBBS nRF52\n"
+                 "[B]ulletins\n"
+                 "[M]ail\n"
+                 "[G]ames\n"
+                 "[S]tats\n"
+                 "[X]Exit");
+    }
+#else
     if (unread > 0) {
         snprintf(menu, sizeof(menu),
                  "TinyBBS: VaultTec Ed.\n"
                  "[B]ulletins\n"
                  "[M]ail (%u unread)\n"
                  "[Q]SL\n"
-                 "[W]ordle\n"
-                 "[G]ames\n"
-                 "[F]orecast\n"
-                 "[S]tats\n"
-                 "[X]Exit",
+                 "[G]ames [S]tats\n"
+                 "[F]orecast [X]Exit",
                  unread);
     } else {
         snprintf(menu, sizeof(menu),
@@ -392,11 +484,10 @@ void BBSModule::sendMainMenu(const meshtastic_MeshPacket &req, BBSSession &sessi
                  "[B]ulletins\n"
                  "[M]ail\n"
                  "[Q]SL\n"
-                 "[G]ames\n"
-                 "[F]orecast\n"
-                 "[S]tats\n"
-                 "[X]Exit");
+                 "[G]ames [S]tats\n"
+                 "[F]orecast [X]Exit");
     }
+#endif
     sendReply(req, menu);
 }
 
@@ -463,8 +554,8 @@ void BBSModule::sendGamesMenu(const meshtastic_MeshPacket &req) {
               "=== Games ===\n"
               "[W]ordle\n"
               "[V]ault-Tec Hack\n"
-              "[R]PG Wastelad\n"
-              "[C]asino\n"
+              "[R]PG Wasteland\n"
+              "[C]hess by Mesh\n"
               "[X]Back");
 }
 
@@ -491,9 +582,11 @@ ProcessMessage BBSModule::handleStateMain(const meshtastic_MeshPacket &mp, BBSSe
             session.state = BBS_STATE_GAMES;
             sendGamesMenu(mp);
             break;
+#ifndef NRF52_SERIES
         case 'f':
             doForecast(mp);
             break;
+#endif
         case 's':
             doStats(mp);
             break;
@@ -503,12 +596,12 @@ ProcessMessage BBSModule::handleStateMain(const meshtastic_MeshPacket &mp, BBSSe
             break;
         case '?': case 'h':
             sendReply(mp,
-                      "Tiny BBS: Help:\n"
-                      "[B]ulletins [M]ail\n"
-                      "[Q]SL [G]ames\n"
-                      "[F]orecast [S]tats\n"
-                      "[X]Exit\n"
-                      "Channel: !bbs <cmd>");
+                      "TinyBBS Help:\n"
+                      "[B]ulletins\n"
+                      "[M]ail\n"
+                      "[G]ames\n"
+                      "[S]tats\n"
+                      "[X]Exit");
             break;
         default:
             sendMainMenu(mp, session);
@@ -532,10 +625,8 @@ ProcessMessage BBSModule::handleStateGames(const meshtastic_MeshPacket &mp, BBSS
             {
                 char rpgBuf[512];
                 bool exitGame = false;
-                // Show status/welcome first
                 frpgCommand(mp.from, "", getNodeShortName(mp.from), rpgBuf, sizeof(rpgBuf), exitGame);
                 sendReplyMultipart(mp, rpgBuf);
-                // Always follow with the command reference
                 delay(MULTIPART_DELAY_MS);
                 sendReply(mp,
                     "EX-Explore  SH-Shop\n"
@@ -548,14 +639,15 @@ ProcessMessage BBSModule::handleStateGames(const meshtastic_MeshPacket &mp, BBSS
             }
             break;
         case 'c':
-            session.casinoMode = 0;
-            session.casinoChips = 100;
-            session.state = BBS_STATE_CASINO;
-            sendCasinoMenu(mp, session);
+            chessEnsureDir();
+            session.state = BBS_STATE_CHESS;
+            session.chessGameId = 0;
+            sendChessStatus(mp, session);
             break;
         case 'x':
             session.state = BBS_STATE_MAIN;
             sendMainMenu(mp, session);
+
             break;
         default:
             sendGamesMenu(mp);
@@ -735,6 +827,7 @@ uint32_t BBSModule::wordleDay() {
     return (uint32_t)(adj / 86400);
 }
 
+#ifndef NRF52_SERIES
 void BBSModule::wordleEnsureDir() {
     if (!FSCom.exists(WORDLE_DIR)) FSCom.mkdir(WORDLE_DIR);
 }
@@ -825,6 +918,8 @@ void BBSModule::buildStandings(uint32_t day, char *buf, size_t bufLen) {
     }
 }
 
+#endif // NRF52_SERIES (Wordle score persistence)
+
 void BBSModule::sendToPublicChannel(const char *text) {
     if (!text) return;
     meshtastic_MeshPacket *p = allocDataPacket();
@@ -842,7 +937,8 @@ void BBSModule::sendToPublicChannel(const char *text) {
 void BBSModule::doWordleStart(const meshtastic_MeshPacket &req, BBSSession &session) {
     uint32_t day = wordleDay();
 
-    // Check if already played today (persistent LittleFS check — survives reboots)
+    // Check if already played today
+#ifndef NRF52_SERIES
     if (wordleHasPlayed(day, req.from)) {
         char standings[180];
         buildStandings(day, standings, sizeof(standings));
@@ -851,6 +947,7 @@ void BBSModule::doWordleStart(const meshtastic_MeshPacket &req, BBSSession &sess
         sendReply(req, msg);
         return; // stay in BBS_STATE_MAIN
     }
+#endif // NRF52_SERIES
 
     // Pick today's daily word (same for everyone)
     const char *word = wordlePickWord(day);
@@ -883,8 +980,8 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
         char msg[60];
         snprintf(msg, sizeof(msg), "Quit. Word was: %s", session.wordleTarget);
         sendReply(mp, msg);
-        session.state = BBS_STATE_GAMES;
-        sendGamesMenu(mp);
+        session.state = BBS_STATE_MAIN;
+        sendMainMenu(mp, session);
         return ProcessMessage::STOP;
     }
 
@@ -901,21 +998,13 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
         return ProcessMessage::STOP;
     }
 
-    // Validate against word list (binary search — list is sorted)
-    {
-        int lo = 0, hi = (int)WORDLE_WORD_COUNT - 1, found = 0;
-        while (lo <= hi) {
-            int mid = (lo + hi) / 2;
-            int cmp = strncmp(guess, WORDLE_WORDS[mid], 5);
-            if (cmp == 0) { found = 1; break; }
-            else if (cmp < 0) hi = mid - 1;
-            else lo = mid + 1;
-        }
-        if (!found) {
-            sendReply(mp, "Not a valid word. Try again.");
-            return ProcessMessage::STOP;
-        }
+    // Validate against word list (ESP32: full dictionary binary search)
+#ifndef NRF52_SERIES
+    if (!wordleIsValid(guess)) {
+        sendReply(mp, "Not a valid word. Try again.");
+        return ProcessMessage::STOP;
     }
+#endif
 
     session.wordleGuesses++;
 
@@ -946,6 +1035,7 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
     upper[5] = '\0';
 
     auto saveAndShowStandings = [&](uint8_t guessCount) {
+#ifndef NRF52_SERIES
         // Save score to LittleFS (persistent across reboots)
         BBSWordleScore score;
         score.nodeNum = mp.from;
@@ -960,6 +1050,9 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
         buildStandings(session.wordleDay, standings, sizeof(standings));
         delay(MULTIPART_DELAY_MS);
         sendReply(mp, standings);
+#else
+        (void)guessCount;
+#endif
     };
 
     if (won) {
@@ -969,20 +1062,20 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
                  session.wordleGuesses);
         sendReply(mp, reply);
         session.wordleGamesPlayed++;
-        session.state = BBS_STATE_GAMES;
+        session.state = BBS_STATE_MAIN;
         saveAndShowStandings(session.wordleGuesses);
         delay(MULTIPART_DELAY_MS);
-        sendGamesMenu(mp);
+        sendMainMenu(mp, session);
     } else if (session.wordleGuesses >= 6) {
         snprintf(reply, sizeof(reply),
                  "%s - Game over! Word: %s",
                  fbStr, session.wordleTarget);
         sendReply(mp, reply);
         session.wordleGamesPlayed++;
-        session.state = BBS_STATE_GAMES;
+        session.state = BBS_STATE_MAIN;
         saveAndShowStandings(0); // 0 = DNF
         delay(MULTIPART_DELAY_MS);
-        sendGamesMenu(mp);
+        sendMainMenu(mp, session);
     } else {
         snprintf(reply, sizeof(reply),
                  "%s  Guess %u/6:",
@@ -1006,7 +1099,8 @@ ProcessMessage BBSModule::handleChannelCmd(const meshtastic_MeshPacket &mp, cons
     }
     if (strncasecmp(cmd, "qsl", 3) == 0) {
         doQSLPost(mp);
-    } else if (strncasecmp(cmd, "post", 4) == 0) {
+    } else
+    if (strncasecmp(cmd, "post", 4) == 0) {
         const char *text = cmd + 4;
         while (*text == ' ' || *text == '\t') text++;
         doBulletinPost(mp, text, BOARD_GENERAL);
@@ -1014,8 +1108,10 @@ ProcessMessage BBSModule::handleChannelCmd(const meshtastic_MeshPacket &mp, cons
         doBulletinList(mp, 1, BOARD_ALL);
     } else if (strncasecmp(cmd, "stats", 5) == 0) {
         doStats(mp);
+#ifndef NRF52_SERIES
     } else if (strncasecmp(cmd, "wx", 2) == 0 || strncasecmp(cmd, "forecast", 8) == 0) {
         doForecast(mp);
+#endif
     } else {
         sendReply(mp, "Cmds: !bbs qsl, !bbs post <txt>, !bbs list, !bbs stats, !bbs wx");
     }
@@ -1233,17 +1329,26 @@ void BBSModule::doQSLPost(const meshtastic_MeshPacket &req) {
         qsl.longitude = sender->position.longitude_i;
         qsl.altitude  = sender->position.altitude;
     }
+#ifndef NRF52_SERIES
     if (lat != 0.0f || lon != 0.0f)
         reverseGeocode(lat, lon, qsl.location, sizeof(qsl.location));
+#endif
 
     if (storage_->storeQSL(qsl)) {
-        char reply[140];
+        // Format timestamp as MM/DD HH:MM
+        uint32_t ts = qsl.timestamp;
+        time_t t = (time_t)ts;
+        struct tm *tm = gmtime(&t);
+        char dateStr[8];
+        strftime(dateStr, sizeof(dateStr), "%m/%d", tm);
+
+        char reply[160];
         if (qsl.location[0])
-            snprintf(reply, sizeof(reply), "QSL #%u: %s (%s)\n%uhop(s) SNR:%d",
-                     qsl.id, qsl.fromName, qsl.location, qsl.hopsAway, req.rx_snr);
+            snprintf(reply, sizeof(reply), "QSL #%u: %s (%s)\n%uhop(s) %s",
+                     qsl.id, qsl.fromName, qsl.location, qsl.hopsAway, dateStr);
         else
-            snprintf(reply, sizeof(reply), "QSL #%u: %s heard %uhop(s) SNR:%d",
-                     qsl.id, qsl.fromName, qsl.hopsAway, req.rx_snr);
+            snprintf(reply, sizeof(reply), "QSL #%u: %s\n%uhop(s) %s",
+                     qsl.id, qsl.fromName, qsl.hopsAway, dateStr);
         if (isBroadcast(req.to)) sendToChannel(req, reply);
         else sendReply(req, reply);
     } else {
@@ -1254,19 +1359,28 @@ void BBSModule::doQSLPost(const meshtastic_MeshPacket &req) {
 void BBSModule::doStats(const meshtastic_MeshPacket &req) {
     BBSStats stats = storage_->getStats();
     char reply[220];
+    const char *backend = "LittleFS";
+#ifdef NRF52_SERIES
+    if (stats.freeBytesEstimate > 0) backend = "ExtFlash";
+#endif
+#ifdef ARCH_ESP32
+    if (ESP.getFreePsram() > 1024 * 1024) backend = "PSRAM";
+#endif
     snprintf(reply, sizeof(reply),
-             "BBS Stats:\n"
+             "BBS Stats [%s]:\n"
              "Bulletins: %u/%u\n"
              "Mail: %u items\n"
              "QSL: %u posts\n"
-             "Free: %u bytes",
+             "Free: %luKB",
+             backend,
              stats.totalBulletins, stats.maxBulletins,
              stats.totalMailItems, stats.totalQSLItems,
-             stats.freeBytesEstimate);
+             (unsigned long)(stats.freeBytesEstimate / 1024));
     sendReply(req, reply);
 }
 
 // ─── Forecast ─────────────────────────────────────────────────────────────
+#ifndef NRF52_SERIES
 
 // Extract a JSON string value — handles optional spaces around colon
 static bool jsonExtractString(const char *json, const char *key, char *out, size_t outLen) {
@@ -1360,7 +1474,7 @@ bool BBSModule::reverseGeocode(float lat, float lon, char *city, size_t cityLen)
     ghttp.begin(gwc, gurl);
     ghttp.addHeader("User-Agent", "MeshBBS/1.0");
     int gcode = ghttp.GET();
-    printf("[GEO] nominatim code=%d\n", gcode);
+    LOG_DEBUG("[GEO] nominatim code=%d\n", gcode);
     if (gcode == 200) {
         String gbody = ghttp.getString();
         strncpy(gbuf, gbody.c_str(), sizeof(gbuf) - 1);
@@ -1392,8 +1506,7 @@ bool BBSModule::fetchForecast(char *buf, size_t bufLen, float lat, float lon) {
     snprintf(buf, bufLen, "Forecast not supported on this platform.");
     return false;
 #else
-    printf("[FC] WiFi.status()=%d\n", (int)WiFi.status());
-    fflush(stdout);
+    LOG_DEBUG("[FC] WiFi.status()=%d\n", (int)WiFi.status());
 
     if (lat == 0.0f && lon == 0.0f) {
         snprintf(buf, bufLen, "No GPS fix - forecast unavailable.");
@@ -1410,7 +1523,7 @@ bool BBSModule::fetchForecast(char *buf, size_t bufLen, float lat, float lon) {
              "&temperature_unit=fahrenheit&timezone=auto&forecast_days=6",
              lat, lon);
 
-    printf("[FC] heap=%u url=%s\n", (unsigned)ESP.getFreeHeap(), url);
+    LOG_DEBUG("[FC] heap=%u url=%s\n", (unsigned)ESP.getFreeHeap(), url);
 
     // Try up to 2 times — first attempt may fail if previous connection was stale
     String body;
@@ -1422,7 +1535,7 @@ bool BBSModule::fetchForecast(char *buf, size_t bufLen, float lat, float lon) {
         http.setTimeout(15000);
         http.begin(wc, url);
         code = http.GET();
-        printf("[FC] attempt=%d code=%d\n", attempt, code);
+        LOG_DEBUG("[FC] attempt=%d code=%d\n", attempt, code);
         if (code == 200) {
             body = http.getString();
         }
@@ -1438,7 +1551,7 @@ bool BBSModule::fetchForecast(char *buf, size_t bufLen, float lat, float lon) {
     strncpy(sbuf, body.c_str(), sizeof(sbuf) - 1);
     sbuf[sizeof(sbuf) - 1] = '\0';
 
-    printf("[FC] body=%u bytes\n", (unsigned)body.length());
+    LOG_DEBUG("[FC] body=%u bytes\n", (unsigned)body.length());
 
     // Parse Open-Meteo JSON — arrays have 3 values (one per day)
     const char *tmax = strstr(sbuf, "\"temperature_2m_max\":[");
@@ -1579,6 +1692,8 @@ void BBSModule::doForecast(const meshtastic_MeshPacket &req) {
     sendReply(req, msg);
 }
 
+#endif // NRF52_SERIES (forecast)
+
 // ─── Reply helpers ────────────────────────────────────────────────────────
 
 bool BBSModule::sendToChannel(const meshtastic_MeshPacket &req, const char *text) {
@@ -1624,8 +1739,7 @@ void BBSModule::sendTapBack(const meshtastic_MeshPacket &req, uint8_t hops) {
     reply->decoded.payload.size = (uint32_t)len;
     memcpy(reply->decoded.payload.bytes, emoji, len);
     service->sendToMesh(reply);
-    printf("[BBS] tap-back %d hops for msg id=0x%08x\n", hops, req.id);
-    fflush(stdout);
+    LOG_DEBUG("[BBS] tap-back %d hops for msg id=0x%08x\n", hops, req.id);
 }
 
 bool BBSModule::sendReply(const meshtastic_MeshPacket &req, const char *text) {
@@ -1633,7 +1747,7 @@ bool BBSModule::sendReply(const meshtastic_MeshPacket &req, const char *text) {
     // Channel commands reply to the channel; DMs reply to the sender
     if (isBroadcast(req.to)) return sendToChannel(req, text);
     meshtastic_MeshPacket *reply = allocDataPacket();
-    printf("[BBS] sendReply: allocDataPacket=%p text='%.40s'\n", (void*)reply, text);
+    LOG_DEBUG("[BBS] sendReply: allocDataPacket=%p text='%.40s'\n", (void*)reply, text);
     if (!reply) return false;
     reply->to = req.from;
     reply->channel = req.channel;
@@ -1796,8 +1910,8 @@ ProcessMessage BBSModule::handleStateVault(const meshtastic_MeshPacket &mp, BBSS
 
     char cmd0 = tolower((unsigned char)text[0]);
     if (cmd0 == 'x') {
-        session.state = BBS_STATE_GAMES;
-        sendGamesMenu(mp);
+        session.state = BBS_STATE_MAIN;
+        sendMainMenu(mp, session);
         return ProcessMessage::STOP;
     }
 
@@ -1818,9 +1932,9 @@ ProcessMessage BBSModule::handleStateVault(const meshtastic_MeshPacket &mp, BBSS
         char msg[60];
         snprintf(msg, sizeof(msg), "ACCESS GRANTED!\nPassword: %s", wpicked);
         sendReply(mp, msg);
-        session.state = BBS_STATE_GAMES;
+        session.state = BBS_STATE_MAIN;
         delay(MULTIPART_DELAY_MS);
-        sendGamesMenu(mp);
+        sendMainMenu(mp, session);
         return ProcessMessage::STOP;
     }
 
@@ -1835,9 +1949,9 @@ ProcessMessage BBSModule::handleStateVault(const meshtastic_MeshPacket &mp, BBSS
         char msg[60];
         snprintf(msg, sizeof(msg), "%s > Likeness: %u/5\nLOCKED OUT.\nWas: %s", wpicked, matches, wans);
         sendReply(mp, msg);
-        session.state = BBS_STATE_GAMES;
+        session.state = BBS_STATE_MAIN;
         delay(MULTIPART_DELAY_MS);
-        sendGamesMenu(mp);
+        sendMainMenu(mp, session);
         return ProcessMessage::STOP;
     }
 
@@ -1849,6 +1963,7 @@ ProcessMessage BBSModule::handleStateVault(const meshtastic_MeshPacket &mp, BBSS
     return ProcessMessage::STOP;
 }
 
+
 // ─── Wasteland RPG door game ──────────────────────────────────────────────────
 
 ProcessMessage BBSModule::handleStateWasteland(const meshtastic_MeshPacket &mp,
@@ -1859,18 +1974,6 @@ ProcessMessage BBSModule::handleStateWasteland(const meshtastic_MeshPacket &mp,
         char ucmd[8] = {0};
         strncpy(ucmd, text, 7);
         for (char *p = ucmd; *p; p++) *p = toupper((unsigned char)*p);
-        if (strcmp(ucmd, "NV") == 0) {
-            FRPGPlayer plr;
-            session.casinoMode = 1;
-            if (frpgLoadPlayer(mp.from, plr) && plr.alive) {
-                session.casinoChips = plr.caps;
-            } else {
-                session.casinoChips = 50;
-            }
-            session.state = BBS_STATE_CASINO;
-            sendCasinoMenu(mp, session);
-            return ProcessMessage::STOP;
-        }
     }
 
     char rpgBuf[512];
@@ -1884,18 +1987,446 @@ ProcessMessage BBSModule::handleStateWasteland(const meshtastic_MeshPacket &mp,
     }
 
     if (exitGame) {
-        session.state = BBS_STATE_GAMES;
+        session.state = BBS_STATE_MAIN;
         sendReplyMultipart(mp, rpgBuf);
         delay(MULTIPART_DELAY_MS);
-        sendGamesMenu(mp);
+        sendMainMenu(mp, session);
     } else {
         sendReplyMultipart(mp, rpgBuf);
     }
     return ProcessMessage::STOP;
 }
 
-// ─── Casino helpers ────────────────────────────────────────────────────────
 
+// ─── Chess by Mail ─────────────────────────────────────────────────────────
+
+static void chessMoveDescribe(const ChessBoard boardBefore, const char *moveStr,
+                              bool isPlayer, char *out, size_t outLen) {
+    static const char *pieceName[] = {"","Pawn","Knight","Bishop","Rook","Queen","King"};
+    static const char *captureFlavorPlayer[] = {
+        "Nice take!", "Captured!", "Got 'em!", "Taken!", "Good grab!"
+    };
+    static const char *captureFlavorAI[] = {
+        "Ouch!", "The AI strikes!", "Gotcha!", "Taken!", "That stings!"
+    };
+
+    int fr, ff, tr, tf;
+    int8_t promo = 0;
+    if (!chessParseMove(moveStr, &fr, &ff, &tr, &tf, &promo)) {
+        snprintf(out, outLen, "%s", moveStr);
+        return;
+    }
+
+    int8_t moving   = boardBefore[fr][ff];
+    int8_t captured = boardBefore[tr][tf];
+    int mIdx = moving   < 0 ? -moving   : moving;
+    int cIdx = captured < 0 ? -captured : captured;
+
+    // En passant: pawn moves diagonally to empty square
+    bool isEnPassant = (mIdx == 1 && ff != tf && captured == 0);
+    if (isEnPassant) cIdx = 1; // captures a pawn
+
+    const char *mname = (mIdx >= 1 && mIdx <= 6) ? pieceName[mIdx] : "Piece";
+    char toSq[3] = { (char)('a' + tf), (char)('1' + tr), 0 };
+    char fromSq[3] = { (char)('a' + ff), (char)('1' + fr), 0 };
+
+    if (cIdx > 0) {
+        const char *cname = (cIdx >= 1 && cIdx <= 6) ? pieceName[cIdx] : "piece";
+        snprintf(out, outLen, "%s %s takes %s at %s (%s)",
+                 isPlayer ? "Your" : "AI",
+                 mname, cname, toSq, moveStr);
+    } else {
+        snprintf(out, outLen, "%s %s %s->%s%s (%s)",
+                 isPlayer ? "Your" : "AI",
+                 mname, fromSq, toSq,
+                 promo ? " promoted!" : "",
+                 moveStr);
+    }
+}
+
+static const char *chessStatusName[] = {"Easy AI", "Medium AI", "Hard AI"};
+static const char *chessSideName[]   = {"White", "Black"};
+
+void BBSModule::sendChessStatus(const meshtastic_MeshPacket &req, BBSSession &session) {
+    chessEnsureDir();
+
+    // If no game selected, list active games or show start prompt
+    if (session.chessGameId == 0) {
+        uint32_t ids[8];
+        uint32_t count = chessListGames(req.from, ids, 8);
+        if (count == 0) {
+            sendReply(req,
+                "Chess by Mail\n"
+                "No active games.\n"
+                "NEW - vs AI (easy)\n"
+                "NEW2/NEW3 - med/hard\n"
+                "NEW <name> - vs player\n"
+                "[X]Back");
+        } else {
+            char buf[200] = "Chess games:\n";
+            for (uint32_t i = 0; i < count && i < 5; i++) {
+                BBSChessGame g;
+                if (chessLoadGame(ids[i], g)) {
+                    bool iAmWhite = (g.whiteNode == req.from);
+                    bool myTurn = (iAmWhite && g.toMove == 0) || (!iAmWhite && g.toMove == 1);
+                    const char *opp = (g.whiteNode == 0 || g.blackNode == 0)
+                        ? chessStatusName[g.difficulty]
+                        : getNodeShortName(iAmWhite ? g.blackNode : g.whiteNode);
+                    char line[50];
+                    snprintf(line, sizeof(line), "#%u vs %s%s\n",
+                             ids[i], opp ? opp : "?", myTurn ? " *YOUR TURN*" : "");
+                    strncat(buf, line, sizeof(buf) - strlen(buf) - 1);
+                }
+            }
+            strncat(buf, "#<id> to select\nNEW for new game\n[X]Back",
+                    sizeof(buf) - strlen(buf) - 1);
+            sendReply(req, buf);
+        }
+        return;
+    }
+
+    // Show current game status + send FEN as separate message
+    BBSChessGame g;
+    if (!chessLoadGame(session.chessGameId, g)) {
+        session.chessGameId = 0;
+        sendReply(req, "Game not found.\nType LG to list games.");
+        return;
+    }
+
+    bool iAmWhite = (g.whiteNode == req.from);
+    bool myTurn   = (iAmWhite && g.toMove == 0) || (!iAmWhite && g.toMove == 1);
+    bool isAI     = (g.whiteNode == 0 || g.blackNode == 0);
+    const char *opp = isAI
+        ? chessStatusName[g.difficulty]
+        : getNodeShortName(iAmWhite ? g.blackNode : g.whiteNode);
+
+    static const char *statusStr[] = {"Active","White won","Black won","Draw","Stalemate"};
+    char buf[200];
+    if (g.status != 0) {
+        snprintf(buf, sizeof(buf), "Game #%u vs %s\n%s\nMoves: %u",
+                 g.id, opp ? opp : "?", statusStr[g.status], g.fullMoveNumber);
+    } else {
+        snprintf(buf, sizeof(buf),
+                 "Game #%u vs %s\n"
+                 "You are %s\n"
+                 "%s to move (move %u)\n"
+                 "Last: %s\n"
+                 "%s",
+                 g.id, opp ? opp : "?",
+                 chessSideName[iAmWhite ? 0 : 1],
+                 chessSideName[g.toMove],
+                 g.fullMoveNumber,
+                 g.lastMoveStr[0] ? g.lastMoveStr : "none",
+                 myTurn ? "Your turn! Type move (e.g. e2e4)" : "Waiting for opponent.");
+    }
+    sendReply(req, buf);
+
+    // Send FEN as a separate message for easy copy-paste
+    if (g.status == 0 || true) {
+        delay(MULTIPART_DELAY_MS);
+        char fen[100];
+        chessBuildFEN(g, fen, sizeof(fen));
+        sendReply(req, fen);
+    }
+}
+
+ProcessMessage BBSModule::handleStateChess(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text) {
+    if (!text || text[0] == '\0') { sendChessStatus(mp, session); return ProcessMessage::STOP; }
+
+    // Uppercase copy for command matching
+    char cmd[32] = {0};
+    strncpy(cmd, text, sizeof(cmd) - 1);
+    for (int i = 0; cmd[i]; i++) cmd[i] = toupper((unsigned char)cmd[i]);
+
+    // [X] back to main
+    if (cmd[0] == 'X' && cmd[1] == '\0') {
+        session.state = BBS_STATE_MAIN;
+        sendMainMenu(mp, session);
+        return ProcessMessage::STOP;
+    }
+
+    // LG — list games
+    if (strcmp(cmd, "LG") == 0) {
+        session.chessGameId = 0;
+        sendChessStatus(mp, session);
+        return ProcessMessage::STOP;
+    }
+
+    // #<id> — select game
+    if (cmd[0] == '#') {
+        uint32_t id = (uint32_t)atoi(cmd + 1);
+        BBSChessGame g;
+        if (id > 0 && chessLoadGame(id, g) &&
+            (g.whiteNode == mp.from || g.blackNode == mp.from)) {
+            session.chessGameId = id;
+            // If it's an AI game with the AI's turn pending, run the AI now
+            if (g.status == 0 && g.blackNode == 0 && g.toMove == 1) {
+                ChessBoard boardBeforeAI;
+                memcpy(boardBeforeAI, g.board, sizeof(ChessBoard));
+                char aiMoveStr[6] = {0};
+                bool aiMoved = chessAIMove(g, aiMoveStr);
+                g.status = chessCheckTermination(g);
+                chessSaveGame(g);
+                if (aiMoved) {
+                    char aiDesc[80];
+                    chessMoveDescribe(boardBeforeAI, aiMoveStr, false, aiDesc, sizeof(aiDesc));
+                    bool nextCheck = (g.status == 0) && chessIsInCheck(g.board, g.toMove == 0);
+                    char reply[200];
+                    snprintf(reply, sizeof(reply), "AI move:\n%s\n%s", aiDesc,
+                             g.status != 0 ? (g.status <= 2 ? (g.status == 1 ? "Checkmate! White wins!" : "Checkmate! Black wins!") : "Game over.")
+                                           : (nextCheck ? "White to move. Check!" : "White to move."));
+                    sendReply(mp, reply);
+                    delay(MULTIPART_DELAY_MS);
+                }
+                if (g.status != 0) {
+                    chessUpdateRatings(g.whiteNode, g.blackNode, g.status, g.difficulty);
+                    char fen[100]; chessBuildFEN(g, fen, sizeof(fen));
+                    sendReply(mp, fen);
+                    return ProcessMessage::STOP;
+                }
+            }
+        } else {
+            sendReply(mp, "Game not found or not yours.");
+        }
+        sendChessStatus(mp, session);
+        return ProcessMessage::STOP;
+    }
+
+    // NEW — start a new game
+    if (strncmp(cmd, "NEW", 3) == 0) {
+        uint8_t diff = 0;
+        uint32_t opponentNode = 0;
+        const char *arg = text + 3;
+        while (*arg == ' ') arg++;
+
+        if (*arg == '2') diff = 1;
+        else if (*arg == '3') diff = 2;
+        else if (*arg != '\0' && *arg != '1') {
+            // Try to find player by name
+            for (size_t i = 0; i < nodeDB->getNumMeshNodes(); i++) {
+                const meshtastic_NodeInfoLite *n = nodeDB->getMeshNodeByIndex(i);
+                if (!n || n->num == mp.from) continue;
+                if (n->has_user) {
+                    char sname[5] = {0};
+                    strncpy(sname, n->user.short_name, 4);
+                    for (int j = 0; sname[j]; j++) sname[j] = toupper((unsigned char)sname[j]);
+                    char argUpper[5] = {0};
+                    strncpy(argUpper, arg, 4);
+                    for (int j = 0; argUpper[j]; j++) argUpper[j] = toupper((unsigned char)argUpper[j]);
+                    if (strcmp(sname, argUpper) == 0) { opponentNode = n->num; break; }
+                }
+            }
+            if (!opponentNode) {
+                sendReply(mp, "Player not found.\nTry: NEW, NEW2, NEW3\nor NEW <shortname>");
+                return ProcessMessage::STOP;
+            }
+        }
+
+        BBSChessGame g;
+        memset(&g, 0, sizeof(g));
+        g.id         = chessNextGameId();
+        g.difficulty = diff;
+        g.status     = 0;
+        g.toMove     = 0; // white moves first
+        g.castling   = 0x0F;
+        g.enPassantFile = -1;
+        g.halfMoveClock = 0;
+        g.fullMoveNumber = 1;
+        g.lastMove   = (uint32_t)getTime();
+        g.whiteNode  = mp.from;
+        g.blackNode  = opponentNode; // 0 = AI
+
+        chessBoardInit(g.board);
+
+        if (!chessSaveGame(g)) {
+            sendReply(mp, "Failed to create game.");
+            return ProcessMessage::STOP;
+        }
+
+        session.chessGameId = g.id;
+
+        char reply[120];
+        if (opponentNode) {
+            const char *oname = getNodeShortName(opponentNode);
+            snprintf(reply, sizeof(reply), "Game #%u started!\nYou: White vs %s: Black\nYour turn first.",
+                     g.id, oname ? oname : "opponent");
+        } else {
+            snprintf(reply, sizeof(reply), "Game #%u started!\nYou: White vs %s\nYour turn first.",
+                     g.id, chessStatusName[diff]);
+        }
+        sendReply(mp, reply);
+        delay(MULTIPART_DELAY_MS);
+        char fen[100];
+        chessBuildFEN(g, fen, sizeof(fen));
+        sendReply(mp, fen);
+        return ProcessMessage::STOP;
+    }
+
+    // Try to apply a move (e.g. e2e4, e7e8q)
+    size_t tlen = strlen(text);
+    if (tlen >= 4 && tlen <= 5) {
+        if (session.chessGameId == 0) {
+            sendReply(mp, "No game selected.\nType LG to list or NEW to start.");
+            return ProcessMessage::STOP;
+        }
+
+        BBSChessGame g;
+        if (!chessLoadGame(session.chessGameId, g)) {
+            session.chessGameId = 0;
+            sendReply(mp, "Game not found. Type LG.");
+            return ProcessMessage::STOP;
+        }
+
+        if (g.status != 0) {
+            sendReply(mp, "Game is over. Type LG or NEW.");
+            return ProcessMessage::STOP;
+        }
+
+        bool iAmWhite = (g.whiteNode == mp.from);
+        bool myTurn   = (iAmWhite && g.toMove == 0) || (!iAmWhite && g.toMove == 1);
+        if (!myTurn) {
+            // If it's an AI game stuck on the AI's turn, recover by running the AI now
+            bool isAIGame = (g.blackNode == 0);
+            if (isAIGame && g.toMove == 1) {
+                ChessBoard boardBeforeAI;
+                memcpy(boardBeforeAI, g.board, sizeof(ChessBoard));
+                char aiMoveStr[6] = {0};
+                bool aiMoved = chessAIMove(g, aiMoveStr);
+                g.status = chessCheckTermination(g);
+                chessSaveGame(g);
+                char reply[200];
+                if (aiMoved) {
+                    char aiDesc[80];
+                    chessMoveDescribe(boardBeforeAI, aiMoveStr, false, aiDesc, sizeof(aiDesc));
+                    bool nextCheck = (g.status == 0) && chessIsInCheck(g.board, g.toMove == 0);
+                    snprintf(reply, sizeof(reply), "AI move:\n%s\n%s", aiDesc,
+                             g.status != 0 ? (g.status <= 2 ? (g.status == 1 ? "Checkmate! White wins!" : "Checkmate! Black wins!") : "Game over.")
+                                           : (nextCheck ? "White to move. Check!" : "White to move."));
+                } else {
+                    snprintf(reply, sizeof(reply), "AI has no moves.");
+                }
+                sendReply(mp, reply);
+                delay(MULTIPART_DELAY_MS);
+                char fen[100]; chessBuildFEN(g, fen, sizeof(fen));
+                sendReply(mp, fen);
+                if (g.status != 0) chessUpdateRatings(g.whiteNode, g.blackNode, g.status, g.difficulty);
+            } else {
+                sendReply(mp, "Not your turn.");
+            }
+            return ProcessMessage::STOP;
+        }
+
+        char moveLower[6] = {0};
+        strncpy(moveLower, text, 5);
+        for (int i = 0; moveLower[i]; i++) moveLower[i] = tolower((unsigned char)moveLower[i]);
+
+        // Save board state before player move for description
+        ChessBoard boardBeforePlayer;
+        memcpy(boardBeforePlayer, g.board, sizeof(ChessBoard));
+
+        if (!chessApplyMove(g, moveLower)) {
+            sendReply(mp, "Illegal move. Try again.\n(format: e2e4 or e7e8q)");
+            return ProcessMessage::STOP;
+        }
+
+        char playerDesc[80];
+        chessMoveDescribe(boardBeforePlayer, moveLower, true, playerDesc, sizeof(playerDesc));
+
+        // Check game termination
+        g.status = chessCheckTermination(g);
+        chessSaveGame(g);
+
+        bool aiGame = (g.blackNode == 0);
+
+        if (g.status != 0) {
+            static const char *endMsg[] = {"","Checkmate! White wins!","Checkmate! Black wins!","Draw!","Stalemate!"};
+            char reply[120];
+            snprintf(reply, sizeof(reply), "%s\n%s", playerDesc, endMsg[g.status]);
+            sendReply(mp, reply);
+            delay(MULTIPART_DELAY_MS);
+            char fen[100]; chessBuildFEN(g, fen, sizeof(fen));
+            sendReply(mp, fen);
+            chessUpdateRatings(g.whiteNode, g.blackNode, g.status, g.difficulty);
+            return ProcessMessage::STOP;
+        }
+
+        // If AI game and it's now AI's turn
+        if (aiGame && g.toMove == 1) {
+            ChessBoard boardBeforeAI;
+            memcpy(boardBeforeAI, g.board, sizeof(ChessBoard));
+
+            char aiMoveStr[6] = {0};
+            bool aiMoved = chessAIMove(g, aiMoveStr);
+            g.status = chessCheckTermination(g);
+            chessSaveGame(g);
+
+            char reply[200];
+            if (aiMoved) {
+                char aiDesc[80];
+                chessMoveDescribe(boardBeforeAI, aiMoveStr, false, aiDesc, sizeof(aiDesc));
+                bool nextCheck = (g.status == 0) && chessIsInCheck(g.board, g.toMove == 0);
+                snprintf(reply, sizeof(reply), "%s\n%s\n%s",
+                         playerDesc, aiDesc,
+                         g.status != 0 ? (g.status <= 2 ? (g.status == 1 ? "Checkmate! White wins!" : "Checkmate! Black wins!") : "Game over.")
+                                       : (nextCheck ? "White to move. Check!" : "White to move."));
+            } else {
+                snprintf(reply, sizeof(reply), "%s\nAI has no moves.", playerDesc);
+            }
+            sendReply(mp, reply);
+            delay(MULTIPART_DELAY_MS);
+            char fen[100]; chessBuildFEN(g, fen, sizeof(fen));
+            sendReply(mp, fen);
+
+            if (g.status != 0) chessUpdateRatings(g.whiteNode, g.blackNode, g.status, g.difficulty);
+        } else {
+            // PvP or waiting for opponent
+            bool nextCheck = chessIsInCheck(g.board, g.toMove == 0);
+            char reply[120];
+            snprintf(reply, sizeof(reply), "%s\n%s to move.%s",
+                     playerDesc, chessSideName[g.toMove], nextCheck ? " Check!" : "");
+            sendReply(mp, reply);
+            delay(MULTIPART_DELAY_MS);
+            char fen[100]; chessBuildFEN(g, fen, sizeof(fen));
+            sendReply(mp, fen);
+
+            // Notify opponent if PvP
+            if (g.whiteNode != 0 && g.blackNode != 0) {
+                uint32_t oppNode = iAmWhite ? g.blackNode : g.whiteNode;
+                char notif[120];
+                const char *myName = getNodeShortName(mp.from);
+                snprintf(notif, sizeof(notif), "Chess #%u: %s played %s. Your turn!",
+                         g.id, myName ? myName : "opponent", moveLower);
+                meshtastic_MeshPacket *pkt = allocDataPacket();
+                if (pkt) {
+                    pkt->to = oppNode;
+                    pkt->want_ack = false;
+                    size_t nlen = strlen(notif);
+                    memcpy(pkt->decoded.payload.bytes, notif, nlen);
+                    pkt->decoded.payload.size = nlen;
+                    service->sendToMesh(pkt);
+                }
+            }
+        }
+        return ProcessMessage::STOP;
+    }
+
+    // FEN — show current FEN again
+    if (strcmp(cmd, "FEN") == 0 && session.chessGameId != 0) {
+        BBSChessGame g;
+        if (chessLoadGame(session.chessGameId, g)) {
+            char fen[100];
+            chessBuildFEN(g, fen, sizeof(fen));
+            sendReply(mp, fen);
+        }
+        return ProcessMessage::STOP;
+    }
+
+    sendChessStatus(mp, session);
+    return ProcessMessage::STOP;
+}
+
+
+#if 0 // CASINO CODE REMOVED
 static const char *bjCardStr(uint8_t v) {
     static const char *t[] = {"?","A","2","3","4","5","6","7","8","9","10","J","Q","K"};
     return (v >= 1 && v <= 13) ? t[v] : "?";
@@ -2077,13 +2608,13 @@ ProcessMessage BBSModule::handleStateCasino(const meshtastic_MeshPacket &mp, BBS
                 snprintf(buf, sizeof(buf), "Leaving New Vegas...\n%u caps saved.\n\nNV-Casino  EX-Explore\nSH-Shop  ST-Stats\n[X]Back to BBS",
                          session.casinoChips);
             } else {
-                session.state = BBS_STATE_GAMES;
+                session.state = BBS_STATE_MAIN;
                 snprintf(buf, sizeof(buf), "Cashed out with %u chips!\nHouse thanks you.", session.casinoChips);
             }
             sendReply(mp, buf);
-            if (session.state == BBS_STATE_GAMES) {
+            if (session.state == BBS_STATE_MAIN) {
                 delay(MULTIPART_DELAY_MS);
-                sendGamesMenu(mp);
+                sendMainMenu(mp, session);
             }
             break;
         }
@@ -2288,8 +2819,7 @@ ProcessMessage BBSModule::handleStateRoulette(const meshtastic_MeshPacket &mp, B
     // If player presses [R]again, it'll hit the casino handler and go back to roulette
     return ProcessMessage::STOP;
 }
-
-// ─── OLED UI Frame ────────────────────────────────────────────────────────────
+#endif // CASINO CODE REMOVED
 
 void BBSModule::drawFrame(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, int16_t y)
 {
@@ -2300,7 +2830,11 @@ void BBSModule::drawFrame(OLEDDisplay *display, OLEDDisplayUiState *state, int16
     if (config.display.displaymode != meshtastic_Config_DisplayConfig_DisplayMode_INVERTED)
         display->fillRect(x, y, display->getWidth(), FONT_HEIGHT_SMALL);
     display->setColor(OLEDDISPLAY_COLOR::BLACK);
+#ifdef NRF52_SERIES
+    display->drawString(x, y, "BBSN");
+#else
     display->drawString(x, y, "TinyBBS");
+#endif
     display->setColor(OLEDDISPLAY_COLOR::WHITE);
 
     if (!storage_) {
