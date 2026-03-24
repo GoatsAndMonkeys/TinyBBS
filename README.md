@@ -257,20 +257,6 @@ These Meshtastic modules are excluded to make room for the BBS. They can be re-e
 | Audio | ~1.0 | Audio modem (SX1280 only) |
 | **Total saved** | **~18.6** | |
 
-### Available Modules to Exclude (not currently excluded)
-
-If you need more flash headroom, these can also be excluded:
-
-| Module | Size (KB) | Risk |
-|---|---|---|
-| CannedMessages | 18.3 | Safe — T-Echo has no keyboard |
-| TraceRoute | 10.9 | Useful for mesh debugging |
-| ExternalNotification | 4.4 | Buzzer/LED alerts |
-| NeighborInfo | 4.1 | Neighbor node sharing |
-| Serial | 2.7 | Serial passthrough |
-| Waypoint | 2.3 | GPS waypoint sharing |
-| KeyVerification | 4.5 | PKI key verification |
-
 ---
 
 ## Technical Notes
