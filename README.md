@@ -31,14 +31,17 @@ DMs use a TC2-style menu state machine — no command prefix needed. Just DM the
 
 | Board | Status | Storage |
 |---|---|---|
-| LilyGO T-Echo (nRF52840) | ✅ Primary target | 2MB external QSPI flash |
-| RAK4631 WisBlock (nRF52840) | ✅ Supported | 2MB external QSPI flash |
-| RAK4631 ePaper (nRF52840) | ✅ Supported | 2MB external QSPI flash |
-| Heltec Mesh Node T114 (nRF52840) | ✅ Supported | 2MB external QSPI flash |
-| Nano G2 Ultra (nRF52840) | ✅ Supported | 2MB external QSPI flash |
-| Heltec LoRa 32 V3 (ESP32-S3) | ✅ Supported | LittleFS / PSRAM |
-| Other nRF52840 boards | Should work | Internal LittleFS fallback |
-| Other ESP32 boards | Should work (untested) | LittleFS |
+| LilyGO T-Echo (nRF52840) | ✅ Tested | 2MB external QSPI flash |
+| RAK4631 WisBlock (nRF52840) | ⚠️ Untested (firmware provided) | 2MB external QSPI flash |
+| RAK4631 ePaper (nRF52840) | ⚠️ Untested (firmware provided) | 2MB external QSPI flash |
+| Heltec Mesh Node T114 (nRF52840) | ⚠️ Untested (firmware provided) | 2MB external QSPI flash |
+| Nano G2 Ultra (nRF52840) | ⚠️ Untested (firmware provided) | 2MB external QSPI flash |
+| Tracker T1000-E (nRF52840) | ⚠️ Untested (firmware provided) | Internal LittleFS |
+| Heltec LoRa 32 V3 (ESP32-S3) | ⚠️ Untested (firmware provided) | LittleFS / PSRAM |
+| Other nRF52840 boards | May work (build from source) | Internal LittleFS fallback |
+| Other ESP32 boards | May work (build from source) | LittleFS |
+
+> **Note:** Only the T-Echo has been tested on real hardware. Firmware for other boards compiles but has not been verified. If you test on another board, please open an issue and let us know!
 
 ---
 
