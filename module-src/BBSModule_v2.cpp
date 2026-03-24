@@ -2843,6 +2843,7 @@ ProcessMessage BBSModule::handleStateRoulette(const meshtastic_MeshPacket &mp, B
 }
 #endif // CASINO CODE REMOVED
 
+#if HAS_SCREEN
 void BBSModule::drawFrame(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, int16_t y)
 {
     display->setFont(FONT_SMALL);
@@ -2895,3 +2896,4 @@ void BBSModule::drawFrame(OLEDDisplay *display, OLEDDisplayUiState *state, int16
     display->drawString(x, y + FONT_HEIGHT_SMALL * 2, line2);
     display->drawString(x, y + FONT_HEIGHT_SMALL * 3, line3);
 }
+#endif // HAS_SCREEN

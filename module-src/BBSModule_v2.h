@@ -172,8 +172,10 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     virtual ProcessMessage handleReceived(const meshtastic_MeshPacket &mp) override;
 
     // OLED UI frame
+#if HAS_SCREEN
     virtual bool wantUIFrame() override { return true; }
     virtual void drawFrame(OLEDDisplay *display, OLEDDisplayUiState *state, int16_t x, int16_t y) override;
+#endif
 };
 
 extern BBSModule *bbsModule;
