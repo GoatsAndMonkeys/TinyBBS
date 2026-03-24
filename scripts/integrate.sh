@@ -31,6 +31,7 @@ fi
 
 # Copy module source files
 echo "Copying module source files..."
+cp "$MODULE_SRC/BBSPlatform.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSStorage.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSStoragePSRAM.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSStorageLittleFS.h" "$FIRMWARE_MODULES/"
@@ -39,6 +40,11 @@ cp "$MODULE_SRC/BBSModule_v2.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSModule_v2.cpp" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/FalloutWastelandRPG.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/FalloutWastelandRPG.cpp" "$FIRMWARE_MODULES/"
+cp "$MODULE_SRC/BBSChess.h" "$FIRMWARE_MODULES/"
+cp "$MODULE_SRC/BBSChess.cpp" "$FIRMWARE_MODULES/"
+cp "$MODULE_SRC/BBSExtFlash.h" "$FIRMWARE_MODULES/"
+cp "$MODULE_SRC/BBSExtFlash.cpp" "$FIRMWARE_MODULES/"
+cp "$MODULE_SRC/BBSStorageExtFlash.h" "$FIRMWARE_MODULES/"
 echo "✓ Module files copied"
 
 # Patch Modules.cpp if needed

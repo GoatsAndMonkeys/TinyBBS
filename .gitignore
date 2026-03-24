@@ -1,5 +1,13 @@
 firmware/
 .venv/
+.venv312/
 __pycache__/
 *.pyc
 .DS_Store
+*.uf2
+*.bin
+*.factory.bin
+bbs_data.uf2
+bbs_extracted/
+data/
+HANDOFF.md

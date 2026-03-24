@@ -49,6 +49,7 @@ void     chessBoardInit(ChessBoard b);
 bool     chessApplyMove(BBSChessGame &game, const char *move);
 bool     chessAIMove(BBSChessGame &game, char *moveOut);
 void     chessBuildBoard(const BBSChessGame &game, char *buf, size_t bufLen, bool whiteAtBottom);
+void     chessBuildFEN(const BBSChessGame &game, char *buf, size_t bufLen);
 bool     chessIsInCheck(const ChessBoard b, bool whiteKing);
 bool     chessHasLegalMoves(const BBSChessGame &game);
 uint8_t  chessCheckTermination(BBSChessGame &game);
