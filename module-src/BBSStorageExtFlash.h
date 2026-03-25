@@ -40,12 +40,12 @@ class BBSStorageExtFlash : public BBSStorage {
 
     // All filesystem ops go through bbsExtFS (external flash), not FSCom
     bool ensureDir(const char *path) {
-        if (!bbsExtFS.exists(path)) return bbsExtFS.mkdir(path);
+        if (!bbsExtFS().exists(path)) return bbsExtFS().mkdir(path);
         return true;
     }
 
     bool loadMetadata() {
-        File f = bbsExtFS.open(EXT_BBS_META_PATH, FILE_O_READ);
+        File f = bbsExtFS().open(EXT_BBS_META_PATH, FILE_O_READ);
         if (!f) return false;
         uint32_t magic = 0;
         f.read((uint8_t *)&magic, sizeof(uint32_t));
@@ -58,7 +58,7 @@ class BBSStorageExtFlash : public BBSStorage {
     }
 
     bool saveMetadata() {
-        File f = bbsExtFS.open(EXT_BBS_META_PATH, FILE_O_WRITE);
+        File f = bbsExtFS().open(EXT_BBS_META_PATH, FILE_O_WRITE);
         if (!f) return false;
         uint32_t magic = EXT_BBS_META_MAGIC;
         f.write((const uint8_t *)&magic, sizeof(uint32_t));
@@ -84,10 +84,10 @@ class BBSStorageExtFlash : public BBSStorage {
     }
 
     uint32_t countFiles(const char *dirPath) {
-        File dir = bbsExtFS.open(dirPath, FILE_O_READ);
+        File dir = bbsExtFS().open(dirPath, FILE_O_READ);
         if (!dir) return 0;
         uint32_t count = 0;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory()) count++;
             f.close();
@@ -99,9 +99,9 @@ class BBSStorageExtFlash : public BBSStorage {
     void deleteOldestFile(const char *dirPath) {
         uint32_t oldestId = UINT32_MAX;
         char oldestPath[80] = {0};
-        File dir = bbsExtFS.open(dirPath, FILE_O_READ);
+        File dir = bbsExtFS().open(dirPath, FILE_O_READ);
         if (!dir) return;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory()) {
                 uint32_t id = strtoul(f.name(), nullptr, 10);
@@ -113,7 +113,7 @@ class BBSStorageExtFlash : public BBSStorage {
             f.close();
         }
         dir.close();
-        if (oldestId != UINT32_MAX && oldestPath[0]) bbsExtFS.remove(oldestPath);
+        if (oldestId != UINT32_MAX && oldestPath[0]) bbsExtFS().remove(oldestPath);
     }
 
   public:
@@ -122,7 +122,7 @@ class BBSStorageExtFlash : public BBSStorage {
 
     bool init() override {
         // Initialize the external flash filesystem
-        if (!bbsExtFS.begin()) {
+        if (!bbsExtFS().begin()) {
             LOG_ERROR("[BBS-ExtFlash] Failed to mount external flash\n");
             return false;
         }
@@ -139,8 +139,8 @@ class BBSStorageExtFlash : public BBSStorage {
         }
         initialized_ = true;
 
-        uint32_t used = bbsExtFS.usedBytes();
-        uint32_t total = bbsExtFS.totalBytes();
+        uint32_t used = bbsExtFS().usedBytes();
+        uint32_t total = bbsExtFS().totalBytes();
         LOG_INFO("[BBS-ExtFlash] Ready: %lu/%lu bytes used (%lu%% free)\n",
                  (unsigned long)used, (unsigned long)total,
                  (unsigned long)((total - used) * 100 / total));
@@ -155,7 +155,7 @@ class BBSStorageExtFlash : public BBSStorage {
             deleteOldestFile(EXT_BBS_BULLETIN_PATH);
         }
         char path[64]; getBulletinPath(bulletin.id, path, sizeof(path));
-        File f = bbsExtFS.open(path, FILE_O_WRITE);
+        File f = bbsExtFS().open(path, FILE_O_WRITE);
         if (!f) return false;
         f.write((const uint8_t *)&bulletin.id, sizeof(uint32_t));
         f.write((const uint8_t *)&bulletin.authorNode, sizeof(uint32_t));
@@ -171,7 +171,7 @@ class BBSStorageExtFlash : public BBSStorage {
     bool loadBulletin(uint32_t id, BBSBulletin &bulletin) override {
         if (!initialized_) return false;
         char path[64]; getBulletinPath(id, path, sizeof(path));
-        File f = bbsExtFS.open(path, FILE_O_READ);
+        File f = bbsExtFS().open(path, FILE_O_READ);
         if (!f) return false;
         f.read((uint8_t *)&bulletin.id, sizeof(uint32_t));
         f.read((uint8_t *)&bulletin.authorNode, sizeof(uint32_t));
@@ -191,17 +191,17 @@ class BBSStorageExtFlash : public BBSStorage {
         if (!loadBulletin(id, b)) return false;
         if (b.authorNode != requestorNodeNum) return false;
         char path[64]; getBulletinPath(id, path, sizeof(path));
-        return bbsExtFS.remove(path);
+        return bbsExtFS().remove(path);
     }
 
     uint32_t listBulletins(BBSBulletinHeader *headers, uint32_t maxResults, uint32_t offset = 0, uint8_t board = BOARD_ALL) override {
         if (!headers || maxResults == 0 || !initialized_) return 0;
-        File dir = bbsExtFS.open(EXT_BBS_BULLETIN_PATH, FILE_O_READ);
+        File dir = bbsExtFS().open(EXT_BBS_BULLETIN_PATH, FILE_O_READ);
         if (!dir) return 0;
 
         uint32_t ids[EXTFLASH_MAX_BULLETINS];
         uint32_t idCount = 0;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory() && idCount < EXTFLASH_MAX_BULLETINS) {
                 uint32_t id = 0; sscanf(f.name(), "%04" PRIu32, &id);
@@ -239,10 +239,10 @@ class BBSStorageExtFlash : public BBSStorage {
         if (!initialized_) return 0;
         if (board == BOARD_ALL) return countFiles(EXT_BBS_BULLETIN_PATH);
         // Count per-board without allocating a big headers array (stack-safe)
-        File dir = bbsExtFS.open(EXT_BBS_BULLETIN_PATH, FILE_O_READ);
+        File dir = bbsExtFS().open(EXT_BBS_BULLETIN_PATH, FILE_O_READ);
         if (!dir) return 0;
         uint32_t count = 0;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory()) {
                 // Read just the board byte (last byte of bulletin record)
@@ -270,7 +270,7 @@ class BBSStorageExtFlash : public BBSStorage {
         if (!ensureDir(dirPath)) return false;
 
         char path[80]; getMailPath(msg.toNode, msg.id, path, sizeof(path));
-        File f = bbsExtFS.open(path, FILE_O_WRITE);
+        File f = bbsExtFS().open(path, FILE_O_WRITE);
         if (!f) return false;
         f.write((const uint8_t *)&msg.id, sizeof(uint32_t));
         f.write((const uint8_t *)&msg.fromNode, sizeof(uint32_t));
@@ -289,7 +289,7 @@ class BBSStorageExtFlash : public BBSStorage {
     bool loadMail(uint32_t id, uint32_t recipientNode, BBSMailMsg &msg) override {
         if (!initialized_) return false;
         char path[80]; getMailPath(recipientNode, id, path, sizeof(path));
-        File f = bbsExtFS.open(path, FILE_O_READ);
+        File f = bbsExtFS().open(path, FILE_O_READ);
         if (!f) return false;
         f.read((uint8_t *)&msg.id, sizeof(uint32_t));
         f.read((uint8_t *)&msg.fromNode, sizeof(uint32_t));
@@ -313,7 +313,7 @@ class BBSStorageExtFlash : public BBSStorage {
         if (!loadMail(id, recipientNode, msg)) return false;
         if (msg.toNode != recipientNode) return false;
         char path[80]; getMailPath(recipientNode, id, path, sizeof(path));
-        return bbsExtFS.remove(path);
+        return bbsExtFS().remove(path);
     }
 
     bool markMailRead(uint32_t id, uint32_t recipientNode) override {
@@ -326,12 +326,12 @@ class BBSStorageExtFlash : public BBSStorage {
     uint32_t listMail(uint32_t recipientNode, BBSMailHeader *headers, uint32_t maxResults, uint32_t offset = 0) override {
         if (!headers || maxResults == 0 || !initialized_) return 0;
         char dirPath[64]; getMailDirPath(recipientNode, dirPath, sizeof(dirPath));
-        File dir = bbsExtFS.open(dirPath, FILE_O_READ);
+        File dir = bbsExtFS().open(dirPath, FILE_O_READ);
         if (!dir) return 0;
 
         uint32_t ids[EXTFLASH_MAX_MAIL_PER_USER];
         uint32_t idCount = 0;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory() && idCount < EXTFLASH_MAX_MAIL_PER_USER) {
                 uint32_t id = 0; sscanf(f.name(), "%04" PRIu32, &id);
@@ -365,10 +365,10 @@ class BBSStorageExtFlash : public BBSStorage {
     uint32_t countUnreadMail(uint32_t recipientNode) override {
         if (!initialized_) return 0;
         char dirPath[64]; getMailDirPath(recipientNode, dirPath, sizeof(dirPath));
-        File dir = bbsExtFS.open(dirPath, FILE_O_READ);
+        File dir = bbsExtFS().open(dirPath, FILE_O_READ);
         if (!dir) return 0;
         uint32_t count = 0;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory()) {
                 uint32_t fileId = 0; sscanf(f.name(), "%04" PRIu32, &fileId);
@@ -387,7 +387,7 @@ class BBSStorageExtFlash : public BBSStorage {
         if (!initialized_) return false;
         if (countFiles(EXT_BBS_QSL_PATH) >= EXTFLASH_MAX_QSL) deleteOldestFile(EXT_BBS_QSL_PATH);
         char path[64]; getQSLPath(qsl.id, path, sizeof(path));
-        File f = bbsExtFS.open(path, FILE_O_WRITE);
+        File f = bbsExtFS().open(path, FILE_O_WRITE);
         if (!f) return false;
         f.write((const uint8_t *)&qsl.id, sizeof(uint32_t));
         f.write((const uint8_t *)&qsl.fromNode, sizeof(uint32_t));
@@ -407,11 +407,11 @@ class BBSStorageExtFlash : public BBSStorage {
 
     uint32_t listQSL(BBSQSLHeader *headers, uint32_t maxResults, uint32_t offset = 0) override {
         if (!headers || maxResults == 0 || !initialized_) return 0;
-        File dir = bbsExtFS.open(EXT_BBS_QSL_PATH, FILE_O_READ);
+        File dir = bbsExtFS().open(EXT_BBS_QSL_PATH, FILE_O_READ);
         if (!dir) return 0;
         uint32_t ids[EXTFLASH_MAX_QSL];
         uint32_t idCount = 0;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory() && idCount < EXTFLASH_MAX_QSL) {
                 uint32_t id = 0; sscanf(f.name(), "%04" PRIu32, &id); ids[idCount++] = id;
@@ -425,7 +425,7 @@ class BBSStorageExtFlash : public BBSStorage {
         uint32_t result = 0;
         for (uint32_t i = offset; i < idCount && result < maxResults; i++, result++) {
             char path[64]; getQSLPath(ids[i], path, sizeof(path));
-            File qf = bbsExtFS.open(path, FILE_O_READ);
+            File qf = bbsExtFS().open(path, FILE_O_READ);
             if (qf) {
                 BBSQSL qsl;
                 qf.read((uint8_t *)&qsl.id, sizeof(uint32_t));
@@ -462,15 +462,15 @@ class BBSStorageExtFlash : public BBSStorage {
 
     uint32_t pruneExpiredQSL(uint32_t currentTime) override {
         if (!initialized_) return 0;
-        File dir = bbsExtFS.open(EXT_BBS_QSL_PATH, FILE_O_READ);
+        File dir = bbsExtFS().open(EXT_BBS_QSL_PATH, FILE_O_READ);
         if (!dir) return 0;
         uint32_t pruned = 0;
-        File f(bbsExtFS);
+        File f(bbsExtFS());
         while ((f = dir.openNextFile())) {
             if (!f.isDirectory()) {
                 uint32_t fileId = 0; sscanf(f.name(), "%04" PRIu32, &fileId);
                 char path[64]; getQSLPath(fileId, path, sizeof(path));
-                File qf = bbsExtFS.open(path, FILE_O_READ);
+                File qf = bbsExtFS().open(path, FILE_O_READ);
                 if (qf) {
                     BBSQSL qsl; memset(&qsl, 0, sizeof(qsl));
                     qf.read((uint8_t *)&qsl.id, sizeof(uint32_t));
@@ -482,7 +482,7 @@ class BBSStorageExtFlash : public BBSStorage {
                     qf.read((uint8_t *)&qsl.timestamp, sizeof(uint32_t));
                     qf.close();
                     if ((currentTime - qsl.timestamp) > QSL_TTL_SECONDS) {
-                        bbsExtFS.remove(path); pruned++;
+                        bbsExtFS().remove(path); pruned++;
                     }
                 }
             }
@@ -497,8 +497,8 @@ class BBSStorageExtFlash : public BBSStorage {
 
     BBSStats getStats() override {
         BBSStats stats;
-        uint32_t total = bbsExtFS.totalBytes();
-        uint32_t used  = bbsExtFS.usedBytes();
+        uint32_t total = bbsExtFS().totalBytes();
+        uint32_t used  = bbsExtFS().usedBytes();
         stats.freeBytesEstimate = (total > used) ? (total - used) : 0;
         stats.totalBulletins = totalActiveBulletins();
         stats.totalMailItems = 0;

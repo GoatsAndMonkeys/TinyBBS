@@ -26,6 +26,7 @@ class ExternalFileSystem : public Adafruit_LittleFS {
     uint32_t usedBytes();
 };
 
-extern ExternalFileSystem bbsExtFS;
+// Lazy-initialized pointer — avoids global constructor mutex issue with FreeRTOS
+ExternalFileSystem &bbsExtFS();
 
 #endif // NRF52_SERIES

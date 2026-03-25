@@ -135,6 +135,59 @@ pio run -e heltec-v3 -t upload --upload-port /dev/cu.usbserial-0001
 
 ---
 
+## Knowledge Base Upload
+
+The BBS stores its Wordle dictionary (12,972 words) and geo city database (16,726 US cities) on external QSPI flash. These files need to be uploaded after flashing the firmware.
+
+### Generate the data files
+
+```bash
+source .venv312/bin/activate
+python3 scripts/gen_wordle_packed.py    # creates data/wordle.bin (63KB)
+python3 scripts/gen_geo_packed.py       # creates data/geo_us.bin (370KB)
+```
+
+### Option A: Serial upload (fastest, ~15 KB/s)
+
+The firmware intercepts 0xBB-framed packets on the serial port. No Meshtastic library needed — just `pyserial`.
+
+```bash
+pip install pyserial
+python3 scripts/serial_upload.py upload data/wordle.bin /bbs/kb/wordle.bin
+python3 scripts/serial_upload.py upload data/geo_us.bin /bbs/kb/geo_us.bin
+```
+
+### Option B: BLE upload (~0.2 KB/s, no cable needed)
+
+Uses the Meshtastic Python library to send file data as DMs over BLE.
+
+```bash
+pip install meshtastic bleak
+python3 scripts/ble_upload.py upload data/wordle.bin /bbs/kb/wordle.bin
+python3 scripts/ble_upload.py upload data/geo_us.bin /bbs/kb/geo_us.bin
+```
+
+> BLE upload is slow (~5 min for wordle, ~30 min for geo) but works wirelessly.
+
+### Option C: Embedded loader (no host tools needed)
+
+Build the firmware with `-DBBS_KB_LOADER=1 -DBBS_KB_LOAD_WORDLE=1 -DBBS_KB_LOAD_GEO=1` to embed the data files directly in the firmware. On first boot, they are written to external flash automatically. Requires disabling the screen to fit (`-DMESHTASTIC_EXCLUDE_SCREEN=1`).
+
+### Verify upload
+
+DM the BBS node and send `S` for stats. You should see `[ExtFlash]` with reduced free space:
+```
+BBS Stats [ExtFlash]:
+Bulletins: 0/50
+Mail: 0 items
+QSL: 0 posts
+Free: 1560KB
+```
+
+~1560KB free means both files are loaded (~440KB used for data + BBS storage).
+
+---
+
 ## Usage
 
 ### Via Direct Message

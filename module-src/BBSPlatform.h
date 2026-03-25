@@ -16,7 +16,7 @@
   #define BBS_FILE_APPEND_MODE      FILE_O_WRITE   // no true append; caller must handle
   #define BBS_FS_FREE_BYTES()       (0UL)  // internal FS has no size query
   // External flash macros (for BBSStorageExtFlash)
-  #define BBS_EXTFS_FILE_VAR(name)  File name(bbsExtFS)
+  #define BBS_EXTFS_FILE_VAR(name)  File name(bbsExtFS())
 #else
   // ESP32 / other Arduino platforms
   #define BBS_FILE_VAR(name)        File name

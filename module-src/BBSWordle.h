@@ -3,26 +3,12 @@
 #include <cstring>
 
 #ifdef NRF52_SERIES
-// Compact word list for nRF52 flash-constrained builds (~500 common words)
+// nRF52: Wordle dictionary loaded from external flash (/bbs/kb/wordle.bin)
+// Minimal fallback: 10 words so the game still works before BLE upload
 static const char WORDLE_WORDS[][6] = {
-    "about","above","abuse","after","again","agent","agree","ahead","alarm","album",
-    "alert","alien","align","alike","alive","alley","allow","alone","along","alter",
-    "angel","anger","angle","angry","anime","ankle","annex","antic","anvil","apart",
-    "apple","apply","arena","argue","arise","armor","arbor","aroma","arose","arrow",
-    "arson","aside","asked","asset","attic","audio","audit","avail","avoid","awake",
-    "award","aware","awful","azure","badge","badly","baker","bases","basic","basis",
-    "batch","beach","beard","beast","began","begin","being","belle","below","bench",
-    "berry","birth","bison","black","blade","blame","bland","blank","blast","blaze",
-    "bleed","blend","bless","blind","block","blood","bloom","blown","blues","blunt",
-    "board","bonus","boost","booth","bored","brace","brain","brand","brave","bread",
-    "break","breed","brick","bride","brief","bring","broke","brown","brush","build",
-    "built","burst","buyer","cabin","cable","camel","candy","canon","cards","cargo",
-    "carry","catch","cause","cease","chain","chair","chalk","chaos","charm","chart",
-    "cheap","check","cheek","cheer","chief","child","china","chord","civil","claim",
-    "class","clean","clear","clerk","click","cliff","climb","clock","clone","close",
-    "cloud","clown","coach","cobra","comet","comic","comma","coral","count","court",
+    "about","brain","climb","dream","earth","flame","ghost","heart","ivory","jewel",
 };
-static const uint32_t WORDLE_WORD_COUNT = 160;
+static const uint32_t WORDLE_WORD_COUNT = 10;
 
 // Bloom filter omitted on nRF52 to save 12KB flash.
 // wordleIsValid() accepts any 5-letter alpha string instead.
@@ -2147,6 +2133,72 @@ static void wordleFeedback(const char *guess, const char *target, char *fb) {
         }
     }
 }
+
+// ── External flash Wordle dictionary (/bbs/kb/wordle.bin) ──────────────────
+// Binary format: magic(4) + count(4) + sorted 5-byte words (no null)
+// Provides full 12,972-word validation and word picking when uploaded via BLE.
+// Falls back to embedded 160-word list if file not present.
+
+#define KB_WORDLE_PATH  "/bbs/kb/wordle.bin"
+#define KB_WORDLE_MAGIC 0x57444C31
+
+#ifdef NRF52_SERIES
+#include "BBSExtFlash.h"
+using namespace Adafruit_LittleFS_Namespace;
+
+static bool wordleExtDictAvailable() {
+    return bbsExtFS().exists(KB_WORDLE_PATH);
+}
+
+// Pick a word from the external dictionary (12,972 words vs 160 embedded)
+static bool wordlePickWordExt(uint32_t day, char *word) {
+    File f = bbsExtFS().open(KB_WORDLE_PATH, FILE_O_READ);
+    if (!f) return false;
+
+    uint32_t magic = 0, count = 0;
+    f.read((uint8_t *)&magic, 4);
+    f.read((uint8_t *)&count, 4);
+    if (magic != KB_WORDLE_MAGIC || count == 0) { f.close(); return false; }
+
+    uint32_t idx = day % count;
+    f.seek(8 + idx * 5);
+    if (f.read((uint8_t *)word, 5) != 5) { f.close(); return false; }
+    word[5] = '\0';
+    f.close();
+    return true;
+}
+
+// Validate a guess via binary search on the sorted external dictionary
+static bool wordleIsValidExt(const char *word) {
+    if (!word || strlen(word) != 5) return false;
+
+    char lower[6];
+    for (int i = 0; i < 5; i++)
+        lower[i] = (char)tolower((unsigned char)word[i]);
+    lower[5] = '\0';
+
+    File f = bbsExtFS().open(KB_WORDLE_PATH, FILE_O_READ);
+    if (!f) return false;
+
+    uint32_t magic = 0, count = 0;
+    f.read((uint8_t *)&magic, 4);
+    f.read((uint8_t *)&count, 4);
+    if (magic != KB_WORDLE_MAGIC || count == 0) { f.close(); return false; }
+
+    int lo = 0, hi = (int)count - 1;
+    char entry[5];
+    while (lo <= hi) {
+        int mid = (lo + hi) / 2;
+        f.seek(8 + (uint32_t)mid * 5);
+        f.read((uint8_t *)entry, 5);
+        int cmp = strncmp(entry, lower, 5);
+        if (cmp == 0) { f.close(); return true; }
+        if (cmp < 0) lo = mid + 1; else hi = mid - 1;
+    }
+    f.close();
+    return false;
+}
+#endif // NRF52_SERIES
 
 // BBSWordleScore is defined in BBSStorage.h
 

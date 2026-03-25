@@ -216,6 +216,10 @@ uint32_t ExternalFileSystem::usedBytes() {
     return count * EXTFLASH_SECTOR_SIZE;
 }
 
-ExternalFileSystem bbsExtFS;
+// Lazy singleton — avoids global constructor running before FreeRTOS scheduler
+ExternalFileSystem &bbsExtFS() {
+    static ExternalFileSystem instance;
+    return instance;
+}
 
 #endif // NRF52_SERIES

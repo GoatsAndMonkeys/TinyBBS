@@ -2,14 +2,20 @@
 #include "BBSWordle.h"
 #include "BBSStorageLittleFS.h"
 #include "BBSStoragePSRAM.h"
+#include "BBSGeoLookup.h"
 #ifdef NRF52_SERIES
 #include "BBSStorageExtFlash.h"
+#include "BBSExtFlash.h"
+#ifdef BBS_KB_LOADER
+#include "BBSKBLoader.h"
+#endif
 #endif
 #include "Channels.h"
 #include "FSCommon.h"
 #include "MeshService.h"
 #include "NodeDB.h"
 #include "modules/RoutingModule.h"
+#include "airtime.h"
 #include "RTC.h"
 #include <Arduino.h>
 #include <cctype>
@@ -52,7 +58,14 @@ BBSModule::BBSModule() : SinglePortModule("bbs", meshtastic_PortNum_TEXT_MESSAGE
     frpgEnsureDir();
 #endif
     // nRF52: storage initialized lazily on first message to avoid blocking boot
+
+#if defined(NRF52_SERIES) && defined(MESHTASTIC_EXCLUDE_SCREEN)
+    tinyScreen_.begin();
+#endif
 }
+
+#ifdef NRF52_SERIES
+#endif
 
 void BBSModule::setup() {
     LOG_DEBUG("[BBS] setup() called\n");
@@ -62,8 +75,200 @@ void BBSModule::setup() {
 #endif
 }
 
+#ifdef NRF52_SERIES
+// Simple base64 decode (in-place, returns decoded length)
+static size_t b64decode(const char *in, uint8_t *out, size_t maxOut) {
+    static const uint8_t T[128] = {
+        64,64,64,64,64,64,64,64,64,64,64,64,64,64,64,64,
+        64,64,64,64,64,64,64,64,64,64,64,64,64,64,64,64,
+        64,64,64,64,64,64,64,64,64,64,64,62,64,64,64,63,
+        52,53,54,55,56,57,58,59,60,61,64,64,64,64,64,64,
+        64, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,
+        15,16,17,18,19,20,21,22,23,24,25,64,64,64,64,64,
+        64,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+        41,42,43,44,45,46,47,48,49,50,51,64,64,64,64,64
+    };
+    size_t len = strlen(in), o = 0;
+    uint32_t buf = 0; int bits = 0;
+    for (size_t i = 0; i < len && o < maxOut; i++) {
+        uint8_t c = (uint8_t)in[i];
+        if (c == '=' || c >= 128 || T[c] == 64) continue;
+        buf = (buf << 6) | T[c];
+        bits += 6;
+        if (bits >= 8) { bits -= 8; out[o++] = (buf >> bits) & 0xFF; }
+    }
+    return o;
+}
+
+void BBSModule::handleKBUpload(const char *cmd) {
+    using namespace Adafruit_LittleFS_Namespace;
+
+    if (strncmp(cmd, "OPEN ", 5) == 0) {
+        char path[64] = {0};
+        uint32_t size = 0;
+        if (sscanf(cmd + 5, "%63s %u", path, &size) != 2) {
+            LOG_WARN("[KB] Bad OPEN args\n");
+            return;
+        }
+        if (kbFile_) { ((File *)kbFile_)->close(); delete (File *)kbFile_; kbFile_ = nullptr; }
+        if (!bbsExtFS().exists("/bbs")) bbsExtFS().mkdir("/bbs");
+        if (!bbsExtFS().exists("/bbs/kb")) bbsExtFS().mkdir("/bbs/kb");
+        if (bbsExtFS().exists(path)) bbsExtFS().remove(path);
+        File f = bbsExtFS().open(path, FILE_O_WRITE);
+        if (!f) { LOG_ERROR("[KB] Can't open %s\n", path); return; }
+        kbFile_ = new File(f);
+        kbExpected_ = size;
+        kbReceived_ = 0;
+        LOG_INFO("[KB] OPEN %s (%u bytes)\n", path, size);
+    }
+    else if (strncmp(cmd, "DATA ", 5) == 0) {
+        if (!kbFile_) return;
+        uint8_t decoded[200];
+        size_t n = b64decode(cmd + 5, decoded, sizeof(decoded));
+        if (n > 0) {
+            ((File *)kbFile_)->write(decoded, n);
+            kbReceived_ += n;
+        }
+    }
+    else if (strncmp(cmd, "CLOSE", 5) == 0) {
+        if (kbFile_) {
+            ((File *)kbFile_)->close();
+            delete (File *)kbFile_;
+            kbFile_ = nullptr;
+            LOG_INFO("[KB] CLOSE %u/%u bytes\n", kbReceived_, kbExpected_);
+        }
+    }
+    else if (strncmp(cmd, "LIST", 4) == 0) {
+        File dir = bbsExtFS().open("/bbs/kb", FILE_O_READ);
+        if (dir) {
+            File f(bbsExtFS());
+            while ((f = dir.openNextFile())) {
+                LOG_INFO("[KB] %s %u\n", f.name(), (uint32_t)f.size());
+                f.close();
+            }
+            dir.close();
+        }
+    }
+}
+#endif
+
+#ifdef NRF52_SERIES
+// Called from StreamAPI when it sees a 0xBB byte — we handle the full frame here
+static void *_kbFile = nullptr;
+static uint32_t _kbExpected = 0, _kbReceived = 0;
+
+void bbsSerialFrameHandler(Stream *stream, uint8_t firstByte) {
+    using namespace Adafruit_LittleFS_Namespace;
+
+    // Read rest of header: cmd(1) + len(2)
+    uint8_t hdr[3];
+    if (stream->readBytes(hdr, 3) != 3) return;
+    uint8_t cmd = hdr[0];
+    uint16_t dataLen = hdr[1] | (hdr[2] << 8);
+    if (dataLen > 512) return;
+
+    // Read payload + CRC
+    uint8_t payload[514];
+    if (stream->readBytes(payload, dataLen + 1) != (size_t)(dataLen + 1)) return;
+
+    // CRC check
+    uint8_t crcData[4] = {firstByte, cmd, hdr[1], hdr[2]};
+    uint8_t crc = 0;
+    for (int i = 0; i < 4; i++) { crc ^= crcData[i]; for (int j = 0; j < 8; j++) crc = (crc & 0x80) ? ((crc << 1) ^ 0x07) : (crc << 1); }
+    for (uint16_t i = 0; i < dataLen; i++) { crc ^= payload[i]; for (int j = 0; j < 8; j++) crc = (crc & 0x80) ? ((crc << 1) ^ 0x07) : (crc << 1); }
+    if (crc != payload[dataLen]) {
+        uint8_t resp[3] = {0xBB, 0x80, 1};
+        stream->write(resp, 3);
+        return;
+    }
+
+    uint8_t status = 1; // default ERR
+
+    if (cmd == 0x01 && dataLen >= 6) { // OPEN
+        uint8_t pathLen = payload[0];
+        char path[64] = {0};
+        memcpy(path, payload + 1, pathLen < 63 ? pathLen : 63);
+        uint32_t fsize;
+        memcpy(&fsize, payload + 1 + pathLen, 4);
+
+        if (_kbFile) { ((File *)_kbFile)->close(); delete (File *)_kbFile; _kbFile = nullptr; }
+        if (!bbsExtFS().exists("/bbs")) bbsExtFS().mkdir("/bbs");
+        if (!bbsExtFS().exists("/bbs/kb")) bbsExtFS().mkdir("/bbs/kb");
+        if (bbsExtFS().exists(path)) bbsExtFS().remove(path);
+        File f = bbsExtFS().open(path, FILE_O_WRITE);
+        if (f) {
+            _kbFile = new File(f);
+            _kbExpected = fsize;
+            _kbReceived = 0;
+            status = 0;
+        }
+    } else if (cmd == 0x02 && _kbFile) { // DATA
+        uint8_t ramBuf[256];
+        uint16_t pos = 0;
+        while (pos < dataLen) {
+            uint16_t chunk = dataLen - pos;
+            if (chunk > sizeof(ramBuf)) chunk = sizeof(ramBuf);
+            memcpy(ramBuf, payload + pos, chunk);
+            ((File *)_kbFile)->write(ramBuf, chunk);
+            pos += chunk;
+        }
+        _kbReceived += dataLen;
+        status = 0;
+    } else if (cmd == 0x03) { // CLOSE
+        if (_kbFile) { ((File *)_kbFile)->close(); delete (File *)_kbFile; _kbFile = nullptr; }
+        status = 0;
+    } else if (cmd == 0x04) { // LIST
+        status = 0;
+    }
+
+    uint8_t resp[3] = {0xBB, 0x80, status};
+    stream->write(resp, 3);
+    ((Stream *)stream)->flush();
+}
+#endif
+
 int32_t BBSModule::runOnce() {
     uint32_t t = getTime();
+
+#ifdef NRF52_SERIES
+    // Poll for serial upload frames (0xBB prefix, ignored by Meshtastic)
+    if (Serial.available() && Serial.peek() == 0xBB) {
+        using namespace Adafruit_LittleFS_Namespace;
+        uint8_t hdr[4];
+        Serial.readBytes(hdr, 4);
+        uint8_t cmd = hdr[1];
+        uint16_t dataLen = hdr[2] | (hdr[3] << 8);
+        if (dataLen <= 512) {
+            uint8_t payload[514];
+            size_t got = Serial.readBytes(payload, dataLen + 1); // +1 for CRC
+            if (got == dataLen + 1) {
+                uint8_t resp[3] = {0xBB, 0x80, 1}; // default ERR
+                if (cmd == 0x01 && dataLen >= 6) { // OPEN
+                    uint8_t pathLen = payload[0];
+                    char path[64] = {0};
+                    memcpy(path, payload + 1, pathLen < 63 ? pathLen : 63);
+                    uint32_t fsize;
+                    memcpy(&fsize, payload + 1 + pathLen, 4);
+                    if (kbFile_) { ((File*)kbFile_)->close(); delete (File*)kbFile_; kbFile_ = nullptr; }
+                    if (!bbsExtFS().exists("/bbs")) bbsExtFS().mkdir("/bbs");
+                    if (!bbsExtFS().exists("/bbs/kb")) bbsExtFS().mkdir("/bbs/kb");
+                    if (bbsExtFS().exists(path)) bbsExtFS().remove(path);
+                    File f = bbsExtFS().open(path, FILE_O_WRITE);
+                    if (f) { kbFile_ = new File(f); kbExpected_ = fsize; kbReceived_ = 0; resp[2] = 0; }
+                } else if (cmd == 0x02 && kbFile_) { // DATA
+                    ((File*)kbFile_)->write(payload, dataLen);
+                    kbReceived_ += dataLen;
+                    resp[2] = 0;
+                } else if (cmd == 0x03) { // CLOSE
+                    if (kbFile_) { ((File*)kbFile_)->close(); delete (File*)kbFile_; kbFile_ = nullptr; }
+                    resp[2] = 0;
+                }
+                Serial.write(resp, 3);
+            }
+        }
+        return 100; // poll fast during upload
+    }
+#endif
     // Wait until time is synced (must be after 2020-01-01)
     if (t < 1577836800UL) return 60000;
 
@@ -83,6 +288,34 @@ int32_t BBSModule::runOnce() {
         for (uint32_t i = 0; i < n; i++)
             if (t >= bhdrs[i].timestamp && (t - bhdrs[i].timestamp) < week) recent++;
         uiBulletinRecent_ = recent;
+    }
+#endif
+
+#if defined(NRF52_SERIES) && defined(MESHTASTIC_EXCLUDE_SCREEN)
+    {
+        // Count active sessions
+        uint8_t activeSess = 0;
+        for (int i = 0; i < BBS_MAX_SESSIONS; i++)
+            if (sessions_[i].nodeNum != 0) activeSess++;
+
+        // Get radio stats
+        uint32_t rxCount = 0, txCount = 0;
+        float airUtil = 0;
+        if (airTime) airUtil = airTime->channelUtilizationPercent();
+
+        // Get node count
+        uint16_t nodesOnline = nodeDB ? (uint16_t)nodeDB->getNumOnlineMeshNodes() : 0;
+
+        // Get storage free bytes
+        uint32_t freeBytes = 0;
+        if (storage_) {
+            BBSStats stats = storage_->getStats();
+            freeBytes = stats.freeBytesEstimate;
+        }
+
+        tinyScreen_.refresh(t, storage_, activeSess,
+                           rxCount, txCount, airUtil,
+                           nodesOnline, freeBytes);
     }
 #endif
 
@@ -217,6 +450,23 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
     // Try external QSPI flash first (2MB), fall back to internal LittleFS (~28KB)
     if (!storage_) {
 #ifdef NRF52_SERIES
+#ifdef BBS_KB_LOADER
+        {
+            bool kbOk = kbLoaderRun();
+            // Report what was written
+            char kbMsg[180];
+            uint32_t wSize = 0, gSize = 0;
+            File wf = bbsExtFS().open("/bbs/kb/wordle.bin", FILE_O_READ);
+            if (wf) { wSize = wf.size(); wf.close(); }
+            File gf = bbsExtFS().open("/bbs/kb/geo_us.bin", FILE_O_READ);
+            if (gf) { gSize = gf.size(); gf.close(); }
+            snprintf(kbMsg, sizeof(kbMsg),
+                     "KB: %s\nwordle:%u geo:%u",
+                     kbOk ? "OK" : "FAIL",
+                     wSize, gSize);
+            sendReply(mp, kbMsg);
+        }
+#endif
         storage_ = new BBSStorageExtFlash();
         if (storage_ && !storage_->init()) {
             LOG_WARN("[BBS] External flash failed, falling back to internal FS\n");
@@ -262,10 +512,21 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
     strncpy(uiLastMsgFrom_, sn ? sn : "????", sizeof(uiLastMsgFrom_) - 1);
     uiLastMsgFrom_[sizeof(uiLastMsgFrom_) - 1] = '\0';
 
+#if defined(NRF52_SERIES) && defined(MESHTASTIC_EXCLUDE_SCREEN)
+    tinyScreen_.notifyMessage(mp.from, sn, uiLastMsgTime_);
+#endif
+
     bool isDM = (mp.to == nodeDB->getNodeNum()) && !isBroadcast(mp.to);
 
     if (isDM) {
         const char *text = buf;
+#ifdef NRF52_SERIES
+        // Knowledge base upload commands (!KB OPEN/DATA/CLOSE)
+        if (strncasecmp(text, "!KB ", 4) == 0) {
+            handleKBUpload(text + 4);
+            return ProcessMessage::STOP;
+        }
+#endif
         if (strncasecmp(text, "!bbs", 4) == 0) {
             text += 4;
             while (*text == ' ' || *text == '\t') text++;
@@ -954,10 +1215,16 @@ void BBSModule::doWordleStart(const meshtastic_MeshPacket &req, BBSSession &sess
     }
 #endif // NRF52_SERIES
 
-    // Pick today's daily word (same for everyone)
-    const char *word = wordlePickWord(day);
-    strncpy(session.wordleTarget, word, 5);
-    session.wordleTarget[5] = '\0';
+    // Pick today's daily word — try external 12K dictionary, fall back to embedded 160
+#ifdef NRF52_SERIES
+    if (!wordlePickWordExt(day, session.wordleTarget)) {
+#endif
+        const char *word = wordlePickWord(day);
+        strncpy(session.wordleTarget, word, 5);
+        session.wordleTarget[5] = '\0';
+#ifdef NRF52_SERIES
+    }
+#endif
     session.wordleGuesses = 0;
     session.wordleDay = day;
     session.state = BBS_STATE_WORDLE;
@@ -1003,13 +1270,23 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
         return ProcessMessage::STOP;
     }
 
-    // Validate against word list (ESP32: full dictionary binary search)
-#ifndef NRF52_SERIES
-    if (!wordleIsValid(guess)) {
-        sendReply(mp, "Not a valid word. Try again.");
-        return ProcessMessage::STOP;
-    }
+    // Validate against word list
+    {
+        bool valid = false;
+#ifdef NRF52_SERIES
+        // Try external 12K dictionary on flash, fall back to accept-all
+        if (wordleExtDictAvailable())
+            valid = wordleIsValidExt(guess);
+        else
+            valid = wordleIsValid(guess); // accepts any 5-letter alpha
+#else
+        valid = wordleIsValid(guess); // ESP32: binary search embedded 12K list
 #endif
+        if (!valid) {
+            sendReply(mp, "Not a valid word. Try again.");
+            return ProcessMessage::STOP;
+        }
+    }
 
     session.wordleGuesses++;
 
@@ -1351,10 +1628,14 @@ void BBSModule::doQSLPost(const meshtastic_MeshPacket &req) {
         qsl.longitude = sender->position.longitude_i;
         qsl.altitude  = sender->position.altitude;
     }
+    if (lat != 0.0f || lon != 0.0f) {
+        // Try external flash (17K cities), then embedded (500 cities), then WiFi
+        if (!geoLookup(lat, lon, qsl.location, sizeof(qsl.location))) {
 #ifndef NRF52_SERIES
-    if (lat != 0.0f || lon != 0.0f)
-        reverseGeocode(lat, lon, qsl.location, sizeof(qsl.location));
+            reverseGeocode(lat, lon, qsl.location, sizeof(qsl.location));
 #endif
+        }
+    }
 
     if (storage_->storeQSL(qsl)) {
         // Format timestamp as MM/DD HH:MM

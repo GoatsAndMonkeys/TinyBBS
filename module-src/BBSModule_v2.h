@@ -6,6 +6,9 @@
 #include "concurrency/OSThread.h"
 #include "graphics/Screen.h"
 #include "mesh/SinglePortModule.h"
+#if defined(NRF52_SERIES) && defined(MESHTASTIC_EXCLUDE_SCREEN)
+#include "BBSTinyStatus.h"
+#endif
 
 static constexpr uint8_t BBS_MAX_SESSIONS = 8;
 static constexpr uint32_t BBS_SESSION_TIMEOUT_S = 600;
@@ -58,6 +61,9 @@ struct BBSSession {
 class BBSModule : public SinglePortModule, private concurrency::OSThread {
   private:
     BBSStorage *storage_  = nullptr;
+#if defined(NRF52_SERIES) && defined(MESHTASTIC_EXCLUDE_SCREEN)
+    BBSTinyStatus tinyScreen_;
+#endif
     BBSSession  sessions_[BBS_MAX_SESSIONS];
 
     static constexpr size_t REPLY_MAX_LEN = 200;
@@ -160,6 +166,13 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     uint32_t uiBulletinRecent_ = 0;   // last 7 days
     uint32_t uiMailTotal_ = 0;
     uint32_t uiStatsLastUpdate_ = 0;  // timestamp of last count refresh
+
+#ifdef NRF52_SERIES
+    void handleKBUpload(const char *cmd);
+    void *kbFile_ = nullptr;  // actually File*, void to avoid header dep
+    uint32_t kbExpected_ = 0;
+    uint32_t kbReceived_ = 0;
+#endif
 
     // OSThread periodic task (private inheritance)
     virtual int32_t runOnce() override;
