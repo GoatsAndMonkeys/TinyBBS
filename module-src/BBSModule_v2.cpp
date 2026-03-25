@@ -1,5 +1,8 @@
 #include "BBSModule_v2.h"
 #include "BBSWordle.h"
+#ifndef BBS_LITE
+#include "BBSSurvival.h"
+#endif
 #include "BBSStorageLittleFS.h"
 #include "BBSStoragePSRAM.h"
 #ifndef BBS_LITE
@@ -568,7 +571,8 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
                 }
 
                 if (isFlightMsg) {
-                    static const char *robotEmoji = "\xF0\x9F\xA4\x96"; // 🤖 U+1F916
+                    // Tapback with airplane emoji
+                    static const char *planeEmoji = "\xE2\x9C\x88\xEF\xB8\x8F"; // ✈️
                     meshtastic_MeshPacket *reply = allocDataPacket();
                     if (reply) {
                         reply->to                    = NODENUM_BROADCAST;
@@ -577,10 +581,62 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
                         reply->decoded.want_response = false;
                         reply->decoded.emoji         = 1;
                         reply->decoded.reply_id      = mp.id;
-                        size_t elen = strlen(robotEmoji);
-                        memcpy(reply->decoded.payload.bytes, robotEmoji, elen);
+                        size_t elen = strlen(planeEmoji);
+                        memcpy(reply->decoded.payload.bytes, planeEmoji, elen);
                         reply->decoded.payload.size = elen;
                         service->sendToMesh(reply);
+                    }
+
+                    // Record Air QSL — log the flight sighting
+                    if (storage_) {
+                        BBSQSL aqsl;
+                        memset(&aqsl, 0, sizeof(aqsl));
+                        aqsl.id = storage_->nextQSLId();
+                        aqsl.fromNode = mp.from;
+                        aqsl.timestamp = getTime();
+                        aqsl.hopsAway = (mp.hop_start >= mp.hop_limit)
+                                        ? (mp.hop_start - mp.hop_limit) : 0;
+                        aqsl.snr = (mp.rx_snr > 15) ? 15 : (mp.rx_snr < 0 ? 0 : (uint8_t)mp.rx_snr);
+                        aqsl.rssi = mp.rx_rssi;
+                        aqsl.active = true;
+
+                        const char *sn = getNodeShortName(mp.from);
+                        if (sn) strncpy(aqsl.fromName, sn, BBS_SHORT_NAME_LEN - 1);
+                        else snprintf(aqsl.fromName, BBS_SHORT_NAME_LEN, "!%08x", mp.from);
+
+                        // Get sender's position (altitude, speed, location)
+                        const meshtastic_NodeInfoLite *flyer = nodeDB->getMeshNode(mp.from);
+                        if (flyer && flyer->has_position) {
+                            aqsl.latitude  = flyer->position.latitude_i;
+                            aqsl.longitude = flyer->position.longitude_i;
+                            aqsl.altitude  = flyer->position.altitude;
+                            float lat = flyer->position.latitude_i / 1e7f;
+                            float lon = flyer->position.longitude_i / 1e7f;
+#ifndef BBS_LITE
+                            if (lat != 0.0f || lon != 0.0f)
+                                geoLookup(lat, lon, aqsl.location, sizeof(aqsl.location));
+#endif
+                        }
+
+                        // Prefix location with "AIR:" to mark as Air QSL
+                        char airLoc[24];
+                        if (aqsl.location[0])
+                            snprintf(airLoc, sizeof(airLoc), "AIR:%s", aqsl.location);
+                        else
+                            strncpy(airLoc, "AIR", sizeof(airLoc));
+                        strncpy(aqsl.location, airLoc, sizeof(aqsl.location) - 1);
+
+                        storage_->storeQSL(aqsl);
+
+                        // Announce to public channel
+                        char announce[160];
+                        snprintf(announce, sizeof(announce),
+                                 "Air QSL: %s %s alt:%dm %uhop(s)",
+                                 aqsl.fromName,
+                                 aqsl.location,
+                                 (int)aqsl.altitude,
+                                 aqsl.hopsAway);
+                        sendToPublicChannel(announce);
                     }
                 }
             }
@@ -824,6 +880,17 @@ ProcessMessage BBSModule::handleStateMain(const meshtastic_MeshPacket &mp, BBSSe
             session.state = BBS_STATE_IDLE;
             sendReply(mp, "73 de TinyBBS - bye!");
             break;
+#ifndef BBS_LITE
+        case 'e': {
+            // Emergency survival guide from external flash
+            char tip[200] = {0};
+            if (survivalGetRandom(getTime(), tip, sizeof(tip)))
+                sendReply(mp, tip);
+            else
+                sendReply(mp, "Survival guide not loaded.\nUpload survival.bin via serial.");
+            break;
+        }
+#endif
         case '?': case 'h':
             sendReply(mp,
                       "TinyBBS Help:\n"
@@ -831,6 +898,9 @@ ProcessMessage BBSModule::handleStateMain(const meshtastic_MeshPacket &mp, BBSSe
                       "[M]ail\n"
                       "[Q]SL\n"
                       "[G]ames\n"
+#ifndef BBS_LITE
+                      "[E]mergency Guide\n"
+#endif
                       "[S]tats\n"
                       "[X]Exit");
             break;
@@ -1582,7 +1652,7 @@ void BBSModule::doQSLPost(const meshtastic_MeshPacket &req) {
     else snprintf(qsl.fromName, BBS_SHORT_NAME_LEN, "!%08x", req.from);
     qsl.fromName[BBS_SHORT_NAME_LEN - 1] = '\0';
 
-    // Look up sender's GPS position and reverse geocode to city name
+    // Look up sender's GPS position — fall back to BBS node's own position
     float lat = 0, lon = 0;
     const meshtastic_NodeInfoLite *sender = nodeDB->getMeshNode(req.from);
     if (sender && sender->has_position &&
@@ -1593,6 +1663,7 @@ void BBSModule::doQSLPost(const meshtastic_MeshPacket &req) {
         qsl.longitude = sender->position.longitude_i;
         qsl.altitude  = sender->position.altitude;
     }
+    // No fallback if sender has no GPS — we can't know their location
     if (lat != 0.0f || lon != 0.0f) {
 #ifndef BBS_LITE
         // Full edition: try external flash cities, then WiFi fallback
