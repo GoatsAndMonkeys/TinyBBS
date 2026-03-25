@@ -2,12 +2,16 @@
 #include "BBSWordle.h"
 #include "BBSStorageLittleFS.h"
 #include "BBSStoragePSRAM.h"
+#ifndef BBS_LITE
 #include "BBSGeoLookup.h"
+#endif
 #ifdef NRF52_SERIES
 #include "BBSStorageExtFlash.h"
 #include "BBSExtFlash.h"
+#ifndef BBS_LITE
 #ifdef BBS_KB_LOADER
 #include "BBSKBLoader.h"
+#endif
 #endif
 #endif
 #include "Channels.h"
@@ -75,7 +79,7 @@ void BBSModule::setup() {
 #endif
 }
 
-#ifdef NRF52_SERIES
+#if defined(NRF52_SERIES) && !defined(BBS_LITE)
 // Simple base64 decode (in-place, returns decoded length)
 static size_t b64decode(const char *in, uint8_t *out, size_t maxOut) {
     static const uint8_t T[128] = {
@@ -152,7 +156,7 @@ void BBSModule::handleKBUpload(const char *cmd) {
 }
 #endif
 
-#ifdef NRF52_SERIES
+#if defined(NRF52_SERIES) && !defined(BBS_LITE)
 // Called from StreamAPI when it sees a 0xBB byte — we handle the full frame here
 static void *_kbFile = nullptr;
 static uint32_t _kbExpected = 0, _kbReceived = 0;
@@ -230,45 +234,6 @@ void bbsSerialFrameHandler(Stream *stream, uint8_t firstByte) {
 int32_t BBSModule::runOnce() {
     uint32_t t = getTime();
 
-#ifdef NRF52_SERIES
-    // Poll for serial upload frames (0xBB prefix, ignored by Meshtastic)
-    if (Serial.available() && Serial.peek() == 0xBB) {
-        using namespace Adafruit_LittleFS_Namespace;
-        uint8_t hdr[4];
-        Serial.readBytes(hdr, 4);
-        uint8_t cmd = hdr[1];
-        uint16_t dataLen = hdr[2] | (hdr[3] << 8);
-        if (dataLen <= 512) {
-            uint8_t payload[514];
-            size_t got = Serial.readBytes(payload, dataLen + 1); // +1 for CRC
-            if (got == dataLen + 1) {
-                uint8_t resp[3] = {0xBB, 0x80, 1}; // default ERR
-                if (cmd == 0x01 && dataLen >= 6) { // OPEN
-                    uint8_t pathLen = payload[0];
-                    char path[64] = {0};
-                    memcpy(path, payload + 1, pathLen < 63 ? pathLen : 63);
-                    uint32_t fsize;
-                    memcpy(&fsize, payload + 1 + pathLen, 4);
-                    if (kbFile_) { ((File*)kbFile_)->close(); delete (File*)kbFile_; kbFile_ = nullptr; }
-                    if (!bbsExtFS().exists("/bbs")) bbsExtFS().mkdir("/bbs");
-                    if (!bbsExtFS().exists("/bbs/kb")) bbsExtFS().mkdir("/bbs/kb");
-                    if (bbsExtFS().exists(path)) bbsExtFS().remove(path);
-                    File f = bbsExtFS().open(path, FILE_O_WRITE);
-                    if (f) { kbFile_ = new File(f); kbExpected_ = fsize; kbReceived_ = 0; resp[2] = 0; }
-                } else if (cmd == 0x02 && kbFile_) { // DATA
-                    ((File*)kbFile_)->write(payload, dataLen);
-                    kbReceived_ += dataLen;
-                    resp[2] = 0;
-                } else if (cmd == 0x03) { // CLOSE
-                    if (kbFile_) { ((File*)kbFile_)->close(); delete (File*)kbFile_; kbFile_ = nullptr; }
-                    resp[2] = 0;
-                }
-                Serial.write(resp, 3);
-            }
-        }
-        return 100; // poll fast during upload
-    }
-#endif
     // Wait until time is synced (must be after 2020-01-01)
     if (t < 1577836800UL) return 60000;
 
@@ -520,7 +485,7 @@ ProcessMessage BBSModule::handleReceived(const meshtastic_MeshPacket &mp) {
 
     if (isDM) {
         const char *text = buf;
-#ifdef NRF52_SERIES
+#if defined(NRF52_SERIES) && !defined(BBS_LITE)
         // Knowledge base upload commands (!KB OPEN/DATA/CLOSE)
         if (strncasecmp(text, "!KB ", 4) == 0) {
             handleKBUpload(text + 4);
@@ -1215,14 +1180,14 @@ void BBSModule::doWordleStart(const meshtastic_MeshPacket &req, BBSSession &sess
     }
 #endif // NRF52_SERIES
 
-    // Pick today's daily word — try external 12K dictionary, fall back to embedded 160
-#ifdef NRF52_SERIES
+    // Pick today's daily word — try external 12K dictionary, fall back to embedded
+#if defined(NRF52_SERIES) && !defined(BBS_LITE)
     if (!wordlePickWordExt(day, session.wordleTarget)) {
 #endif
         const char *word = wordlePickWord(day);
         strncpy(session.wordleTarget, word, 5);
         session.wordleTarget[5] = '\0';
-#ifdef NRF52_SERIES
+#if defined(NRF52_SERIES) && !defined(BBS_LITE)
     }
 #endif
     session.wordleGuesses = 0;
@@ -1273,14 +1238,14 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
     // Validate against word list
     {
         bool valid = false;
-#ifdef NRF52_SERIES
-        // Try external 12K dictionary on flash, fall back to accept-all
+#if defined(NRF52_SERIES) && !defined(BBS_LITE)
+        // Full edition: try external 12K dictionary, fall back to accept-all
         if (wordleExtDictAvailable())
             valid = wordleIsValidExt(guess);
         else
-            valid = wordleIsValid(guess); // accepts any 5-letter alpha
+            valid = wordleIsValid(guess);
 #else
-        valid = wordleIsValid(guess); // ESP32: binary search embedded 12K list
+        valid = wordleIsValid(guess);
 #endif
         if (!valid) {
             sendReply(mp, "Not a valid word. Try again.");
@@ -1629,12 +1594,14 @@ void BBSModule::doQSLPost(const meshtastic_MeshPacket &req) {
         qsl.altitude  = sender->position.altitude;
     }
     if (lat != 0.0f || lon != 0.0f) {
-        // Try external flash (17K cities), then embedded (500 cities), then WiFi
+#ifndef BBS_LITE
+        // Full edition: try external flash cities, then WiFi fallback
         if (!geoLookup(lat, lon, qsl.location, sizeof(qsl.location))) {
 #ifndef NRF52_SERIES
             reverseGeocode(lat, lon, qsl.location, sizeof(qsl.location));
 #endif
         }
+#endif
     }
 
     if (storage_->storeQSL(qsl)) {

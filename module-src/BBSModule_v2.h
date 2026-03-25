@@ -167,9 +167,9 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     uint32_t uiMailTotal_ = 0;
     uint32_t uiStatsLastUpdate_ = 0;  // timestamp of last count refresh
 
-#ifdef NRF52_SERIES
+#if defined(NRF52_SERIES) && !defined(BBS_LITE)
     void handleKBUpload(const char *cmd);
-    void *kbFile_ = nullptr;  // actually File*, void to avoid header dep
+    void *kbFile_ = nullptr;
     uint32_t kbExpected_ = 0;
     uint32_t kbReceived_ = 0;
 #endif
