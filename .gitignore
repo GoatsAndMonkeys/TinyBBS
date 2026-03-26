@@ -11,6 +11,7 @@ bbs_data.uf2
 # Allow firmware-builds folder
 !firmware-builds/
 !firmware-builds/*.uf2
+!firmware-builds/*.factory.bin
 bbs_extracted/
 data/
 HANDOFF.md
