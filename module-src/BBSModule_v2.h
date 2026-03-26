@@ -28,6 +28,7 @@ enum BBSMenuState : uint8_t {
     BBS_STATE_VAULT,            // Vault-Tec hacking game
     BBS_STATE_WASTELAND,        // Fallout Wasteland RPG
     BBS_STATE_CHESS,            // Chess by mail
+    BBS_STATE_SURVIVAL,         // Emergency survival guide
 };
 
 struct BBSSession {
@@ -168,6 +169,7 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     uint32_t uiStatsLastUpdate_ = 0;  // timestamp of last count refresh
 
 #if defined(NRF52_SERIES) && !defined(BBS_LITE)
+    ProcessMessage handleStateSurvival(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     void handleKBUpload(const char *cmd);
     void *kbFile_ = nullptr;
     uint32_t kbExpected_ = 0;

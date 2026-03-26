@@ -107,6 +107,71 @@ static size_t b64decode(const char *in, uint8_t *out, size_t maxOut) {
     return o;
 }
 
+ProcessMessage BBSModule::handleStateSurvival(const meshtastic_MeshPacket &mp,
+                                               BBSSession &session, const char *text) {
+    if (!text || text[0] == '\0') {
+        session.state = BBS_STATE_MAIN;
+        sendMainMenu(mp, session);
+        return ProcessMessage::STOP;
+    }
+
+    char cmd = tolower((unsigned char)text[0]);
+
+    if (cmd == 'x') {
+        session.state = BBS_STATE_MAIN;
+        sendMainMenu(mp, session);
+        return ProcessMessage::STOP;
+    }
+
+    if (cmd == 'r') {
+        // Random tip
+        char tip[200] = {0};
+        if (survivalGetRandom(getTime(), tip, sizeof(tip)))
+            sendReply(mp, tip);
+        else
+            sendReply(mp, "No tips loaded.");
+        return ProcessMessage::STOP;
+    }
+
+    // Number = category selection (1-12)
+    int catNum = atoi(text);
+    if (catNum >= 1 && catNum <= 12) {
+        uint16_t catIdx = catNum - 1;
+        char name[16];
+        survivalCategoryName(catIdx, name, sizeof(name));
+
+        // Send a random tip from this category
+        SurvivalCatEntry cat;
+        // Read category entry to get tip count
+        char tip[200] = {0};
+        // Try 3 random tips from this category
+        uint32_t seed = getTime() + catIdx;
+        for (int attempt = 0; attempt < 3; attempt++) {
+            if (survivalGetTip(catIdx, (seed + attempt) % 10, tip, sizeof(tip)) && tip[0]) {
+                sendReply(mp, tip);
+                return ProcessMessage::STOP;
+            }
+        }
+        sendReply(mp, "No tips in this category.");
+        return ProcessMessage::STOP;
+    }
+
+    // Show menu again
+    uint16_t catCount = survivalCategoryCount();
+    char menu[200];
+    snprintf(menu, sizeof(menu), "=== Survival Guide ===\n");
+    for (uint16_t i = 0; i < catCount && i < 12; i++) {
+        char catName[16];
+        survivalCategoryName(i, catName, sizeof(catName));
+        char line[24];
+        snprintf(line, sizeof(line), "%u.%s\n", i + 1, catName);
+        strncat(menu, line, sizeof(menu) - strlen(menu) - 1);
+    }
+    strncat(menu, "[R]andom [X]Back", sizeof(menu) - strlen(menu) - 1);
+    sendReply(mp, menu);
+    return ProcessMessage::STOP;
+}
+
 void BBSModule::handleKBUpload(const char *cmd) {
     using namespace Adafruit_LittleFS_Namespace;
 
@@ -199,6 +264,7 @@ void bbsSerialFrameHandler(Stream *stream, uint8_t firstByte) {
         memcpy(&fsize, payload + 1 + pathLen, 4);
 
         if (_kbFile) { ((File *)_kbFile)->close(); delete (File *)_kbFile; _kbFile = nullptr; }
+        bbsExtFS().begin(); // ensure ext flash is mounted
         if (!bbsExtFS().exists("/bbs")) bbsExtFS().mkdir("/bbs");
         if (!bbsExtFS().exists("/bbs/kb")) bbsExtFS().mkdir("/bbs/kb");
         if (bbsExtFS().exists(path)) bbsExtFS().remove(path);
@@ -721,6 +787,9 @@ ProcessMessage BBSModule::dispatchState(const meshtastic_MeshPacket &mp, BBSSess
         case BBS_STATE_VAULT:          return handleStateVault(mp, session, text);
         case BBS_STATE_WASTELAND:      return handleStateWasteland(mp, session, text);
         case BBS_STATE_CHESS:          return handleStateChess(mp, session, text);
+#ifndef BBS_LITE
+        case BBS_STATE_SURVIVAL:       return handleStateSurvival(mp, session, text);
+#endif
         default:
             session.state = BBS_STATE_MAIN;
             sendMainMenu(mp, session);
@@ -881,15 +950,29 @@ ProcessMessage BBSModule::handleStateMain(const meshtastic_MeshPacket &mp, BBSSe
             sendReply(mp, "73 de TinyBBS - bye!");
             break;
 #ifndef BBS_LITE
-        case 'e': {
-            // Emergency survival guide from external flash
-            char tip[200] = {0};
-            if (survivalGetRandom(getTime(), tip, sizeof(tip)))
-                sendReply(mp, tip);
-            else
-                sendReply(mp, "Survival guide not loaded.\nUpload survival.bin via serial.");
+        case 'e':
+            session.state = BBS_STATE_SURVIVAL;
+            {
+                // Show category menu
+                uint16_t catCount = survivalCategoryCount();
+                if (catCount == 0) {
+                    sendReply(mp, "Survival guide not loaded.\nUpload survival.bin via serial.");
+                    session.state = BBS_STATE_MAIN;
+                } else {
+                    char menu[200];
+                    snprintf(menu, sizeof(menu), "=== Survival Guide ===\n");
+                    for (uint16_t i = 0; i < catCount && i < 12; i++) {
+                        char name[16];
+                        survivalCategoryName(i, name, sizeof(name));
+                        char line[24];
+                        snprintf(line, sizeof(line), "%u.%s\n", i + 1, name);
+                        strncat(menu, line, sizeof(menu) - strlen(menu) - 1);
+                    }
+                    strncat(menu, "[R]andom [X]Back", sizeof(menu) - strlen(menu) - 1);
+                    sendReply(mp, menu);
+                }
+            }
             break;
-        }
 #endif
         case '?': case 'h':
             sendReply(mp,

@@ -124,16 +124,6 @@ TIPS = {
         "Insects flying low, birds roosting early, frogs loud often precede rain. Animals sense pressure changes.",
         "Lightning distance: count seconds between flash and thunder, divide by 5 = miles. Under 6 seconds = seek shelter NOW.",
     ],
-    "Knots": [
-        "Bowline: fixed loop that won't slip or jam. Rabbit out of hole, around tree, back in hole. Rescue essential.",
-        "Clove hitch: quick attachment to post/tree. Two loops over object. Easy to tie/untie but can slip under variable load.",
-        "Taut-line hitch: adjustable tension for guy lines and tarps. Slides to tighten, holds under load. Essential for shelters.",
-        "Figure-eight: stopper knot that won't jam. Used at rope ends to prevent slipping through. Basis for climbing knots.",
-        "Square/reef knot: joins two ropes of equal diameter. Right over left, then left over right. NOT for critical loads.",
-        "Sheet bend: joins two ropes of DIFFERENT diameter. More secure than square knot. Double sheet bend for slippery rope.",
-        "Prusik hitch: slides when unloaded, grips when loaded. Used to ascend rope or create adjustable anchors.",
-        "Trucker's hitch: 3:1 mechanical advantage for tightening lines. Ideal for securing loads, tarps, ridgelines.",
-    ],
     "Tools": [
         "Knife safety: cut away from body, keep sharp (dull knives slip). Use baton (striking stick) to split wood.",
         "No knife? Break rocks for sharp flakes. Flint, obsidian, quartz fracture into cutting edges. Strike at 30deg with hammerstone.",
