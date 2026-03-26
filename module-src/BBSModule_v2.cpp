@@ -1333,16 +1333,12 @@ void BBSModule::doWordleStart(const meshtastic_MeshPacket &req, BBSSession &sess
     }
 #endif // NRF52_SERIES
 
-    // Pick today's daily word — try external 12K dictionary, fall back to embedded
-#if defined(NRF52_SERIES) && !defined(BBS_LITE)
-    if (!wordlePickWordExt(day, session.wordleTarget)) {
-#endif
+    // Pick today's daily word from the 2000-word compiled dictionary
+    {
         const char *word = wordlePickWord(day);
         strncpy(session.wordleTarget, word, 5);
         session.wordleTarget[5] = '\0';
-#if defined(NRF52_SERIES) && !defined(BBS_LITE)
     }
-#endif
     session.wordleGuesses = 0;
     session.wordleDay = day;
     session.state = BBS_STATE_WORDLE;
@@ -1388,22 +1384,10 @@ ProcessMessage BBSModule::handleStateWordle(const meshtastic_MeshPacket &mp, BBS
         return ProcessMessage::STOP;
     }
 
-    // Validate against word list
-    {
-        bool valid = false;
-#if defined(NRF52_SERIES) && !defined(BBS_LITE)
-        // Full edition: try external 12K dictionary, fall back to accept-all
-        if (wordleExtDictAvailable())
-            valid = wordleIsValidExt(guess);
-        else
-            valid = wordleIsValid(guess);
-#else
-        valid = wordleIsValid(guess);
-#endif
-        if (!valid) {
-            sendReply(mp, "Not a valid word. Try again.");
-            return ProcessMessage::STOP;
-        }
+    // Validate against 2000-word bloom filter dictionary
+    if (!wordleIsValid(guess)) {
+        sendReply(mp, "Not a valid word. Try again.");
+        return ProcessMessage::STOP;
     }
 
     session.wordleGuesses++;

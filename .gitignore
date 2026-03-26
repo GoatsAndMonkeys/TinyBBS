@@ -1,4 +1,5 @@
 firmware/
+loader/.pio/
 .venv/
 .venv312/
 __pycache__/
