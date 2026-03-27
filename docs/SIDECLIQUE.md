@@ -26,14 +26,14 @@ No internet. No central server. No single point of failure.
 | Seq counter (per clique) | ✅ Done | `cliques_[c].mySeq++` on beacon |
 | Games (Wordle, Chess, Hack, RPG, Quest) | ✅ Done | All accessible from SideClique menu |
 | drawFrame (screen display) | ✅ Done | Clique count, member count, SOS/LOCATE indicator |
-| Gossip sync (vector clocks) | 🔲 Phase 2 | Beacon carries one seq; full multi-vector Phase 4 |
-| handleSyncReq / handleSyncData | 🔲 Phase 2 | Stubs only |
-| DM relay queue | 🔲 Phase 2 | Offline-target relay not yet implemented |
-| Bulletin board menu | 🔲 Phase 3 | `SC_STATE_BOARD` wired, `sendBulletinBoard()` stub |
-| Shared lists (CRDT) | 🔲 Phase 3 | Not started |
-| Rally points | 🔲 Phase 3 | Not started |
-| Dead drops | 🔲 Phase 3 | Not started |
-| Buzzer/LED for SOS + ALERT | 🔲 Phase 2 | NCP5623 RGB LED lib available in rak_wismeshtap |
+| Gossip sync (vector clocks) | ✅ Done | Beacon appends full sync vector; SYNC_REQ/SYNC_DATA implemented |
+| handleSyncReq / handleSyncData | ✅ Done | Full peer comparison and selective replay |
+| DM relay queue | ✅ Done | Ephemeral `SCRelayDM[8]`; 5-min forward window, 24h expiry |
+| Bulletin board menu | ✅ Done | `SC_STATE_BOARD`, `sendBulletinBoard()`, `SC_MSG_BULLETIN` |
+| Shared lists (CRDT) | 🔲 Phase 4 | Not started |
+| Rally points | 🔲 Phase 4 | Not started |
+| Dead drops | 🔲 Phase 4 | Not started |
+| Buzzer/LED for SOS + ALERT | ✅ Done | Non-blocking `startBuzz(n)`, 150ms toggle, `#ifdef PIN_BUZZER` guarded |
 | Battery prediction | 🔲 Phase 4 | Needs drain rate tracking |
 | Geo-fencing | 🔲 Phase 4 | Not started |
 
