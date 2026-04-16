@@ -1,0 +1,1291 @@
+{
+  "room_descriptions": [
+    {
+      "text": "It is automatically given to the Courier after killing Mr. House in the Lucky 38 control room at...",
+      "tone": "grim",
+      "source_game": "NV",
+      "location_type": "wasteland"
+    }
+  ],
+  "find_descriptions": [
+    {
+      "text": "The disk can be found on a dead Regulator on the stairs up from Arlington Cemetery North. It...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Found next to the Vault 77 jumpsuit in the slaver barracks of Paradise Falls.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Found on a dead raider (refid ) south of Vault 108, southeast of the Corvega factory. It does not...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Found in Vault 108's cloning labs, next to a skeleton leaning on an operating table.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Although it shows as a holotape, it is text, not audio, and the Pip-Boy refers to it as a note.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The note is given to the Lone Wanderer by Reilly in the Chop Shop during the quest Reilly's Rangers.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Angela and Diego are two paper notes .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The first note can be added to the Lone Wanderer's Pip-Boy at numerous opportunities, when...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Bryan's special key is a note .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "A note, added to the Lone Wanderer's Pip-Boy after passing a Speech check with Bryan Wilks, when...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Contact Report: \"Enclave\" is a note .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This note is added to the Lone Wanderer's Pip-Boy after reading the View External Contact Report...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The DCTA Metro map is an image note .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This note is added to the Lone Wanderer's Pip-Boy after downloading the metro map from a terminal.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Map can be downloaded from terminals found next to Protectron pods at Metro Central, Foggy Bottom...",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It can be found on the mainframe terminal in the sacrificial chamber from Vault 11.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "The holotape can be found on Paladin Matiz, a dead Brotherhood of Steel paladin on the REPCONN...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The note pays homage to Vladimir Nabokov's novel Lolita by saying \"House was orphaned at an early...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The note is not automatically added",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This note erases any negative NCR reputation the player may have earned up until the point of...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The note can be found on Tom Anderson during the quest The White Wash.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "It can be found on Big Sal. It is used to open his terminal and unlock the safe in his office. It...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Black Mountain prison password is a note .",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Camp Guardian daily log is a series of paper notes . They can be found scattered around the...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Listed below are the 11 note locations. Each collected note will cause a note to be added by...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Very close to the previous note, in an immediately adjacent bush",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "If the Courier pickpockets the note from Jessup's inventory or kills him before questioning him...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Pip-Boy 3000 Mark IV features minigames, which can be accessed if the Sole Survivor has found...",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The Advanced system notes are two holotapes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The tape can be found on Knight Varham's body during The Lost Patrol.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in the base game, whether or not an add-on is installed.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in Automatron.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in Far Harbor.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in the Vault-Tec Workshop.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in Nuka-World",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that are added via Creation Club content.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The note is set up to work with either Wire or Gabriel as the name of the Libertalia raider boss...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The bakery tickets are a series of ten paper notes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The tickets are found in and around Pinelli's Bakery.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Note 10 (ticket no. 65) sometimes can't be picked up and therefore not be read using normal...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The bathroom notes are a series of paper notes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Both notes are found at the Reeb Marina, on the bathroom's sink.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The note can be taken from Cedric Hopton if he is killed at the Third Rail.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The note can be found on all raiders at the East Boston Preparatory School.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle messages are both a collection of miscellaneous quests and a series of paper notes ....",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The breakroom notes are a series of paper notes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "They can be found at the Reeb Marina, on the kitchen counter.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    }
+  ],
+  "ambient_descriptions": [
+    {
+      "text": "Run Ticket Check Routine",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "View/Download Metro Map",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Anchorage Memorial facility terminal",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Average locked terminal, located on a table in the center of the Operations and Clinic room.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Initialize Water Management Systems",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Unlock Secure Medical Safe",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Terminal is located on the lobby's front desk.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "There are two of these Average locked terminals, located on tables in the Media Archive section.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Arlington Public Library terminal",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Terminal is located in the southwest of the Media Archive section.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This Average locked terminal is located in the same room as the Public Library terminal.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Top Stories -- January 11, 2077",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Commies Crushed - Alaska Liberated!",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Food Riots Rile Feds",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Top Stories -- June 3, 2072",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Development of Super Weapon Confirmed",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Top Stories -- July 27, 2052",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Pint-Sized Slasher: More than Myth?",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Most of these articles can also be seen on Fallout 3 loading screens:",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Average locked terminal in the reception area's hallway north on the local map, opens a door.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Easy locked terminal in the basement, in a large room with bookcases northeast on the local map....",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Article -- June 3, 2072",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Letter: Dr. Bloomfeld to Gen. Chase",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "G.N.R. Battle After-Action Report",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "General Robot Diagnostics -- Updated",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Notice: Reddin Funeral Canceled",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "All three terminals are found in the ring's south room",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "New Entry: Scribe Arthur Maxson",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Diary of Roger Maxson -- Vol. 1",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Diary of Roger Maxson -- Vol. 2",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Vault-Tec Personal Assignments",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Medical Storage Lock Override",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Important!: Squire Maxson Bailey Access",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Notice: Reddin Funeral Cancelled",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Story: The Guardians of Gillyfrond",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Poem: Song of the Lightman",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Squire Maxson Progress Report",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Sewer Management Access computer",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "For locations and transcripts please refer to the individual articles.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The transcript translates to \"CAEK > PIE\" in hexadecimal.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "If the above bug happens on the PC, use the following console commands to \"fix\" this: , , , . In...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The actual stash is in a refrigerator below the kitchen/recreation area, where there are a few...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Will show up on dead Regulators (e.g., killed inside Regulator HQ by albino radscorpions)...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The holotape was written by Joel Burgess, lead level designer of Fallout 3.Joel Burgess' Blog...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This holodisk is added to the Lone Wanderer's inventory after reading the 'View Agenda' entry on...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It is given to the Lone Wanderer by Beatrice Armstrong on their 10th birthday, during the quest...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Reilly's directions to Statesman Hotel",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "A Nice Day for a Right Wedding",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It is given to the Lone Wanderer by Bannon and starts the unmarked quest, Council Seat.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It is added to the Lone Wanderer's Pip-Boy after talking to one of C.J. Young's parents, Henry...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The Xs mark the following map locations starting from Canterbury Commons (Further NE X) then...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Should the Lone Wanderer act against Burke's wishes during The Power of the Atom quest (either by...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "If the Lone Wanderer enslaves a certain amount of people and sends them to Paradise Falls, it's...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "In the data section of the Pip-Boy, its name is Brass Lantern password",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The password spelt backwards reads \"Stahl.\"",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This Easy locked terminal is located on the counter inside the Reception room.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Very Hard locked desk terminal is located on the table against the south wall of the prison...",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Marcus made me type this",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Tabitha's journal is out of order, going from 3-7 then 1-2.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Average locked terminal is located on the desk.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Squad readiness reports terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Rifle Range Report (bad)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Rifle Range Report (good)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Grenade Range Report (bad)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Grenade Range Report (good)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Camp Golf mission parameters terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Delete Misfits Combat Patrol Mission",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Control Tower Access Log",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Chief fire officer terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Chief Fire Officer Report No. F1-218",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Broken NCR communications terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Activate Turret Defense System",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The central sewers terminal entries consist of an entry found on an Easy-locked terminal in the...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Upload Ralph's Sexbot Routine",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "New Canaan Branch Proposal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Gibson's shack terminal entries is an entry on the Comm station terminal in Gibson's shack in...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on the counter in the Goodsprings schoolhouse next to the Easy locked safe.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "If the safe has not been picked open:",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "If the safe has been picked open:",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Unlocks the Easy locked safe. This option is only displayed if the safe has not been picked open.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Easy locked terminal is located on the desk in Prospector Saloon's office.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Unlocks the Hard locked floor safe.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal can be located on a desk in the second floor office cubicles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located in the most southwest office on the first floor.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-mail from Dobson O'Gill",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on a desk in the middle of the first floor office cubicles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-mail from Alan Dalton",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on a desk in the northern section of the first floor office cubicles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-Mail from Jack Maynard",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-Mail from Jenny DeSoto",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-Mail from Alan Dalton",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on a desk in the cubicle in the southwest corner of the second floor. It...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-mail from Jenny DeSoto",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on the counter in the foyer.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Access Hidden Network Drive",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on the desk outside Anthony House's office on the second floor.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Average locked terminal is located on the desk in Anthony House's office.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "This suspicious terminal is cut.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "John Gonzalez wrote all the terminals for H&H Tools factory.Joshua Sawyer's tumblr answer",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Reading the corresponding terminal entry will end the quest Democracy Inaction.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Legion officials M. Scribonius Libo Drusus and M. Licinius Crassus are named after real...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Crassus' title is in broken Latin. The word \"Famulatus\" is in the wrong case",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Brotherhood scout report is a miscellaneous item obtained during the quest Still in the Dark.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "There are three tapes, numbered #1, #2 and #3, in the possession of three Brotherhood scouts.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 2: NCR has retaken the facility.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 3: NCR attacked the facility and all NCR troops were killed.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 3: Camp Forlorn Hope destroyed.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 4: Both camps destroyed.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Despite the manifest mentioning battle rifles in it, none that could be labeled as such can be...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is obtained by succeeding a 75 Barter skill check when talking to Cass to buyout Cassidy...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is added to the Courier's Pip-Boy inventory after accepting to investigate for Ranger Andy why...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "For locations and transcripts, please refer to the individual articles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The House Has Gone Bust!",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Mr. House reported that defense systems disarmed or destroyed 68 of the 77 incoming nuclear...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "When Caesar is informed that House is dead, he says that he already knows and states that he read...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is given to the Courier by an NCR trooper after completing Ring-a-Ding-Ding!, or after meeting...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is added to the Courier's Pip-Boy after reading entry 6 on Raul's terminal in the prison...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "West of Camp Guardian, going up to Guardian Peak, just before the first white fence, leaning...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Just past the first fence, in a bush",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Again in a bush, just past the second fence encountered going up",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "On the crude stairs just past the fourth bit of white fence going up",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Continuing up the stairs, at the top in a bush to the left near a jalapeño pepper plant",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "After crossing the first bridge:",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "West of Guardian Peak, stuck in a bush close to the ridge, near a broc flower just below the top...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Stuck in a bush, first to the right when passing the top bridge",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "On the stairs going to the radio/overlook",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "At the top of the stairs",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "By the chair at the top of the peak, near a Sunset Sarsaparilla crate.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Wang Dang Atomic Tango",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is carried by Jessup when the Courier meets him in the Boulder City ruins.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The password is given to the Courier by Veronica for her personal quest I Could Make You Care. It...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "I Could Make You Care",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "ArcNet Mail - Security Concerns",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "ArcNet Mail - Engine Core Accident",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - XMB Fuel Mixture 01",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - XMB Fuel Mixture 02",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - Deep Range Transmitter 01",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - Deep Range Transmitter 02",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 08-2075",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 09-2075",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 12-2075",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 03-2076",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 07-2076",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 11-2076",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 02-2077",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 03-2077",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 09-2077",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "About your Defense System",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "ArcNet Mail - Floor Safe",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Engine Core control terminal",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "IN: Hellfire Power Armor findings",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "OUT: Tesla Cannon location update",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "THE LeGeNd of ZEke- NO LOOKING",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "THE LeGeNd of ZEke- MOrE IdEas",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 155-H: Winter Holotape Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 155-H: Winter Informant Log",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 731-Tf: Gillespie Trafficking Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 866-Bo: MacMillan Bootlegging Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 972-Su: Black Suicide Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Walk the Freedom Trail",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "See the Treasures of Jamaica Plain",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Visit the Boston Public Library",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Fallout 4 holotape games are a collection of six holotape-based video games and Automatron.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Atomic Command, a game where the character controls a stationary anti-missile weapon, shooting at...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Captain Cosmos in \"Jangles' Big Day\", textures exist in the game's files for both the minigame's...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in the base game, whether or not an add-on is installed.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in Automatron.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in Far Harbor.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in Nuka-World.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that are added via Creation Club content.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Playing an audio holotape from a terminal might result in tape white noise remaining after moving...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Wilson Atomatoys corporate HQ, in a trashcan, next to the desk with the president's terminal.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "This game was published by Planned Diversion Programming in 2071.Pioneer Scout collector badge exam",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "San Francisco's Golden Gate Bridge",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "New Vegas' Fabulous New Vegas sign",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "South Dakota's Mount Rushmore",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Boston's Custom House Tower",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Washington, D.C.'s National Mall (Lincoln Memorial, Washington Monument, and the Capitol Building)",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "New York City's Statue of Liberty",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "In the center of an array of famous landmarks taken from around the nation, replicas of iconic...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "On PC/Console - Use the movement buttons, thumb stick, or arrow/directional keys to move your...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Atomic Command may also be played on the demo for the Pip-Boy mobile app",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The title and gameplay are a reference to the famous 1980 Atari arcade game Missile Command",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Although the game was created before the Great War, the Welcome to Fabulous Las Vegas sign is...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Given by Newton Oberly after talking to him at the start of A House Divided.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The holotape was recorded by Bonnie Tournquist and details her experiences as a nurse working at...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Carried by a raider or Triggerman in Easy City Downs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Password request (Archive) In order to access it, the quest Cambridge Polymer Labs must be...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "At a random location, guarded by a Brotherhood salvage team during the quest Appropriation.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Trapped for Days is located behind crater house, slightly east-northeast on the...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Predator Becomes Prey is located behind the Castle, not far from the...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Not Going Well is located near the lighthouse, south of the Wreck of the FMS...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Difficult to Kill is located behind Mahkra Fishpacking, northeast corner, across...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - X Marks the Spot is located by the Nahant Oceanological Society, on a tiny sand...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Trapped for Days",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Predator Becomes Prey",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Not Going Well",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Need a Hand",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Difficult to Kill",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - X Marks the Spot",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The fifth bottle message is a direct reference to a line from the 1988 action film Die Hard...",
+      "tone": "grim",
+      "source_game": "FO4"
+    }
+  ],
+  "npc_lines": [
+    {
+      "text": "It can be found on Ronald Curtis upon killing him during the side quest I Put a Spell on You. He...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Brotherhood of Steel mission holotapes are holotape . They can be found on the corpses of a...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is given to the Courier by Alice McLafferty during the quest You Can Depend on Me.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Grognak & the Ruby Ruins, a text-based role-playing game. You play as Grognak the Barbarian, seen...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Pipfall, a side-scrolling action-adventure game. You play as Vault Boy as he goes through the...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Zeta Invaders, a game where the character has to shoot space invaders. You play as a cannon that...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "On companion app/mobile device - Tap the screen where you want the missiles to go. This game does...",
+      "tone": "grim",
+      "source_game": "FO4"
+    }
+  ]
+}

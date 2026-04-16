@@ -1,0 +1,928 @@
+[
+  {
+    "name": "Ant mound",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Fire ant queen",
+      "Fire ants"
+    ],
+    "description": "The ant mound is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Ant mound"
+  },
+  {
+    "name": "Black Rock Cave",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Nightkin",
+      "Coyotes",
+      "Radscorpions"
+    ],
+    "description": "Black Rock Cave, also called Black Rock Cavern, is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Black Rock Cave"
+  },
+  {
+    "name": "Bloodborne Cave",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Night stalker",
+      "Legendary night stalker"
+    ],
+    "description": "Bloodborne Cave is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Bloodborne Cave"
+  },
+  {
+    "name": "Broc flower cave",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Giant rats",
+      "Rodents of unusual size"
+    ],
+    "description": "The broc flower cave is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Broc flower cave"
+  },
+  {
+    "name": "Boston mayoral shelter",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Deathclaws"
+    ],
+    "description": "The Boston mayoral shelter is a location in the Commonwealth in 2287, created to shelter the...",
+    "danger_level": 3,
+    "_wiki_title": "Boston mayoral shelter"
+  },
+  {
+    "name": "Agatha's house",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Agatha's house is a small, single room house in the Capital Wasteland in 2277.",
+    "danger_level": 1,
+    "_wiki_title": "Agatha's house"
+  },
+  {
+    "name": "Andale",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Andale is a location in the southern area of the Capital Wasteland in 2277.",
+    "danger_level": 1,
+    "_wiki_title": "Andale"
+  },
+  {
+    "name": "Bradley's shack",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "Bradley's shack is a location in the Mojave Wasteland .",
+    "danger_level": 1,
+    "_wiki_title": "Bradley's shack"
+  },
+  {
+    "name": "Brewer's beer bootlegging",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Cazador"
+    ],
+    "description": "Brewer's beer bootlegging is a location in the Mojave Wasteland .",
+    "danger_level": 1,
+    "_wiki_title": "Brewer's beer bootlegging"
+  },
+  {
+    "name": "Covenant",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "Covenant is a location and possible Commonwealth settlement in 2287.",
+    "danger_level": 1,
+    "_wiki_title": "Covenant"
+  },
+  {
+    "name": "188 Trading Post",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The 188 Trading Post is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "188 Trading Post"
+  },
+  {
+    "name": "Abandoned BoS bunker",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The abandoned BoS bunker, officially Bunker 13,Abandoned BoS bunker terminal entries; Terminal...",
+    "danger_level": 2,
+    "_wiki_title": "Abandoned BoS bunker"
+  },
+  {
+    "name": "Arroyo",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Arroyo is a major NCR city in northern New California.",
+    "danger_level": 2,
+    "_wiki_title": "Arroyo (city)"
+  },
+  {
+    "name": "Canterbury Commons",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Brahmin",
+      "Giant ants"
+    ],
+    "description": "Canterbury Commons is a trading settlement located on the eastern edge of the Capital...",
+    "danger_level": 2,
+    "_wiki_title": "Canterbury Commons"
+  },
+  {
+    "name": "Boat to Dry Wells",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The boat to Dry Wells is a location in the Mojave Wasteland .",
+    "danger_level": 3,
+    "_wiki_title": "Boat to Dry Wells"
+  },
+  {
+    "name": "Combat Zone",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "The Combat Zone is a location in the Theater District of Boston in 2287.",
+    "danger_level": 3,
+    "_wiki_title": "Combat Zone"
+  },
+  {
+    "name": "Aerotech Office Park",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The Aerotech Office Park is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Aerotech Office Park"
+  },
+  {
+    "name": "Allied Technologies offices",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Giant ants"
+    ],
+    "description": "The Allied Technologies offices are a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Allied Technologies offices"
+  },
+  {
+    "name": "Anacostia Crossing",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Anacostia Crossing is an area of metro Washington, D.C.",
+    "danger_level": 2,
+    "_wiki_title": "Anacostia Crossing"
+  },
+  {
+    "name": "Anchorage Memorial",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Mirelurks"
+    ],
+    "description": "The Anchorage Memorial is a bronze monument located in the southeast quadrant of the Capital...",
+    "danger_level": 2,
+    "_wiki_title": "Anchorage Memorial"
+  },
+  {
+    "name": "Andrew's clinic",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Andrew's clinic is the primary source of medical care for the residents of the Courtyard.",
+    "danger_level": 2,
+    "_wiki_title": "Andrew's clinic"
+  },
+  {
+    "name": "Arefu",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Brahmin"
+    ],
+    "description": "Arefu is a location in the Capital Wasteland in Fallout 3.",
+    "danger_level": 2,
+    "_wiki_title": "Arefu"
+  },
+  {
+    "name": "Arlington Cemetery",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Arlington Cemetery is most of what remains of the Arlington district, including Arlington...",
+    "danger_level": 2,
+    "_wiki_title": "Arlington Cemetery"
+  },
+  {
+    "name": "Arlington Wasteland Metro",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral ghouls"
+    ],
+    "description": "Arlington/Wasteland Metro, also known as FDR Island Metro,DCTA Metro map and in the Pip-Boy as...",
+    "danger_level": 2,
+    "_wiki_title": "Arlington Wasteland Metro"
+  },
+  {
+    "name": "Atom Cats garage",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "The Atom Cats garage is a location appearing in the Commonwealth in 2287.Fallout 4 Vault...",
+    "danger_level": 2,
+    "_wiki_title": "Atom Cats garage"
+  },
+  {
+    "name": "Bedford Station",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral ghouls"
+    ],
+    "description": "Bedford Station is a location in the Commonwealth in 2287.",
+    "danger_level": 2,
+    "_wiki_title": "Bedford Station"
+  },
+  {
+    "name": "Big Circle",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Big Circle is the name given to a caravan route that crosses the northern region of New...",
+    "danger_level": 2,
+    "_wiki_title": "Big Circle"
+  },
+  {
+    "name": "Big John's Salvage",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super mutants",
+      "Mutant hounds"
+    ],
+    "description": "Big John's Salvage is a location in the Commonwealth in 2287.",
+    "danger_level": 2,
+    "_wiki_title": "Big John's Salvage"
+  },
+  {
+    "name": "Blue Paradise Vacation Rentals",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Lakelurks"
+    ],
+    "description": "Blue Paradise Vacation Rentals is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Blue Paradise Vacation Rentals"
+  },
+  {
+    "name": "Bob's Iguana Bits",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Bob's Iguana Bits is a food stand operated by Bob Frazier in the Hub in Fallout.",
+    "danger_level": 2,
+    "_wiki_title": "Bob's Iguana Bits"
+  },
+  {
+    "name": "Boneyard",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "The Boneyard (also known as the Angel's Boneyard or L.A.",
+    "danger_level": 2,
+    "_wiki_title": "Boneyard (Fallout)"
+  },
+  {
+    "name": "Bonnie Springs",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Cazador",
+      "Blind deathclaw"
+    ],
+    "description": "Bonnie Springs is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Bonnie Springs"
+  },
+  {
+    "name": "Boston Police rationing site",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mole rats",
+      "Radroaches",
+      "Radstags"
+    ],
+    "description": "The Boston Police rationing site is a location in the Commonwealth in 2287.",
+    "danger_level": 2,
+    "_wiki_title": "Boston Police rationing site"
+  },
+  {
+    "name": "Boulder Beach Campground",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Lakelurk"
+    ],
+    "description": "The Boulder Beach Campground is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "Boulder Beach Campground"
+  },
+  {
+    "name": "Breakheart Banks",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super mutants",
+      "Mutant hound"
+    ],
+    "description": "Breakheart Banks is a location in the Commonwealth in 2287.",
+    "danger_level": 2,
+    "_wiki_title": "Breakheart Banks"
+  },
+  {
+    "name": "Cal's gun shop",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Cal's gun shop is a shop in the PMV Valdez owned by Cal in 2241.",
+    "danger_level": 2,
+    "_wiki_title": "Cal's gun shop"
+  },
+  {
+    "name": "Cavern",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "creatures",
+      "CVGENENC.H",
+      "Geckos",
+      "Radscorpions"
+    ],
+    "description": "Cavern is a random encounter in Fallout 2.",
+    "danger_level": 2,
+    "_wiki_title": "Cavern (random encounter)"
+  },
+  {
+    "name": "Charles View Amphitheater",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mirelurks"
+    ],
+    "description": "The Charles View Amphitheater is a location in the Esplanade neighborhood of Boston in 2287.",
+    "danger_level": 2,
+    "_wiki_title": "Charles View Amphitheater"
+  },
+  {
+    "name": "Council Hall",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Council Hall is the government district of the capital of the New California Republic.",
+    "danger_level": 2,
+    "_wiki_title": "Council Hall"
+  },
+  {
+    "name": "Den slave run",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Den slave run is a location in Fallout 2, in the vicinity of the Den.",
+    "danger_level": 2,
+    "_wiki_title": "Den slave run"
+  },
+  {
+    "name": "Fake Vault 13",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Fake Vault 13 is a small cave north-northwest of New California Republic in 2241.",
+    "danger_level": 2,
+    "_wiki_title": "Fake Vault 13"
+  },
+  {
+    "name": "Glendale",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Glendale is a mentioned-only location .",
+    "danger_level": 2,
+    "_wiki_title": "Glendale"
+  },
+  {
+    "name": "Golgotha",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Coffin Willie"
+    ],
+    "description": "Golgotha is a graveyard located on the outskirts of New Reno .",
+    "danger_level": 2,
+    "_wiki_title": "Golgotha"
+  },
+  {
+    "name": "Grisham's house",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Grisham",
+      "Miria",
+      "Davin"
+    ],
+    "description": "Grisham's house is the home for father Grisham, daughter Miria, and son Davin in Modoc Main...",
+    "danger_level": 2,
+    "_wiki_title": "Grisham's house"
+  },
+  {
+    "name": "Hollywood",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Hollywood was a municipality of Los Angeles that was known for its celebrities and film...",
+    "danger_level": 2,
+    "_wiki_title": "Hollywood"
+  },
+  {
+    "name": "Hollywood Hills",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Hollywood Hills was a pre-War residential neighborhood in Los Angeles, California which...",
+    "danger_level": 2,
+    "_wiki_title": "Hollywood Hills"
+  },
+  {
+    "name": "Hub",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "The Hub is a major location .",
+    "danger_level": 2,
+    "_wiki_title": "Hub (Fallout)"
+  },
+  {
+    "name": "Jenna's general store",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Jenna's general store is a store in the PMV Valdez owned by Jenna in 2241.",
+    "danger_level": 2,
+    "_wiki_title": "Jenna's general store"
+  },
+  {
+    "name": "Los Angeles",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Los Angeles, abbreviated as LA, was one of the largest cities in the United States.",
+    "danger_level": 2,
+    "_wiki_title": "Los Angeles"
+  },
+  {
+    "name": "Maintenance center",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The maintenance center, currently staffed by Valerie, is Vault City's premier workshop...",
+    "danger_level": 2,
+    "_wiki_title": "Maintenance center"
+  },
+  {
+    "name": "Mojave Wasteland",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The Mojave Wasteland is the region based on the pre-War Mojave Desert, spanning large portions...",
+    "danger_level": 2,
+    "_wiki_title": "Mojave Wasteland"
+  },
+  {
+    "name": "Molerat Mambo",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Molerat Mambo is a blood sport gambling establishment in the Redding mining camp where mole...",
+    "danger_level": 2,
+    "_wiki_title": "Molerat Mambo"
+  },
+  {
+    "name": "NCR Rangers headquarters",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The NCR Rangers HQ is a location in New California Republic's capital.",
+    "danger_level": 2,
+    "_wiki_title": "NCR Rangers headquarters"
+  },
+  {
+    "name": "New California",
+    "type": "wasteland",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "New California,Steve: \"{103}{}{Hello and welcome to Vault City, the best city in New...",
+    "danger_level": 2,
+    "_wiki_title": "New California"
+  },
+  {
+    "name": "Pacific Ocean",
+    "type": "wasteland",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Pacific Ocean, referred to by some tribals as the Great Salt Water,Chosen One...",
+    "danger_level": 2,
+    "_wiki_title": "Pacific Ocean"
+  },
+  {
+    "name": "Presidential Mansion",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Presidential Mansion is a location within the Council Hall in NCR town.",
+    "danger_level": 2,
+    "_wiki_title": "Presidential Mansion"
+  },
+  {
+    "name": "Radscorpion cave",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "The radscorpion cave is a location in Fallout, only reachable by talking to Seth, from Shady...",
+    "danger_level": 2,
+    "_wiki_title": "Radscorpion cave (Fallout)"
+  },
+  {
+    "name": "The Basincreek Building",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Giant soldier ants",
+      "Giant worker ants",
+      "Radroaches"
+    ],
+    "description": "The Basincreek Building is a location in the Mojave Wasteland .",
+    "danger_level": 2,
+    "_wiki_title": "The Basincreek Building"
+  },
+  {
+    "name": "Wasteland",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "The wasteland, or simply the wastes, is the name generally given to the landscape of the Earth...",
+    "danger_level": 2,
+    "_wiki_title": "Wasteland"
+  },
+  {
+    "name": "Abandoned car fort",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Mirelurks"
+    ],
+    "description": "The abandoned car fort is a small makeshift fort in the Capital Wasteland in 2277.",
+    "danger_level": 3,
+    "_wiki_title": "Abandoned car fort"
+  },
+  {
+    "name": "Abernathy farm",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Clarabell",
+      "Maisie"
+    ],
+    "description": "Abernathy farm is a location and potential settlement in the Commonwealth in 2287.",
+    "danger_level": 3,
+    "_wiki_title": "Abernathy farm"
+  },
+  {
+    "name": "Alexandria Arms",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "The Alexandria Arms is a location in the Capital Wasteland in 2277, near Arlington Library.",
+    "danger_level": 3,
+    "_wiki_title": "Alexandria Arms"
+  },
+  {
+    "name": "Anacostia Crossing Station",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Anacostia Crossing Station is a Metro station and the southernmost point stop on the Red Line.",
+    "danger_level": 3,
+    "_wiki_title": "Anacostia Crossing Station"
+  },
+  {
+    "name": "ArcJet Systems",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "ArcJet Systems is a location in the Commonwealth .",
+    "danger_level": 3,
+    "_wiki_title": "ArcJet Systems"
+  },
+  {
+    "name": "Arlington Library",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Radroaches"
+    ],
+    "description": "The Arlington Public Library,Arlington Library terminal entries; Check-In terminal officially...",
+    "danger_level": 3,
+    "_wiki_title": "Arlington Library"
+  },
+  {
+    "name": "Beantown Brewery",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Radroaches"
+    ],
+    "description": "The Beantown Brewery is a location in the Commonwealth in 2287.",
+    "danger_level": 3,
+    "_wiki_title": "Beantown Brewery"
+  },
+  {
+    "name": "Bethesda ruins",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral ghouls"
+    ],
+    "description": "The Bethesda ruins are located northwest of Washington, D.C.",
+    "danger_level": 3,
+    "_wiki_title": "Bethesda ruins"
+  },
+  {
+    "name": "Capital Wasteland",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "The Capital Wasteland is a loosely defined geographic region, spanning areas of Virginia...",
+    "danger_level": 3,
+    "_wiki_title": "Capital Wasteland"
+  },
+  {
+    "name": "Chestnut Hillock Reservoir",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Bloatflies",
+      "Bloodbugs",
+      "Brahmin"
+    ],
+    "description": "The Chestnut Hillock reservoir is a lake in the Commonwealth in 2287.",
+    "danger_level": 3,
+    "_wiki_title": "Chestnut Hillock Reservoir"
+  },
+  {
+    "name": "Coast Guard pier",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mutant hounds",
+      "Super mutants"
+    ],
+    "description": "The Coast Guard pier, officially the US Coast Guard Charles River Station,Coast Guard pier...",
+    "danger_level": 3,
+    "_wiki_title": "Coast Guard pier"
+  },
+  {
+    "name": "Coastal cottage",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mirelurks",
+      "mirelurk queen"
+    ],
+    "description": "The coastal cottage is a location and a possible settlement in the Commonwealth in 2287.",
+    "danger_level": 3,
+    "_wiki_title": "Coastal cottage"
+  },
+  {
+    "name": "County crossing",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "County crossing is a location and settlement in the Commonwealth in 2287.",
+    "danger_level": 3,
+    "_wiki_title": "County crossing"
+  },
+  {
+    "name": "Sierra Nevada",
+    "type": "wasteland",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Sierra Nevadas are a mountain range in the former American state of California.",
+    "danger_level": 3,
+    "_wiki_title": "Sierra Nevada"
+  },
+  {
+    "name": "The Commonwealth",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "The Commonwealth is a geographic region on the post-War North American continent, largely...",
+    "danger_level": 3,
+    "_wiki_title": "The Commonwealth"
+  },
+  {
+    "name": "Vault 12",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Glowing one"
+    ],
+    "description": "Vault 12 is one of the Vaults constructed by the Vault-Tec Corporation.",
+    "danger_level": 3,
+    "_wiki_title": "Vault 12"
+  },
+  {
+    "name": "Adytum",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Adytum, later New Adytum,Adytum citizen: \"{119}{}{Welcome to the New Adytum.}\"(Adytum...",
+    "danger_level": 4,
+    "_wiki_title": "Adytum"
+  }
+]
