@@ -32,6 +32,22 @@ MAGIC_ITEMS     = 0x4954454D  # "ITEM"
 MAGIC_LOCATIONS = 0x4C4F4341  # "LOCA"
 MAGIC_FLAVOR    = 0x464C4156  # "FLAV"
 
+# Pool limits — string offsets in entries are uint16 (max 65535).
+# Keep pool per section under this threshold.
+MAX_POOL_BYTES = 63000
+# Soft caps: best entries win, by rarity/danger sort.
+MAX_ITEMS      = 700
+MAX_LOCATIONS  = 700
+DESC_CAP       = 60  # truncate descriptions at this many chars
+
+
+def cap_str(s: str, limit: int = DESC_CAP) -> str:
+    """Truncate s to at most `limit` chars at a word boundary."""
+    if not s or len(s) <= limit:
+        return s
+    cut = s[:limit].rsplit(' ', 1)[0].rstrip(',;:')
+    return cut + '...'
+
 # ─── String Pool ──────────────────────────────────────────────────────────────
 
 class StringPool:
@@ -196,12 +212,16 @@ def build_items():
     with open(DATA_DIR / "items.json") as f:
         items = json.load(f)
 
+    # Best items first: rarity desc, then value desc
+    items.sort(key=lambda x: (-x.get('rarity', 1), -x.get('value', 0)))
+    items = items[:MAX_ITEMS]
+
     pool = StringPool()
     entries = bytearray()
 
     for item in items:
         name_off = pool.add(item["name"])
-        desc_off = pool.add(item.get("description", ""))
+        desc_off = pool.add(cap_str(item.get("description", "")))
         effect_off = pool.add(item.get("damage", ""))
         game_mask = encode_game_sources(item.get("game_source", []))
         item_type = ITEM_TYPE_MAP.get(item.get("type", "junk"), 3)
@@ -251,12 +271,22 @@ def build_locations():
     with open(DATA_DIR / "locations.json") as f:
         locations = json.load(f)
 
+    # Best locations first: non-wasteland types first, then danger desc, then name
+    LOC_TYPE_PRIORITY = {"vault": 0, "military": 1, "raider_camp": 2,
+                         "ghoul_ruin": 3, "cave": 4, "town": 5, "wasteland": 6}
+    locations.sort(key=lambda x: (
+        LOC_TYPE_PRIORITY.get(x.get('type', 'wasteland'), 6),
+        -x.get('danger_level', 1),
+        x.get('name', '')
+    ))
+    locations = locations[:MAX_LOCATIONS]
+
     pool = StringPool()
     entries = bytearray()
 
     for loc in locations:
         name_off = pool.add(loc["name"])
-        desc_off = pool.add(loc.get("description", ""))
+        desc_off = pool.add(cap_str(loc.get("description", "")))
         game_mask = encode_game_sources(loc.get("game_source", []))
         loc_type = LOCATION_TYPE_MAP.get(loc.get("type", "wasteland"), 1)
         danger = loc.get("danger_level", 1)
@@ -324,14 +354,16 @@ def build_flavor():
     pool = StringPool()
     entries = bytearray()
 
-    rooms = flavor.get("room_descriptions", [])
-    finds = flavor.get("find_descriptions", [])
-    ambients = flavor.get("ambient_descriptions", [])
-    npcs = flavor.get("npc_lines", [])
+    # Cap per-section counts so total pool stays under uint16 limit.
+    # Total entries capped at ~900; text capped at DESC_CAP chars.
+    rooms    = flavor.get("room_descriptions", [])[:100]
+    finds    = flavor.get("find_descriptions", [])[:250]
+    ambients = flavor.get("ambient_descriptions", [])[:500]
+    npcs     = flavor.get("npc_lines", [])[:100]
 
     # Room entries (6 bytes each)
     for r in rooms:
-        text_off = pool.add(r["text"])
+        text_off = pool.add(cap_str(r["text"], 100))
         loc_type = LOCATION_TYPE_MAP.get(r.get("location_type", "wasteland"), 1)
         tone = TONE_MAP.get(r.get("tone", "grim"), 0)
         game_mask = GAME_MAP.get(r.get("source_game", ""), 0)
@@ -339,19 +371,19 @@ def build_flavor():
 
     # Find entries (4 bytes each)
     for f_entry in finds:
-        text_off = pool.add(f_entry["text"])
+        text_off = pool.add(cap_str(f_entry["text"], 100))
         tone = TONE_MAP.get(f_entry.get("tone", "grim"), 0)
         entries.extend(struct.pack('<H B x', text_off, tone))
 
     # Ambient entries (4 bytes each)
     for a in ambients:
-        text_off = pool.add(a["text"])
+        text_off = pool.add(cap_str(a["text"], 100))
         tone = TONE_MAP.get(a.get("tone", "grim"), 0)
         entries.extend(struct.pack('<H B x', text_off, tone))
 
     # NPC entries (6 bytes each)
     for n in npcs:
-        text_off = pool.add(n["text"])
+        text_off = pool.add(cap_str(n["text"], 100))
         tone = TONE_MAP.get(n.get("tone", "grim"), 0)
         game_mask = GAME_MAP.get(n.get("source_game", ""), 0)
         entries.extend(struct.pack('<H BB xx', text_off, tone, game_mask))
