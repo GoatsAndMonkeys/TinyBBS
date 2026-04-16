@@ -1,0 +1,1720 @@
+[
+  {
+    "name": "Ghoul crazy",
+    "game_source": [
+      "FO2"
+    ],
+    "faction": "ghoul",
+    "hp_min": 39,
+    "hp_max": 66,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 27,
+    "loot_table": [],
+    "description": "Ghoul crazies or feral ghouls are creatures .",
+    "difficulty": 1,
+    "_wiki_title": "Ghoul crazy"
+  },
+  {
+    "name": "Glowing one",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "mutant",
+    "hp_min": 45,
+    "hp_max": 75,
+    "damage_min": 2,
+    "damage_max": 3,
+    "defense_rating": 0,
+    "xp_reward": 34,
+    "loot_table": [],
+    "description": "Glowing ones are creatures in Fallout.",
+    "difficulty": 1,
+    "_wiki_title": "Glowing one (Fallout)"
+  },
+  {
+    "name": "House cat",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 18,
+    "hp_max": 31,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 17,
+    "loot_table": [
+      {
+        "item": "Cat meat",
+        "weight": 50
+      }
+    ],
+    "description": "House cats are creatures found in the Commonwealth, on the Island, and in Nuka-World in 2287.",
+    "difficulty": 1,
+    "_wiki_title": "House cat"
+  },
+  {
+    "name": "Mantis",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 15,
+    "hp_max": 37,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 19,
+    "loot_table": [],
+    "description": "The mantis is a mutated creature found in Fallout.",
+    "difficulty": 1,
+    "_wiki_title": "Mantis (Fallout)"
+  },
+  {
+    "name": "Mindless ghoul",
+    "game_source": [
+      "FO1"
+    ],
+    "faction": "ghoul",
+    "hp_min": 31,
+    "hp_max": 52,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 23,
+    "loot_table": [],
+    "description": "Mindless ghouls are creatures encountered in Necropolis .",
+    "difficulty": 1,
+    "_wiki_title": "Mindless ghoul"
+  },
+  {
+    "name": "Pig rat",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 11,
+    "hp_max": 32,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 17,
+    "loot_table": [],
+    "description": "Pig rats are creatures in Fallout, described as being in between the smaller giant rat and...",
+    "difficulty": 1,
+    "_wiki_title": "Pig rat (Fallout)"
+  },
+  {
+    "name": "Rad chicken",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 22,
+    "hp_max": 37,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 19,
+    "loot_table": [
+      {
+        "item": "Chicken thigh",
+        "weight": 50
+      },
+      {
+        "item": "Junk",
+        "weight": 15
+      }
+    ],
+    "description": "Rad chickens are creatures found on the Island in the Fallout 4 add-on Far Harbor.",
+    "difficulty": 1,
+    "_wiki_title": "Rad chicken"
+  },
+  {
+    "name": "Rad rabbit",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 22,
+    "hp_max": 37,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 19,
+    "loot_table": [
+      {
+        "item": "Rabbit leg",
+        "weight": 50
+      }
+    ],
+    "description": "Rad rabbits are creatures that can be found on the Island in 2287.",
+    "difficulty": 1,
+    "_wiki_title": "Rad rabbit"
+  },
+  {
+    "name": "Radgull",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 1,
+    "hp_max": 2,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 10,
+    "loot_table": [],
+    "description": "Radgulls are birds found in the Commonwealth and the Island in 2287.",
+    "difficulty": 1,
+    "_wiki_title": "Radgull"
+  },
+  {
+    "name": "Radroach",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 3,
+    "hp_max": 31,
+    "damage_min": 2,
+    "damage_max": 6,
+    "defense_rating": 0,
+    "xp_reward": 33,
+    "loot_table": [
+      {
+        "item": "Radroach meat",
+        "weight": 50
+      },
+      {
+        "item": "Legendary weapon",
+        "weight": 50
+      }
+    ],
+    "description": "Radroaches are creatures found in the Capital Wasteland in 2277.",
+    "difficulty": 1,
+    "_wiki_title": "Radroach (Fallout 3)"
+  },
+  {
+    "name": "Rat",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 15,
+    "hp_max": 25,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 15,
+    "loot_table": [],
+    "description": "Rats are creatures found in New California.",
+    "difficulty": 1,
+    "_wiki_title": "Rat (Fallout)"
+  },
+  {
+    "name": "Raven",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 4,
+    "hp_max": 7,
+    "damage_min": 10,
+    "damage_max": 19,
+    "defense_rating": 0,
+    "xp_reward": 78,
+    "loot_table": [],
+    "description": "Ravens are creatures found in the Mojave Wasteland in 2281.",
+    "difficulty": 1,
+    "_wiki_title": "Raven"
+  },
+  {
+    "name": "Super mutant guard",
+    "game_source": [
+      "FO1"
+    ],
+    "faction": "mutant",
+    "hp_min": 37,
+    "hp_max": 62,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 26,
+    "loot_table": [],
+    "description": "The super mutant guards are guards found in the Mariposa Military Base in 2161, tasked with...",
+    "difficulty": 1,
+    "_wiki_title": "Super mutant guard"
+  },
+  {
+    "name": "Ant",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 187,
+    "hp_max": 312,
+    "damage_min": 8,
+    "damage_max": 15,
+    "defense_rating": 0,
+    "xp_reward": 153,
+    "loot_table": [
+      {
+        "item": "Ant meat",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear material",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      }
+    ],
+    "description": "Ants are creatures that appear in Nuka-World in 2287.",
+    "difficulty": 2,
+    "_wiki_title": "Ant (Nuka-World)"
+  },
+  {
+    "name": "Bark scorpion",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 15,
+    "hp_max": 25,
+    "damage_min": 17,
+    "damage_max": 32,
+    "defense_rating": 0,
+    "xp_reward": 135,
+    "loot_table": [
+      {
+        "item": "Bark scorpion poison gland",
+        "weight": 50
+      }
+    ],
+    "description": "Bark scorpions are creatures found in the Mojave Wasteland in 2281.",
+    "difficulty": 2,
+    "_wiki_title": "Bark scorpion"
+  },
+  {
+    "name": "Bloodworm",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 172,
+    "hp_max": 287,
+    "damage_min": 7,
+    "damage_max": 14,
+    "defense_rating": 0,
+    "xp_reward": 142,
+    "loot_table": [
+      {
+        "item": "Bloodworm meat",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear material",
+        "weight": 50
+      }
+    ],
+    "description": "Bloodworms are creatures encountered .",
+    "difficulty": 2,
+    "_wiki_title": "Bloodworm"
+  },
+  {
+    "name": "Brahmin",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 30,
+    "hp_max": 287,
+    "damage_min": 1,
+    "damage_max": 14,
+    "defense_rating": 10,
+    "xp_reward": 142,
+    "loot_table": [
+      {
+        "item": "Brahmin steak",
+        "weight": 50
+      },
+      {
+        "item": "Brahmin meat",
+        "weight": 50
+      },
+      {
+        "item": "Brahmin hide",
+        "weight": 50
+      }
+    ],
+    "description": "Brahmin are creatures found in New California in 2161.",
+    "difficulty": 2,
+    "_wiki_title": "Brahmin (Fallout)"
+  },
+  {
+    "name": "Coyote",
+    "game_source": [
+      "FO1",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 13,
+    "hp_max": 75,
+    "damage_min": 1,
+    "damage_max": 37,
+    "defense_rating": 0,
+    "xp_reward": 170,
+    "loot_table": [
+      {
+        "item": "Coyote meat",
+        "weight": 50
+      },
+      {
+        "item": "Coyote hide",
+        "weight": 50
+      }
+    ],
+    "description": "Coyotes are animals commonly found in New California in 2161.",
+    "difficulty": 2,
+    "_wiki_title": "Coyote (Fallout)"
+  },
+  {
+    "name": "Cyberdog",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 56,
+    "hp_max": 93,
+    "damage_min": 28,
+    "damage_max": 52,
+    "defense_rating": 0,
+    "xp_reward": 235,
+    "loot_table": [
+      {
+        "item": "Dog hide",
+        "weight": 50
+      },
+      {
+        "item": "Dog meat",
+        "weight": 50
+      },
+      {
+        "item": "Energy cell",
+        "weight": 50
+      }
+    ],
+    "description": "Cyberdogs, also spelled as cyber dogs, are creatures found in the Mojave Wasteland and in Big...",
+    "difficulty": 2,
+    "_wiki_title": "Cyberdog (Fallout: New Vegas)"
+  },
+  {
+    "name": "Floater",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "mutant",
+    "hp_min": 56,
+    "hp_max": 250,
+    "damage_min": 2,
+    "damage_max": 13,
+    "defense_rating": 0,
+    "xp_reward": 127,
+    "loot_table": [],
+    "description": "Floaters are mutated creatures in Fallout.",
+    "difficulty": 2,
+    "_wiki_title": "Floater (Fallout)"
+  },
+  {
+    "name": "Gazelle",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 176,
+    "hp_max": 293,
+    "damage_min": 7,
+    "damage_max": 14,
+    "defense_rating": 10,
+    "xp_reward": 143,
+    "loot_table": [
+      {
+        "item": "Gazelle meat",
+        "weight": 50
+      },
+      {
+        "item": "Gazelle hide",
+        "weight": 50
+      }
+    ],
+    "description": "Gazelles are creatures found in the Nuka-World amusement park .",
+    "difficulty": 2,
+    "_wiki_title": "Gazelle"
+  },
+  {
+    "name": "Wanamingo",
+    "game_source": [
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 165,
+    "hp_max": 275,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 90,
+    "loot_table": [],
+    "description": "Wanamingos, also referred to as aliens or alien things,OBJ DUDE.MSG (Fallout 2): \"{1485}{}{A...",
+    "difficulty": 2,
+    "_wiki_title": "Wanamingo (Fallout 2)"
+  },
+  {
+    "name": "Alien",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 37,
+    "hp_max": 500,
+    "damage_min": 3,
+    "damage_max": 26,
+    "defense_rating": 50,
+    "xp_reward": 254,
+    "loot_table": [
+      {
+        "item": "Alien atomizer",
+        "weight": 50
+      },
+      {
+        "item": "Alien disintegrator",
+        "weight": 50
+      },
+      {
+        "item": "Alien power module",
+        "weight": 50
+      }
+    ],
+    "description": "Aliens or Zetans are creatures found aboard Mothership Zeta in 2277.",
+    "difficulty": 3,
+    "_wiki_title": "Alien (Fallout 3)"
+  },
+  {
+    "name": "Bighorner",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 90,
+    "hp_max": 150,
+    "damage_min": 31,
+    "damage_max": 58,
+    "defense_rating": 0,
+    "xp_reward": 277,
+    "loot_table": [
+      {
+        "item": "Bighorner meat",
+        "weight": 50
+      }
+    ],
+    "description": "Bighorners are creatures found in the Mojave Wasteland, and Zion Canyon in 2281.",
+    "difficulty": 3,
+    "_wiki_title": "Bighorner"
+  },
+  {
+    "name": "Brahmiluff",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 311,
+    "hp_max": 518,
+    "damage_min": 14,
+    "damage_max": 26,
+    "defense_rating": 10,
+    "xp_reward": 259,
+    "loot_table": [
+      {
+        "item": "Brahmin meat",
+        "weight": 50
+      },
+      {
+        "item": "Brahmin hide",
+        "weight": 50
+      }
+    ],
+    "description": "Brahmiluffs are creatures found in the Nuka-World amusement park in 2287.",
+    "difficulty": 3,
+    "_wiki_title": "Brahmiluff"
+  },
+  {
+    "name": "Centaur",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV"
+    ],
+    "faction": "mutant",
+    "hp_min": 75,
+    "hp_max": 275,
+    "damage_min": 4,
+    "damage_max": 91,
+    "defense_rating": 0,
+    "xp_reward": 446,
+    "loot_table": [
+      {
+        "item": "Bottle caps",
+        "weight": 50
+      },
+      {
+        "item": "Consumables",
+        "weight": 50
+      },
+      {
+        "item": "Miscellaneous items",
+        "weight": 50
+      }
+    ],
+    "description": "Centaurs are mutated creatures in Fallout.",
+    "difficulty": 3,
+    "_wiki_title": "Centaur (Fallout)"
+  },
+  {
+    "name": "Dog",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 10,
+    "hp_max": 262,
+    "damage_min": 1,
+    "damage_max": 65,
+    "defense_rating": 30,
+    "xp_reward": 301,
+    "loot_table": [
+      {
+        "item": "Dog meat",
+        "weight": 50
+      },
+      {
+        "item": "Dog hide",
+        "weight": 50
+      },
+      {
+        "item": "Mongrel dog meat",
+        "weight": 50
+      }
+    ],
+    "description": "Dogs are animals commonly found across New California in Fallout.",
+    "difficulty": 3,
+    "_wiki_title": "Dog (Fallout)"
+  },
+  {
+    "name": "Giant mantis",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 90,
+    "hp_max": 150,
+    "damage_min": 77,
+    "damage_max": 143,
+    "defense_rating": 0,
+    "xp_reward": 617,
+    "loot_table": [
+      {
+        "item": "Mantis foreleg",
+        "weight": 50
+      }
+    ],
+    "description": "Giant mantises (Mantis religiosa)Vault 22 terminal entries; Terminal, Species 2 are mutated...",
+    "difficulty": 3,
+    "_wiki_title": "Giant mantis (Fallout: New Vegas)"
+  },
+  {
+    "name": "Giant rat",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "robot",
+    "hp_min": 93,
+    "hp_max": 156,
+    "damage_min": 35,
+    "damage_max": 65,
+    "defense_rating": 0,
+    "xp_reward": 306,
+    "loot_table": [
+      {
+        "item": "Giant rat meat",
+        "weight": 75
+      }
+    ],
+    "description": "Giant rats are creatures living in the Mojave Wasteland in 2281.",
+    "difficulty": 3,
+    "_wiki_title": "Giant rat (Fallout: New Vegas)"
+  },
+  {
+    "name": "Gorilla",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 427,
+    "hp_max": 712,
+    "damage_min": 19,
+    "damage_max": 36,
+    "defense_rating": 75,
+    "xp_reward": 357,
+    "loot_table": [
+      {
+        "item": "Ghoulrilla meat",
+        "weight": 50
+      }
+    ],
+    "description": "The gorilla is a synthetic creature found contained inside the terrariums of Institute...",
+    "difficulty": 3,
+    "_wiki_title": "Gorilla"
+  },
+  {
+    "name": "Marked men",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "ghoul",
+    "hp_min": 480,
+    "hp_max": 800,
+    "damage_min": 3,
+    "damage_max": 6,
+    "defense_rating": 10,
+    "xp_reward": 264,
+    "loot_table": [
+      {
+        "item": "NCR salvaged power armor",
+        "weight": 50
+      },
+      {
+        "item": "Combat knife",
+        "weight": 50
+      },
+      {
+        "item": "NCR dollar",
+        "weight": 50
+      }
+    ],
+    "description": "The marked men are a unique variant of ghoul encountered exclusively within the region known...",
+    "difficulty": 3,
+    "_wiki_title": "Marked men"
+  },
+  {
+    "name": "Mole rat",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 19,
+    "hp_max": 287,
+    "damage_min": 1,
+    "damage_max": 45,
+    "defense_rating": 25,
+    "xp_reward": 266,
+    "loot_table": [
+      {
+        "item": "Mole rat meat",
+        "weight": 50
+      },
+      {
+        "item": "Mole rat teeth",
+        "weight": 50
+      },
+      {
+        "item": "Mole rat hide",
+        "weight": 50
+      }
+    ],
+    "description": "Mole rats are creatures found in Fallout.",
+    "difficulty": 3,
+    "_wiki_title": "Mole rat (Fallout)"
+  },
+  {
+    "name": "Mutant hound",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 243,
+    "hp_max": 406,
+    "damage_min": 17,
+    "damage_max": 32,
+    "defense_rating": 40,
+    "xp_reward": 249,
+    "loot_table": [
+      {
+        "item": "Mutant hound meat",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      }
+    ],
+    "description": "Mutant hounds or FEV hounds are creatures found in the Commonwealth and are present on the...",
+    "difficulty": 3,
+    "_wiki_title": "Mutant hound (Fallout 4)"
+  },
+  {
+    "name": "Rad-rat",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 262,
+    "hp_max": 437,
+    "damage_min": 11,
+    "damage_max": 22,
+    "defense_rating": 100,
+    "xp_reward": 219,
+    "loot_table": [
+      {
+        "item": "Rad-rat meat",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear material",
+        "weight": 50
+      }
+    ],
+    "description": "Rad-rats are creatures found in the Nuka-World amusement park in 2287.",
+    "difficulty": 3,
+    "_wiki_title": "Rad-rat (Nuka-World)"
+  },
+  {
+    "name": "Radstag",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 337,
+    "hp_max": 562,
+    "damage_min": 15,
+    "damage_max": 28,
+    "defense_rating": 50,
+    "xp_reward": 280,
+    "loot_table": [
+      {
+        "item": "Radstag meat",
+        "weight": 50
+      },
+      {
+        "item": "Radstag hide",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      }
+    ],
+    "description": "Radstags are the mutated descendants of the Commonwealth and the Island's local deer...",
+    "difficulty": 3,
+    "_wiki_title": "Radstag (Fallout 4)"
+  },
+  {
+    "name": "Spore plant",
+    "game_source": [
+      "FO2",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 30,
+    "hp_max": 843,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 260,
+    "loot_table": [
+      {
+        "item": "Corrosive glove",
+        "weight": 50
+      },
+      {
+        "item": "Spore plant pods",
+        "weight": 50
+      }
+    ],
+    "description": "Spore plants are creatures found in Arroyo and random encounters around Arroyo in 2241.",
+    "difficulty": 3,
+    "_wiki_title": "Spore plant (Fallout 2)"
+  },
+  {
+    "name": "Stingwing",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 198,
+    "hp_max": 331,
+    "damage_min": 9,
+    "damage_max": 16,
+    "defense_rating": 60,
+    "xp_reward": 163,
+    "loot_table": [
+      {
+        "item": "Stingwing meat",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      }
+    ],
+    "description": "Stingwings are flying creatures mutated from scorpionflies that live in the Commonwealth in...",
+    "difficulty": 3,
+    "_wiki_title": "Stingwing (Fallout 4)"
+  },
+  {
+    "name": "Trog",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 48,
+    "hp_max": 81,
+    "damage_min": 35,
+    "damage_max": 65,
+    "defense_rating": 0,
+    "xp_reward": 284,
+    "loot_table": [
+      {
+        "item": "Junk items",
+        "weight": 50
+      }
+    ],
+    "description": "Trogs are creatures encountered by the Lone Wanderer in the Pitt .",
+    "difficulty": 3,
+    "_wiki_title": "Trog (The Pitt)"
+  },
+  {
+    "name": "Wolf",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 360,
+    "hp_max": 600,
+    "damage_min": 16,
+    "damage_max": 31,
+    "defense_rating": 65,
+    "xp_reward": 304,
+    "loot_table": [
+      {
+        "item": "Wolf meat",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear material",
+        "weight": 50
+      }
+    ],
+    "description": "Wolves are creatures living on the Island in 2287.",
+    "difficulty": 3,
+    "_wiki_title": "Wolf (Far Harbor)"
+  },
+  {
+    "name": "Abomination",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "mutant",
+    "hp_min": 375,
+    "hp_max": 625,
+    "damage_min": 52,
+    "damage_max": 97,
+    "defense_rating": 0,
+    "xp_reward": 575,
+    "loot_table": [
+      {
+        "item": "Junk items",
+        "weight": 50
+      },
+      {
+        "item": "Consumables",
+        "weight": 50
+      }
+    ],
+    "description": "Abominations are creatures found on board Mothership Zeta in 2277.",
+    "difficulty": 4,
+    "_wiki_title": "Abomination (Mothership Zeta)"
+  },
+  {
+    "name": "Angler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 1312,
+    "hp_max": 2187,
+    "damage_min": 98,
+    "damage_max": 182,
+    "defense_rating": 100,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Angler meat",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear material",
+        "weight": 40
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 70
+      }
+    ],
+    "description": "Anglers are creatures that appear in the Fallout 4 add-on Far Harbor.",
+    "difficulty": 4,
+    "_wiki_title": "Angler (Far Harbor)"
+  },
+  {
+    "name": "Bloatfly",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 11,
+    "hp_max": 2500,
+    "damage_min": 3,
+    "damage_max": 585,
+    "defense_rating": 30,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Bloatfly meat",
+        "weight": 50
+      },
+      {
+        "item": "Psycho",
+        "weight": 50
+      },
+      {
+        "item": "Buffout",
+        "weight": 50
+      }
+    ],
+    "description": "Bloatflies are insects in the Capital Wasteland in 2277.",
+    "difficulty": 4,
+    "_wiki_title": "Bloatfly (Fallout 3)"
+  },
+  {
+    "name": "Bloodbug",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 337,
+    "hp_max": 562,
+    "damage_min": 42,
+    "damage_max": 78,
+    "defense_rating": 50,
+    "xp_reward": 480,
+    "loot_table": [
+      {
+        "item": "Bloodbug proboscis",
+        "weight": 50
+      },
+      {
+        "item": "Bloodbug meat",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      }
+    ],
+    "description": "Bloodbugs are a species of mutated, ectoparasitic mosquitoes found in the Commonwealth in 2287.",
+    "difficulty": 4,
+    "_wiki_title": "Bloodbug (Fallout 4)"
+  },
+  {
+    "name": "Cave cricket",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 562,
+    "hp_max": 937,
+    "damage_min": 25,
+    "damage_max": 48,
+    "defense_rating": 100,
+    "xp_reward": 473,
+    "loot_table": [
+      {
+        "item": "Cave cricket meat",
+        "weight": 50
+      }
+    ],
+    "description": "Cave crickets are creatures found in the Nuka-World amusement park in the 2287.",
+    "difficulty": 4,
+    "_wiki_title": "Cave cricket (Nuka-World)"
+  },
+  {
+    "name": "Cazador",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 506,
+    "hp_max": 843,
+    "damage_min": 49,
+    "damage_max": 91,
+    "defense_rating": 0,
+    "xp_reward": 616,
+    "loot_table": [
+      {
+        "item": "Atomic-valence tri-radii-oscillator",
+        "weight": 50
+      },
+      {
+        "item": "Cazador poison gland",
+        "weight": 50
+      }
+    ],
+    "description": "CazadoresRed Lucy: \"We've got three fiends ready for our Cazadores.\"(Red Lucy's dialogue)...",
+    "difficulty": 4,
+    "_wiki_title": "Cazador"
+  },
+  {
+    "name": "Deathclaw",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 232,
+    "hp_max": 1700,
+    "damage_min": 10,
+    "damage_max": 325,
+    "defense_rating": 100,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Deathclaw hand",
+        "weight": 100
+      },
+      {
+        "item": "Deathclaw egg",
+        "weight": 15
+      },
+      {
+        "item": "Cigarette",
+        "weight": 50
+      }
+    ],
+    "description": "Deathclaws are mutated creatures in Fallout and Fallout 2.",
+    "difficulty": 4,
+    "_wiki_title": "Deathclaw (Fallout)"
+  },
+  {
+    "name": "Feral ghoul",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 588,
+    "hp_max": 1375,
+    "damage_min": 70,
+    "damage_max": 136,
+    "defense_rating": 90,
+    "xp_reward": 932,
+    "loot_table": [
+      {
+        "item": "Bottle caps",
+        "weight": 63
+      },
+      {
+        "item": "Chem",
+        "weight": 5
+      },
+      {
+        "item": "Random item or ammunition",
+        "weight": 25
+      }
+    ],
+    "description": "Feral ghouls are creatures found in the Capital Wasteland in 2277.",
+    "difficulty": 4,
+    "_wiki_title": "Feral ghoul (Fallout 3)"
+  },
+  {
+    "name": "Fire ant",
+    "game_source": [
+      "FO3",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 337,
+    "hp_max": 1250,
+    "damage_min": 17,
+    "damage_max": 71,
+    "defense_rating": 0,
+    "xp_reward": 503,
+    "loot_table": [
+      {
+        "item": "Ant queen pheromones",
+        "weight": 100
+      },
+      {
+        "item": "Ant egg",
+        "weight": 20
+      }
+    ],
+    "description": "Fire ants are creatures living in the Capital Wasteland in 2277.",
+    "difficulty": 4,
+    "_wiki_title": "Fire ant (Fallout 3)"
+  },
+  {
+    "name": "Fog crawler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 1650,
+    "hp_max": 2750,
+    "damage_min": 98,
+    "damage_max": 182,
+    "defense_rating": 100,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Raw fog crawler meat",
+        "weight": 50
+      }
+    ],
+    "description": "Fog crawlers are mutated saltwater crustaceans in the Fallout 4 add-on Far Harbor.",
+    "difficulty": 4,
+    "_wiki_title": "Fog crawler (Far Harbor)"
+  },
+  {
+    "name": "Gatorclaw",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 566,
+    "hp_max": 943,
+    "damage_min": 42,
+    "damage_max": 78,
+    "defense_rating": 100,
+    "xp_reward": 594,
+    "loot_table": [
+      {
+        "item": "Gatorclaw meat",
+        "weight": 50
+      },
+      {
+        "item": "Gatorclaw hand",
+        "weight": 50
+      },
+      {
+        "item": "Gatorclaw hide",
+        "weight": 50
+      }
+    ],
+    "description": "Gatorclaws are creatures encountered in the Safari Adventure park in Nuka-World .",
+    "difficulty": 4,
+    "_wiki_title": "Gatorclaw"
+  },
+  {
+    "name": "Gecko",
+    "game_source": [
+      "FO2",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 60,
+    "hp_max": 481,
+    "damage_min": 2,
+    "damage_max": 149,
+    "defense_rating": 0,
+    "xp_reward": 740,
+    "loot_table": [
+      {
+        "item": "Fire gecko hide",
+        "weight": 80
+      },
+      {
+        "item": "Gecko meat",
+        "weight": 75
+      },
+      {
+        "item": "Fire gecko egg",
+        "weight": 20
+      }
+    ],
+    "description": "Geckos are creatures found in New California in 2241.",
+    "difficulty": 4,
+    "_wiki_title": "Gecko (Fallout 2)"
+  },
+  {
+    "name": "Ghost people",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 506,
+    "hp_max": 843,
+    "damage_min": 23,
+    "damage_max": 42,
+    "defense_rating": 0,
+    "xp_reward": 420,
+    "loot_table": [
+      {
+        "item": "Bear trap fist",
+        "weight": 50
+      }
+    ],
+    "description": "Ghost people, also called locals and/or Villa inhabitants, are hostile mutated creatures found...",
+    "difficulty": 4,
+    "_wiki_title": "Ghost people"
+  },
+  {
+    "name": "Giant ant",
+    "game_source": [
+      "FO2",
+      "FO3",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 9,
+    "hp_max": 1250,
+    "damage_min": 1,
+    "damage_max": 71,
+    "defense_rating": 0,
+    "xp_reward": 503,
+    "loot_table": [
+      {
+        "item": "Ant queen pheromones",
+        "weight": 100
+      },
+      {
+        "item": "Ant egg",
+        "weight": 20
+      }
+    ],
+    "description": "Giant ants are mutated creatures in Fallout 2.",
+    "difficulty": 4,
+    "_wiki_title": "Giant ant (Fallout 2)"
+  },
+  {
+    "name": "Gojira",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "mutant",
+    "hp_min": 6000,
+    "hp_max": 10000,
+    "damage_min": 17,
+    "damage_max": 32,
+    "defense_rating": 0,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Mole rat meat",
+        "weight": 50
+      }
+    ],
+    "description": "Gojira is an unused creature found in the Fallout: New Vegas game files.",
+    "difficulty": 4,
+    "_wiki_title": "Gojira"
+  },
+  {
+    "name": "Gulper",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 900,
+    "hp_max": 1500,
+    "damage_min": 91,
+    "damage_max": 169,
+    "defense_rating": 90,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Gulper innards",
+        "weight": 50
+      },
+      {
+        "item": "Junk",
+        "weight": 50
+      }
+    ],
+    "description": "Gulpers are creatures in the Fallout 4 add-on Far Harbor.",
+    "difficulty": 4,
+    "_wiki_title": "Gulper (Far Harbor)"
+  },
+  {
+    "name": "Hermit crab",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 2850,
+    "hp_max": 4750,
+    "damage_min": 133,
+    "damage_max": 247,
+    "defense_rating": 100,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Hermit crab meat",
+        "weight": 50
+      }
+    ],
+    "description": "The hermit crab is a creature in the Fallout 4 add-on Far Harbor.",
+    "difficulty": 4,
+    "_wiki_title": "Hermit crab (Far Harbor)"
+  },
+  {
+    "name": "Lakelurk",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 281,
+    "hp_max": 468,
+    "damage_min": 56,
+    "damage_max": 104,
+    "defense_rating": 0,
+    "xp_reward": 556,
+    "loot_table": [
+      {
+        "item": "Lakelurk meat",
+        "weight": 10
+      }
+    ],
+    "description": "Lakelurks are creatures found in the Mojave Wasteland in 2281.",
+    "difficulty": 4,
+    "_wiki_title": "Lakelurk"
+  },
+  {
+    "name": "Mirelurk",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 450,
+    "hp_max": 1875,
+    "damage_min": 42,
+    "damage_max": 97,
+    "defense_rating": 100,
+    "xp_reward": 950,
+    "loot_table": [
+      {
+        "item": "Mirelurk meat",
+        "weight": 50
+      },
+      {
+        "item": "Softshell mirelurk meat",
+        "weight": 50
+      },
+      {
+        "item": "Queen Nukalurk meat",
+        "weight": 50
+      }
+    ],
+    "description": "Mirelurks are giant mutated crustaceans living in the Potomac River watershed in 2277.",
+    "difficulty": 4,
+    "_wiki_title": "Mirelurk (Fallout 3)"
+  },
+  {
+    "name": "Mongrel",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 375,
+    "hp_max": 625,
+    "damage_min": 52,
+    "damage_max": 97,
+    "defense_rating": 60,
+    "xp_reward": 575,
+    "loot_table": [
+      {
+        "item": "Mongrel dog meat",
+        "weight": 50
+      },
+      {
+        "item": "Dog collar",
+        "weight": 50
+      }
+    ],
+    "description": "Mongrels are creatures that can be found in the Commonwealth in 2287.",
+    "difficulty": 4,
+    "_wiki_title": "Mongrel (Fallout 4)"
+  },
+  {
+    "name": "Night stalker",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 187,
+    "hp_max": 312,
+    "damage_min": 70,
+    "damage_max": 130,
+    "defense_rating": 0,
+    "xp_reward": 613,
+    "loot_table": [
+      {
+        "item": "Nightstalker blood",
+        "weight": 50
+      },
+      {
+        "item": "Nightstalker egg",
+        "weight": 25
+      },
+      {
+        "item": "Nightstalker tail",
+        "weight": 50
+      }
+    ],
+    "description": "Night stalkers (sometimes spelled \"nightstalkers\") are creatures living in the Mojave...",
+    "difficulty": 4,
+    "_wiki_title": "Night stalker"
+  },
+  {
+    "name": "Radscorpion",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 25,
+    "hp_max": 1875,
+    "damage_min": 1,
+    "damage_max": 149,
+    "defense_rating": 100,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Radscorpion poison gland",
+        "weight": 100
+      },
+      {
+        "item": "Radscorpion stinger",
+        "weight": 50
+      },
+      {
+        "item": "Radscorpion meat",
+        "weight": 50
+      }
+    ],
+    "description": "Radscorpions are mutated creatures in Fallout.",
+    "difficulty": 4,
+    "_wiki_title": "Radscorpion (Fallout)"
+  },
+  {
+    "name": "Spore carrier",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 225,
+    "hp_max": 375,
+    "damage_min": 70,
+    "damage_max": 130,
+    "defense_rating": 0,
+    "xp_reward": 632,
+    "loot_table": [
+      {
+        "item": "Spore carrier sap",
+        "weight": 50
+      }
+    ],
+    "description": "Spore carriers are creatures encountered in the Mojave Wasteland, Zion Canyon, and Big MT and...",
+    "difficulty": 4,
+    "_wiki_title": "Spore carrier"
+  },
+  {
+    "name": "Stripe",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 637,
+    "hp_max": 1062,
+    "damage_min": 175,
+    "damage_max": 325,
+    "defense_rating": 0,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Egg timer",
+        "weight": 50
+      },
+      {
+        "item": "Deathclaw hand",
+        "weight": 50
+      },
+      {
+        "item": "Junk food",
+        "weight": 50
+      }
+    ],
+    "description": "Stripe is a miniature deathclaw found in the year 2281 at the Big MT in the Fallout: New Vegas...",
+    "difficulty": 4,
+    "_wiki_title": "Stripe"
+  },
+  {
+    "name": "Super mutant",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 270,
+    "hp_max": 2500,
+    "damage_min": 4,
+    "damage_max": 256,
+    "defense_rating": 100,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Fire hydrant",
+        "weight": 50
+      },
+      {
+        "item": "Light machine gun",
+        "weight": 50
+      },
+      {
+        "item": "Heavy incinerator",
+        "weight": 50
+      }
+    ],
+    "description": "Vault 87 super mutants are hostile creatures encountered in Fallout 3 and its add-ons Broken...",
+    "difficulty": 4,
+    "_wiki_title": "Super mutant (Fallout 3)"
+  },
+  {
+    "name": "Swampfolk",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 525,
+    "hp_max": 875,
+    "damage_min": 70,
+    "damage_max": 130,
+    "defense_rating": 0,
+    "xp_reward": 782,
+    "loot_table": [
+      {
+        "item": "Axe",
+        "weight": 50
+      }
+    ],
+    "description": "Swampfolk are a mutated type of human found in Point Lookout in 2277.",
+    "difficulty": 4,
+    "_wiki_title": "Swampfolk"
+  },
+  {
+    "name": "Tunneler",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 356,
+    "hp_max": 593,
+    "damage_min": 122,
+    "damage_max": 227,
+    "defense_rating": 0,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Junk items",
+        "weight": 50
+      },
+      {
+        "item": "Tunneler hide",
+        "weight": 50
+      }
+    ],
+    "description": "Tunnelers are creatures found in the Divide .",
+    "difficulty": 4,
+    "_wiki_title": "Tunneler"
+  },
+  {
+    "name": "Yao guai",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 165,
+    "hp_max": 1468,
+    "damage_min": 52,
+    "damage_max": 260,
+    "defense_rating": 100,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Yao guai meat",
+        "weight": 100
+      }
+    ],
+    "description": "Yao guai are creatures found in the Capital Wasteland in 2277.",
+    "difficulty": 4,
+    "_wiki_title": "Yao guai (Fallout 3)"
+  }
+]
