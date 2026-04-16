@@ -14,4 +14,7 @@ bbs_data.uf2
 !firmware-builds/*.factory.bin
 bbs_extracted/
 data/
+!scripts/data/
+!scripts/data/*.bin
+scripts/fallout_scrape/cache/
 HANDOFF.md
