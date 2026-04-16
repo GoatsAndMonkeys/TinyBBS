@@ -1,0 +1,2659 @@
+[
+  {
+    "name": "Little Lamplight",
+    "type": "cave",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul"
+    ],
+    "description": "Cave settlement run entirely by children. No adults allowed. Don't ask about Big Town.",
+    "danger_level": 1
+  },
+  {
+    "name": "Ant mound",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Fire ant queen",
+      "Fire ants"
+    ],
+    "description": "The ant mound is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Black Rock Cave",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Nightkin",
+      "Coyotes",
+      "Radscorpions"
+    ],
+    "description": "Black Rock Cave, also called Black Rock Cavern, is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Bloodborne Cave",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Night stalker",
+      "Legendary night stalker"
+    ],
+    "description": "Bloodborne Cave is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Broc flower cave",
+    "type": "cave",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Giant rats",
+      "Rodents of unusual size"
+    ],
+    "description": "The broc flower cave is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Radscorpion Cave",
+    "type": "cave",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Radscorpion"
+    ],
+    "description": "Scorpion nest south of Shady Sands. Chitinous clicking echoes off the walls. Tails drip venom in the dark.",
+    "danger_level": 2
+  },
+  {
+    "name": "Toxic Caves",
+    "type": "cave",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Gecko",
+      "Golden Gecko"
+    ],
+    "description": "Irradiated caverns near Klamath. Golden geckos glow in the toxic murk. A wrecked robot waits at the bottom.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 114 (Park Street Station)",
+    "type": "cave",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Triggerman"
+    ],
+    "description": "Subway station hiding an unfinished vault. Triggermen in pinstripe suits patrol the tunnels. Nick Valentine waits inside.",
+    "danger_level": 2
+  },
+  {
+    "name": "Dunwich Borers",
+    "type": "cave",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Feral Ghoul Reaver",
+      "Raider"
+    ],
+    "description": "Granite quarry with Lovecraftian undertones. Deeper you go, stranger it gets. Faces in the stone.",
+    "danger_level": 3
+  },
+  {
+    "name": "Deathclaw Lair",
+    "type": "cave",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Deathclaw"
+    ],
+    "description": "Breeding ground in the Boneyard outskirts. The egg mother guards her clutch. Few enter. Fewer leave.",
+    "danger_level": 4
+  },
+  {
+    "name": "Deathclaw Sanctuary",
+    "type": "cave",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Deathclaw",
+      "Alpha Deathclaw"
+    ],
+    "description": "A cave system teeming with deathclaws. Bones crunch underfoot. The alpha watches from the darkness.",
+    "danger_level": 4
+  },
+  {
+    "name": "Museum of Witchcraft",
+    "type": "cave",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Deathclaw"
+    ],
+    "description": "Salem tourist trap. Something huge nests inside. Body parts on the stairs. A deathclaw and her stolen egg.",
+    "danger_level": 4
+  },
+  {
+    "name": "Andale",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Friendliest town in Virginia. White picket fences, apple pie, and a basement full of human remains. Don't stay for dinner.",
+    "danger_level": 2
+  },
+  {
+    "name": "Boston Public Library",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Protectron"
+    ],
+    "description": "Knowledge gathering dust. Super mutants tore through the stacks. A robot librarian still tries to check out books.",
+    "danger_level": 2
+  },
+  {
+    "name": "Hubris Comics",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Glowing One"
+    ],
+    "description": "Comic book publisher's office. Ghouls in the printing room. The Silver Shroud costume waits backstage.",
+    "danger_level": 2
+  },
+  {
+    "name": "Jamaica Plain",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Feral Ghoul Reaver"
+    ],
+    "description": "Town hall guarding a pre-war treasure. Laser tripwires and ghouls. The treasure? A time capsule. Worth dying for, apparently.",
+    "danger_level": 2
+  },
+  {
+    "name": "Nipton",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Legion Recruit"
+    ],
+    "description": "Burned to ash by Caesar's Legion. Crucifixions line the road. A lottery nobody wanted to win.",
+    "danger_level": 2
+  },
+  {
+    "name": "Sunset Sarsaparilla HQ",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Protectron",
+      "Feral Ghoul"
+    ],
+    "description": "Bottling plant full of star caps legend. Festus the robot tells tall tales. The prize in the vault isn't what you'd hope.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault-Tec HQ",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Protectron"
+    ],
+    "description": "Corporate headquarters of humanity's worst social experiment. Master terminal holds every vault's dirty secret.",
+    "danger_level": 2
+  },
+  {
+    "name": "Black Mountain",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Nightkin",
+      "Super Mutant"
+    ],
+    "description": "Radio tower held by insane nightkin. Tabitha broadcasts madness. Neil warns you to turn back.",
+    "danger_level": 3
+  },
+  {
+    "name": "Faneuil Hall",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Brute"
+    ],
+    "description": "Cradle of liberty turned super mutant meat locker. Gore bags hang from the rafters of the great hall.",
+    "danger_level": 3
+  },
+  {
+    "name": "Kendall Hospital",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Synth"
+    ],
+    "description": "Hospital overrun by raiders on top, synths in the basement. Two dangers stacked like a layer cake of bad decisions.",
+    "danger_level": 3
+  },
+  {
+    "name": "Mass Fusion Building",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Gunner",
+      "Assaultron"
+    ],
+    "description": "Pre-war energy company HQ. Contested by multiple factions. A beryllium agitator waits on the top floor.",
+    "danger_level": 3
+  },
+  {
+    "name": "Museum of Technology",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Super Mutant"
+    ],
+    "description": "Rockets and robots gathering dust. Super mutants nested in the planetarium. The dish on the roof still works.",
+    "danger_level": 3
+  },
+  {
+    "name": "National Mall",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Brute"
+    ],
+    "description": "Trenches dug between monuments to democracy. Super mutants and Brotherhood trade fire where tourists once walked.",
+    "danger_level": 3
+  },
+  {
+    "name": "Necropolis",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Glowing One"
+    ],
+    "description": "City of the dead. Ghouls shuffle through a ruined cityscape of collapsed overpasses and dry sewers.",
+    "danger_level": 3
+  },
+  {
+    "name": "Pickman Gallery",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Art gallery where the exhibits are painted in blood. Pickman kills raiders and calls it art. He's not wrong about the raiders.",
+    "danger_level": 3
+  },
+  {
+    "name": "Searchlight",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Glowing One"
+    ],
+    "description": "NCR camp irradiated by Legion sabotage. Troopers turned feral overnight. Radiation hangs like a curse over the ruins.",
+    "danger_level": 3
+  },
+  {
+    "name": "The Capitol Building",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Talon Company Merc"
+    ],
+    "description": "Democracy's corpse. Super mutants and mercs fight over rubble that was once a nation's heart.",
+    "danger_level": 3
+  },
+  {
+    "name": "Trinity Tower",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Brute"
+    ],
+    "description": "Skyscraper claimed by super mutants. Rex Goodman held prisoner at the top. Strong waits to understand the milk of human kindness.",
+    "danger_level": 3
+  },
+  {
+    "name": "Dunwich Building",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Feral Ghoul Reaver",
+      "Glowing One"
+    ],
+    "description": "Eldritch office building. Reality bends. Flashbacks to pre-war horror. Something dark in the basement.",
+    "danger_level": 4
+  },
+  {
+    "name": "The Cathedral",
+    "type": "ghoul_ruin",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Nightkin",
+      "Super Mutant",
+      "Centaur"
+    ],
+    "description": "The Master's stronghold disguised as a cult church. Beneath it, a psychic mutant god waits.",
+    "danger_level": 4
+  },
+  {
+    "name": "The Citadel",
+    "type": "military",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Pentagon ruins converted to Brotherhood of Steel headquarters. Power armor lines the courtyard. Liberty Prime sleeps in the basement.",
+    "danger_level": 1
+  },
+  {
+    "name": "ArcJet Systems",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Synth",
+      "Protectron"
+    ],
+    "description": "Rocket engine factory. Synths patrol the assembly floor. A functional rocket engine sits waiting.",
+    "danger_level": 2
+  },
+  {
+    "name": "Cambridge Police Station",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul"
+    ],
+    "description": "Brotherhood of Steel forward base. Paladin Danse holds out against ghoul waves. Distress signal on repeat.",
+    "danger_level": 2
+  },
+  {
+    "name": "Camp McCarran",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Fiend"
+    ],
+    "description": "NCR's main base in the Mojave. Old airport terminal. Fiends press against the fences daily.",
+    "danger_level": 2
+  },
+  {
+    "name": "Helios One",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Mr. Gutsy",
+      "Protectron"
+    ],
+    "description": "Solar power plant. NCR can't figure it out. The real weapon is in the basement. Archimedes awaits.",
+    "danger_level": 2
+  },
+  {
+    "name": "Hidden Valley",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Radscorpion"
+    ],
+    "description": "Brotherhood of Steel bunker hidden beneath the desert. Power armor, plasma rifles, and a chapter on the brink of civil war.",
+    "danger_level": 2
+  },
+  {
+    "name": "REPCONN Test Site",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Nightkin"
+    ],
+    "description": "Rocket facility haunted by invisible nightkin and ghouls seeking a promised land in the sky.",
+    "danger_level": 2
+  },
+  {
+    "name": "Ranger Station Charlie",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Legion Recruit"
+    ],
+    "description": "Small NCR outpost wiped out by Legion. Bodies still at their posts. Radio still broadcasting static.",
+    "danger_level": 2
+  },
+  {
+    "name": "Yangtze Submarine",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul"
+    ],
+    "description": "Chinese submarine beached in Boston Harbor. Captain Zao still alive inside. Two centuries of guilt and a nuclear warhead.",
+    "danger_level": 2
+  },
+  {
+    "name": "Big MT",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Robot Scorpion",
+      "Lobotomite",
+      "Cyberhound"
+    ],
+    "description": "Secret pre-war research crater. Think tanks, robo-scorpions, and science gone beautifully wrong.",
+    "danger_level": 3
+  },
+  {
+    "name": "Boston mayoral shelter",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Deathclaws"
+    ],
+    "description": "The Boston mayoral shelter is a location in the Commonwealth in 2287, created to shelter the...",
+    "danger_level": 3
+  },
+  {
+    "name": "Fort Constantine",
+    "type": "military",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Protectron",
+      "Sentry Bot",
+      "Feral Ghoul"
+    ],
+    "description": "Nuclear launch facility. T-51b power armor locked in the basement. Robots and ghouls guard Cold War secrets.",
+    "danger_level": 3
+  },
+  {
+    "name": "Galaxy News Radio",
+    "type": "military",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Brute"
+    ],
+    "description": "GNR broadcasting from a fortified building in DC ruins. Three Dog keeps the signal alive. Mutants keep trying to stop it.",
+    "danger_level": 3
+  },
+  {
+    "name": "HELIOS One Solar Collection Tower",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "NCR Trooper"
+    ],
+    "description": "The mirror array focuses sunlight into the tower. Archimedes II orbital strike platform. Point it at anything. Anything.",
+    "danger_level": 3
+  },
+  {
+    "name": "Jefferson Memorial",
+    "type": "military",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Enclave Soldier"
+    ],
+    "description": "Project Purity. Dad's dream of clean water for the wasteland. The Enclave wants it. Everyone wants it.",
+    "danger_level": 3
+  },
+  {
+    "name": "Nellis Air Force Base",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "Boomers territory. Xenophobic tribe with a functional bomber and artillery. Approach means mortar fire.",
+    "danger_level": 3
+  },
+  {
+    "name": "Sierra Army Depot",
+    "type": "military",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Sentry Bot",
+      "Mr. Gutsy",
+      "Protectron"
+    ],
+    "description": "Pre-war weapons storage. AI named Skynet guards the arsenal. Automated turrets and robots patrol in silence.",
+    "danger_level": 3
+  },
+  {
+    "name": "The Castle",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mirelurk",
+      "Mirelurk Queen"
+    ],
+    "description": "Fort Independence. Minutemen headquarters retaken from a mirelurk infestation. Radio Freedom broadcasts again.",
+    "danger_level": 3
+  },
+  {
+    "name": "The Nucleus",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Trapper",
+      "Children of Atom"
+    ],
+    "description": "Submarine base on the Island. Children of Atom worship the warhead inside. Radiation thick as fog.",
+    "danger_level": 3
+  },
+  {
+    "name": "Adams Air Force Base",
+    "type": "military",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Enclave Soldier",
+      "Sentry Bot",
+      "Deathclaw"
+    ],
+    "description": "Enclave mobile base crawler. Vertibirds launch from cracked tarmac. The Brotherhood's final assault ends here.",
+    "danger_level": 4
+  },
+  {
+    "name": "Enclave Oil Rig",
+    "type": "military",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Enclave Soldier",
+      "Sentry Bot"
+    ],
+    "description": "Poseidon Energy offshore platform. Enclave HQ. FEV Curling-13 ready to purge the wasteland. The Chosen One ends it here.",
+    "danger_level": 4
+  },
+  {
+    "name": "Hoover Dam",
+    "type": "military",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Legion Recruit",
+      "NCR Trooper"
+    ],
+    "description": "The prize everyone wants. Power, water, and control of the Mojave. The final battle happens here.",
+    "danger_level": 4
+  },
+  {
+    "name": "Mariposa Military Base",
+    "type": "military",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Master",
+      "Centaur"
+    ],
+    "description": "FEV production facility. Vats of green mutagenic slurry and the Master's army. Ground zero for mutantkind.",
+    "danger_level": 4
+  },
+  {
+    "name": "Mothership Zeta",
+    "type": "military",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Alien",
+      "Alien Captain"
+    ],
+    "description": "Alien spacecraft in orbit. Abductees from across time held in cryo. The death ray points at Earth.",
+    "danger_level": 4
+  },
+  {
+    "name": "Navarro",
+    "type": "military",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Sentry Bot",
+      "Protectron"
+    ],
+    "description": "Enclave forward base on the coast. Vertibirds, advanced power armor, and shoot-on-sight protocols.",
+    "danger_level": 4
+  },
+  {
+    "name": "Raven Rock",
+    "type": "military",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Sentry Bot",
+      "Mr. Gutsy"
+    ],
+    "description": "Enclave headquarters. President Eden's bunker complex. Deathclaws guard the perimeter.",
+    "danger_level": 4
+  },
+  {
+    "name": "Sentinel Site",
+    "type": "military",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Feral Ghoul Reaver"
+    ],
+    "description": "Nuclear missile silo in the Glowing Sea. Warheads still racked. Ghouls in military uniforms guard the launch controls.",
+    "danger_level": 4
+  },
+  {
+    "name": "The Glow",
+    "type": "military",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Sentry Bot",
+      "Protectron"
+    ],
+    "description": "West-Tek research center, ground zero of a direct nuclear hit. Radiation so intense it glows green. Brotherhood sends initiates here to die.",
+    "danger_level": 4
+  },
+  {
+    "name": "Combat Zone",
+    "type": "raider_camp",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Pre-war theater turned fighting arena. Raiders bet on cage matches. Cait fights for her freedom every night.",
+    "danger_level": 2
+  },
+  {
+    "name": "Corvega Assembly Plant",
+    "type": "raider_camp",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Raider Veteran"
+    ],
+    "description": "Car factory turned raider fortress. Catwalks, turrets, and Jared's gang holding court in the press room.",
+    "danger_level": 2
+  },
+  {
+    "name": "Raiders Camp",
+    "type": "raider_camp",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Khans' stronghold in the wasteland. Garl Death-Hand rules with a fist. Tandi's kidnappers. The first raiders you'll face.",
+    "danger_level": 2
+  },
+  {
+    "name": "Springvale School",
+    "type": "raider_camp",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Raider Boss"
+    ],
+    "description": "Elementary school turned raider den. Chalkboards covered in crude drawings. Chem lab in the basement where kids once played.",
+    "danger_level": 2
+  },
+  {
+    "name": "Super-Duper Mart",
+    "type": "raider_camp",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Grocery store fortified by raiders. Shopping carts as barricades. The produce section is full of corpses now.",
+    "danger_level": 2
+  },
+  {
+    "name": "Cottonwood Cove",
+    "type": "raider_camp",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Legion Recruit",
+      "Legion Centurion"
+    ],
+    "description": "Legion staging area on the Colorado. Slave pens, crucifixions, and a boat to the Fort.",
+    "danger_level": 3
+  },
+  {
+    "name": "Evergreen Mills",
+    "type": "raider_camp",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Raider Boss",
+      "Super Mutant Behemoth"
+    ],
+    "description": "Industrial complex crawling with raiders. A behemoth caged in the foundry. Someone's brilliant idea of a guard dog.",
+    "danger_level": 3
+  },
+  {
+    "name": "Libertalia",
+    "type": "raider_camp",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Raider Veteran"
+    ],
+    "description": "Floating raider city built from lashed-together boats. Former settlers turned pirates. The desperation is architectural.",
+    "danger_level": 3
+  },
+  {
+    "name": "Nelson",
+    "type": "raider_camp",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Legion Recruit",
+      "Legion Veteran"
+    ],
+    "description": "NCR camp overrun by Legion. Crucified troopers line the road. The Legion flag flies where the bear once did.",
+    "danger_level": 3
+  },
+  {
+    "name": "Nuka-World",
+    "type": "raider_camp",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Raider Boss"
+    ],
+    "description": "Pre-war theme park taken by three raider gangs. Cotton candy, roller coasters, and ultraviolence.",
+    "danger_level": 3
+  },
+  {
+    "name": "Paradise Falls",
+    "type": "raider_camp",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Slaver",
+      "Raider"
+    ],
+    "description": "Slaver compound in a shopping center. Cages full of people. Eulogy Jones in a pre-war suit, counting caps.",
+    "danger_level": 3
+  },
+  {
+    "name": "Quincy Ruins",
+    "type": "raider_camp",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Gunner",
+      "Gunner Commander"
+    ],
+    "description": "Fallen settlement held by Gunners. Snipers on the overpass. Power-armored commander on the church roof.",
+    "danger_level": 3
+  },
+  {
+    "name": "Saugus Ironworks",
+    "type": "raider_camp",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Forged",
+      "Raider Boss"
+    ],
+    "description": "Foundry run by the Forged. Initiation means walking through fire. Slag the foreman uses the blast furnace for discipline.",
+    "danger_level": 3
+  },
+  {
+    "name": "The Pitt",
+    "type": "raider_camp",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Raider Boss"
+    ],
+    "description": "Pittsburgh's irradiated steel mills. Slaves work the furnaces. Raiders run the show. The river burns.",
+    "danger_level": 3
+  },
+  {
+    "name": "Weston Water Treatment",
+    "type": "raider_camp",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Brute"
+    ],
+    "description": "Water plant taken by super mutants. Vats of irradiated water. They're building an army and they need the water to do it.",
+    "danger_level": 3
+  },
+  {
+    "name": "Agatha's house",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Agatha's house is a small, single room house in the Capital Wasteland in 2277.",
+    "danger_level": 1
+  },
+  {
+    "name": "Arroyo",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Gecko",
+      "Radscorpion"
+    ],
+    "description": "Tribal village descended from the Vault Dweller. Drought is killing the crops. The Chosen One's journey starts here.",
+    "danger_level": 1
+  },
+  {
+    "name": "Bradley's shack",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "Bradley's shack is a location in the Mojave Wasteland .",
+    "danger_level": 1
+  },
+  {
+    "name": "Brewer's beer bootlegging",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Cazador"
+    ],
+    "description": "Brewer's beer bootlegging is a location in the Mojave Wasteland .",
+    "danger_level": 1
+  },
+  {
+    "name": "Canterbury Commons",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Small trading hub. Caravan merchants stop here between runs. The Mechanist and AntAgonizer feud nearby.",
+    "danger_level": 1
+  },
+  {
+    "name": "Covenant",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "Covenant is a location and possible Commonwealth settlement in 2287.",
+    "danger_level": 1
+  },
+  {
+    "name": "Diamond City",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "Fenway Park reborn as a fortified settlement. Green walls, market stalls, and synth paranoia.",
+    "danger_level": 1
+  },
+  {
+    "name": "Goodneighbor",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Of the people, for the people. Hancock's ghoul utopia. Freedom, chems, and a neon heart.",
+    "danger_level": 1
+  },
+  {
+    "name": "Goodsprings",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Gecko",
+      "Powder Ganger"
+    ],
+    "description": "Tiny Mojave settlement. Doc Mitchell patches you up. Sunny Smiles teaches you to shoot. Simple, kind, doomed.",
+    "danger_level": 1
+  },
+  {
+    "name": "Junktown",
+    "type": "town",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Trading post built from car parts and corrugated tin. Gizmo runs things from the casino.",
+    "danger_level": 1
+  },
+  {
+    "name": "Klamath",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Gecko",
+      "Rat"
+    ],
+    "description": "Trapper town on the edge of civilization. Gecko pelts, moonshine, and whispers about Gecko City.",
+    "danger_level": 1
+  },
+  {
+    "name": "Lucky 38",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Securitron"
+    ],
+    "description": "Tallest tower on the Strip. Mr. House lives inside, sealed for two centuries. The penthouse suite awaits the courier.",
+    "danger_level": 1
+  },
+  {
+    "name": "Megaton",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Settlement built in a crater around an unexploded atomic bomb. The bomb still ticks. Nobody seems worried.",
+    "danger_level": 1
+  },
+  {
+    "name": "Modoc",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Rat"
+    ],
+    "description": "Farm community on the edge of extinction. Ghost farm, missing people, and a dark secret underground.",
+    "danger_level": 1
+  },
+  {
+    "name": "NCR Capital",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Shady Sands grown into a proper nation's capital. Government buildings, rangers, and bureaucracy blooming in the desert.",
+    "danger_level": 1
+  },
+  {
+    "name": "New Vegas Strip",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Securitron"
+    ],
+    "description": "Neon oasis in the desert. Three casinos, a cowboy robot army, and Mr. House pulling every string.",
+    "danger_level": 1
+  },
+  {
+    "name": "Rivet City",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Mirelurk"
+    ],
+    "description": "Aircraft carrier beached in the Potomac. The most civilized place in the Capital Wasteland. Rusted but safe.",
+    "danger_level": 1
+  },
+  {
+    "name": "Sanctuary Hills",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Bloatfly",
+      "Feral Mongrel"
+    ],
+    "description": "Your old neighborhood. Picket fences and dead lawns. Build it back or let it rot.",
+    "danger_level": 1
+  },
+  {
+    "name": "Shady Sands",
+    "type": "town",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Radscorpion"
+    ],
+    "description": "First settlement outside the vaults. Adobe walls, brahmin pens, and people rebuilding from nothing.",
+    "danger_level": 1
+  },
+  {
+    "name": "Sloan",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Deathclaw"
+    ],
+    "description": "Quarry workers' camp. They can't work because deathclaws took the quarry. Chomps Lewis paces and worries.",
+    "danger_level": 1
+  },
+  {
+    "name": "The Tops",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Chairman"
+    ],
+    "description": "Rat Pack casino run by Benny and the Chairmen. Ring-a-ding-ding, baby. Check your weapons at the door.",
+    "danger_level": 1
+  },
+  {
+    "name": "Underworld",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Ghoul settlement inside the Museum of History. Neon sign above the door. Smooth-skins tolerated.",
+    "danger_level": 1
+  },
+  {
+    "name": "Vault City",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Pristine walled city built by Vault 8 survivors. Clean water, medicine, and profound elitism.",
+    "danger_level": 1
+  },
+  {
+    "name": "188 Trading Post",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The 188 Trading Post is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Abandoned BoS bunker",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The abandoned BoS bunker, officially Bunker 13,Abandoned BoS bunker terminal entries; Terminal...",
+    "danger_level": 2
+  },
+  {
+    "name": "Acadia",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Synth"
+    ],
+    "description": "Synth refuge atop a mountain on the Island. DiMA leads escaped synths seeking identity. Fog rolls below like a sea.",
+    "danger_level": 2
+  },
+  {
+    "name": "Arefu",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul"
+    ],
+    "description": "Tiny settlement on an overpass bridge. The Family lurks below, drinking blood. Not vampires. Worse: people pretending.",
+    "danger_level": 2
+  },
+  {
+    "name": "Broken Hills",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Uranium mining town where humans, ghouls, and mutants coexist. Tensions simmer beneath the dust.",
+    "danger_level": 2
+  },
+  {
+    "name": "Bunker Hill",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Caravan hub beneath the monument. Traders, secret synth railroad, and a battle that decides the Commonwealth's future.",
+    "danger_level": 2
+  },
+  {
+    "name": "Concord",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Deathclaw"
+    ],
+    "description": "Colonial town overrun by raiders. Your first firefight, your first power armor, your first deathclaw.",
+    "danger_level": 2
+  },
+  {
+    "name": "Freeside",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Thug",
+      "Raider"
+    ],
+    "description": "Vegas slums outside the Strip gate. Kings run the streets. Desperate people and the Followers of the Apocalypse trying to help.",
+    "danger_level": 2
+  },
+  {
+    "name": "Gecko",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Gecko",
+      "Golden Gecko"
+    ],
+    "description": "Ghoul-run settlement built around a failing nuclear reactor. Toxic, green-tinged, and stubbornly alive.",
+    "danger_level": 2
+  },
+  {
+    "name": "Jacobstown",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Nightkin"
+    ],
+    "description": "Super mutant refuge in the mountains. Marcus keeps the peace. Nightkin pace the perimeter, twitching.",
+    "danger_level": 2
+  },
+  {
+    "name": "New Reno",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Fiend"
+    ],
+    "description": "Sin city of the wastes. Four crime families, boxing rings, casinos, and enough jet to cloud a vault.",
+    "danger_level": 2
+  },
+  {
+    "name": "Novac",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Legion Recruit"
+    ],
+    "description": "Motel town guarded by a dinosaur. Boone watches from the mouth with a rifle. Don't ask about his wife.",
+    "danger_level": 2
+  },
+  {
+    "name": "Primm",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Powder Ganger",
+      "Raider"
+    ],
+    "description": "Roadside casino town overrun by convicts. The roller coaster still works. The sheriff doesn't.",
+    "danger_level": 2
+  },
+  {
+    "name": "Redding",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Wanamingo"
+    ],
+    "description": "Gold mining town caught between NCR, Vault City, and New Reno. Wanamingos infest the mines.",
+    "danger_level": 2
+  },
+  {
+    "name": "San Francisco",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Shi and Brotherhood outpost. Oil tanker in the harbor. Ancient culture meets post-apocalyptic tech.",
+    "danger_level": 2
+  },
+  {
+    "name": "Tenpenny Tower",
+    "type": "town",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Raider"
+    ],
+    "description": "Luxury high-rise for the wasteland elite. Tenpenny watches the wasteland through a sniper scope. Ghouls want in.",
+    "danger_level": 2
+  },
+  {
+    "name": "The Den",
+    "type": "town",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Thief"
+    ],
+    "description": "Slaver town. Jet addicts in the gutters, dealers on every corner. Metzger runs the flesh trade from a fortified building.",
+    "danger_level": 2
+  },
+  {
+    "name": "The Hub",
+    "type": "town",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Thief"
+    ],
+    "description": "Pre-war shopping center turned trading capital. Caravans arrive daily. Money talks, bullets listen.",
+    "danger_level": 2
+  },
+  {
+    "name": "Westside",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Fiend"
+    ],
+    "description": "Community garden behind concrete walls. Mean Sonofabitch guards the gate. Fiends circle like vultures outside.",
+    "danger_level": 2
+  },
+  {
+    "name": "Boat to Dry Wells",
+    "type": "town",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The boat to Dry Wells is a location in the Mojave Wasteland .",
+    "danger_level": 3
+  },
+  {
+    "name": "Far Harbor",
+    "type": "town",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Trapper",
+      "Fog Crawler",
+      "Gulper"
+    ],
+    "description": "Fog-shrouded island off Maine. Three factions, radioactive fog, and things that hunt in the mist.",
+    "danger_level": 3
+  },
+  {
+    "name": "The Boneyard",
+    "type": "town",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Deathclaw"
+    ],
+    "description": "Ruins of Los Angeles. Gangs control different blocks. The Gun Runners sell from a fortified factory.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 101",
+    "type": "vault",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Radroach"
+    ],
+    "description": "Beneath the Capital Wasteland. Never opened — until now. Fluorescent lights flicker over decades of isolation.",
+    "danger_level": 1
+  },
+  {
+    "name": "Vault 111",
+    "type": "vault",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Radroach"
+    ],
+    "description": "Cryogenic preservation facility. Two hundred years of frozen sleep end in a thawed nightmare.",
+    "danger_level": 1
+  },
+  {
+    "name": "Vault 13",
+    "type": "vault",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Rat",
+      "Radroach"
+    ],
+    "description": "Home vault of the Vault Dweller. The water chip failed, starting everything. Now sealed and silent.",
+    "danger_level": 1
+  },
+  {
+    "name": "Vault 21",
+    "type": "vault",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "Every dispute settled by gambling. Perfect democracy of the dice. House gutted it and poured concrete in the lower levels.",
+    "danger_level": 1
+  },
+  {
+    "name": "Vault 108",
+    "type": "vault",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Gary Clone"
+    ],
+    "description": "Cloning lab gone wrong. Every resident is named Gary. They say nothing else. Gary. Gary. Gary.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 11",
+    "type": "vault",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Sentry Bot",
+      "Protectron"
+    ],
+    "description": "Annual sacrifice required or everyone dies. They voted who to kill. The election campaigns got ugly. The truth is worse.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 112",
+    "type": "vault",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Protectron"
+    ],
+    "description": "Tranquility Lane simulation pods. Residents trapped in a virtual 1950s nightmare by a mad scientist.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 114",
+    "type": "vault",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Raider",
+      "Triggerman"
+    ],
+    "description": "Unfinished vault in Park Street Station. Designed to torment the wealthy. Triggermen use it as a hideout.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 15",
+    "type": "vault",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Rat",
+      "Mole Rat",
+      "Raider"
+    ],
+    "description": "Collapsed and picked clean by raiders. The entrance is a hole in cracked earth. Wind howls through empty corridors.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 19",
+    "type": "vault",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Powder Ganger",
+      "Gecko"
+    ],
+    "description": "Split into red and blue sectors by Vault-Tec. Paranoia was the experiment. Powder Gangers found it first.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 81",
+    "type": "vault",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mole Rat"
+    ],
+    "description": "Still sealed and functional. Secret lab behind the walls where mole rats carry engineered disease. The residents don't know.",
+    "danger_level": 2
+  },
+  {
+    "name": "Vault 88",
+    "type": "vault",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Radscorpion"
+    ],
+    "description": "Massive unfinished vault beneath Quincy quarries. Prototype Vault-Tec devices await a new Overseer with flexible morals.",
+    "danger_level": 2
+  },
+  {
+    "name": "The Institute",
+    "type": "vault",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Synth",
+      "Synth Courser"
+    ],
+    "description": "Beneath MIT. Clean white corridors and manufactured humans. The boogeyman of the Commonwealth is real.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 106",
+    "type": "vault",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Insane Survivor"
+    ],
+    "description": "Psychoactive drugs pumped through the vents ten days after sealing. Hallucinations bleed into reality down here.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 12",
+    "type": "vault",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Glowing One"
+    ],
+    "description": "Necropolis vault. The door was designed not to close. Vault-Tec's radiation experiment. Every resident became a ghoul.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 22",
+    "type": "vault",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Spore Carrier",
+      "Mantis"
+    ],
+    "description": "Overrun by mutant vegetation. Spores drift through green-lit hallways. The plants are hungry.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 3",
+    "type": "vault",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Fiend",
+      "Fiend Boss"
+    ],
+    "description": "Opened peacefully, then the Fiends moved in. Drug-addled psychos in a vault meant for decent people. Motor-Runner holds court.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 34",
+    "type": "vault",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Glowing One"
+    ],
+    "description": "Flooded with radiation. Ghoulified vault dwellers patrol waterlogged corridors. Geiger counter screaming.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 75",
+    "type": "vault",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Gunner"
+    ],
+    "description": "Beneath a school. Children bred and tested for genetic perfection. Failed subjects harvested. Gunners own it now.",
+    "danger_level": 3
+  },
+  {
+    "name": "Vault 92",
+    "type": "vault",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral Ghoul",
+      "Bloatfly"
+    ],
+    "description": "Musicians selected for preservation. White noise experiments drove them feral. Beethoven echoes through blood-smeared halls.",
+    "danger_level": 3
+  },
+  {
+    "name": "Sierra Madre",
+    "type": "vault",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Ghost People"
+    ],
+    "description": "Pre-war casino resort sealed in toxic cloud. The treasure inside drives men mad. Begin again.",
+    "danger_level": 4
+  },
+  {
+    "name": "Vault 87",
+    "type": "vault",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Centaur",
+      "Super Mutant Master"
+    ],
+    "description": "FEV research facility. The source of Capital Wasteland super mutants. Green hell beneath the earth.",
+    "danger_level": 4
+  },
+  {
+    "name": "Megaton Bomb",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Undetonated atomic warhead in a puddle of irradiated water. Children of Atom pray to it. Burke wants it lit.",
+    "danger_level": 1
+  },
+  {
+    "name": "Oasis",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Mirelurk"
+    ],
+    "description": "Green paradise in the Capital Wasteland. Trees grow here. Harold the tree-man is the reason. He wants to die.",
+    "danger_level": 1
+  },
+  {
+    "name": "Starlight Drive-In",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mole Rat",
+      "Bloatfly"
+    ],
+    "description": "Movie screen still stands over a field of rusted speakers. Drain the irradiated puddle and build something new.",
+    "danger_level": 1
+  },
+  {
+    "name": "Aerotech Office Park",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The Aerotech Office Park is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Allied Technologies offices",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Giant ants"
+    ],
+    "description": "The Allied Technologies offices are a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Anacostia Crossing",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Anacostia Crossing is an area of metro Washington, D.C.",
+    "danger_level": 2
+  },
+  {
+    "name": "Anchorage Memorial",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Mirelurks"
+    ],
+    "description": "The Anchorage Memorial is a bronze monument located in the southeast quadrant of the Capital...",
+    "danger_level": 2
+  },
+  {
+    "name": "Andrew's clinic",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Andrew's clinic is the primary source of medical care for the residents of the Courtyard.",
+    "danger_level": 2
+  },
+  {
+    "name": "Arlington Cemetery",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Arlington Cemetery is most of what remains of the Arlington district, including Arlington...",
+    "danger_level": 2
+  },
+  {
+    "name": "Arlington Wasteland Metro",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral ghouls"
+    ],
+    "description": "Arlington/Wasteland Metro, also known as FDR Island Metro,DCTA Metro map and in the Pip-Boy as...",
+    "danger_level": 2
+  },
+  {
+    "name": "Atom Cats garage",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "The Atom Cats garage is a location appearing in the Commonwealth in 2287.Fallout 4 Vault...",
+    "danger_level": 2
+  },
+  {
+    "name": "Bedford Station",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Feral ghouls"
+    ],
+    "description": "Bedford Station is a location in the Commonwealth in 2287.",
+    "danger_level": 2
+  },
+  {
+    "name": "Big Circle",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Big Circle is the name given to a caravan route that crosses the northern region of New...",
+    "danger_level": 2
+  },
+  {
+    "name": "Big John's Salvage",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super mutants",
+      "Mutant hounds"
+    ],
+    "description": "Big John's Salvage is a location in the Commonwealth in 2287.",
+    "danger_level": 2
+  },
+  {
+    "name": "Bitter Springs",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Cazador",
+      "Raider"
+    ],
+    "description": "Refugee camp haunted by massacre. NCR gunned down fleeing Khans here. Boone can't forget. Neither can the ghosts.",
+    "danger_level": 2
+  },
+  {
+    "name": "Blue Paradise Vacation Rentals",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Lakelurks"
+    ],
+    "description": "Blue Paradise Vacation Rentals is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Bob's Iguana Bits",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Bob's Iguana Bits is a food stand operated by Bob Frazier in the Hub in Fallout.",
+    "danger_level": 2
+  },
+  {
+    "name": "Boneyard",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "The Boneyard (also known as the Angel's Boneyard or L.A.",
+    "danger_level": 2
+  },
+  {
+    "name": "Bonnie Springs",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Cazador",
+      "Blind deathclaw"
+    ],
+    "description": "Bonnie Springs is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Boston Police rationing site",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mole rats",
+      "Radroaches",
+      "Radstags"
+    ],
+    "description": "The Boston Police rationing site is a location in the Commonwealth in 2287.",
+    "danger_level": 2
+  },
+  {
+    "name": "Boulder Beach Campground",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Lakelurk"
+    ],
+    "description": "The Boulder Beach Campground is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Breakheart Banks",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super mutants",
+      "Mutant hound"
+    ],
+    "description": "Breakheart Banks is a location in the Commonwealth in 2287.",
+    "danger_level": 2
+  },
+  {
+    "name": "Cal's gun shop",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Cal's gun shop is a shop in the PMV Valdez owned by Cal in 2241.",
+    "danger_level": 2
+  },
+  {
+    "name": "Cavern",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "creatures",
+      "CVGENENC.H",
+      "Geckos",
+      "Radscorpions"
+    ],
+    "description": "Cavern is a random encounter in Fallout 2.",
+    "danger_level": 2
+  },
+  {
+    "name": "Charles View Amphitheater",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mirelurks"
+    ],
+    "description": "The Charles View Amphitheater is a location in the Esplanade neighborhood of Boston in 2287.",
+    "danger_level": 2
+  },
+  {
+    "name": "Council Hall",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Council Hall is the government district of the capital of the New California Republic.",
+    "danger_level": 2
+  },
+  {
+    "name": "Den slave run",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Den slave run is a location in Fallout 2, in the vicinity of the Den.",
+    "danger_level": 2
+  },
+  {
+    "name": "Fake Vault 13",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Fake Vault 13 is a small cave north-northwest of New California Republic in 2241.",
+    "danger_level": 2
+  },
+  {
+    "name": "Glendale",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Glendale is a mentioned-only location .",
+    "danger_level": 2
+  },
+  {
+    "name": "Golgotha",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Coffin Willie"
+    ],
+    "description": "Golgotha is a graveyard located on the outskirts of New Reno .",
+    "danger_level": 2
+  },
+  {
+    "name": "Grayditch",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Bloatfly"
+    ],
+    "description": "Abandoned suburb near DC. A kid scientist's fire ant experiment went wrong. Very, very wrong.",
+    "danger_level": 2
+  },
+  {
+    "name": "Grisham's house",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [
+      "Grisham",
+      "Miria",
+      "Davin"
+    ],
+    "description": "Grisham's house is the home for father Grisham, daughter Miria, and son Davin in Modoc Main...",
+    "danger_level": 2
+  },
+  {
+    "name": "Hollywood",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Hollywood was a municipality of Los Angeles that was known for its celebrities and film...",
+    "danger_level": 2
+  },
+  {
+    "name": "Hollywood Hills",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Hollywood Hills was a pre-War residential neighborhood in Los Angeles, California which...",
+    "danger_level": 2
+  },
+  {
+    "name": "Hub",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "The Hub is a major location .",
+    "danger_level": 2
+  },
+  {
+    "name": "Jenna's general store",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Jenna's general store is a store in the PMV Valdez owned by Jenna in 2241.",
+    "danger_level": 2
+  },
+  {
+    "name": "Los Angeles",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Los Angeles, abbreviated as LA, was one of the largest cities in the United States.",
+    "danger_level": 2
+  },
+  {
+    "name": "Maintenance center",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The maintenance center, currently staffed by Valerie, is Vault City's premier workshop...",
+    "danger_level": 2
+  },
+  {
+    "name": "Mojave Wasteland",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [],
+    "description": "The Mojave Wasteland is the region based on the pre-War Mojave Desert, spanning large portions...",
+    "danger_level": 2
+  },
+  {
+    "name": "Molerat Mambo",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "Molerat Mambo is a blood sport gambling establishment in the Redding mining camp where mole...",
+    "danger_level": 2
+  },
+  {
+    "name": "NCR Rangers headquarters",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The NCR Rangers HQ is a location in New California Republic's capital.",
+    "danger_level": 2
+  },
+  {
+    "name": "New California",
+    "type": "wasteland",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "New California,Steve: \"{103}{}{Hello and welcome to Vault City, the best city in New...",
+    "danger_level": 2
+  },
+  {
+    "name": "Nipton Road Rest Stop",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Radscorpion",
+      "Cazador"
+    ],
+    "description": "Abandoned gas station on a lonely highway. Cazadors hunt the ridge above. The Mojave doesn't forgive carelessness.",
+    "danger_level": 2
+  },
+  {
+    "name": "Pacific Ocean",
+    "type": "wasteland",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Pacific Ocean, referred to by some tribals as the Great Salt Water,Chosen One...",
+    "danger_level": 2
+  },
+  {
+    "name": "Presidential Mansion",
+    "type": "wasteland",
+    "game_source": [
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Presidential Mansion is a location within the Council Hall in NCR town.",
+    "danger_level": 2
+  },
+  {
+    "name": "The Basincreek Building",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Giant soldier ants",
+      "Giant worker ants",
+      "Radroaches"
+    ],
+    "description": "The Basincreek Building is a location in the Mojave Wasteland .",
+    "danger_level": 2
+  },
+  {
+    "name": "Wasteland",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "The wasteland, or simply the wastes, is the name generally given to the landscape of the Earth...",
+    "danger_level": 2
+  },
+  {
+    "name": "Zion Canyon",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Cazador",
+      "Gecko",
+      "Yao Guai"
+    ],
+    "description": "Pristine canyon untouched by bombs. Tribal conflict brews beneath red sandstone cliffs and waterfalls.",
+    "danger_level": 2
+  },
+  {
+    "name": "Abandoned car fort",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Mirelurks"
+    ],
+    "description": "The abandoned car fort is a small makeshift fort in the Capital Wasteland in 2277.",
+    "danger_level": 3
+  },
+  {
+    "name": "Abernathy farm",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Clarabell",
+      "Maisie"
+    ],
+    "description": "Abernathy farm is a location and potential settlement in the Commonwealth in 2287.",
+    "danger_level": 3
+  },
+  {
+    "name": "Alexandria Arms",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "The Alexandria Arms is a location in the Capital Wasteland in 2277, near Arlington Library.",
+    "danger_level": 3
+  },
+  {
+    "name": "Anacostia Crossing Station",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "Anacostia Crossing Station is a Metro station and the southernmost point stop on the Red Line.",
+    "danger_level": 3
+  },
+  {
+    "name": "Arlington Library",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Radroaches"
+    ],
+    "description": "The Arlington Public Library,Arlington Library terminal entries; Check-In terminal officially...",
+    "danger_level": 3
+  },
+  {
+    "name": "Beantown Brewery",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Radroaches"
+    ],
+    "description": "The Beantown Brewery is a location in the Commonwealth in 2287.",
+    "danger_level": 3
+  },
+  {
+    "name": "Bethesda ruins",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Feral ghouls"
+    ],
+    "description": "The Bethesda ruins are located northwest of Washington, D.C.",
+    "danger_level": 3
+  },
+  {
+    "name": "Capital Wasteland",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [],
+    "description": "The Capital Wasteland is a loosely defined geographic region, spanning areas of Virginia...",
+    "danger_level": 3
+  },
+  {
+    "name": "Chestnut Hillock Reservoir",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Bloatflies",
+      "Bloodbugs",
+      "Brahmin"
+    ],
+    "description": "The Chestnut Hillock reservoir is a lake in the Commonwealth in 2287.",
+    "danger_level": 3
+  },
+  {
+    "name": "Coast Guard pier",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mutant hounds",
+      "Super mutants"
+    ],
+    "description": "The Coast Guard pier, officially the US Coast Guard Charles River Station,Coast Guard pier...",
+    "danger_level": 3
+  },
+  {
+    "name": "Coastal cottage",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mirelurks",
+      "mirelurk queen"
+    ],
+    "description": "The coastal cottage is a location and a possible settlement in the Commonwealth in 2287.",
+    "danger_level": 3
+  },
+  {
+    "name": "County crossing",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "County crossing is a location and settlement in the Commonwealth in 2287.",
+    "danger_level": 3
+  },
+  {
+    "name": "Crater of Atom",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Children of Atom"
+    ],
+    "description": "Blast crater in the Glowing Sea. Children of Atom worship in the most irradiated spot on Earth. Virgil hides nearby.",
+    "danger_level": 3
+  },
+  {
+    "name": "Minefield",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Raider"
+    ],
+    "description": "Suburban block rigged with frag mines on every doorstep. A sniper watches from the rooftops. Step carefully.",
+    "danger_level": 3
+  },
+  {
+    "name": "Point Lookout",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Swampfolk",
+      "Tribals",
+      "Feral Ghoul"
+    ],
+    "description": "Maryland swampland. Fog rolls thick over boardwalks and mansions. The locals aren't friendly.",
+    "danger_level": 3
+  },
+  {
+    "name": "Sierra Nevada",
+    "type": "wasteland",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "typical_enemies": [],
+    "description": "The Sierra Nevadas are a mountain range in the former American state of California.",
+    "danger_level": 3
+  },
+  {
+    "name": "Spectacle Island",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Mirelurk",
+      "Mirelurk Queen"
+    ],
+    "description": "Island in Boston Harbor. Kill the queen, flip the switch, claim the biggest settlement in the Commonwealth.",
+    "danger_level": 3
+  },
+  {
+    "name": "The Commonwealth",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [],
+    "description": "The Commonwealth is a geographic region on the post-War North American continent, largely...",
+    "danger_level": 3
+  },
+  {
+    "name": "Adytum",
+    "type": "wasteland",
+    "game_source": [
+      "FO1"
+    ],
+    "typical_enemies": [],
+    "description": "Adytum, later New Adytum,Adytum citizen: \"{119}{}{Welcome to the New Adytum.}\"(Adytum...",
+    "danger_level": 4
+  },
+  {
+    "name": "Boston Common",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Brute"
+    ],
+    "description": "Swan's Pond. Looks peaceful. A behemoth named Swan sleeps beneath the water. Don't wake him.",
+    "danger_level": 4
+  },
+  {
+    "name": "Deathclaw Promontory",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Deathclaw",
+      "Alpha Deathclaw"
+    ],
+    "description": "Rocky outcrop on the Colorado River. Largest deathclaw colony in the Mojave. Dozens of them. Turn back.",
+    "danger_level": 4
+  },
+  {
+    "name": "Dry Wells",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Marked Man",
+      "Irradiated Deathclaw"
+    ],
+    "description": "The Courier's nuclear option. What remains of a Legion camp after the warheads fell. Marked men patrol the ruins.",
+    "danger_level": 4
+  },
+  {
+    "name": "GNR Building Plaza",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Super Mutant",
+      "Super Mutant Behemoth"
+    ],
+    "description": "Fountain plaza before the radio station. A behemoth charges through the rubble. Brotherhood scribes scatter.",
+    "danger_level": 4
+  },
+  {
+    "name": "Lonesome Road",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Tunneler",
+      "Marked Man"
+    ],
+    "description": "Highway torn through collapsed earth. Warheads embedded in the rubble. ED-E beeps nervously. Ulysses waits at the Temple.",
+    "danger_level": 4
+  },
+  {
+    "name": "Old Olney",
+    "type": "wasteland",
+    "game_source": [
+      "FO3"
+    ],
+    "typical_enemies": [
+      "Deathclaw"
+    ],
+    "description": "Suburban ruin overrun by deathclaws. Every building, every alley. The sewers underneath are worse.",
+    "danger_level": 4
+  },
+  {
+    "name": "Quarry Junction",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Deathclaw",
+      "Alpha Deathclaw"
+    ],
+    "description": "Limestone quarry. Deathclaw breeding ground. The shortcut to Vegas that nobody survives.",
+    "danger_level": 4
+  },
+  {
+    "name": "The Divide",
+    "type": "wasteland",
+    "game_source": [
+      "NV"
+    ],
+    "typical_enemies": [
+      "Tunneler",
+      "Marked Man",
+      "Deathclaw"
+    ],
+    "description": "Nuclear scars ripped through the earth. Perpetual storms, irradiated horrors, and Ulysses waiting at the end.",
+    "danger_level": 4
+  },
+  {
+    "name": "The Glowing Sea",
+    "type": "wasteland",
+    "game_source": [
+      "FO4"
+    ],
+    "typical_enemies": [
+      "Radscorpion",
+      "Deathclaw",
+      "Feral Ghoul Reaver"
+    ],
+    "description": "Ground zero of the 2077 strike. Permanent radiation storms. Only the hardiest or most desperate venture in.",
+    "danger_level": 4
+  }
+]

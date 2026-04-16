@@ -1,0 +1,2351 @@
+{
+  "room_descriptions": [
+    {
+      "text": "Dust motes drift through shattered skylights. Rubble crunches underfoot. Something moved in the back.",
+      "location_type": "ghoul_ruin",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Vault door stands open. Emergency lights paint the corridor red. The silence is worse than screaming.",
+      "location_type": "vault",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Neon flickers above a bar. Music crackles from a speaker. For a moment, it almost feels normal.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Sand-scoured concrete bunker. Shell casings carpet the floor. Someone made a last stand here.",
+      "location_type": "military",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Stalactites drip irradiated water into glowing pools. Eyes watch from crevices in the rock.",
+      "location_type": "cave",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Campfires ring a gutted shopping mall. Raiders have strung up trophies. The smell is indescribable.",
+      "location_type": "raider_camp",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Endless brown horizon broken by twisted highway overpasses. A hot wind carries the taste of rust.",
+      "location_type": "wasteland",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Burned-out houses line a cul-de-sac. A swing set creaks in the breeze. Pre-war toys litter a yard.",
+      "location_type": "wasteland",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Water treatment plant. Pipes groan and hiss. Something large splashes in the settling tanks.",
+      "location_type": "ghoul_ruin",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Market stalls built from car hoods and street signs. Traders haggle over bullet casings and canned food.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Collapsed highway interchange. Vehicles frozen in a two-century traffic jam. Raiders nest in the overpass.",
+      "location_type": "raider_camp",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Pre-war office. Skeletons at desks. Terminal screens still glow with unread emails from the end of the world.",
+      "location_type": "ghoul_ruin",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Generator hums in a fortified warehouse. Someone's rigged lights and a water purifier. Civilization persists.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Irradiated crater. Glass fused to sand. Geiger counter ticking like an angry clock. Don't linger.",
+      "location_type": "wasteland",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Subway tunnel stretches into darkness. Rats scatter from your light. The tracks lead somewhere worse.",
+      "location_type": "cave",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Coyote skull on a pike marks the border. Beyond: nothing moves that isn't trying to kill you.",
+      "location_type": "wasteland",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Vault-Tec poster on the wall: 'Prepare for the Future!' The future came. It wasn't what they planned.",
+      "location_type": "vault",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Casino floor. Slot machines still work. Skeletons clutch chips worth nothing to no one.",
+      "location_type": "town",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "Military checkpoint. Sandbags, razor wire, and a sign: AUTHORIZED PERSONNEL ONLY. Everyone's dead.",
+      "location_type": "military",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Barn door swings open to reveal a makeshift arena. Bloodstains on the dirt. Cheering from above.",
+      "location_type": "raider_camp",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Hospital corridor. Gurneys overturned. Medical supplies scattered. Feral ghouls in patient gowns shamble past.",
+      "location_type": "ghoul_ruin",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Church steeple rises above the fog. Inside, pews face a pulpit. Someone's carved 'ATOM' into the altar.",
+      "location_type": "ghoul_ruin",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Trailer park at the edge of town. Some still occupied. A dog barks. A radio plays. Almost peaceful.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Red rocket station. Pumps dry for two centuries. The garage makes a decent shelter if you clear the mole rats.",
+      "location_type": "wasteland",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Power armor bay. Frames stand empty like metal skeletons. One still has a fusion core glowing in its back.",
+      "location_type": "military",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Sewer grate leads down into ankle-deep irradiated water. Something growls in the echoing dark.",
+      "location_type": "cave",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Farm plots behind sandbag walls. Mutfruit and tatos grow in grey soil. Someone's making it work.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bridge over a toxic river. Green water flows sluggishly. A mirelurk surfaces, then submerges.",
+      "location_type": "wasteland",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Rooftop overlooking the ruins. Sunset paints the rubble gold. For one minute, it's almost beautiful.",
+      "location_type": "wasteland",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Boarded-up diner. Inside: preserved food, a working jukebox, and three skeletons at the counter.",
+      "location_type": "wasteland",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Vault atrium. Two floors of rooms visible through shattered windows. Cafeteria tables overturned. Someone barricaded the stairs.",
+      "location_type": "vault",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Cryogenic pods line the walls. Most occupants are bones. One pod still hums.",
+      "location_type": "vault",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Vault classroom. ABCs on the chalkboard. Tiny skeletons in tiny chairs. The experiment started young.",
+      "location_type": "vault",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Reactor level. Coolant leaks pool neon blue on the floor. The Geiger counter sings.",
+      "location_type": "vault",
+      "tone": "tense",
+      "source_game": "FO1"
+    },
+    {
+      "text": "Overseer's office. Terminal still locked. The chair faces a wall of monitors showing empty rooms.",
+      "location_type": "vault",
+      "tone": "grim",
+      "source_game": "FO2"
+    },
+    {
+      "text": "Vault garden dome. UV lamps burned out decades ago. Hydroponic trays hold only dust and dead roots.",
+      "location_type": "vault",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Rec room. Pool table with three balls left. Someone scratched kill tallies into the felt.",
+      "location_type": "vault",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Tunnel narrows to a crawl. Bones crunch against your elbows. The air tastes like copper.",
+      "location_type": "cave",
+      "tone": "tense",
+      "source_game": "FO1"
+    },
+    {
+      "text": "Cavern opens into a cathedral of stone. Bioluminescent fungus paints the ceiling green. Something nests in the center.",
+      "location_type": "cave",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mine shaft propped with rotting timbers. Pickaxes rusted into the rock face. The deep end floods with every rain.",
+      "location_type": "cave",
+      "tone": "grim",
+      "source_game": "FO2"
+    },
+    {
+      "text": "Underground river cuts through limestone. The current is fast and the water glows. Don't drink it.",
+      "location_type": "cave",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Natural alcove with old sleeping bags and spent flares. Someone lived here. Claw marks on the walls suggest they stopped.",
+      "location_type": "cave",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Cave mouth overlooking the valley. Wind moans through it like a dying animal. Good vantage point if nothing's home.",
+      "location_type": "cave",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Barbed wire and sheet metal walls. Guard towers made from highway signs. A skull painted on the gate.",
+      "location_type": "raider_camp",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Cage fights in a parking garage. Raiders bet chems and bullets. The loser stays in the cage.",
+      "location_type": "raider_camp",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Raider throne room: a recliner on a pile of tires. Christmas lights strung from pipes. A crown made of bottlecaps.",
+      "location_type": "raider_camp",
+      "tone": "humorous",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Overpass camp. Bridges between wrecked cars. The raiders dump bodies off the edge for the dogs below.",
+      "location_type": "raider_camp",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Chop shop. Cars stripped to frames. The mechanics here strip more than cars.",
+      "location_type": "raider_camp",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Slave pen in a fenced yard. Water bowl like they're animals. Because to the raiders, they are.",
+      "location_type": "raider_camp",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Mess hall. Long tables, armed guards, and food that used to be someone's brahmin. Maybe someone's friend.",
+      "location_type": "military",
+      "tone": "grim",
+      "source_game": "FO2"
+    },
+    {
+      "text": "Command center. Maps pinned with faded pushpins. The battle plan was for a war that ended the world.",
+      "location_type": "military",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Armory cage. Weapons racked floor to ceiling. Most picked clean but the heavy ordinance stays locked.",
+      "location_type": "military",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Motor pool. APCs rusted to the concrete. One Vertibird looks almost flyable. Almost.",
+      "location_type": "military",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Firing range. Paper targets still hang. The silhouettes are full of holes from both sides of the apocalypse.",
+      "location_type": "military",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Watchtower above the settlement. Searchlight sweeps the perimeter. The guard waves you through.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "General store. Shelves lined with scavenged goods. The shopkeeper knows your name and your credit.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "FO2"
+    },
+    {
+      "text": "Saloon with actual music. Someone plays guitar badly. Nobody cares. Cold beer is cold beer.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Town square. Children chase a dog. A woman hangs laundry. A man cleans a rifle. Normal is relative.",
+      "location_type": "town",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Gutted factory floor. Conveyor belts carry nothing. The machines remember what they made. You don't want to.",
+      "location_type": "ghoul_ruin",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lobby of a grand hotel. Chandelier crashed into the fountain. Feral doorman still stands at the entrance.",
+      "location_type": "ghoul_ruin",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It is automatically given to the Courier after killing Mr. House in the Lucky 38 control room at...",
+      "tone": "grim",
+      "source_game": "NV",
+      "location_type": "wasteland"
+    }
+  ],
+  "find_descriptions": [
+    {
+      "text": "Ammo box under a desk. Still sealed. Today's a good day.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Skeleton clutches a holotape and a pistol. One bullet spent.",
+      "tone": "grim"
+    },
+    {
+      "text": "Footlocker wedged behind rubble. Lock rusted open. Caps spill out.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "First aid kit on the wall. Half empty. Half is better than none.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Toolbox hidden in a crawlspace. Someone's emergency stash, forgotten.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Safe behind a painting. Classic. The combo died with its owner.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Vending machine tips over. Nuka-Cola rolls across the floor.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Dead raider's pockets. Chems, caps, and a photo of someone they used to be.",
+      "tone": "grim"
+    },
+    {
+      "text": "Locked filing cabinet. Inside: pre-war documents and a pristine revolver.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Refrigerator still running on a micro-fusion cell. Food inside is... edible. Probably.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Duffle bag in a drainage pipe. Military supplies. Someone didn't make it back.",
+      "tone": "grim"
+    },
+    {
+      "text": "Medicine cabinet. Stimpaks and Med-X. The good stuff.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Overturned shopping cart full of junk. One man's trash, your survival.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Gun rack on the wall. One weapon left. Dusty but functional.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Cash register still has caps in it. Old habits die hard.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Buried in rubble: a lunchbox. Inside: bottlecaps and a toy car. Jackpot.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Chem lab equipment. Someone was cooking. Product's still here.",
+      "tone": "tense"
+    },
+    {
+      "text": "Power armor frame in a locked cage. The key's got to be somewhere.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Dog tags and a wedding ring. You pocket the caps, leave the rest.",
+      "tone": "grim"
+    },
+    {
+      "text": "Trunk of a pre-war car. Spare tire, jack, and three bottles of perfectly preserved whiskey.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Holotape wedged in a terminal. Someone's last words. You listen anyway.",
+      "tone": "grim"
+    },
+    {
+      "text": "Workbench with scattered components. Enough to mod a weapon if you're clever.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Child's backpack behind a dumpster. Preserved food and a teddy bear inside. You take the food.",
+      "tone": "grim"
+    },
+    {
+      "text": "Military crate stamped CLASSIFIED. The lock's been shot off. Mini nukes inside.",
+      "tone": "tense"
+    },
+    {
+      "text": "Booby-trapped door. You spot the tripwire. Whoever set it left good stuff on the other side.",
+      "tone": "tense"
+    },
+    {
+      "text": "Pre-war suitcase. Clothes turned to dust but the jewelry survived. Caps equivalent right there.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Bathroom mirror. Behind it: three stimpaks taped to the wall. Old survival trick.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Deathclaw nest. Eggs the size of footballs. Worth a fortune if you can carry them out alive.",
+      "tone": "tense"
+    },
+    {
+      "text": "Pipe rifle propped against a wall. Owner slumped beside it. Plenty of ammo left.",
+      "tone": "grim"
+    },
+    {
+      "text": "Nuka-Cherry in a cooler of ice that melted two centuries ago. Still cold somehow. Don't question it.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Robot vendor powered down in an alcove. Boot it up and it wants to sell you things. With what money?",
+      "tone": "humorous"
+    },
+    {
+      "text": "Under a collapsed shelf: fusion cells. Dozen of them. Laser weapon just became viable.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Mattress in a closet. Supplies stacked neatly. Whoever lived here was organized. And gone.",
+      "tone": "grim"
+    },
+    {
+      "text": "Steamer trunk in the basement. Three locks. Inside: pre-war money and a plasma pistol.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Lucky find: purified water in sealed containers. Someone was hoarding for a rainy day that never came.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Flipped brahmin cart. Salvage scattered across the road. Caravan didn't make it. You will.",
+      "tone": "grim"
+    },
+    {
+      "text": "Burned journal. Most pages ash. One readable entry: coordinates to a cache. Could be real.",
+      "tone": "tense"
+    },
+    {
+      "text": "Skeleton in power armor. The armor still works. The previous owner doesn't need it.",
+      "tone": "grim"
+    },
+    {
+      "text": "Nuka-Cola Quantum glowing in a display case. Blue light fills the room. Beautiful and irradiated.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Surgical tray. Clean tools. Stimpak components. Someone was a doctor here once.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Grenade bouquet hanging from a doorknob. Trip it and the whole room goes. Disarm it and they're yours.",
+      "tone": "tense"
+    },
+    {
+      "text": "Pre-war comic book in mint condition. Worth more than caps to the right buyer. Worth nothing to your stomach.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Crate of Sunset Sarsaparilla. Still fizzy. Still terrible. Still better than irradiated puddle water.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Lockbox chained to a pipe. Inside: someone's life savings. Forty-seven caps and a silver locket.",
+      "tone": "grim"
+    },
+    {
+      "text": "Missile launcher under a tarp. Five missiles beside it. Merry Christmas.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Caravan manifest and a key. The cache location is circled on a map pinned to the wall.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Ghoul's bindle. Irradiated food you can't eat and caps you absolutely can spend.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Water chip. Cracked but maybe repairable. Worth its weight in gold to the right vault.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Brotherhood holotag on a dead paladin. The laser rifle beside them works fine.",
+      "tone": "grim"
+    },
+    {
+      "text": "Bottlecap mine in a box. Homemade explosive. Crude but effective. The caps are the shrapnel.",
+      "tone": "tense"
+    },
+    {
+      "text": "The disk can be found on a dead Regulator on the stairs up from Arlington Cemetery North. It...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Found next to the Vault 77 jumpsuit in the slaver barracks of Paradise Falls.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Found on a dead raider (refid ) south of Vault 108, southeast of the Corvega factory. It does not...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Found in Vault 108's cloning labs, next to a skeleton leaning on an operating table.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Although it shows as a holotape, it is text, not audio, and the Pip-Boy refers to it as a note.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The note is given to the Lone Wanderer by Reilly in the Chop Shop during the quest Reilly's Rangers.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Angela and Diego are two paper notes .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The first note can be added to the Lone Wanderer's Pip-Boy at numerous opportunities, when...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Bryan's special key is a note .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "A note, added to the Lone Wanderer's Pip-Boy after passing a Speech check with Bryan Wilks, when...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Contact Report: \"Enclave\" is a note .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This note is added to the Lone Wanderer's Pip-Boy after reading the View External Contact Report...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The DCTA Metro map is an image note .",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This note is added to the Lone Wanderer's Pip-Boy after downloading the metro map from a terminal.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Map can be downloaded from terminals found next to Protectron pods at Metro Central, Foggy Bottom...",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It can be found on the mainframe terminal in the sacrificial chamber from Vault 11.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "The holotape can be found on Paladin Matiz, a dead Brotherhood of Steel paladin on the REPCONN...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The note pays homage to Vladimir Nabokov's novel Lolita by saying \"House was orphaned at an early...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The note is not automatically added",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This note erases any negative NCR reputation the player may have earned up until the point of...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The note can be found on Tom Anderson during the quest The White Wash.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "It can be found on Big Sal. It is used to open his terminal and unlock the safe in his office. It...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Black Mountain prison password is a note .",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Camp Guardian daily log is a series of paper notes . They can be found scattered around the...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Listed below are the 11 note locations. Each collected note will cause a note to be added by...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Very close to the previous note, in an immediately adjacent bush",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "If the Courier pickpockets the note from Jessup's inventory or kills him before questioning him...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Pip-Boy 3000 Mark IV features minigames, which can be accessed if the Sole Survivor has found...",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The Advanced system notes are two holotapes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The tape can be found on Knight Varham's body during The Lost Patrol.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in the base game, whether or not an add-on is installed.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in Automatron.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in Far Harbor.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in the Vault-Tec Workshop.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that appear in Nuka-World",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All notes that are added via Creation Club content.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The note is set up to work with either Wire or Gabriel as the name of the Libertalia raider boss...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The bakery tickets are a series of ten paper notes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The tickets are found in and around Pinelli's Bakery.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Note 10 (ticket no. 65) sometimes can't be picked up and therefore not be read using normal...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The bathroom notes are a series of paper notes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Both notes are found at the Reeb Marina, on the bathroom's sink.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The note can be taken from Cedric Hopton if he is killed at the Third Rail.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The note can be found on all raiders at the East Boston Preparatory School.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle messages are both a collection of miscellaneous quests and a series of paper notes ....",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The breakroom notes are a series of paper notes .",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "They can be found at the Reeb Marina, on the kitchen counter.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    }
+  ],
+  "ambient_descriptions": [
+    {
+      "text": "Wind whistles through broken windows. Glass tinkles somewhere above.",
+      "tone": "tense"
+    },
+    {
+      "text": "Distant gunfire. Three shots, then silence. Someone won or lost.",
+      "tone": "grim"
+    },
+    {
+      "text": "A brahmin lows somewhere in the fog. Caravan must be close.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Geiger counter clicks steadily. Not dangerous yet. Yet.",
+      "tone": "tense"
+    },
+    {
+      "text": "Radio static gives way to a song. Civilization. Maybe nearby.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Crows circle overhead. They always know where the bodies are.",
+      "tone": "grim"
+    },
+    {
+      "text": "Thunder rolls across the wasteland. Green lightning. Rad storm incoming.",
+      "tone": "tense"
+    },
+    {
+      "text": "Somewhere a protectron announces: 'PROTECT AND SERVE.' Then silence.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Campfire smoke rises from behind a hill. Could be friendly. Could be anything.",
+      "tone": "tense"
+    },
+    {
+      "text": "A vertibird roars overhead. Brotherhood. They don't stop for wastelanders.",
+      "tone": "grim"
+    },
+    {
+      "text": "Dogs howling in the distance. Pack hunters. Moving away, thankfully.",
+      "tone": "tense"
+    },
+    {
+      "text": "Stars visible through the haze tonight. Millions of them. The sky didn't die.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Pipes groan in the walls. Something's still pressurized down here.",
+      "tone": "tense"
+    },
+    {
+      "text": "Smell of cooking meat drifts from a settlement. Your stomach reminds you it exists.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "A muffled explosion. Then another. Someone found a mine field the hard way.",
+      "tone": "grim"
+    },
+    {
+      "text": "Eyebot floats past playing patriotic music. Propaganda from a dead government.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Leaves rustle. No wind. Something's watching from the treeline.",
+      "tone": "tense"
+    },
+    {
+      "text": "Rain patters on corrugated tin. Clean enough to drink, if you're desperate.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "The creak of a door swinging open by itself. Building settling. Probably.",
+      "tone": "tense"
+    },
+    {
+      "text": "Footsteps echoing that aren't yours. You stop. They stop. You walk faster.",
+      "tone": "tense"
+    },
+    {
+      "text": "Dust devil spins across the highway. Picks up papers two hundred years old and scatters them again.",
+      "tone": "grim"
+    },
+    {
+      "text": "A child laughs somewhere. Then you remember there are no children here.",
+      "tone": "tense"
+    },
+    {
+      "text": "Mr. Handy buzzes past trimming dead hedges. Still on its schedule. The house is gone.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Radiation warning siren. Still functional. Nobody left to warn.",
+      "tone": "grim"
+    },
+    {
+      "text": "Moonlight through broken ceiling tiles. Your shadow stretches long and wrong.",
+      "tone": "tense"
+    },
+    {
+      "text": "Deathclaw roar in the distance. Far enough. For now.",
+      "tone": "tense"
+    },
+    {
+      "text": "Water dripping. Steady rhythm. Almost peaceful if you forget what's in the water.",
+      "tone": "tense"
+    },
+    {
+      "text": "Old billboard: NUKA-COLA - TASTE THE FUTURE. Bullet holes through every letter.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Caravan brahmin dead on the road. Picked clean. Flies have what's left.",
+      "tone": "grim"
+    },
+    {
+      "text": "Sunset through atomic haze. Orange and purple. Poisonous and gorgeous.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Howling from the metro tunnels below. Could be wind. Could be ghouls. Same difference.",
+      "tone": "tense"
+    },
+    {
+      "text": "A light blinks on and off in an empty building. Morse code or short circuit. You don't check.",
+      "tone": "tense"
+    },
+    {
+      "text": "Radstag herd crosses the road ahead. Cautious. Two-headed. Almost majestic.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "The smell hits before you see the bodies. Raiders made an example. Message received.",
+      "tone": "grim"
+    },
+    {
+      "text": "Train whistle? No. Wind through a collapsed overpass. Sounds just like one though.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Super mutant shouting echoes between buildings. Can't tell how far. Sound plays tricks in the ruins.",
+      "tone": "tense"
+    },
+    {
+      "text": "Fireflies. Actual fireflies. Radioactive, but still beautiful hovering over the swamp.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Flag still flies over a government building. Tattered. Faded. Defiant.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Pre-war car alarm going off. Two hundred years and the battery won't die. Nobody's coming.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Cazador wings buzzing. That sound means run. Don't look. Just run.",
+      "tone": "tense"
+    },
+    {
+      "text": "Smoke column on the horizon. Settlement or raid. Hard to tell the difference sometimes.",
+      "tone": "grim"
+    },
+    {
+      "text": "Your Pip-Boy ticks faster. Background radiation rising. Turn around or push through.",
+      "tone": "tense"
+    },
+    {
+      "text": "Abandoned campfire. Still warm. Someone left in a hurry. You should too.",
+      "tone": "tense"
+    },
+    {
+      "text": "Gecko chirping in the rocks. Harmless ones. The harmless kind are almost cute.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Sprinkler system activates in a dead garden. Water's brown but the mechanism works. Pre-war engineering.",
+      "tone": "humorous"
+    },
+    {
+      "text": "Blood trail leading into the dark. Fresh. You've got a choice to make.",
+      "tone": "tense"
+    },
+    {
+      "text": "Diamond City radio fades in. Travis stumbles through a sentence. Somehow comforting.",
+      "tone": "hopeful"
+    },
+    {
+      "text": "Two skeletons on a bench. Holding hands. Two centuries and still together.",
+      "tone": "grim"
+    },
+    {
+      "text": "Mirelurk eggs along the riverbank. Dozens. Stay off the shore.",
+      "tone": "tense"
+    },
+    {
+      "text": "Night falls fast out here. The wasteland is honest about its darkness.",
+      "tone": "grim"
+    },
+    {
+      "text": "Run Ticket Check Routine",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "View/Download Metro Map",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Anchorage Memorial facility terminal",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Average locked terminal, located on a table in the center of the Operations and Clinic room.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Initialize Water Management Systems",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Unlock Secure Medical Safe",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Terminal is located on the lobby's front desk.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "There are two of these Average locked terminals, located on tables in the Media Archive section.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Arlington Public Library terminal",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Terminal is located in the southwest of the Media Archive section.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This Average locked terminal is located in the same room as the Public Library terminal.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Top Stories -- January 11, 2077",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Commies Crushed - Alaska Liberated!",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Food Riots Rile Feds",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Top Stories -- June 3, 2072",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Development of Super Weapon Confirmed",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Top Stories -- July 27, 2052",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Pint-Sized Slasher: More than Myth?",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Most of these articles can also be seen on Fallout 3 loading screens:",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Average locked terminal in the reception area's hallway north on the local map, opens a door.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Easy locked terminal in the basement, in a large room with bookcases northeast on the local map....",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Capital Post Article -- June 3, 2072",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Letter: Dr. Bloomfeld to Gen. Chase",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "G.N.R. Battle After-Action Report",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "General Robot Diagnostics -- Updated",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Notice: Reddin Funeral Canceled",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "All three terminals are found in the ring's south room",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "New Entry: Scribe Arthur Maxson",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Diary of Roger Maxson -- Vol. 1",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Diary of Roger Maxson -- Vol. 2",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Vault-Tec Personal Assignments",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Medical Storage Lock Override",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Important!: Squire Maxson Bailey Access",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Notice: Reddin Funeral Cancelled",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Story: The Guardians of Gillyfrond",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Poem: Song of the Lightman",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Squire Maxson Progress Report",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Sewer Management Access computer",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "For locations and transcripts please refer to the individual articles.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The transcript translates to \"CAEK > PIE\" in hexadecimal.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "If the above bug happens on the PC, use the following console commands to \"fix\" this: , , , . In...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The actual stash is in a refrigerator below the kitchen/recreation area, where there are a few...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Will show up on dead Regulators (e.g., killed inside Regulator HQ by albino radscorpions)...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The holotape was written by Joel Burgess, lead level designer of Fallout 3.Joel Burgess' Blog...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This holodisk is added to the Lone Wanderer's inventory after reading the 'View Agenda' entry on...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It is given to the Lone Wanderer by Beatrice Armstrong on their 10th birthday, during the quest...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Reilly's directions to Statesman Hotel",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "A Nice Day for a Right Wedding",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It is given to the Lone Wanderer by Bannon and starts the unmarked quest, Council Seat.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "It is added to the Lone Wanderer's Pip-Boy after talking to one of C.J. Young's parents, Henry...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The Xs mark the following map locations starting from Canterbury Commons (Further NE X) then...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Should the Lone Wanderer act against Burke's wishes during The Power of the Atom quest (either by...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "If the Lone Wanderer enslaves a certain amount of people and sends them to Paradise Falls, it's...",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "In the data section of the Pip-Boy, its name is Brass Lantern password",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The password spelt backwards reads \"Stahl.\"",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "This Easy locked terminal is located on the counter inside the Reception room.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Very Hard locked desk terminal is located on the table against the south wall of the prison...",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Marcus made me type this",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Tabitha's journal is out of order, going from 3-7 then 1-2.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Average locked terminal is located on the desk.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Squad readiness reports terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Rifle Range Report (bad)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Rifle Range Report (good)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Grenade Range Report (bad)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Grenade Range Report (good)",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Camp Golf mission parameters terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Delete Misfits Combat Patrol Mission",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Control Tower Access Log",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Chief fire officer terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Chief Fire Officer Report No. F1-218",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Broken NCR communications terminal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Activate Turret Defense System",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The central sewers terminal entries consist of an entry found on an Easy-locked terminal in the...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Upload Ralph's Sexbot Routine",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "New Canaan Branch Proposal",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Gibson's shack terminal entries is an entry on the Comm station terminal in Gibson's shack in...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on the counter in the Goodsprings schoolhouse next to the Easy locked safe.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "If the safe has not been picked open:",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "If the safe has been picked open:",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Unlocks the Easy locked safe. This option is only displayed if the safe has not been picked open.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Easy locked terminal is located on the desk in Prospector Saloon's office.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "Unlocks the Hard locked floor safe.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal can be located on a desk in the second floor office cubicles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located in the most southwest office on the first floor.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-mail from Dobson O'Gill",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on a desk in the middle of the first floor office cubicles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-mail from Alan Dalton",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on a desk in the northern section of the first floor office cubicles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-Mail from Jack Maynard",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-Mail from Jenny DeSoto",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-Mail from Alan Dalton",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on a desk in the cubicle in the southwest corner of the second floor. It...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "E-mail from Jenny DeSoto",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on the counter in the foyer.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Access Hidden Network Drive",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This terminal is located on the desk outside Anthony House's office on the second floor.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "This Average locked terminal is located on the desk in Anthony House's office.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "This suspicious terminal is cut.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "John Gonzalez wrote all the terminals for H&H Tools factory.Joshua Sawyer's tumblr answer",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Reading the corresponding terminal entry will end the quest Democracy Inaction.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Legion officials M. Scribonius Libo Drusus and M. Licinius Crassus are named after real...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Crassus' title is in broken Latin. The word \"Famulatus\" is in the wrong case",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Brotherhood scout report is a miscellaneous item obtained during the quest Still in the Dark.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "There are three tapes, numbered #1, #2 and #3, in the possession of three Brotherhood scouts.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 2: NCR has retaken the facility.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 3: NCR attacked the facility and all NCR troops were killed.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 3: Camp Forlorn Hope destroyed.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Version 4: Both camps destroyed.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Despite the manifest mentioning battle rifles in it, none that could be labeled as such can be...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is obtained by succeeding a 75 Barter skill check when talking to Cass to buyout Cassidy...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is added to the Courier's Pip-Boy inventory after accepting to investigate for Ranger Andy why...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "For locations and transcripts, please refer to the individual articles.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The House Has Gone Bust!",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Mr. House reported that defense systems disarmed or destroyed 68 of the 77 incoming nuclear...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "When Caesar is informed that House is dead, he says that he already knows and states that he read...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is given to the Courier by an NCR trooper after completing Ring-a-Ding-Ding!, or after meeting...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is added to the Courier's Pip-Boy after reading entry 6 on Raul's terminal in the prison...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "West of Camp Guardian, going up to Guardian Peak, just before the first white fence, leaning...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Just past the first fence, in a bush",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Again in a bush, just past the second fence encountered going up",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "On the crude stairs just past the fourth bit of white fence going up",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Continuing up the stairs, at the top in a bush to the left near a jalapeño pepper plant",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "After crossing the first bridge:",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "West of Guardian Peak, stuck in a bush close to the ridge, near a broc flower just below the top...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Stuck in a bush, first to the right when passing the top bridge",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "On the stairs going to the radio/overlook",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "At the top of the stairs",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "By the chair at the top of the peak, near a Sunset Sarsaparilla crate.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Wang Dang Atomic Tango",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is carried by Jessup when the Courier meets him in the Boulder City ruins.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "The password is given to the Courier by Veronica for her personal quest I Could Make You Care. It...",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "I Could Make You Care",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "ArcNet Mail - Security Concerns",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "ArcNet Mail - Engine Core Accident",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - XMB Fuel Mixture 01",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - XMB Fuel Mixture 02",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - Deep Range Transmitter 01",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Lab Report - Deep Range Transmitter 02",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 08-2075",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 09-2075",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 12-2075",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 03-2076",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 07-2076",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 11-2076",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 02-2077",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 03-2077",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Mars Shot Project Notes 09-2077",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "About your Defense System",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "ArcNet Mail - Floor Safe",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Engine Core control terminal",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "IN: Hellfire Power Armor findings",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "OUT: Tesla Cannon location update",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "THE LeGeNd of ZEke- NO LOOKING",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "THE LeGeNd of ZEke- MOrE IdEas",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 155-H: Winter Holotape Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 155-H: Winter Informant Log",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 731-Tf: Gillespie Trafficking Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 866-Bo: MacMillan Bootlegging Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "CASE 972-Su: Black Suicide Logs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Walk the Freedom Trail",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "See the Treasures of Jamaica Plain",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Visit the Boston Public Library",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Fallout 4 holotape games are a collection of six holotape-based video games and Automatron.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Atomic Command, a game where the character controls a stationary anti-missile weapon, shooting at...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Captain Cosmos in \"Jangles' Big Day\", textures exist in the game's files for both the minigame's...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in the base game, whether or not an add-on is installed.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in Automatron.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in Far Harbor.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that appear in Nuka-World.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "All holotapes that are added via Creation Club content.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Playing an audio holotape from a terminal might result in tape white noise remaining after moving...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Wilson Atomatoys corporate HQ, in a trashcan, next to the desk with the president's terminal.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "This game was published by Planned Diversion Programming in 2071.Pioneer Scout collector badge exam",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "San Francisco's Golden Gate Bridge",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "New Vegas' Fabulous New Vegas sign",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "South Dakota's Mount Rushmore",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Boston's Custom House Tower",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Washington, D.C.'s National Mall (Lincoln Memorial, Washington Monument, and the Capitol Building)",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "New York City's Statue of Liberty",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "In the center of an array of famous landmarks taken from around the nation, replicas of iconic...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "On PC/Console - Use the movement buttons, thumb stick, or arrow/directional keys to move your...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Atomic Command may also be played on the demo for the Pip-Boy mobile app",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The title and gameplay are a reference to the famous 1980 Atari arcade game Missile Command",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Although the game was created before the Great War, the Welcome to Fabulous Las Vegas sign is...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Given by Newton Oberly after talking to him at the start of A House Divided.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The holotape was recorded by Bonnie Tournquist and details her experiences as a nurse working at...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Carried by a raider or Triggerman in Easy City Downs",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Password request (Archive) In order to access it, the quest Cambridge Polymer Labs must be...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "At a random location, guarded by a Brotherhood salvage team during the quest Appropriation.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Trapped for Days is located behind crater house, slightly east-northeast on the...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Predator Becomes Prey is located behind the Castle, not far from the...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Not Going Well is located near the lighthouse, south of the Wreck of the FMS...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Difficult to Kill is located behind Mahkra Fishpacking, northeast corner, across...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - X Marks the Spot is located by the Nahant Oceanological Society, on a tiny sand...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Trapped for Days",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Predator Becomes Prey",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Not Going Well",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Need a Hand",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - Difficult to Kill",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Bottle message - X Marks the Spot",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The fifth bottle message is a direct reference to a line from the 1988 action film Die Hard...",
+      "tone": "grim",
+      "source_game": "FO4"
+    }
+  ],
+  "npc_lines": [
+    {
+      "text": "War. War never changes.",
+      "tone": "grim",
+      "source_game": "FO1"
+    },
+    {
+      "text": "Patrolling the Mojave almost makes you wish for a nuclear winter.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "I don't want to set the world on fire. I just want to start a flame in your heart.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Nobody's dick is that long. Not even Long Dick Johnson.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "What in the goddamn...?",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "Degenerates like you belong on a cross.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Another settlement needs your help.",
+      "tone": "humorous",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Ad victoriam, brother.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Ain't that a kick in the head.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "I survived because the fire inside burned brighter than the fire around me.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Don't feed the yao guai. That is all.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Got something different for ya this time. Caps. Sweet, sweet caps.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "I'm your friend. Trust me. Would a synth say that?",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "When I got this assignment I was hoping there'd be more gambling.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "Tunnel Snakes rule!",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Two-hundred years and the vending machines still work. But not the toilets.",
+      "tone": "humorous",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Wasteland survival tip: if it glows, don't eat it. If it growls, don't pet it.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The NCR has its share of problems but I like to think we're doing some good.",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "Atom blesses those who embrace his glow.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Keep your eyes open. Ears too. Hell, keep everything open out here.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "They asked me how well I understood theoretical physics. I said theoretical.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "You're not a ghoul, are you? Nah. Ghouls smell better.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "In a hundred years, nobody's gonna care about any of this. That's the secret.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "I'm done being afraid. The wasteland doesn't care if you're scared.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Stimpak? That'll be fifty caps. Or a story. Stories are worth more.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Seen a deathclaw once. Once was enough. I ran for three miles straight.",
+      "tone": "tense",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Brotherhood wants technology. The Institute makes it. We just try to survive it.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Best sunset I ever saw was from the top of Tenpenny Tower. Worth the climb.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Old World Blues. That's what they call it. Missing what killed us.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Nuka-Cola: refreshing taste of the apocalypse since 2044.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Truth is, the game was rigged from the start.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Finding it, though, that's not the hard part. It's letting go.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "We're the Minutemen. We help people at a minute's notice.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "You see those warriors from the Legion? They've got curved swords. Curved. Swords.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "Hands to yourself, sneak-thief.",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "I'd rather eat my own boot than trust a smooth-skin.",
+      "tone": "grim",
+      "source_game": "FO3"
+    },
+    {
+      "text": "GARY!",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Ave, true to Caesar.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Ring-a-ding-ding, baby.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "Democracy is non-negotiable.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The Institute is the enemy of everything that lives and breathes on the surface.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "I used to be a settler. Then I took a raider's bullet. Now I'm just careful.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Caps, chems, or bullets. Pick your currency. They all spend the same out here.",
+      "tone": "grim",
+      "source_game": "FO2"
+    },
+    {
+      "text": "You want advice? Don't die. That's the best advice I've got.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Out here, your word is the only thing that can't be looted off your corpse.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Had a dog once. Best companion in the wasteland. Didn't judge. Didn't complain. Bit raiders.",
+      "tone": "hopeful",
+      "source_game": "FO4"
+    },
+    {
+      "text": "The water's clean if you boil it. The food's fine if you don't ask what it was.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "We don't go to Dunwich. Nobody goes to Dunwich.",
+      "tone": "tense",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Only two things come out of a vault: naive people and cockroaches. Same survival odds.",
+      "tone": "humorous",
+      "source_game": "FO2"
+    },
+    {
+      "text": "The Master saw unity. I just saw green hell.",
+      "tone": "grim",
+      "source_game": "FO1"
+    },
+    {
+      "text": "Bought this rifle off a dead man. Well. Bought is a strong word.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "We remember the old world so we don't repeat it. We repeat it anyway.",
+      "tone": "grim",
+      "source_game": "FO2"
+    },
+    {
+      "text": "Every ghoul was a person once. Some of us still are.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Synths don't know they're synths. Think about that next time you look in the mirror.",
+      "tone": "tense",
+      "source_game": "FO4"
+    },
+    {
+      "text": "NCR spreads democracy at gunpoint. At least the guns work.",
+      "tone": "humorous",
+      "source_game": "NV"
+    },
+    {
+      "text": "Heard there's clean water at the memorial. If the Brotherhood don't hoard it all.",
+      "tone": "hopeful",
+      "source_game": "FO3"
+    },
+    {
+      "text": "Kid asked me what the world was like before the bombs. I told her it was different. Didn't say better.",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "First rule of the wasteland: everything wants to eat you. Second rule: see first rule.",
+      "tone": "humorous",
+      "source_game": "FO1"
+    },
+    {
+      "text": "Sleep with one eye open. Actually, sleep with a gun. The eye thing is just a saying.",
+      "tone": "humorous",
+      "source_game": "FO3"
+    },
+    {
+      "text": "The Enclave promised a pure world. They just didn't mention who'd be left in it.",
+      "tone": "grim",
+      "source_game": "FO2"
+    },
+    {
+      "text": "It can be found on Ronald Curtis upon killing him during the side quest I Put a Spell on You. He...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "The Brotherhood of Steel mission holotapes are holotape . They can be found on the corpses of a...",
+      "tone": "hopeful",
+      "source_game": "NV"
+    },
+    {
+      "text": "It is given to the Courier by Alice McLafferty during the quest You Can Depend on Me.",
+      "tone": "grim",
+      "source_game": "NV"
+    },
+    {
+      "text": "Grognak & the Ruby Ruins, a text-based role-playing game. You play as Grognak the Barbarian, seen...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Pipfall, a side-scrolling action-adventure game. You play as Vault Boy as he goes through the...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "Zeta Invaders, a game where the character has to shoot space invaders. You play as a cannon that...",
+      "tone": "grim",
+      "source_game": "FO4"
+    },
+    {
+      "text": "On companion app/mobile device - Tap the screen where you want the missiles to go. This game does...",
+      "tone": "grim",
+      "source_game": "FO4"
+    }
+  ]
+}

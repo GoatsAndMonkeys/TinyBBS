@@ -1,0 +1,4942 @@
+[
+  {
+    "name": "Bark Scorpion",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 15,
+    "hp_max": 30,
+    "damage_min": 4,
+    "damage_max": 12,
+    "defense_rating": 10,
+    "xp_reward": 40,
+    "loot_table": [
+      {
+        "item": "Bark Scorpion Poison Gland",
+        "weight": 60
+      }
+    ],
+    "description": "Smaller but venomous desert scorpions. Their sting causes muscle spasms and agony.",
+    "difficulty": 1
+  },
+  {
+    "name": "Bighorner",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 30,
+    "hp_max": 60,
+    "damage_min": 8,
+    "damage_max": 18,
+    "defense_rating": 15,
+    "xp_reward": 50,
+    "loot_table": [
+      {
+        "item": "Bighorner Meat",
+        "weight": 75
+      },
+      {
+        "item": "Bighorner Horn",
+        "weight": 30
+      }
+    ],
+    "description": "Mutated bighorn sheep. The rams charge with bone-crushing force.",
+    "difficulty": 1
+  },
+  {
+    "name": "Bloatfly",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 10,
+    "hp_max": 18,
+    "damage_min": 2,
+    "damage_max": 6,
+    "defense_rating": 0,
+    "xp_reward": 18,
+    "loot_table": [
+      {
+        "item": "Bloatfly Meat",
+        "weight": 50
+      }
+    ],
+    "description": "Swollen mutant flies that spit caustic larval projectiles.",
+    "difficulty": 1
+  },
+  {
+    "name": "Bloodbug",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 25,
+    "hp_max": 55,
+    "damage_min": 6,
+    "damage_max": 18,
+    "defense_rating": 5,
+    "xp_reward": 65,
+    "loot_table": [
+      {
+        "item": "Bloodbug Proboscis",
+        "weight": 50
+      }
+    ],
+    "description": "Oversized mosquitoes that drain blood through a barbed proboscis.",
+    "difficulty": 1
+  },
+  {
+    "name": "Bloodworm",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 30,
+    "hp_max": 60,
+    "damage_min": 8,
+    "damage_max": 20,
+    "defense_rating": 5,
+    "xp_reward": 50,
+    "loot_table": [
+      {
+        "item": "Bloodworm Meat",
+        "weight": 55
+      }
+    ],
+    "description": "Burrowing parasitic worms from Nuka-World. They erupt from the ground without warning.",
+    "difficulty": 1
+  },
+  {
+    "name": "Brahmin",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 20,
+    "hp_max": 40,
+    "damage_min": 3,
+    "damage_max": 8,
+    "defense_rating": 5,
+    "xp_reward": 15,
+    "loot_table": [
+      {
+        "item": "Brahmin Meat",
+        "weight": 80
+      },
+      {
+        "item": "Brahmin Hide",
+        "weight": 50
+      }
+    ],
+    "description": "Two-headed cattle. Docile unless threatened. The wasteland's main livestock.",
+    "difficulty": 1
+  },
+  {
+    "name": "Eyebot",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 20,
+    "hp_max": 40,
+    "damage_min": 4,
+    "damage_max": 12,
+    "defense_rating": 10,
+    "xp_reward": 30,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      },
+      {
+        "item": "Sensor Module",
+        "weight": 30
+      }
+    ],
+    "description": "Floating surveillance drones broadcasting pre-war propaganda and occasional lasers.",
+    "difficulty": 1
+  },
+  {
+    "name": "Feral Ghoul",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 15,
+    "hp_max": 35,
+    "damage_min": 4,
+    "damage_max": 12,
+    "defense_rating": 5,
+    "xp_reward": 30,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 30
+      }
+    ],
+    "description": "Mindless husks driven by radiation and rage. They swarm.",
+    "difficulty": 1
+  },
+  {
+    "name": "Feral Mongrel",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 15,
+    "hp_max": 30,
+    "damage_min": 4,
+    "damage_max": 10,
+    "defense_rating": 5,
+    "xp_reward": 20,
+    "loot_table": [
+      {
+        "item": "Mongrel Dog Meat",
+        "weight": 60
+      }
+    ],
+    "description": "Wild irradiated dogs hunting in packs through the ruins.",
+    "difficulty": 1
+  },
+  {
+    "name": "Gecko",
+    "game_source": [
+      "FO2",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 15,
+    "hp_max": 25,
+    "damage_min": 3,
+    "damage_max": 8,
+    "defense_rating": 10,
+    "xp_reward": 50,
+    "loot_table": [
+      {
+        "item": "Gecko Pelt",
+        "weight": 70
+      }
+    ],
+    "description": "Six-foot lizards that slash with oversized claws.",
+    "difficulty": 1
+  },
+  {
+    "name": "Ghoul crazy",
+    "game_source": [
+      "FO2"
+    ],
+    "faction": "ghoul",
+    "hp_min": 39,
+    "hp_max": 66,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 27,
+    "loot_table": [],
+    "description": "Ghoul crazies or feral ghouls are creatures .",
+    "difficulty": 1
+  },
+  {
+    "name": "Giant Ant",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 12,
+    "hp_max": 25,
+    "damage_min": 3,
+    "damage_max": 8,
+    "defense_rating": 10,
+    "xp_reward": 30,
+    "loot_table": [
+      {
+        "item": "Ant Meat",
+        "weight": 70
+      }
+    ],
+    "description": "Ants the size of dogs, swarming from underground colonies beneath the Capital Wasteland.",
+    "difficulty": 1
+  },
+  {
+    "name": "Glowing Mole Rat",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 25,
+    "hp_max": 50,
+    "damage_min": 6,
+    "damage_max": 14,
+    "defense_rating": 10,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Mole Rat Meat",
+        "weight": 70
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 20
+      }
+    ],
+    "description": "Irradiated mole rats that glow green and bite with radioactive teeth.",
+    "difficulty": 1
+  },
+  {
+    "name": "Glowing Radstag",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 40,
+    "hp_max": 80,
+    "damage_min": 8,
+    "damage_max": 18,
+    "defense_rating": 10,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Radstag Meat",
+        "weight": 75
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 25
+      }
+    ],
+    "description": "Irradiated radstag that glows in the dark. Its antlers crackle with gamma energy.",
+    "difficulty": 1
+  },
+  {
+    "name": "House cat",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 18,
+    "hp_max": 31,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 17,
+    "loot_table": [
+      {
+        "item": "Cat meat",
+        "weight": 50
+      }
+    ],
+    "description": "House cats are creatures found in the Commonwealth, on the Island, and in Nuka-World in 2287.",
+    "difficulty": 1
+  },
+  {
+    "name": "Institute Scientist",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 25,
+    "hp_max": 40,
+    "damage_min": 6,
+    "damage_max": 15,
+    "defense_rating": 10,
+    "xp_reward": 40,
+    "loot_table": [
+      {
+        "item": "Institute Pistol",
+        "weight": 40
+      },
+      {
+        "item": "Stimpak",
+        "weight": 30
+      }
+    ],
+    "description": "Clean-suited researchers from below. Armed but not trained for wasteland combat.",
+    "difficulty": 1
+  },
+  {
+    "name": "Jackal Gang Member",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "raider",
+    "hp_min": 25,
+    "hp_max": 45,
+    "damage_min": 6,
+    "damage_max": 16,
+    "defense_rating": 5,
+    "xp_reward": 35,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 50
+      },
+      {
+        "item": "Knife",
+        "weight": 30
+      }
+    ],
+    "description": "Scavengers from the Jackal gang. Cowardly alone, dangerous in packs.",
+    "difficulty": 1
+  },
+  {
+    "name": "Liberator",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 15,
+    "hp_max": 30,
+    "damage_min": 3,
+    "damage_max": 8,
+    "defense_rating": 10,
+    "xp_reward": 20,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      },
+      {
+        "item": "Steel",
+        "weight": 40
+      }
+    ],
+    "description": "Chinese communist propaganda bots. Tiny, numerous, and annoyingly persistent.",
+    "difficulty": 1
+  },
+  {
+    "name": "Mantis",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 8,
+    "hp_max": 18,
+    "damage_min": 2,
+    "damage_max": 6,
+    "defense_rating": 5,
+    "xp_reward": 30,
+    "loot_table": [
+      {
+        "item": "Mantis Foreleg",
+        "weight": 50
+      }
+    ],
+    "description": "Giant praying mantises with barbed forelegs.",
+    "difficulty": 1
+  },
+  {
+    "name": "Mindless ghoul",
+    "game_source": [
+      "FO1"
+    ],
+    "faction": "ghoul",
+    "hp_min": 31,
+    "hp_max": 52,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 23,
+    "loot_table": [],
+    "description": "Mindless ghouls are creatures encountered in Necropolis .",
+    "difficulty": 1
+  },
+  {
+    "name": "Mirelurk Hatchling",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 10,
+    "hp_max": 20,
+    "damage_min": 2,
+    "damage_max": 6,
+    "defense_rating": 10,
+    "xp_reward": 15,
+    "loot_table": [
+      {
+        "item": "Softshell Mirelurk Meat",
+        "weight": 50
+      }
+    ],
+    "description": "Tiny but vicious. They swarm from egg clutches by the dozen.",
+    "difficulty": 1
+  },
+  {
+    "name": "Mole Rat",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 12,
+    "hp_max": 26,
+    "damage_min": 3,
+    "damage_max": 8,
+    "defense_rating": 5,
+    "xp_reward": 35,
+    "loot_table": [
+      {
+        "item": "Mole Rat Meat",
+        "weight": 75
+      }
+    ],
+    "description": "Burrowing pests with teeth that cut through boot leather.",
+    "difficulty": 1
+  },
+  {
+    "name": "Mr. Handy",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 35,
+    "hp_max": 60,
+    "damage_min": 8,
+    "damage_max": 20,
+    "defense_rating": 15,
+    "xp_reward": 55,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      },
+      {
+        "item": "Flamer Fuel",
+        "weight": 30
+      }
+    ],
+    "description": "General Atomics domestic servants. Armed with a buzz saw and flamethrower.",
+    "difficulty": 1
+  },
+  {
+    "name": "NCR Trooper",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "human",
+    "hp_min": 30,
+    "hp_max": 50,
+    "damage_min": 8,
+    "damage_max": 18,
+    "defense_rating": 15,
+    "xp_reward": 40,
+    "loot_table": [
+      {
+        "item": "Service Rifle",
+        "weight": 30
+      },
+      {
+        "item": "Caps",
+        "weight": 50
+      }
+    ],
+    "description": "Republic soldiers stretched thin across the Mojave. Tired but determined.",
+    "difficulty": 1
+  },
+  {
+    "name": "Pig Rat",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 10,
+    "hp_max": 18,
+    "damage_min": 2,
+    "damage_max": 5,
+    "defense_rating": 5,
+    "xp_reward": 40,
+    "loot_table": [
+      {
+        "item": "Meat",
+        "weight": 70
+      }
+    ],
+    "description": "Mutated swine-rat hybrids with razor tusks.",
+    "difficulty": 1
+  },
+  {
+    "name": "Powder Ganger",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "raider",
+    "hp_min": 25,
+    "hp_max": 45,
+    "damage_min": 6,
+    "damage_max": 16,
+    "defense_rating": 10,
+    "xp_reward": 40,
+    "loot_table": [
+      {
+        "item": "Dynamite",
+        "weight": 60
+      },
+      {
+        "item": "Caps",
+        "weight": 50
+      }
+    ],
+    "description": "NCRCF escapees armed with dynamite and grudges.",
+    "difficulty": 1
+  },
+  {
+    "name": "Protectron",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 30,
+    "hp_max": 60,
+    "damage_min": 6,
+    "damage_max": 15,
+    "defense_rating": 20,
+    "xp_reward": 45,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 70
+      },
+      {
+        "item": "Energy Cell",
+        "weight": 40
+      }
+    ],
+    "description": "Pre-war security bots. Slow, clumsy, but their lasers still work.",
+    "difficulty": 1
+  },
+  {
+    "name": "Rad Chicken",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 3,
+    "hp_max": 5,
+    "damage_min": 1,
+    "damage_max": 1,
+    "defense_rating": 0,
+    "xp_reward": 5,
+    "loot_table": [
+      {
+        "item": "Egg",
+        "weight": 80
+      }
+    ],
+    "description": "Somehow these survived the apocalypse too. They peck. It does nothing.",
+    "difficulty": 1
+  },
+  {
+    "name": "Rad rabbit",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 22,
+    "hp_max": 37,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 19,
+    "loot_table": [
+      {
+        "item": "Rabbit leg",
+        "weight": 50
+      }
+    ],
+    "description": "Rad rabbits are creatures that can be found on the Island in 2287.",
+    "difficulty": 1
+  },
+  {
+    "name": "Radgull",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 1,
+    "hp_max": 2,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 10,
+    "loot_table": [],
+    "description": "Radgulls are birds found in the Commonwealth and the Island in 2287.",
+    "difficulty": 1
+  },
+  {
+    "name": "Radroach",
+    "game_source": [
+      "FO1",
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 5,
+    "hp_max": 10,
+    "damage_min": 1,
+    "damage_max": 3,
+    "defense_rating": 0,
+    "xp_reward": 10,
+    "loot_table": [
+      {
+        "item": "Radroach Meat",
+        "weight": 60
+      }
+    ],
+    "description": "Dinner-plate-sized cockroaches. They survived the bombs just fine.",
+    "difficulty": 1
+  },
+  {
+    "name": "Radstag",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 20,
+    "hp_max": 40,
+    "damage_min": 4,
+    "damage_max": 10,
+    "defense_rating": 5,
+    "xp_reward": 25,
+    "loot_table": [
+      {
+        "item": "Radstag Meat",
+        "weight": 80
+      },
+      {
+        "item": "Radstag Hide",
+        "weight": 50
+      }
+    ],
+    "description": "Two-headed deer. Usually flee, but bucks charge when cornered.",
+    "difficulty": 1
+  },
+  {
+    "name": "Raider",
+    "game_source": [
+      "FO1",
+      "FO3",
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 20,
+    "hp_max": 40,
+    "damage_min": 5,
+    "damage_max": 15,
+    "defense_rating": 10,
+    "xp_reward": 35,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 70
+      },
+      {
+        "item": "10mm Rounds",
+        "weight": 50
+      },
+      {
+        "item": "Jet",
+        "weight": 20
+      }
+    ],
+    "description": "Chem-addled scavengers armed with pipe weapons and bad intentions.",
+    "difficulty": 1
+  },
+  {
+    "name": "Rat",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 6,
+    "hp_max": 12,
+    "damage_min": 1,
+    "damage_max": 3,
+    "defense_rating": 0,
+    "xp_reward": 25,
+    "loot_table": [
+      {
+        "item": "Rat Meat",
+        "weight": 80
+      }
+    ],
+    "description": "Oversized rodents scrounging through pre-war ruins.",
+    "difficulty": 1
+  },
+  {
+    "name": "Raven",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 4,
+    "hp_max": 7,
+    "damage_min": 10,
+    "damage_max": 19,
+    "defense_rating": 0,
+    "xp_reward": 78,
+    "loot_table": [],
+    "description": "Ravens are creatures found in the Mojave Wasteland in 2281.",
+    "difficulty": 1
+  },
+  {
+    "name": "Spore Plant",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 20,
+    "hp_max": 45,
+    "damage_min": 5,
+    "damage_max": 15,
+    "defense_rating": 10,
+    "xp_reward": 40,
+    "loot_table": [
+      {
+        "item": "Spore Plant Pods",
+        "weight": 60
+      }
+    ],
+    "description": "Carnivorous plants that spit toxic spores. Found in caves and Vault 22.",
+    "difficulty": 1
+  },
+  {
+    "name": "Super mutant guard",
+    "game_source": [
+      "FO1"
+    ],
+    "faction": "mutant",
+    "hp_min": 37,
+    "hp_max": 62,
+    "damage_min": 1,
+    "damage_max": 2,
+    "defense_rating": 0,
+    "xp_reward": 26,
+    "loot_table": [],
+    "description": "The super mutant guards are guards found in the Mariposa Military Base in 2161, tasked with...",
+    "difficulty": 1
+  },
+  {
+    "name": "Trog Fledgling",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 25,
+    "hp_max": 50,
+    "damage_min": 6,
+    "damage_max": 15,
+    "defense_rating": 5,
+    "xp_reward": 50,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 30
+      }
+    ],
+    "description": "Recently turned trogs. Still recognizably human. That makes it worse.",
+    "difficulty": 1
+  },
+  {
+    "name": "Viper Gunslinger",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "raider",
+    "hp_min": 30,
+    "hp_max": 55,
+    "damage_min": 8,
+    "damage_max": 20,
+    "defense_rating": 10,
+    "xp_reward": 50,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 55
+      },
+      {
+        "item": "10mm Pistol",
+        "weight": 25
+      }
+    ],
+    "description": "Remnants of the Vipers gang. Fast draws and poison-tipped weapons.",
+    "difficulty": 1
+  },
+  {
+    "name": "Wolf",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 25,
+    "hp_max": 50,
+    "damage_min": 6,
+    "damage_max": 15,
+    "defense_rating": 10,
+    "xp_reward": 35,
+    "loot_table": [
+      {
+        "item": "Wolf Meat",
+        "weight": 70
+      }
+    ],
+    "description": "Irradiated wolves that hunt in coordinated packs across Appalachia.",
+    "difficulty": 1
+  },
+  {
+    "name": "Ant",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 187,
+    "hp_max": 312,
+    "damage_min": 8,
+    "damage_max": 15,
+    "defense_rating": 0,
+    "xp_reward": 153,
+    "loot_table": [
+      {
+        "item": "Ant meat",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear material",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      }
+    ],
+    "description": "Ants are creatures that appear in Nuka-World in 2287.",
+    "difficulty": 2
+  },
+  {
+    "name": "Bighorner Bull",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 15,
+    "damage_max": 30,
+    "defense_rating": 25,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Bighorner Meat",
+        "weight": 80
+      },
+      {
+        "item": "Bighorner Horn",
+        "weight": 50
+      }
+    ],
+    "description": "Territorial bull that guards the herd. Its charge can flip a person over a fence.",
+    "difficulty": 2
+  },
+  {
+    "name": "Cave Cricket",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 40,
+    "hp_max": 90,
+    "damage_min": 10,
+    "damage_max": 25,
+    "defense_rating": 15,
+    "xp_reward": 70,
+    "loot_table": [
+      {
+        "item": "Cave Cricket Meat",
+        "weight": 55
+      },
+      {
+        "item": "Acid",
+        "weight": 25
+      }
+    ],
+    "description": "Giant crickets infesting Nuka-World caverns. They leap and spit acid.",
+    "difficulty": 2
+  },
+  {
+    "name": "Centaur",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3"
+    ],
+    "faction": "mutant",
+    "hp_min": 40,
+    "hp_max": 80,
+    "damage_min": 8,
+    "damage_max": 18,
+    "defense_rating": 15,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 50
+      }
+    ],
+    "description": "FEV rejects — a writhing mass of fused limbs and tongues.",
+    "difficulty": 2
+  },
+  {
+    "name": "Children of Atom",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 35,
+    "hp_max": 70,
+    "damage_min": 8,
+    "damage_max": 22,
+    "defense_rating": 10,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Gamma Gun",
+        "weight": 25
+      },
+      {
+        "item": "Caps",
+        "weight": 40
+      },
+      {
+        "item": "Rad-X",
+        "weight": 30
+      }
+    ],
+    "description": "Radiation-worshipping cultists. They embrace the Glow and want you to join them.",
+    "difficulty": 2
+  },
+  {
+    "name": "Coyote",
+    "game_source": [
+      "FO1",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 13,
+    "hp_max": 75,
+    "damage_min": 1,
+    "damage_max": 37,
+    "defense_rating": 0,
+    "xp_reward": 170,
+    "loot_table": [
+      {
+        "item": "Coyote meat",
+        "weight": 50
+      },
+      {
+        "item": "Coyote hide",
+        "weight": 50
+      }
+    ],
+    "description": "Coyotes are animals commonly found in New California in 2161.",
+    "difficulty": 2
+  },
+  {
+    "name": "Cyberdog",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 56,
+    "hp_max": 93,
+    "damage_min": 28,
+    "damage_max": 52,
+    "defense_rating": 0,
+    "xp_reward": 235,
+    "loot_table": [
+      {
+        "item": "Dog hide",
+        "weight": 50
+      },
+      {
+        "item": "Dog meat",
+        "weight": 50
+      },
+      {
+        "item": "Energy cell",
+        "weight": 50
+      }
+    ],
+    "description": "Cyberdogs, also spelled as cyber dogs, are creatures found in the Mojave Wasteland and in Big...",
+    "difficulty": 2
+  },
+  {
+    "name": "Cyberhound",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "robot",
+    "hp_min": 50,
+    "hp_max": 90,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 25,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      }
+    ],
+    "description": "Cybernetic canines from Big MT. Fast and fitted with energy projectors.",
+    "difficulty": 2
+  },
+  {
+    "name": "Feral Ghoul Gangrenous",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 14,
+    "damage_max": 30,
+    "defense_rating": 15,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 35
+      }
+    ],
+    "description": "Rotting ferals whose attacks cause festering infections. Don't let them scratch you.",
+    "difficulty": 2
+  },
+  {
+    "name": "Feral Ghoul Roamer",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 30,
+    "hp_max": 60,
+    "damage_min": 8,
+    "damage_max": 20,
+    "defense_rating": 10,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 40
+      }
+    ],
+    "description": "Faster ferals that hunt in packs through subway tunnels.",
+    "difficulty": 2
+  },
+  {
+    "name": "Feral Ghoul Stalker",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "ghoul",
+    "hp_min": 50,
+    "hp_max": 90,
+    "damage_min": 12,
+    "damage_max": 25,
+    "defense_rating": 15,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 30
+      }
+    ],
+    "description": "Quick and cunning ferals that circle before lunging for the throat.",
+    "difficulty": 2
+  },
+  {
+    "name": "Fiend",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "raider",
+    "hp_min": 35,
+    "hp_max": 60,
+    "damage_min": 10,
+    "damage_max": 22,
+    "defense_rating": 10,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 50
+      },
+      {
+        "item": "Jet",
+        "weight": 40
+      },
+      {
+        "item": "Psycho",
+        "weight": 30
+      }
+    ],
+    "description": "Chem-crazed raiders squatting in the Vegas ruins. Unpredictable and violent.",
+    "difficulty": 2
+  },
+  {
+    "name": "Fire Ant",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 25,
+    "hp_max": 50,
+    "damage_min": 6,
+    "damage_max": 16,
+    "defense_rating": 15,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Ant Meat",
+        "weight": 60
+      },
+      {
+        "item": "Fire Ant Nectar",
+        "weight": 30
+      }
+    ],
+    "description": "Lesko's experiment gone wrong. These ants spit jets of flame from their mandibles.",
+    "difficulty": 2
+  },
+  {
+    "name": "Fire Gecko",
+    "game_source": [
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 40,
+    "hp_max": 60,
+    "damage_min": 8,
+    "damage_max": 20,
+    "defense_rating": 20,
+    "xp_reward": 150,
+    "loot_table": [
+      {
+        "item": "Fire Gecko Pelt",
+        "weight": 60
+      },
+      {
+        "item": "Flamer Fuel",
+        "weight": 30
+      }
+    ],
+    "description": "Geckos that breathe streams of combustible fluid. Stay upwind.",
+    "difficulty": 2
+  },
+  {
+    "name": "Floater",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "faction": "mutant",
+    "hp_min": 50,
+    "hp_max": 90,
+    "damage_min": 10,
+    "damage_max": 22,
+    "defense_rating": 20,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 50
+      }
+    ],
+    "description": "Jellyfish-like FEV abominations that whip tendrils of acid.",
+    "difficulty": 2
+  },
+  {
+    "name": "Forged",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 50,
+    "hp_max": 90,
+    "damage_min": 12,
+    "damage_max": 30,
+    "defense_rating": 20,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 60
+      },
+      {
+        "item": "Flamer Fuel",
+        "weight": 40
+      },
+      {
+        "item": "Flamer",
+        "weight": 10
+      }
+    ],
+    "description": "Fire-worshipping raiders from Saugus Ironworks. They initiate recruits by burning them.",
+    "difficulty": 2
+  },
+  {
+    "name": "Gazelle",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 176,
+    "hp_max": 293,
+    "damage_min": 7,
+    "damage_max": 14,
+    "defense_rating": 10,
+    "xp_reward": 143,
+    "loot_table": [
+      {
+        "item": "Gazelle meat",
+        "weight": 50
+      },
+      {
+        "item": "Gazelle hide",
+        "weight": 50
+      }
+    ],
+    "description": "Gazelles are creatures found in the Nuka-World amusement park .",
+    "difficulty": 2
+  },
+  {
+    "name": "Glowing Bloodworm",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 15,
+    "damage_max": 32,
+    "defense_rating": 10,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Bloodworm Meat",
+        "weight": 55
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 20
+      }
+    ],
+    "description": "Irradiated bloodworms. Larger, meaner, and they leave radioactive trails.",
+    "difficulty": 2
+  },
+  {
+    "name": "Glowing Cave Cricket",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 80,
+    "hp_max": 160,
+    "damage_min": 18,
+    "damage_max": 38,
+    "defense_rating": 20,
+    "xp_reward": 140,
+    "loot_table": [
+      {
+        "item": "Cave Cricket Meat",
+        "weight": 55
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 30
+      }
+    ],
+    "description": "Irradiated cave crickets that swarm in the dark. Their acid glows green.",
+    "difficulty": 2
+  },
+  {
+    "name": "Golden Gecko",
+    "game_source": [
+      "FO2",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 25,
+    "hp_max": 40,
+    "damage_min": 5,
+    "damage_max": 12,
+    "defense_rating": 15,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Golden Gecko Pelt",
+        "weight": 60
+      },
+      {
+        "item": "Stimpak",
+        "weight": 15
+      }
+    ],
+    "description": "Irradiated geckos whose scales gleam with embedded isotopes.",
+    "difficulty": 2
+  },
+  {
+    "name": "Gulper",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 15,
+    "damage_max": 30,
+    "defense_rating": 15,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Gulper Innards",
+        "weight": 60
+      }
+    ],
+    "description": "Salamander mutations from Far Harbor. They swallow prey whole.",
+    "difficulty": 2
+  },
+  {
+    "name": "Gunner",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 50,
+    "hp_max": 100,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 25,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 70
+      },
+      {
+        "item": "Stimpak",
+        "weight": 25
+      },
+      {
+        "item": "Military-Grade Ammo",
+        "weight": 30
+      }
+    ],
+    "description": "Well-organized mercenaries with military discipline and heavy weapons.",
+    "difficulty": 2
+  },
+  {
+    "name": "Lakelurk",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 60,
+    "hp_max": 110,
+    "damage_min": 15,
+    "damage_max": 30,
+    "defense_rating": 20,
+    "xp_reward": 120,
+    "loot_table": [
+      {
+        "item": "Lakelurk Meat",
+        "weight": 60
+      }
+    ],
+    "description": "Aquatic mirelurk cousins with a devastating sonic attack.",
+    "difficulty": 2
+  },
+  {
+    "name": "Legion Recruit",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "human",
+    "hp_min": 40,
+    "hp_max": 60,
+    "damage_min": 10,
+    "damage_max": 22,
+    "defense_rating": 20,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Machete",
+        "weight": 60
+      },
+      {
+        "item": "Healing Powder",
+        "weight": 40
+      }
+    ],
+    "description": "Caesar's foot soldiers. Disciplined, brutal, and trained to die fighting.",
+    "difficulty": 2
+  },
+  {
+    "name": "Lobotomite",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "human",
+    "hp_min": 40,
+    "hp_max": 70,
+    "damage_min": 10,
+    "damage_max": 22,
+    "defense_rating": 10,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 30
+      },
+      {
+        "item": "Patient Gown",
+        "weight": 20
+      }
+    ],
+    "description": "Brain-damaged test subjects from Big MT. Violent and barely human.",
+    "difficulty": 2
+  },
+  {
+    "name": "Mirelurk",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 50,
+    "hp_max": 110,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 35,
+    "xp_reward": 120,
+    "loot_table": [
+      {
+        "item": "Mirelurk Meat",
+        "weight": 60
+      },
+      {
+        "item": "Softshell Mirelurk Meat",
+        "weight": 30
+      }
+    ],
+    "description": "Mutant horseshoe crabs with impenetrable frontal shells. Aim for the face.",
+    "difficulty": 2
+  },
+  {
+    "name": "Mr. Gutsy",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 15,
+    "damage_max": 30,
+    "defense_rating": 25,
+    "xp_reward": 120,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      },
+      {
+        "item": "Energy Cell",
+        "weight": 50
+      }
+    ],
+    "description": "Military Mr. Handy variant. Plasma gun, bad attitude, and patriotic death threats.",
+    "difficulty": 2
+  },
+  {
+    "name": "Mutant Hound",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 15,
+    "damage_max": 30,
+    "defense_rating": 15,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Mutant Hound Meat",
+        "weight": 60
+      }
+    ],
+    "description": "Super mutant war dogs. Irradiated, fast, and attack on their master's command.",
+    "difficulty": 2
+  },
+  {
+    "name": "Nightstalker",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 45,
+    "hp_max": 80,
+    "damage_min": 10,
+    "damage_max": 25,
+    "defense_rating": 15,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Nightstalker Blood",
+        "weight": 60
+      }
+    ],
+    "description": "Coyote-rattlesnake hybrids from Big MT. Silent until they strike.",
+    "difficulty": 2
+  },
+  {
+    "name": "Nuka-World Raider",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 50,
+    "hp_max": 90,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 20,
+    "xp_reward": 90,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 65
+      },
+      {
+        "item": "Nuka-Cola Quantum",
+        "weight": 15
+      },
+      {
+        "item": "Stimpak",
+        "weight": 20
+      }
+    ],
+    "description": "Operators, Disciples, and Pack raiders vying for control of the park.",
+    "difficulty": 2
+  },
+  {
+    "name": "Radscorpion",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 30,
+    "hp_max": 80,
+    "damage_min": 8,
+    "damage_max": 22,
+    "defense_rating": 25,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Radscorpion Poison Gland",
+        "weight": 60
+      },
+      {
+        "item": "Stimpak",
+        "weight": 15
+      }
+    ],
+    "description": "Armor-plated arachnids the size of a Corvega. Their stingers inject neurotoxin.",
+    "difficulty": 2
+  },
+  {
+    "name": "Raider Psycho",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 40,
+    "hp_max": 70,
+    "damage_min": 10,
+    "damage_max": 25,
+    "defense_rating": 15,
+    "xp_reward": 70,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 70
+      },
+      {
+        "item": "Psycho",
+        "weight": 40
+      },
+      {
+        "item": "Combat Knife",
+        "weight": 20
+      }
+    ],
+    "description": "Psycho-fueled berserkers who charge screaming into gunfire.",
+    "difficulty": 2
+  },
+  {
+    "name": "Raider Veteran",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 60,
+    "hp_max": 100,
+    "damage_min": 15,
+    "damage_max": 28,
+    "defense_rating": 20,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 75
+      },
+      {
+        "item": "Jet",
+        "weight": 35
+      },
+      {
+        "item": "Combat Rifle",
+        "weight": 20
+      }
+    ],
+    "description": "Survived long enough to get real armor and real weapons. Don't underestimate them.",
+    "difficulty": 2
+  },
+  {
+    "name": "Red Widow Bloodbug",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 50,
+    "hp_max": 100,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 10,
+    "xp_reward": 120,
+    "loot_table": [
+      {
+        "item": "Bloodbug Proboscis",
+        "weight": 60
+      },
+      {
+        "item": "Stimpak",
+        "weight": 15
+      }
+    ],
+    "description": "Larger, meaner bloodbugs with a crimson carapace and insatiable thirst.",
+    "difficulty": 2
+  },
+  {
+    "name": "Robobrain",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 80,
+    "hp_max": 160,
+    "damage_min": 18,
+    "damage_max": 35,
+    "defense_rating": 30,
+    "xp_reward": 150,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      },
+      {
+        "item": "Brain",
+        "weight": 20
+      },
+      {
+        "item": "Energy Cell",
+        "weight": 40
+      }
+    ],
+    "description": "Robots with human brains in a dome. Smarter than most bots, and deeply unsettling.",
+    "difficulty": 2
+  },
+  {
+    "name": "Spore Carrier",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 50,
+    "hp_max": 90,
+    "damage_min": 12,
+    "damage_max": 25,
+    "defense_rating": 15,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 40
+      }
+    ],
+    "description": "Vault 22 survivors consumed by fungal parasites. They spread spores on death.",
+    "difficulty": 2
+  },
+  {
+    "name": "Stingwing",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 35,
+    "hp_max": 60,
+    "damage_min": 8,
+    "damage_max": 20,
+    "defense_rating": 5,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Stingwing Meat",
+        "weight": 55
+      }
+    ],
+    "description": "Scorpionfly mutations that swarm in irradiated wetlands.",
+    "difficulty": 2
+  },
+  {
+    "name": "Super Mutant",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 15,
+    "damage_max": 30,
+    "defense_rating": 25,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 50
+      },
+      {
+        "item": "Hunting Rifle",
+        "weight": 25
+      },
+      {
+        "item": "Super Mutant Blood",
+        "weight": 30
+      }
+    ],
+    "description": "FEV-enhanced humans. Eight feet tall, green, and very angry.",
+    "difficulty": 2
+  },
+  {
+    "name": "Super Mutant Skirmisher",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 90,
+    "hp_max": 180,
+    "damage_min": 20,
+    "damage_max": 40,
+    "defense_rating": 30,
+    "xp_reward": 160,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 55
+      },
+      {
+        "item": "Pipe Rifle",
+        "weight": 30
+      }
+    ],
+    "description": "Ranged-focused mutants who take potshots from cover. Smarter than they look.",
+    "difficulty": 2
+  },
+  {
+    "name": "Swampfolk Scrapper",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "human",
+    "hp_min": 60,
+    "hp_max": 120,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 15,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 45
+      },
+      {
+        "item": "Double-Barrel Shotgun",
+        "weight": 20
+      }
+    ],
+    "description": "The weakest swampfolk, armed with crude melee weapons and raw aggression.",
+    "difficulty": 2
+  },
+  {
+    "name": "Swampfolk Tracker",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "human",
+    "hp_min": 80,
+    "hp_max": 160,
+    "damage_min": 18,
+    "damage_max": 35,
+    "defense_rating": 20,
+    "xp_reward": 150,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 50
+      },
+      {
+        "item": "Lever-Action Rifle",
+        "weight": 25
+      }
+    ],
+    "description": "Swampfolk hunters who know Point Lookout better than their own mutated faces.",
+    "difficulty": 2
+  },
+  {
+    "name": "Synth",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 40,
+    "hp_max": 80,
+    "damage_min": 10,
+    "damage_max": 25,
+    "defense_rating": 20,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Synth Component",
+        "weight": 60
+      },
+      {
+        "item": "Institute Laser",
+        "weight": 30
+      }
+    ],
+    "description": "Institute-made androids. Gen-1s are skeletal machines. Gen-2s almost pass for human.",
+    "difficulty": 2
+  },
+  {
+    "name": "Synth Strider",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 70,
+    "hp_max": 130,
+    "damage_min": 15,
+    "damage_max": 35,
+    "defense_rating": 25,
+    "xp_reward": 140,
+    "loot_table": [
+      {
+        "item": "Synth Component",
+        "weight": 65
+      },
+      {
+        "item": "Institute Rifle",
+        "weight": 25
+      }
+    ],
+    "description": "Fast-moving synth patrol units. They flank and coordinate with machine precision.",
+    "difficulty": 2
+  },
+  {
+    "name": "Talon Company Merc",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "human",
+    "hp_min": 50,
+    "hp_max": 100,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 25,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 70
+      },
+      {
+        "item": "Stimpak",
+        "weight": 30
+      },
+      {
+        "item": "Combat Armor",
+        "weight": 15
+      }
+    ],
+    "description": "Capital Wasteland mercenaries. They shoot first and loot second.",
+    "difficulty": 2
+  },
+  {
+    "name": "Trapper",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 50,
+    "hp_max": 90,
+    "damage_min": 12,
+    "damage_max": 25,
+    "defense_rating": 15,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 50
+      },
+      {
+        "item": "Harpoon",
+        "weight": 30
+      }
+    ],
+    "description": "Far Harbor's coastal raiders. They use harpoon guns and wear fisherman's gear.",
+    "difficulty": 2
+  },
+  {
+    "name": "Tribals",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "human",
+    "hp_min": 40,
+    "hp_max": 70,
+    "damage_min": 10,
+    "damage_max": 20,
+    "defense_rating": 10,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 40
+      },
+      {
+        "item": "Punga Fruit",
+        "weight": 40
+      }
+    ],
+    "description": "Point Lookout cultists devoted to dark rituals in the swamp.",
+    "difficulty": 2
+  },
+  {
+    "name": "Triggerman",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 40,
+    "hp_max": 80,
+    "damage_min": 10,
+    "damage_max": 25,
+    "defense_rating": 15,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 70
+      },
+      {
+        "item": "Submachine Gun",
+        "weight": 20
+      },
+      {
+        "item": "Fancy Lads Snack Cakes",
+        "weight": 15
+      }
+    ],
+    "description": "Ghoul mobsters in pinstripe suits running rackets out of Goodneighbor.",
+    "difficulty": 2
+  },
+  {
+    "name": "Trog",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 50,
+    "hp_max": 100,
+    "damage_min": 12,
+    "damage_max": 28,
+    "defense_rating": 15,
+    "xp_reward": 100,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 40
+      }
+    ],
+    "description": "Troglodyte mutations from The Pitt's radiation. Feral, fast, and hunt in packs.",
+    "difficulty": 2
+  },
+  {
+    "name": "Tunneler",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 40,
+    "hp_max": 90,
+    "damage_min": 12,
+    "damage_max": 30,
+    "defense_rating": 15,
+    "xp_reward": 120,
+    "loot_table": [
+      {
+        "item": "Tunneler Poison Gland",
+        "weight": 40
+      }
+    ],
+    "description": "Subterranean horrors from the Divide. Fast, vicious, and they hate the light.",
+    "difficulty": 2
+  },
+  {
+    "name": "Turret",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 40,
+    "hp_max": 100,
+    "damage_min": 10,
+    "damage_max": 25,
+    "defense_rating": 30,
+    "xp_reward": 60,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 70
+      },
+      {
+        "item": "Ammo",
+        "weight": 50
+      }
+    ],
+    "description": "Automated ceiling or tripod-mounted guns. They never miss twice.",
+    "difficulty": 2
+  },
+  {
+    "name": "Withered Feral Ghoul",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 40,
+    "hp_max": 75,
+    "damage_min": 10,
+    "damage_max": 22,
+    "defense_rating": 10,
+    "xp_reward": 65,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 35
+      }
+    ],
+    "description": "Ancient ferals, desiccated but still deadly. They lunge with surprising speed.",
+    "difficulty": 2
+  },
+  {
+    "name": "Young Cazador",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 40,
+    "hp_max": 70,
+    "damage_min": 10,
+    "damage_max": 25,
+    "defense_rating": 5,
+    "xp_reward": 80,
+    "loot_table": [
+      {
+        "item": "Cazador Poison Gland",
+        "weight": 50
+      }
+    ],
+    "description": "Juvenile cazadors. Smaller but just as venomous, and they travel in swarms.",
+    "difficulty": 2
+  },
+  {
+    "name": "Young Deathclaw",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 20,
+    "damage_max": 45,
+    "defense_rating": 30,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 60
+      }
+    ],
+    "description": "Juvenile deathclaw. Smaller and weaker, but still deadly to the unprepared.",
+    "difficulty": 2
+  },
+  {
+    "name": "Albino Radscorpion",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 30,
+    "damage_max": 60,
+    "defense_rating": 50,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Radscorpion Poison Gland",
+        "weight": 85
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 15
+      }
+    ],
+    "description": "Ghostly white radscorpion with extra-concentrated venom. Capital Wasteland's worst.",
+    "difficulty": 3
+  },
+  {
+    "name": "Alien",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 50,
+    "hp_max": 100,
+    "damage_min": 15,
+    "damage_max": 35,
+    "defense_rating": 30,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Alien Blaster",
+        "weight": 20
+      },
+      {
+        "item": "Alien Power Cell",
+        "weight": 60
+      }
+    ],
+    "description": "Small, grey, and packing energy weapons from beyond the stars.",
+    "difficulty": 3
+  },
+  {
+    "name": "Angler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 150,
+    "hp_max": 350,
+    "damage_min": 25,
+    "damage_max": 55,
+    "defense_rating": 25,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Angler Meat",
+        "weight": 60
+      }
+    ],
+    "description": "Lure prey with a bioluminescent growth. Disguise as plants until they strike.",
+    "difficulty": 3
+  },
+  {
+    "name": "Assaultron",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 22,
+    "damage_max": 45,
+    "defense_rating": 30,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      },
+      {
+        "item": "Assaultron Circuit Board",
+        "weight": 40
+      }
+    ],
+    "description": "Agile combat robots that charge with bladed limbs and a devastating head laser.",
+    "difficulty": 3
+  },
+  {
+    "name": "BoS Knight",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 18,
+    "damage_max": 35,
+    "defense_rating": 35,
+    "xp_reward": 150,
+    "loot_table": [
+      {
+        "item": "Laser Rifle",
+        "weight": 30
+      },
+      {
+        "item": "Fusion Cell",
+        "weight": 50
+      }
+    ],
+    "description": "Brotherhood of Steel infantry in power armor. Well-trained and well-equipped.",
+    "difficulty": 3
+  },
+  {
+    "name": "Brahmiluff",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 311,
+    "hp_max": 518,
+    "damage_min": 14,
+    "damage_max": 26,
+    "defense_rating": 10,
+    "xp_reward": 259,
+    "loot_table": [
+      {
+        "item": "Brahmin meat",
+        "weight": 50
+      },
+      {
+        "item": "Brahmin hide",
+        "weight": 50
+      }
+    ],
+    "description": "Brahmiluffs are creatures found in the Nuka-World amusement park in 2287.",
+    "difficulty": 3
+  },
+  {
+    "name": "Cazador",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 20,
+    "damage_max": 45,
+    "defense_rating": 10,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Cazador Poison Gland",
+        "weight": 70
+      }
+    ],
+    "description": "Tarantula hawk wasps mutated to man-size. Their sting causes paralysis and screaming.",
+    "difficulty": 3
+  },
+  {
+    "name": "Charred Feral Ghoul",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 22,
+    "damage_max": 45,
+    "defense_rating": 25,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 40
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 20
+      }
+    ],
+    "description": "Blackened, radiation-scorched ferals. The toughest non-glowing variant.",
+    "difficulty": 3
+  },
+  {
+    "name": "Children of Atom Zealot",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 18,
+    "damage_max": 40,
+    "defense_rating": 20,
+    "xp_reward": 150,
+    "loot_table": [
+      {
+        "item": "Gamma Gun",
+        "weight": 40
+      },
+      {
+        "item": "RadAway",
+        "weight": 25
+      },
+      {
+        "item": "Stimpak",
+        "weight": 20
+      }
+    ],
+    "description": "Devoted zealots wielding modified gamma guns. Their faith is literally radioactive.",
+    "difficulty": 3
+  },
+  {
+    "name": "Deathclaw",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 35,
+    "damage_max": 75,
+    "defense_rating": 45,
+    "xp_reward": 400,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 70
+      },
+      {
+        "item": "Deathclaw Egg",
+        "weight": 20
+      }
+    ],
+    "description": "The apex predator of the wasteland. Twenty feet of muscle, horn, and nightmare.",
+    "difficulty": 3
+  },
+  {
+    "name": "Deathstalker Radscorpion",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 25,
+    "damage_max": 55,
+    "defense_rating": 45,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Radscorpion Poison Gland",
+        "weight": 80
+      },
+      {
+        "item": "Radscorpion Stinger",
+        "weight": 40
+      }
+    ],
+    "description": "Burrowing variant that erupts from the earth. Its venom stops hearts in seconds.",
+    "difficulty": 3
+  },
+  {
+    "name": "Dog",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 10,
+    "hp_max": 262,
+    "damage_min": 1,
+    "damage_max": 65,
+    "defense_rating": 30,
+    "xp_reward": 301,
+    "loot_table": [
+      {
+        "item": "Dog meat",
+        "weight": 50
+      },
+      {
+        "item": "Dog hide",
+        "weight": 50
+      },
+      {
+        "item": "Mongrel dog meat",
+        "weight": 50
+      }
+    ],
+    "description": "Dogs are animals commonly found across New California in Fallout.",
+    "difficulty": 3
+  },
+  {
+    "name": "Enclave Soldier",
+    "game_source": [
+      "FO2",
+      "FO3"
+    ],
+    "faction": "human",
+    "hp_min": 120,
+    "hp_max": 250,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 45,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Plasma Rifle",
+        "weight": 25
+      },
+      {
+        "item": "Enclave Power Armor",
+        "weight": 10
+      },
+      {
+        "item": "Stimpak",
+        "weight": 40
+      }
+    ],
+    "description": "America's shadow government made flesh. Advanced power armor, plasma weapons, and fanaticism.",
+    "difficulty": 3
+  },
+  {
+    "name": "Feral Ghoul Reaver",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 120,
+    "hp_max": 250,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 30,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Glowing Blood Pack",
+        "weight": 60
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "The worst ferals. They throw radioactive gore and shrug off bullets.",
+    "difficulty": 3
+  },
+  {
+    "name": "Forged Leader",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 100,
+    "hp_max": 180,
+    "damage_min": 22,
+    "damage_max": 45,
+    "defense_rating": 30,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 70
+      },
+      {
+        "item": "Shishkebab",
+        "weight": 15
+      },
+      {
+        "item": "Stimpak",
+        "weight": 30
+      }
+    ],
+    "description": "Slag, the Forged boss, and his lieutenants. They dole out punishment by fire.",
+    "difficulty": 3
+  },
+  {
+    "name": "Ghost Harvester",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 120,
+    "hp_max": 220,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 35,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Cosmic Knife",
+        "weight": 55
+      },
+      {
+        "item": "Ghost Harvest",
+        "weight": 40
+      }
+    ],
+    "description": "Ghost people that wield bear trap fists. They collect things. Including you.",
+    "difficulty": 3
+  },
+  {
+    "name": "Ghost People",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 100,
+    "hp_max": 180,
+    "damage_min": 22,
+    "damage_max": 45,
+    "defense_rating": 30,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Cosmic Knife",
+        "weight": 50
+      },
+      {
+        "item": "Ghost Harvest",
+        "weight": 30
+      }
+    ],
+    "description": "Sierra Madre hazmat suit horrors. Dismember them or they get back up.",
+    "difficulty": 3
+  },
+  {
+    "name": "Ghost Seeker",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 18,
+    "damage_max": 40,
+    "defense_rating": 25,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Cosmic Knife",
+        "weight": 45
+      },
+      {
+        "item": "Ghost Harvest",
+        "weight": 25
+      }
+    ],
+    "description": "Ranged ghost people that hurl gas bombs and cosmic knife spears from the red fog.",
+    "difficulty": 3
+  },
+  {
+    "name": "Giant Ant Queen",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 120,
+    "hp_max": 250,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 35,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Ant Queen Pheromones",
+        "weight": 50
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 25
+      }
+    ],
+    "description": "Bloated monarch of the colony. Spawns soldiers endlessly until destroyed.",
+    "difficulty": 3
+  },
+  {
+    "name": "Giant Radscorpion",
+    "game_source": [
+      "FO3",
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 18,
+    "damage_max": 40,
+    "defense_rating": 40,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Radscorpion Poison Gland",
+        "weight": 80
+      },
+      {
+        "item": "Stimpak",
+        "weight": 25
+      }
+    ],
+    "description": "The emperor of the desert. Its carapace deflects small arms fire.",
+    "difficulty": 3
+  },
+  {
+    "name": "Giant mantis",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 90,
+    "hp_max": 150,
+    "damage_min": 77,
+    "damage_max": 143,
+    "defense_rating": 0,
+    "xp_reward": 617,
+    "loot_table": [
+      {
+        "item": "Mantis foreleg",
+        "weight": 50
+      }
+    ],
+    "description": "Giant mantises (Mantis religiosa)Vault 22 terminal entries; Terminal, Species 2 are mutated...",
+    "difficulty": 3
+  },
+  {
+    "name": "Giant rat",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "robot",
+    "hp_min": 93,
+    "hp_max": 156,
+    "damage_min": 35,
+    "damage_max": 65,
+    "defense_rating": 0,
+    "xp_reward": 306,
+    "loot_table": [
+      {
+        "item": "Giant rat meat",
+        "weight": 75
+      }
+    ],
+    "description": "Giant rats are creatures living in the Mojave Wasteland in 2281.",
+    "difficulty": 3
+  },
+  {
+    "name": "Glowing Bloatfly",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 20,
+    "damage_max": 45,
+    "defense_rating": 10,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Bloatfly Meat",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 40
+      }
+    ],
+    "description": "A legendary irradiated bloatfly whose projectiles hit like plasma bolts. Don't laugh.",
+    "difficulty": 3
+  },
+  {
+    "name": "Glowing Gulper",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 22,
+    "damage_max": 45,
+    "defense_rating": 20,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Gulper Innards",
+        "weight": 60
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 25
+      }
+    ],
+    "description": "Irradiated gulper whose bile is laced with gamma radiation.",
+    "difficulty": 3
+  },
+  {
+    "name": "Glowing Mutant Hound",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 22,
+    "damage_max": 45,
+    "defense_rating": 20,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Mutant Hound Meat",
+        "weight": 60
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 25
+      }
+    ],
+    "description": "Irradiated mutant hound that emits lethal radiation. Glows like a green lantern.",
+    "difficulty": 3
+  },
+  {
+    "name": "Glowing One",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 80,
+    "hp_max": 180,
+    "damage_min": 15,
+    "damage_max": 35,
+    "defense_rating": 20,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Glowing Blood Pack",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 30
+      }
+    ],
+    "description": "Ghouls saturated with gamma radiation. They heal nearby ferals with radioactive pulses.",
+    "difficulty": 3
+  },
+  {
+    "name": "Glowing Yao Guai",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 30,
+    "damage_max": 65,
+    "defense_rating": 30,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Yao Guai Meat",
+        "weight": 65
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 30
+      }
+    ],
+    "description": "An irradiated yao guai that emits deadly radiation with every swipe.",
+    "difficulty": 3
+  },
+  {
+    "name": "Gorilla",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 427,
+    "hp_max": 712,
+    "damage_min": 19,
+    "damage_max": 36,
+    "defense_rating": 75,
+    "xp_reward": 357,
+    "loot_table": [
+      {
+        "item": "Ghoulrilla meat",
+        "weight": 50
+      }
+    ],
+    "description": "The gorilla is a synthetic creature found contained inside the terrariums of Institute...",
+    "difficulty": 3
+  },
+  {
+    "name": "Gunner Commander",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 120,
+    "hp_max": 200,
+    "damage_min": 22,
+    "damage_max": 45,
+    "defense_rating": 35,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 80
+      },
+      {
+        "item": "Stimpak",
+        "weight": 40
+      },
+      {
+        "item": "Fat Man",
+        "weight": 5
+      }
+    ],
+    "description": "Gunner leadership. Power armor, planning, and a fat paycheck for your head.",
+    "difficulty": 3
+  },
+  {
+    "name": "Hermit Crab",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 250,
+    "hp_max": 550,
+    "damage_min": 35,
+    "damage_max": 70,
+    "defense_rating": 50,
+    "xp_reward": 400,
+    "loot_table": [
+      {
+        "item": "Softshell Mirelurk Meat",
+        "weight": 60
+      },
+      {
+        "item": "Random Junk",
+        "weight": 70
+      }
+    ],
+    "description": "Giant crabs using wrecked trucks as shells. That dumpster might be alive.",
+    "difficulty": 3
+  },
+  {
+    "name": "Honey Beast",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 120,
+    "hp_max": 250,
+    "damage_min": 20,
+    "damage_max": 45,
+    "defense_rating": 25,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Honey",
+        "weight": 60
+      },
+      {
+        "item": "Honeycomb",
+        "weight": 40
+      }
+    ],
+    "description": "Mutated bears covered in living beehives. The bees swarm when it attacks.",
+    "difficulty": 3
+  },
+  {
+    "name": "Legendary Nightstalker",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 120,
+    "hp_max": 200,
+    "damage_min": 25,
+    "damage_max": 45,
+    "defense_rating": 25,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Nightstalker Blood",
+        "weight": 80
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "An ancient alpha nightstalker, scarred and cunning. Its venom is concentrated death.",
+    "difficulty": 3
+  },
+  {
+    "name": "Legion Veteran",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "human",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 20,
+    "damage_max": 38,
+    "defense_rating": 30,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Machete Gladius",
+        "weight": 40
+      },
+      {
+        "item": "Stimpak",
+        "weight": 35
+      },
+      {
+        "item": "Caps",
+        "weight": 50
+      }
+    ],
+    "description": "Hardened legionaries who have survived dozens of campaigns. They do not retreat.",
+    "difficulty": 3
+  },
+  {
+    "name": "Marked Man",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "ghoul",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 20,
+    "damage_max": 45,
+    "defense_rating": 30,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 50
+      },
+      {
+        "item": "Stimpak",
+        "weight": 30
+      }
+    ],
+    "description": "Ghoulified soldiers still fighting the war in the Divide. Armed and relentless.",
+    "difficulty": 3
+  },
+  {
+    "name": "Marked men",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "ghoul",
+    "hp_min": 480,
+    "hp_max": 800,
+    "damage_min": 3,
+    "damage_max": 6,
+    "defense_rating": 10,
+    "xp_reward": 264,
+    "loot_table": [
+      {
+        "item": "NCR salvaged power armor",
+        "weight": 50
+      },
+      {
+        "item": "Combat knife",
+        "weight": 50
+      },
+      {
+        "item": "NCR dollar",
+        "weight": 50
+      }
+    ],
+    "description": "The marked men are a unique variant of ghoul encountered exclusively within the region known...",
+    "difficulty": 3
+  },
+  {
+    "name": "Mega Sloth",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 30,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Mega Sloth Meat",
+        "weight": 60
+      },
+      {
+        "item": "Mega Sloth Hide",
+        "weight": 40
+      }
+    ],
+    "description": "Enormous irradiated sloths with fungal growths. Slow but devastating when provoked.",
+    "difficulty": 3
+  },
+  {
+    "name": "Mirelurk Deep King",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 200,
+    "hp_max": 380,
+    "damage_min": 30,
+    "damage_max": 60,
+    "defense_rating": 30,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Mirelurk Meat",
+        "weight": 65
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 15
+      }
+    ],
+    "description": "Ancient mirelurk king from the deep. Its sonic blast can shatter concrete.",
+    "difficulty": 3
+  },
+  {
+    "name": "Mirelurk Hunter",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 80,
+    "hp_max": 140,
+    "damage_min": 18,
+    "damage_max": 38,
+    "defense_rating": 30,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Mirelurk Meat",
+        "weight": 70
+      }
+    ],
+    "description": "Faster, leaner mirelurks that spit corrosive bile at range.",
+    "difficulty": 3
+  },
+  {
+    "name": "Mirelurk King",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 120,
+    "hp_max": 250,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 25,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Mirelurk Meat",
+        "weight": 60
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "Amphibious humanoid with a devastating sonic attack that disorients and damages.",
+    "difficulty": 3
+  },
+  {
+    "name": "NCR Ranger",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "human",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 40,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Ranger Sequoia",
+        "weight": 15
+      },
+      {
+        "item": "Stimpak",
+        "weight": 40
+      },
+      {
+        "item": "Caps",
+        "weight": 60
+      }
+    ],
+    "description": "The best the Republic has. Black armor, brush guns, and cold efficiency.",
+    "difficulty": 3
+  },
+  {
+    "name": "Nightkin",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "NV"
+    ],
+    "faction": "mutant",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 25,
+    "damage_max": 45,
+    "defense_rating": 35,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Stealth Boy",
+        "weight": 40
+      },
+      {
+        "item": "Rebar Club",
+        "weight": 30
+      }
+    ],
+    "description": "Stealth Boy-addicted mutants. Schizophrenic, invisible, and terrifyingly fast.",
+    "difficulty": 3
+  },
+  {
+    "name": "Nuka-World Raider Boss",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 120,
+    "hp_max": 220,
+    "damage_min": 25,
+    "damage_max": 48,
+    "defense_rating": 35,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 80
+      },
+      {
+        "item": "Stimpak",
+        "weight": 40
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "Gang bosses ruling Nuka-World's factions. Gage says they're reasonable. They're not.",
+    "difficulty": 3
+  },
+  {
+    "name": "Putrid Glowing One",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 30,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Glowing Blood Pack",
+        "weight": 60
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 40
+      }
+    ],
+    "description": "Bloated, oozing glowing ones whose radiation bursts can resurrect nearby corpses.",
+    "difficulty": 3
+  },
+  {
+    "name": "Rad-rat",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 262,
+    "hp_max": 437,
+    "damage_min": 11,
+    "damage_max": 22,
+    "defense_rating": 100,
+    "xp_reward": 219,
+    "loot_table": [
+      {
+        "item": "Rad-rat meat",
+        "weight": 50
+      },
+      {
+        "item": "Irradiated blood",
+        "weight": 50
+      },
+      {
+        "item": "Nuclear material",
+        "weight": 50
+      }
+    ],
+    "description": "Rad-rats are creatures found in the Nuka-World amusement park in 2287.",
+    "difficulty": 3
+  },
+  {
+    "name": "Raider Boss",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 18,
+    "damage_max": 35,
+    "defense_rating": 25,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 90
+      },
+      {
+        "item": "Stimpak",
+        "weight": 40
+      },
+      {
+        "item": "Combat Shotgun",
+        "weight": 15
+      }
+    ],
+    "description": "The meanest dog in the pack. Better armed and twice as paranoid.",
+    "difficulty": 3
+  },
+  {
+    "name": "Robot Scorpion",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "robot",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 20,
+    "damage_max": 40,
+    "defense_rating": 35,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 70
+      }
+    ],
+    "description": "Big MT creation. Mechanical scorpions with energy weapon stingers.",
+    "difficulty": 3
+  },
+  {
+    "name": "Securitron",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "robot",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 20,
+    "damage_max": 40,
+    "defense_rating": 35,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 60
+      },
+      {
+        "item": "Energy Cell",
+        "weight": 50
+      }
+    ],
+    "description": "Mr. House's robot army. Polite screen-face, gatling laser, and missile pods.",
+    "difficulty": 3
+  },
+  {
+    "name": "Securitron Mk II",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "robot",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 30,
+    "damage_max": 55,
+    "defense_rating": 45,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 65
+      },
+      {
+        "item": "Energy Cell",
+        "weight": 55
+      },
+      {
+        "item": "Missile",
+        "weight": 20
+      }
+    ],
+    "description": "Upgraded securitrons with full weapon suites unlocked. Grenade launchers and missiles online.",
+    "difficulty": 3
+  },
+  {
+    "name": "Snallygaster",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 100,
+    "hp_max": 200,
+    "damage_min": 18,
+    "damage_max": 40,
+    "defense_rating": 20,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Snallygaster Spit",
+        "weight": 40
+      },
+      {
+        "item": "Acid",
+        "weight": 30
+      }
+    ],
+    "description": "Multi-tentacled acid-spitting horror. Shrieks before it charges.",
+    "difficulty": 3
+  },
+  {
+    "name": "Super Mutant Brute",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 120,
+    "hp_max": 250,
+    "damage_min": 25,
+    "damage_max": 50,
+    "defense_rating": 35,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 60
+      },
+      {
+        "item": "Sledgehammer",
+        "weight": 30
+      },
+      {
+        "item": "Stimpak",
+        "weight": 25
+      }
+    ],
+    "description": "Bigger, meaner mutants that swing sledgehammers like baseball bats.",
+    "difficulty": 3
+  },
+  {
+    "name": "Super Mutant Butcher",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 35,
+    "damage_max": 65,
+    "defense_rating": 42,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 65
+      },
+      {
+        "item": "Board",
+        "weight": 25
+      },
+      {
+        "item": "Strange Meat",
+        "weight": 40
+      }
+    ],
+    "description": "They earned the name. The meat bags hanging from their camp aren't brahmin.",
+    "difficulty": 3
+  },
+  {
+    "name": "Super Mutant Enforcer",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 160,
+    "hp_max": 320,
+    "damage_min": 30,
+    "damage_max": 55,
+    "defense_rating": 40,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 60
+      },
+      {
+        "item": "Super Sledge",
+        "weight": 20
+      },
+      {
+        "item": "Stimpak",
+        "weight": 30
+      }
+    ],
+    "description": "Pack enforcers who keep lesser mutants in line through sheer brutality.",
+    "difficulty": 3
+  },
+  {
+    "name": "Super Mutant Suicider",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 40,
+    "hp_max": 80,
+    "damage_min": 200,
+    "damage_max": 500,
+    "defense_rating": 10,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Mini Nuke",
+        "weight": 50
+      },
+      {
+        "item": "Super Mutant Blood",
+        "weight": 30
+      }
+    ],
+    "description": "Carries a live mini nuke and sprints at you beeping. Shoot the bomb. SHOOT THE BOMB.",
+    "difficulty": 3
+  },
+  {
+    "name": "Swampfolk Bruiser",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "human",
+    "hp_min": 200,
+    "hp_max": 450,
+    "damage_min": 30,
+    "damage_max": 60,
+    "defense_rating": 30,
+    "xp_reward": 300,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 55
+      },
+      {
+        "item": "Axe",
+        "weight": 30
+      },
+      {
+        "item": "Stimpak",
+        "weight": 20
+      }
+    ],
+    "description": "Massive inbred swampfolk that absorb punishment like sponges. Hit like trucks.",
+    "difficulty": 3
+  },
+  {
+    "name": "Triggerman Boss",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 80,
+    "hp_max": 150,
+    "damage_min": 18,
+    "damage_max": 38,
+    "defense_rating": 25,
+    "xp_reward": 180,
+    "loot_table": [
+      {
+        "item": "Caps",
+        "weight": 85
+      },
+      {
+        "item": "Stimpak",
+        "weight": 35
+      },
+      {
+        "item": "Fat Man Mini Nuke",
+        "weight": 5
+      }
+    ],
+    "description": "Top of the Triggerman food chain. Armored, armed, and ruthlessly organized.",
+    "difficulty": 3
+  },
+  {
+    "name": "Trog Brute",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 100,
+    "hp_max": 180,
+    "damage_min": 22,
+    "damage_max": 42,
+    "defense_rating": 25,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 50
+      }
+    ],
+    "description": "Larger trogs that have survived long enough to grow massive and aggressive.",
+    "difficulty": 3
+  },
+  {
+    "name": "Wanamingo",
+    "game_source": [
+      "FO2"
+    ],
+    "faction": "creature",
+    "hp_min": 100,
+    "hp_max": 180,
+    "damage_min": 20,
+    "damage_max": 40,
+    "defense_rating": 35,
+    "xp_reward": 250,
+    "loot_table": [
+      {
+        "item": "Wanamingo Hand",
+        "weight": 50
+      }
+    ],
+    "description": "Alien-looking predators nesting in abandoned mines. Ferocious and territorial.",
+    "difficulty": 3
+  },
+  {
+    "name": "Wendigo",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 35,
+    "damage_max": 70,
+    "defense_rating": 30,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 50
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 15
+      }
+    ],
+    "description": "Emaciated monstrosities with elongated limbs. Fast, savage, and always hungry.",
+    "difficulty": 3
+  },
+  {
+    "name": "Yao Guai",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 80,
+    "hp_max": 180,
+    "damage_min": 20,
+    "damage_max": 48,
+    "defense_rating": 20,
+    "xp_reward": 200,
+    "loot_table": [
+      {
+        "item": "Yao Guai Meat",
+        "weight": 65
+      },
+      {
+        "item": "Yao Guai Hide",
+        "weight": 40
+      }
+    ],
+    "description": "Mutated black bears. Fast, aggressive, and utterly fearless.",
+    "difficulty": 3
+  },
+  {
+    "name": "Abomination",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "mutant",
+    "hp_min": 375,
+    "hp_max": 625,
+    "damage_min": 52,
+    "damage_max": 97,
+    "defense_rating": 0,
+    "xp_reward": 575,
+    "loot_table": [
+      {
+        "item": "Junk items",
+        "weight": 50
+      },
+      {
+        "item": "Consumables",
+        "weight": 50
+      }
+    ],
+    "description": "Abominations are creatures found on board Mothership Zeta in 2277.",
+    "difficulty": 4
+  },
+  {
+    "name": "Albino Deathclaw",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 600,
+    "hp_max": 900,
+    "damage_min": 70,
+    "damage_max": 130,
+    "defense_rating": 60,
+    "xp_reward": 750,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 90
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 35
+      }
+    ],
+    "description": "Ghostly white and nearly impervious. Bullets seem to make it angrier.",
+    "difficulty": 4
+  },
+  {
+    "name": "Alien Captain",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 120,
+    "hp_max": 250,
+    "damage_min": 30,
+    "damage_max": 60,
+    "defense_rating": 45,
+    "xp_reward": 400,
+    "loot_table": [
+      {
+        "item": "Alien Blaster",
+        "weight": 30
+      },
+      {
+        "item": "Alien Power Cell",
+        "weight": 70
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 25
+      }
+    ],
+    "description": "Commanding officer aboard Zeta. Tougher, meaner, and armed with alien tech.",
+    "difficulty": 4
+  },
+  {
+    "name": "Alpha Deathclaw",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 350,
+    "hp_max": 650,
+    "damage_min": 50,
+    "damage_max": 100,
+    "defense_rating": 55,
+    "xp_reward": 600,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 90
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 35
+      }
+    ],
+    "description": "Pack leader. Scarred, massive, and cunning enough to flank.",
+    "difficulty": 4
+  },
+  {
+    "name": "Assaultron Dominator",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 35,
+    "damage_max": 65,
+    "defense_rating": 40,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Scrap Metal",
+        "weight": 65
+      },
+      {
+        "item": "Assaultron Circuit Board",
+        "weight": 50
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 15
+      }
+    ],
+    "description": "Top-tier assaultron with an overcharged head laser that melts power armor.",
+    "difficulty": 4
+  },
+  {
+    "name": "Bloated Glowing One",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "ghoul",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 30,
+    "damage_max": 60,
+    "defense_rating": 35,
+    "xp_reward": 400,
+    "loot_table": [
+      {
+        "item": "Glowing Blood Pack",
+        "weight": 65
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 45
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 15
+      }
+    ],
+    "description": "Enormously swollen glowing one. Its radiation burst can kill from twenty feet away.",
+    "difficulty": 4
+  },
+  {
+    "name": "BoS Paladin",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "human",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 30,
+    "damage_max": 55,
+    "defense_rating": 50,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Gatling Laser",
+        "weight": 15
+      },
+      {
+        "item": "Fusion Core",
+        "weight": 40
+      },
+      {
+        "item": "Stimpak",
+        "weight": 50
+      }
+    ],
+    "description": "Elite Brotherhood warriors. Full power armor, heavy weapons, and sworn duty.",
+    "difficulty": 4
+  },
+  {
+    "name": "Chameleon Deathclaw",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 650,
+    "hp_max": 1000,
+    "damage_min": 75,
+    "damage_max": 140,
+    "defense_rating": 60,
+    "xp_reward": 800,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 90
+      },
+      {
+        "item": "Stealth Boy",
+        "weight": 20
+      }
+    ],
+    "description": "Turns invisible. You hear the footsteps, then the screaming starts.",
+    "difficulty": 4
+  },
+  {
+    "name": "Deathclaw Matriarch",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 400,
+    "hp_max": 650,
+    "damage_min": 55,
+    "damage_max": 100,
+    "defense_rating": 55,
+    "xp_reward": 600,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 85
+      },
+      {
+        "item": "Deathclaw Egg",
+        "weight": 50
+      }
+    ],
+    "description": "Mother of the nest. Fights with desperate ferocity to protect her clutch.",
+    "difficulty": 4
+  },
+  {
+    "name": "Enclave Officer",
+    "game_source": [
+      "FO2",
+      "FO3"
+    ],
+    "faction": "human",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 35,
+    "damage_max": 65,
+    "defense_rating": 55,
+    "xp_reward": 450,
+    "loot_table": [
+      {
+        "item": "Plasma Rifle",
+        "weight": 35
+      },
+      {
+        "item": "Enclave Power Armor",
+        "weight": 15
+      },
+      {
+        "item": "Stimpak",
+        "weight": 50
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "Enclave command staff in top-tier power armor. They fight for a dead America.",
+    "difficulty": 4
+  },
+  {
+    "name": "Epic Behemoth",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 800,
+    "hp_max": 1500,
+    "damage_min": 80,
+    "damage_max": 160,
+    "defense_rating": 60,
+    "xp_reward": 900,
+    "loot_table": [
+      {
+        "item": "Legendary Loot",
+        "weight": 35
+      },
+      {
+        "item": "Stimpak",
+        "weight": 65
+      }
+    ],
+    "description": "An ancient behemoth, scarred by centuries of battle. Basically a walking building.",
+    "difficulty": 4
+  },
+  {
+    "name": "Fog Crawler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 300,
+    "hp_max": 650,
+    "damage_min": 45,
+    "damage_max": 90,
+    "defense_rating": 55,
+    "xp_reward": 550,
+    "loot_table": [
+      {
+        "item": "Fog Crawler Meat",
+        "weight": 70
+      }
+    ],
+    "description": "Enormous shrimp-like horrors from the Island fog. Their screech freezes blood.",
+    "difficulty": 4
+  },
+  {
+    "name": "Gatorclaw",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 300,
+    "hp_max": 600,
+    "damage_min": 45,
+    "damage_max": 90,
+    "defense_rating": 45,
+    "xp_reward": 500,
+    "loot_table": [
+      {
+        "item": "Gatorclaw Hand",
+        "weight": 60
+      },
+      {
+        "item": "Gator Meat",
+        "weight": 50
+      }
+    ],
+    "description": "Deathclaw-alligator hybrids from Nuka-World's Safari Adventure. Jackson's legacy.",
+    "difficulty": 4
+  },
+  {
+    "name": "Glowing Angler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 300,
+    "hp_max": 600,
+    "damage_min": 40,
+    "damage_max": 80,
+    "defense_rating": 35,
+    "xp_reward": 450,
+    "loot_table": [
+      {
+        "item": "Angler Meat",
+        "weight": 65
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 30
+      }
+    ],
+    "description": "Irradiated angler emitting a sickly green glow from beneath the fog.",
+    "difficulty": 4
+  },
+  {
+    "name": "Glowing Deathclaw",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 500,
+    "hp_max": 800,
+    "damage_min": 65,
+    "damage_max": 120,
+    "defense_rating": 60,
+    "xp_reward": 700,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 90
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 40
+      }
+    ],
+    "description": "Irradiated deathclaw wreathed in green light. Its claws leave radioactive wounds.",
+    "difficulty": 4
+  },
+  {
+    "name": "Glowing Fog Crawler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 500,
+    "hp_max": 900,
+    "damage_min": 60,
+    "damage_max": 110,
+    "defense_rating": 60,
+    "xp_reward": 700,
+    "loot_table": [
+      {
+        "item": "Fog Crawler Meat",
+        "weight": 70
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 35
+      }
+    ],
+    "description": "Irradiated fog crawler pulsing with green energy. Tougher than most deathclaws.",
+    "difficulty": 4
+  },
+  {
+    "name": "Glowing Gatorclaw",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 450,
+    "hp_max": 800,
+    "damage_min": 60,
+    "damage_max": 110,
+    "defense_rating": 50,
+    "xp_reward": 650,
+    "loot_table": [
+      {
+        "item": "Gatorclaw Hand",
+        "weight": 65
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 35
+      }
+    ],
+    "description": "Irradiated gatorclaw. Somehow they made the alligator-deathclaw worse.",
+    "difficulty": 4
+  },
+  {
+    "name": "Glowing Hermit Crab",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 500,
+    "hp_max": 1000,
+    "damage_min": 55,
+    "damage_max": 100,
+    "defense_rating": 55,
+    "xp_reward": 650,
+    "loot_table": [
+      {
+        "item": "Softshell Mirelurk Meat",
+        "weight": 65
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 35
+      }
+    ],
+    "description": "A radioactive hermit crab the size of a bus. Its shell glows through the fog.",
+    "difficulty": 4
+  },
+  {
+    "name": "Glowing Mirelurk King",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 35,
+    "damage_max": 65,
+    "defense_rating": 30,
+    "xp_reward": 450,
+    "loot_table": [
+      {
+        "item": "Mirelurk Meat",
+        "weight": 60
+      },
+      {
+        "item": "Nuclear Material",
+        "weight": 35
+      }
+    ],
+    "description": "Irradiated mirelurk king whose sonic blasts carry a lethal dose of radiation.",
+    "difficulty": 4
+  },
+  {
+    "name": "Gojira",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "mutant",
+    "hp_min": 6000,
+    "hp_max": 10000,
+    "damage_min": 17,
+    "damage_max": 32,
+    "defense_rating": 0,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Mole rat meat",
+        "weight": 50
+      }
+    ],
+    "description": "Gojira is an unused creature found in the Fallout: New Vegas game files.",
+    "difficulty": 4
+  },
+  {
+    "name": "Grafton Monster",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 250,
+    "hp_max": 500,
+    "damage_min": 40,
+    "damage_max": 75,
+    "defense_rating": 40,
+    "xp_reward": 400,
+    "loot_table": [
+      {
+        "item": "Strange Meat",
+        "weight": 50
+      },
+      {
+        "item": "Grafton Monster Blood",
+        "weight": 30
+      }
+    ],
+    "description": "Headless abomination that hurls acidic projectiles. A West Virginia legend made real.",
+    "difficulty": 4
+  },
+  {
+    "name": "Legendary Cazador",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 35,
+    "damage_max": 70,
+    "defense_rating": 20,
+    "xp_reward": 400,
+    "loot_table": [
+      {
+        "item": "Cazador Poison Gland",
+        "weight": 90
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 25
+      }
+    ],
+    "description": "A monstrous queen cazador. One sting delivers enough venom to kill a brahmin.",
+    "difficulty": 4
+  },
+  {
+    "name": "Legendary Sentry Bot",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 300,
+    "hp_max": 600,
+    "damage_min": 50,
+    "damage_max": 100,
+    "defense_rating": 60,
+    "xp_reward": 550,
+    "loot_table": [
+      {
+        "item": "Fusion Core",
+        "weight": 60
+      },
+      {
+        "item": "Missile",
+        "weight": 40
+      },
+      {
+        "item": "Legendary Loot",
+        "weight": 20
+      }
+    ],
+    "description": "Annihilator-class sentry bot. Dual gatling lasers and a self-destruct you don't want to be near.",
+    "difficulty": 4
+  },
+  {
+    "name": "Legion Centurion",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "human",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 30,
+    "damage_max": 55,
+    "defense_rating": 45,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Centurion Armor",
+        "weight": 30
+      },
+      {
+        "item": "Thermic Lance",
+        "weight": 20
+      },
+      {
+        "item": "Stimpak",
+        "weight": 50
+      }
+    ],
+    "description": "Veteran commanders in salvaged power armor fragments. The Legion's finest.",
+    "difficulty": 4
+  },
+  {
+    "name": "Mirelurk Queen",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 300,
+    "hp_max": 600,
+    "damage_min": 40,
+    "damage_max": 80,
+    "defense_rating": 50,
+    "xp_reward": 500,
+    "loot_table": [
+      {
+        "item": "Mirelurk Queen Steak",
+        "weight": 80
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 30
+      }
+    ],
+    "description": "Towering matriarch that spawns hatchlings and sprays acid. A walking catastrophe.",
+    "difficulty": 4
+  },
+  {
+    "name": "Mongrel",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "raider",
+    "hp_min": 375,
+    "hp_max": 625,
+    "damage_min": 52,
+    "damage_max": 97,
+    "defense_rating": 60,
+    "xp_reward": 575,
+    "loot_table": [
+      {
+        "item": "Mongrel dog meat",
+        "weight": 50
+      },
+      {
+        "item": "Dog collar",
+        "weight": 50
+      }
+    ],
+    "description": "Mongrels are creatures that can be found in the Commonwealth in 2287.",
+    "difficulty": 4
+  },
+  {
+    "name": "Mythic Deathclaw",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 750,
+    "hp_max": 1200,
+    "damage_min": 85,
+    "damage_max": 160,
+    "defense_rating": 65,
+    "xp_reward": 900,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 95
+      },
+      {
+        "item": "Legendary Loot",
+        "weight": 25
+      }
+    ],
+    "description": "The pinnacle of deathclaw evolution. Settlers speak its name in whispers.",
+    "difficulty": 4
+  },
+  {
+    "name": "NCR Ranger Veteran",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "human",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 35,
+    "damage_max": 60,
+    "defense_rating": 50,
+    "xp_reward": 400,
+    "loot_table": [
+      {
+        "item": "Ranger Sequoia",
+        "weight": 25
+      },
+      {
+        "item": "Anti-Materiel Rifle",
+        "weight": 10
+      },
+      {
+        "item": "Stimpak",
+        "weight": 50
+      }
+    ],
+    "description": "Black-armored desert rangers. One shot, one kill. The Mojave's deadliest humans.",
+    "difficulty": 4
+  },
+  {
+    "name": "Night stalker",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 187,
+    "hp_max": 312,
+    "damage_min": 70,
+    "damage_max": 130,
+    "defense_rating": 0,
+    "xp_reward": 613,
+    "loot_table": [
+      {
+        "item": "Nightstalker blood",
+        "weight": 50
+      },
+      {
+        "item": "Nightstalker egg",
+        "weight": 25
+      },
+      {
+        "item": "Nightstalker tail",
+        "weight": 50
+      }
+    ],
+    "description": "Night stalkers (sometimes spelled \"nightstalkers\") are creatures living in the Mojave...",
+    "difficulty": 4
+  },
+  {
+    "name": "Radscorpion Queen",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 250,
+    "hp_max": 500,
+    "damage_min": 35,
+    "damage_max": 70,
+    "defense_rating": 50,
+    "xp_reward": 450,
+    "loot_table": [
+      {
+        "item": "Radscorpion Poison Gland",
+        "weight": 90
+      },
+      {
+        "item": "Radscorpion Egg",
+        "weight": 40
+      }
+    ],
+    "description": "Massive broodmother that burrows and ambushes. Her carapace is nearly impenetrable.",
+    "difficulty": 4
+  },
+  {
+    "name": "Savage Deathclaw",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 500,
+    "hp_max": 750,
+    "damage_min": 60,
+    "damage_max": 115,
+    "defense_rating": 60,
+    "xp_reward": 700,
+    "loot_table": [
+      {
+        "item": "Deathclaw Hand",
+        "weight": 90
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 30
+      }
+    ],
+    "description": "Battle-scarred and territorial. It has killed everything that challenged it.",
+    "difficulty": 4
+  },
+  {
+    "name": "Scorchbeast",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 500,
+    "hp_max": 1000,
+    "damage_min": 60,
+    "damage_max": 120,
+    "defense_rating": 55,
+    "xp_reward": 700,
+    "loot_table": [
+      {
+        "item": "Scorchbeast Hide",
+        "weight": 50
+      },
+      {
+        "item": "Ultracite",
+        "weight": 25
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "Giant irradiated bats that carpet-bomb with sonic attacks. Appalachia's apex threat.",
+    "difficulty": 4
+  },
+  {
+    "name": "Sentry Bot",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 150,
+    "hp_max": 350,
+    "damage_min": 30,
+    "damage_max": 65,
+    "defense_rating": 50,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Fusion Core",
+        "weight": 40
+      },
+      {
+        "item": "Missile",
+        "weight": 30
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 25
+      }
+    ],
+    "description": "Walking tanks with dual miniguns and missile launchers. Find cover immediately.",
+    "difficulty": 4
+  },
+  {
+    "name": "Skulking Fog Crawler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 700,
+    "hp_max": 1200,
+    "damage_min": 80,
+    "damage_max": 150,
+    "defense_rating": 65,
+    "xp_reward": 850,
+    "loot_table": [
+      {
+        "item": "Fog Crawler Meat",
+        "weight": 75
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 25
+      }
+    ],
+    "description": "The apex fog crawler. Enormous, aggressive, and nearly indestructible.",
+    "difficulty": 4
+  },
+  {
+    "name": "Stripe",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 637,
+    "hp_max": 1062,
+    "damage_min": 175,
+    "damage_max": 325,
+    "defense_rating": 0,
+    "xp_reward": 1000,
+    "loot_table": [
+      {
+        "item": "Egg timer",
+        "weight": 50
+      },
+      {
+        "item": "Deathclaw hand",
+        "weight": 50
+      },
+      {
+        "item": "Junk food",
+        "weight": 50
+      }
+    ],
+    "description": "Stripe is a miniature deathclaw found in the year 2281 at the Big MT in the Fallout: New Vegas...",
+    "difficulty": 4
+  },
+  {
+    "name": "Super Mutant Behemoth",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 500,
+    "hp_max": 1100,
+    "damage_min": 60,
+    "damage_max": 130,
+    "defense_rating": 55,
+    "xp_reward": 750,
+    "loot_table": [
+      {
+        "item": "Legendary Loot",
+        "weight": 25
+      },
+      {
+        "item": "Stimpak",
+        "weight": 60
+      }
+    ],
+    "description": "Three stories tall. Carries a fire hydrant on a chain as a weapon. Run.",
+    "difficulty": 4
+  },
+  {
+    "name": "Super Mutant Master",
+    "game_source": [
+      "FO1",
+      "FO3",
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 250,
+    "hp_max": 500,
+    "damage_min": 40,
+    "damage_max": 75,
+    "defense_rating": 48,
+    "xp_reward": 450,
+    "loot_table": [
+      {
+        "item": "Minigun",
+        "weight": 20
+      },
+      {
+        "item": "Stimpak",
+        "weight": 40
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 25
+      }
+    ],
+    "description": "The smartest and deadliest mutants. They coordinate attacks and use heavy weapons.",
+    "difficulty": 4
+  },
+  {
+    "name": "Super Mutant Overlord",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 350,
+    "hp_max": 650,
+    "damage_min": 50,
+    "damage_max": 90,
+    "defense_rating": 52,
+    "xp_reward": 550,
+    "loot_table": [
+      {
+        "item": "Tri-Beam Laser Rifle",
+        "weight": 20
+      },
+      {
+        "item": "Stimpak",
+        "weight": 45
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 30
+      }
+    ],
+    "description": "Massive mutants wielding tri-beam laser rifles and super sledges. Bullet sponges.",
+    "difficulty": 4
+  },
+  {
+    "name": "Super Mutant Primus",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 450,
+    "hp_max": 800,
+    "damage_min": 60,
+    "damage_max": 110,
+    "defense_rating": 55,
+    "xp_reward": 650,
+    "loot_table": [
+      {
+        "item": "Minigun",
+        "weight": 25
+      },
+      {
+        "item": "Stimpak",
+        "weight": 50
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 35
+      }
+    ],
+    "description": "Ancient mutants approaching behemoth size. Their green skin has darkened to near-black.",
+    "difficulty": 4
+  },
+  {
+    "name": "Super Mutant Warlord",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "mutant",
+    "hp_min": 600,
+    "hp_max": 1100,
+    "damage_min": 75,
+    "damage_max": 140,
+    "defense_rating": 60,
+    "xp_reward": 800,
+    "loot_table": [
+      {
+        "item": "Gatling Laser",
+        "weight": 20
+      },
+      {
+        "item": "Stimpak",
+        "weight": 55
+      },
+      {
+        "item": "Legendary Loot",
+        "weight": 20
+      }
+    ],
+    "description": "The ultimate super mutant variant. Towering, heavily armed, and nearly unkillable.",
+    "difficulty": 4
+  },
+  {
+    "name": "Swampfolk",
+    "game_source": [
+      "FO3"
+    ],
+    "faction": "creature",
+    "hp_min": 525,
+    "hp_max": 875,
+    "damage_min": 70,
+    "damage_max": 130,
+    "defense_rating": 0,
+    "xp_reward": 782,
+    "loot_table": [
+      {
+        "item": "Axe",
+        "weight": 50
+      }
+    ],
+    "description": "Swampfolk are a mutated type of human found in Point Lookout in 2277.",
+    "difficulty": 4
+  },
+  {
+    "name": "Synth Courser",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "robot",
+    "hp_min": 150,
+    "hp_max": 300,
+    "damage_min": 30,
+    "damage_max": 55,
+    "defense_rating": 40,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Synth Component",
+        "weight": 90
+      },
+      {
+        "item": "Courser Chip",
+        "weight": 50
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 30
+      }
+    ],
+    "description": "Elite Institute hunters. Teleport in, eliminate targets, teleport out. Relentless.",
+    "difficulty": 4
+  },
+  {
+    "name": "Tunneler Queen",
+    "game_source": [
+      "NV"
+    ],
+    "faction": "creature",
+    "hp_min": 200,
+    "hp_max": 400,
+    "damage_min": 30,
+    "damage_max": 60,
+    "defense_rating": 30,
+    "xp_reward": 350,
+    "loot_table": [
+      {
+        "item": "Tunneler Poison Gland",
+        "weight": 60
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "Matriarch of the tunneler hive. Larger, tougher, and commands swarms of drones.",
+    "difficulty": 4
+  },
+  {
+    "name": "Venomous Angler",
+    "game_source": [
+      "FO4"
+    ],
+    "faction": "creature",
+    "hp_min": 450,
+    "hp_max": 800,
+    "damage_min": 55,
+    "damage_max": 100,
+    "defense_rating": 40,
+    "xp_reward": 600,
+    "loot_table": [
+      {
+        "item": "Angler Meat",
+        "weight": 70
+      },
+      {
+        "item": "Rare Loot",
+        "weight": 20
+      }
+    ],
+    "description": "Ancient angler whose lure burns with toxic fire. One of Far Harbor's deadliest.",
+    "difficulty": 4
+  }
+]

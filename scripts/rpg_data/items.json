@@ -1,0 +1,4586 @@
+[
+  {
+    "name": ".308 Rounds",
+    "type": "ammo",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Rifle ammo",
+    "weight": 0.0,
+    "value": 4,
+    "rarity": 1,
+    "description": "Hunting and sniper rifle ammunition."
+  },
+  {
+    "name": ".357 Magnum Rounds",
+    "type": "ammo",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Revolver ammo",
+    "weight": 0.0,
+    "value": 3,
+    "rarity": 1,
+    "description": "Common revolver ammunition. Cowboy repeater's best friend."
+  },
+  {
+    "name": ".45 Auto",
+    "type": "ammo",
+    "game_source": [
+      "NV",
+      "FO4"
+    ],
+    "damage": "Pistol/SMG ammo",
+    "weight": 0.0,
+    "value": 3,
+    "rarity": 1,
+    "description": "Subsonic round. Suppresses well, hits hard for a pistol caliber."
+  },
+  {
+    "name": "10mm Rounds",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "10mm ammo",
+    "weight": 0.0,
+    "value": 2,
+    "rarity": 1,
+    "description": "Standard pistol ammunition. Found everywhere."
+  },
+  {
+    "name": "5.56mm Rounds",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Rifle ammo",
+    "weight": 0.0,
+    "value": 3,
+    "rarity": 1,
+    "description": "NATO standard rifle round. Military stockpiles everywhere."
+  },
+  {
+    "name": "5mm Rounds",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Minigun ammo",
+    "weight": 0.0,
+    "value": 1,
+    "rarity": 1,
+    "description": "High-velocity rounds. Minigun eats thousands per fight."
+  },
+  {
+    "name": "9mm Rounds",
+    "type": "ammo",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Pistol ammo",
+    "weight": 0.0,
+    "value": 1,
+    "rarity": 1,
+    "description": "Light pistol ammunition. Cheap, common, barely adequate."
+  },
+  {
+    "name": "Railway Spike",
+    "type": "ammo",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "Railway rifle ammo",
+    "weight": 0.1,
+    "value": 2,
+    "rarity": 1,
+    "description": "Industrial railroad spike. Pins enemies to walls. Literally."
+  },
+  {
+    "name": "Shotgun Shells",
+    "type": "ammo",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Shotgun ammo",
+    "weight": 0.0,
+    "value": 3,
+    "rarity": 1,
+    "description": "12-gauge buckshot. Spreads the love."
+  },
+  {
+    "name": ".44 Magnum Rounds",
+    "type": "ammo",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Magnum ammo",
+    "weight": 0.0,
+    "value": 5,
+    "rarity": 2,
+    "description": "Heavy revolver cartridges. Six rounds of authority."
+  },
+  {
+    "name": ".45-70 Gov't",
+    "type": "ammo",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Brush gun ammo",
+    "weight": 0.0,
+    "value": 6,
+    "rarity": 2,
+    "description": "Massive rifle cartridge. Used in lever-actions and revolvers."
+  },
+  {
+    "name": ".50 MG",
+    "type": "ammo",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Anti-materiel ammo",
+    "weight": 0.0,
+    "value": 8,
+    "rarity": 2,
+    "description": "Heavy machine gun round. Punches through anything at range."
+  },
+  {
+    "name": "12.7mm Rounds",
+    "type": "ammo",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Heavy pistol ammo",
+    "weight": 0.0,
+    "value": 5,
+    "rarity": 2,
+    "description": "Large-caliber rounds for submachine guns and pistols."
+  },
+  {
+    "name": "Energy Cell",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "NV"
+    ],
+    "damage": "Small energy ammo",
+    "weight": 0.0,
+    "value": 4,
+    "rarity": 2,
+    "description": "Compact power cell for laser pistols."
+  },
+  {
+    "name": "Flamer Fuel",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Flamer ammo",
+    "weight": 0.0,
+    "value": 3,
+    "rarity": 2,
+    "description": "Pressurized napalm canister. Burns at 2000 degrees."
+  },
+  {
+    "name": "Fusion Cell",
+    "type": "ammo",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Energy ammo",
+    "weight": 0.0,
+    "value": 5,
+    "rarity": 2,
+    "description": "Microfusion power cell. Feeds laser weapons."
+  },
+  {
+    "name": "Gamma Round",
+    "type": "ammo",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Gamma gun ammo",
+    "weight": 0.0,
+    "value": 8,
+    "rarity": 2,
+    "description": "Concentrated radiation round. Useless on ghouls, lethal otherwise."
+  },
+  {
+    "name": "Microfusion Cell",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Heavy energy ammo",
+    "weight": 0.0,
+    "value": 8,
+    "rarity": 2,
+    "description": "High-capacity energy cell for plasma weapons."
+  },
+  {
+    "name": "Missiles",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Launcher ammo",
+    "weight": 3.0,
+    "value": 50,
+    "rarity": 2,
+    "description": "Unguided rockets. Shoulder-fired crater-makers."
+  },
+  {
+    "name": "2mm EC",
+    "type": "ammo",
+    "game_source": [
+      "FO2",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Gauss ammo",
+    "weight": 0.0,
+    "value": 10,
+    "rarity": 3,
+    "description": "Electromagnetic cartridge for Gauss weapons. Rare and devastating."
+  },
+  {
+    "name": "Alien Power Cell",
+    "type": "ammo",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Alien blaster ammo",
+    "weight": 0.0,
+    "value": 50,
+    "rarity": 3,
+    "description": "Extraterrestrial energy cell. Irreplaceable and precious."
+  },
+  {
+    "name": "Cryo Cell",
+    "type": "ammo",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Cryolator ammo",
+    "weight": 0.1,
+    "value": 15,
+    "rarity": 3,
+    "description": "Cryogenic freezing compound. Turns targets into popsicles."
+  },
+  {
+    "name": "Mini Nuke",
+    "type": "ammo",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Fat Man ammo",
+    "weight": 6.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Tactical nuclear warhead. Handle with extreme caution."
+  },
+  {
+    "name": "1st Recon beret",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 40,
+    "rarity": 1,
+    "description": "The 1st Recon beret is a piece of headwear ."
+  },
+  {
+    "name": "Army fatigues",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 12,
+    "rarity": 1,
+    "description": "The Army fatigues and dirty Army fatigues and matching helmets are wearable clothing items ."
+  },
+  {
+    "name": "Athletic outfit",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 5,
+    "rarity": 1,
+    "description": "The athletic outfit is a set of clothing that can be obtained in Fallout 4."
+  },
+  {
+    "name": "Authority glasses",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "The Authority glasses are a set of heavily tinted glasses in Fallout: New Vegas."
+  },
+  {
+    "name": "BOS uniform",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 20,
+    "rarity": 1,
+    "description": "The BOS uniform is a piece of clothing in Fallout 4."
+  },
+  {
+    "name": "Bandana",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "The bandana is a piece of headwear in Fallout 3."
+  },
+  {
+    "name": "Baseball uniform",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The baseball uniform and baseball cap are an outfit in Fallout 4."
+  },
+  {
+    "name": "Bathrobe",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The bathrobe is an outfit in Fallout 4."
+  },
+  {
+    "name": "Birth skirt",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "The birth skirt is a piece of clothing in Fallout 3."
+  },
+  {
+    "name": "Black suit",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 32,
+    "rarity": 1,
+    "description": "The clean black suit and dirty black suit are pieces of clothing in Fallout 4."
+  },
+  {
+    "name": "Black vest and slacks",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The black vest and slacks is a piece of clothing in Fallout 4."
+  },
+  {
+    "name": "Blast Off pajamas",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Blast Off pajamas are pre-War children's all in one clothing found in Fallout 3."
+  },
+  {
+    "name": "Blue suit",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 32,
+    "rarity": 1,
+    "description": "The clean blue suit and dirty blue suit are pieces of clothing in Fallout 4."
+  },
+  {
+    "name": "Boomer flightsuit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "The Boomer flightsuit is a piece of clothing in Fallout: New Vegas."
+  },
+  {
+    "name": "Boomer jumpsuit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "The Boomer jumpsuit is a piece of clothing in Fallout: New Vegas."
+  },
+  {
+    "name": "Boomers cap",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The Boomers cap is a piece of headwear in Fallout: New Vegas."
+  },
+  {
+    "name": "Boomers hat",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "The Boomers hat is a piece of headwear in Fallout: New Vegas."
+  },
+  {
+    "name": "Boomers helmet",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "The Boomers helmet is a piece of headwear in Fallout: New Vegas."
+  },
+  {
+    "name": "Bounty hunter duster",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 70,
+    "rarity": 1,
+    "description": "The bounty hunter duster is a piece of clothing ."
+  },
+  {
+    "name": "Bridgekeeper's robes",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 10.0,
+    "value": 5,
+    "rarity": 1,
+    "description": "The Bridgekeeper's robes is a type of clothing in Fallout 2."
+  },
+  {
+    "name": "Bright Brotherhood robe",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 3,
+    "rarity": 1,
+    "description": "The Bright Brotherhood robe is a piece of clothing ."
+  },
+  {
+    "name": "Broken power armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 45.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "The broken power armor and broken power helmet are pieces of armor in Fallout: New Vegas."
+  },
+  {
+    "name": "Broken recon armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 20.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "Broken recon armor is a piece of armor in Fallout: New Vegas."
+  },
+  {
+    "name": "Brotherhood fatigues",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 4.0,
+    "value": 20,
+    "rarity": 1,
+    "description": "Brotherhood fatigues are a piece of clothing in Fallout 4."
+  },
+  {
+    "name": "Cass' outfit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "Cass' outfit is a piece of clothing belonging to Rose of Sharon Cassidy in Fallout: New Vegas."
+  },
+  {
+    "name": "Casual outfit",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The casual outfit is an outfit in Fallout 4."
+  },
+  {
+    "name": "Chain dog collar",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 3,
+    "rarity": 1,
+    "description": "The chain dog collar is a piece of dog apparel in Fallout 4."
+  },
+  {
+    "name": "Checkered shirt and slacks",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 15,
+    "rarity": 1,
+    "description": "The checkered shirt and slacks is an outfit in Fallout 4."
+  },
+  {
+    "name": "Child of Atom rags",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The Child of Atom rags are a series of outfits ."
+  },
+  {
+    "name": "Civilian engineer jumpsuit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "The civilian engineer jumpsuit is a piece of clothing ."
+  },
+  {
+    "name": "Cleanroom suit",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 33,
+    "rarity": 1,
+    "description": "The cleanroom suit and hooded cleanroom suit are pieces of clothing in Fallout 4."
+  },
+  {
+    "name": "Colonial duster",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 5.0,
+    "value": 13,
+    "rarity": 1,
+    "description": "The colonial duster is a piece of clothing in Fallout 4."
+  },
+  {
+    "name": "Corset",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 35,
+    "rarity": 1,
+    "description": "The corset is a piece of clothing in Fallout 4."
+  },
+  {
+    "name": "Covert sweater vest",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The covert sweater vest is a piece of clothing featured in Fallout 4."
+  },
+  {
+    "name": "Cowboy hat",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "Cowboy hats are various pieces of headwear in Fallout: New Vegas."
+  },
+  {
+    "name": "DC guard armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 17.0,
+    "value": 55,
+    "rarity": 1,
+    "description": "The DC guard armor is a type of armor in Fallout 4."
+  },
+  {
+    "name": "DC guard umpire's pads",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 6.0,
+    "value": 14,
+    "rarity": 1,
+    "description": "The DC guard umpire's pads is a piece of armor in Fallout 4."
+  },
+  {
+    "name": "Dad's wasteland outfit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 20.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "Dad's wasteland outfit is a piece of clothing in Fallout 3."
+  },
+  {
+    "name": "DamWar armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "DamWar armor is a type of armor and headwear worn only by non-player characters during the..."
+  },
+  {
+    "name": "Dapper gambler suit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 6,
+    "rarity": 1,
+    "description": "The dapper gambler suit and dapper gambler hat are a set of clothing ."
+  },
+  {
+    "name": "Doctor Li's outfit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "Doctor Li's outfit is a piece of clothing in Fallout 3, worn by Doctor Li in Rivet City."
+  },
+  {
+    "name": "Dog collar",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 7,
+    "rarity": 1,
+    "description": "The dog collar is a piece of dog apparel ."
+  },
+  {
+    "name": "Drifter outfit",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 10.0,
+    "value": 35,
+    "rarity": 1,
+    "description": "The drifter outfit is a set of clothing that can be obtained in Fallout 4."
+  },
+  {
+    "name": "Elder Lyons' robe",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "Elder Lyons' robe is a unique piece of clothing in Fallout 3, worn by Elder Lyons of the..."
+  },
+  {
+    "name": "Enclave officer uniform",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 9,
+    "rarity": 1,
+    "description": "The Enclave officer uniform is standard Enclave officer apparel in Fallout 3."
+  },
+  {
+    "name": "Enclave scientist outfit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "The Enclave scientist outfit is a unique piece of clothing ."
+  },
+  {
+    "name": "Engineer's armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 15,
+    "rarity": 1,
+    "description": "The engineer's armor is a piece of armor in Fallout 4."
+  },
+  {
+    "name": "Explorer's gear",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 50,
+    "rarity": 1,
+    "description": "The explorer's gear is a unique outfit in Fallout: New Vegas."
+  },
+  {
+    "name": "Eyebot helmet",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 20,
+    "rarity": 1,
+    "description": "The Eyebot helmet is a piece of headwear in Fallout 3."
+  },
+  {
+    "name": "Eyeglasses",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "Eyeglasses are a piece of eyewear in Fallout 3."
+  },
+  {
+    "name": "Ghoul mask",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 50,
+    "rarity": 1,
+    "description": "The ghoul mask is a unique piece of headwear ."
+  },
+  {
+    "name": "Head wrap",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "Head wrap is a piece of headwear found in Fallout 3."
+  },
+  {
+    "name": "Kid's cave rat outfit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Kid's cave mole outfit and Kid's Murray the Mole hat are pieces of clothing in Fallout 3..."
+  },
+  {
+    "name": "Kid's outfit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Kid's outfits are diverse pieces of clothing in Fallout 3, worn by the various children in the..."
+  },
+  {
+    "name": "Kid's police hat",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 40,
+    "rarity": 1,
+    "description": "The kid's police hat a piece of headwear found in Fallout 3."
+  },
+  {
+    "name": "Leather Armor",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "DR 8",
+    "weight": 8.0,
+    "value": 60,
+    "rarity": 1,
+    "description": "Tanned brahmin hide stitched over a frame. Better than nothing."
+  },
+  {
+    "name": "Lesko's lab coat",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 70,
+    "rarity": 1,
+    "description": "Lesko's lab coat is a unique piece of clothing found in Fallout 3."
+  },
+  {
+    "name": "Lincoln's hat",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 1.0,
+    "value": 40,
+    "rarity": 1,
+    "description": "Lincoln's hat is a unique piece of headwear ."
+  },
+  {
+    "name": "Mayor MacCready's outfit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Mayor MacCready's outfit and MacCready's helmet are pieces of clothing in Fallout 3, worn by..."
+  },
+  {
+    "name": "Merc Grunt Outfit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "DR 12",
+    "weight": 7.0,
+    "value": 70,
+    "rarity": 1,
+    "description": "Mercenary field gear. Leather and canvas over ceramic inserts."
+  },
+  {
+    "name": "Merc outfit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 8.0,
+    "value": 50,
+    "rarity": 1,
+    "description": "Merc outfits are a type of clothing ."
+  },
+  {
+    "name": "Raider Armor",
+    "type": "armor",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "DR 10",
+    "weight": 6.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Scrap metal and leather held together by spite and duct tape."
+  },
+  {
+    "name": "Robes",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 10.0,
+    "value": 90,
+    "rarity": 1,
+    "description": "Robes are a type of clothing in Fallout."
+  },
+  {
+    "name": "Trapper Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 16",
+    "weight": 10.0,
+    "value": 80,
+    "rarity": 1,
+    "description": "Far Harbor fisher gear. Crab shells and boat scrap over padding."
+  },
+  {
+    "name": "Vault Suit",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "DR 2",
+    "weight": 1.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "Standard Vault-Tec jumpsuit. Blue with a yellow stripe. Zero protection."
+  },
+  {
+    "name": "Vault jumpsuit",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "Vault suit is the most basic element of clothing in Fallout."
+  },
+  {
+    "name": "1st Recon assault armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 300,
+    "rarity": 2,
+    "description": "The 1st Recon assault armor is a piece of armor in Fallout: New Vegas."
+  },
+  {
+    "name": "1st Recon survival armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 300,
+    "rarity": 2,
+    "description": "The 1st Recon survival armor is a piece of armor in Fallout: New Vegas."
+  },
+  {
+    "name": "Advanced radiation suit",
+    "type": "armor",
+    "game_source": [
+      "FO3",
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 7.0,
+    "value": 100,
+    "rarity": 2,
+    "description": "The advanced radiation suit is a type of apparel in Fallout 3."
+  },
+  {
+    "name": "Armored Vault 101 jumpsuit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 15.0,
+    "value": 180,
+    "rarity": 2,
+    "description": "The armored Vault 101 jumpsuit is a piece of armor in Fallout 3."
+  },
+  {
+    "name": "Caesar's Legion armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 10.0,
+    "value": 120,
+    "rarity": 2,
+    "description": "Caesar's Legion armor is armor of various types in Fallout: New Vegas."
+  },
+  {
+    "name": "Caravaneer outfit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 1.5,
+    "value": 180,
+    "rarity": 2,
+    "description": "The caravaneer outift is a piece of clothing ."
+  },
+  {
+    "name": "Chained prostitute outfit",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 390,
+    "rarity": 2,
+    "description": "The chained prostitute outfit is a piece of clothing ."
+  },
+  {
+    "name": "Chinese jumpsuit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 106,
+    "rarity": 2,
+    "description": "The Chinese jumpsuit and the Chinese commando hat are pieces of clothing in Fallout 3."
+  },
+  {
+    "name": "Combat Armor",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "DR 30",
+    "weight": 12.0,
+    "value": 350,
+    "rarity": 2,
+    "description": "Pre-war military composite. Ballistic weave over ceramic plates."
+  },
+  {
+    "name": "Courser uniform",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 15.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "The Courser uniform, known as a standard Courser armored coatInstitute SRB terminal entries..."
+  },
+  {
+    "name": "Disciples Metal Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 22",
+    "weight": 12.0,
+    "value": 120,
+    "rarity": 2,
+    "description": "Nuka-World raider gear. Bladed and brutal. Fashion meets violence."
+  },
+  {
+    "name": "Environment suit",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 5.0,
+    "value": 100,
+    "rarity": 2,
+    "description": "The environment suit is a special medical radiation suit designed by Moira Brown to withstand..."
+  },
+  {
+    "name": "Leather Armor Mk II",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "DR 14",
+    "weight": 10.0,
+    "value": 120,
+    "rarity": 2,
+    "description": "Hardened leather with metal studs. Upgraded wasteland standard."
+  },
+  {
+    "name": "Maple's garb",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Maple's garb is a piece of clothing in Fallout 3, a unique variant of the Oasis robe."
+  },
+  {
+    "name": "Metal Armor",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "DR 20",
+    "weight": 15.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Scrap metal plates welded into a wearable shell. Heavy but effective."
+  },
+  {
+    "name": "Synth Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 28",
+    "weight": 10.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Institute-manufactured composite. Lightweight, white, and clinical."
+  },
+  {
+    "name": "Advanced PA Mk II",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "DR 75",
+    "weight": 38.0,
+    "value": 2500,
+    "rarity": 3,
+    "description": "Frank Horrigan's model. Best armor in the wasteland, bar none."
+  },
+  {
+    "name": "Advanced Power Armor",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "DR 65",
+    "weight": 40.0,
+    "value": 1800,
+    "rarity": 3,
+    "description": "Enclave post-war design. Lightweight composites over powered frame."
+  },
+  {
+    "name": "Advanced power armor Mk II",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 50.0,
+    "value": 25000,
+    "rarity": 3,
+    "description": "Advanced power armor Mk II is a piece of armor in Fallout 2."
+  },
+  {
+    "name": "Atom Cats jacket and jeans",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 20,
+    "rarity": 3,
+    "description": "Atom Cats jacket and jeans is an obtainable outfit that appears in Fallout 4 and appears to be..."
+  },
+  {
+    "name": "Bomber jacket",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2.0,
+    "value": 20,
+    "rarity": 3,
+    "description": "The bomber jacket is a piece of clothing in Fallout 4."
+  },
+  {
+    "name": "Brotherhood T-45d power armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 45.0,
+    "value": 4500,
+    "rarity": 3,
+    "description": "Brotherhood T-45d power armor is a type of armor in Fallout: New Vegas."
+  },
+  {
+    "name": "Brotherhood T-51b power armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 40.0,
+    "value": 5200,
+    "rarity": 3,
+    "description": "The Brotherhood T-51b power armor is a piece of armor in Fallout: New Vegas."
+  },
+  {
+    "name": "Brotherhood armor",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 25.0,
+    "value": 4800,
+    "rarity": 3,
+    "description": "The Brotherhood armor is a piece of armor in Fallout."
+  },
+  {
+    "name": "Cage armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 2733.0,
+    "value": 90110,
+    "rarity": 3,
+    "description": "Cage armor and helmeted cage armor are pieces of armor in Fallout 4."
+  },
+  {
+    "name": "Chinese Stealth Armor",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "DR 24 +Stealth",
+    "weight": 15.0,
+    "value": 800,
+    "rarity": 3,
+    "description": "Crimson Dragoon stealth suit. Active camo when crouching."
+  },
+  {
+    "name": "Combat armor Mk II",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 25.0,
+    "value": 8000,
+    "rarity": 3,
+    "description": "Combat armor Mk II is a piece of armor in Fallout 2."
+  },
+  {
+    "name": "Combat armor, reinforced",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 25.0,
+    "value": 8000,
+    "rarity": 3,
+    "description": "The combat armor, reinforced and matching combat helmet, reinforced are pieces of armor in..."
+  },
+  {
+    "name": "Combat armor, reinforced mark 2",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "0",
+    "weight": 25.0,
+    "value": 8000,
+    "rarity": 3,
+    "description": "The combat armor, reinforced mark 2 and matching combat helmet, reinforced mark 2 are pieces..."
+  },
+  {
+    "name": "Combat leather jacket",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 7.0,
+    "value": 1000,
+    "rarity": 3,
+    "description": "The combat leather jacket is a piece of armor in Fallout 2."
+  },
+  {
+    "name": "Desert Ranger Armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "DR 38",
+    "weight": 16.0,
+    "value": 550,
+    "rarity": 3,
+    "description": "Pre-war riot armor from Zion. Became the Ranger Combat Armor template."
+  },
+  {
+    "name": "Elite Riot Gear",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "DR 42",
+    "weight": 17.0,
+    "value": 700,
+    "rarity": 3,
+    "description": "Advanced ranger armor from the Divide. Helmet has low-light optics."
+  },
+  {
+    "name": "Enclave Hellfire Armor",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "DR 55 +fire resist",
+    "weight": 40.0,
+    "value": 1500,
+    "rarity": 3,
+    "description": "Heavy Enclave power armor. Near-total fire immunity. Terrifying."
+  },
+  {
+    "name": "Enclave power armor",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 45.0,
+    "value": 780,
+    "rarity": 3,
+    "description": "The advanced power armor Mk II,The Lone Wanderer: \"What do you make of the Enclave..."
+  },
+  {
+    "name": "Hardened power armor",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 100.0,
+    "value": 15000,
+    "rarity": 3,
+    "description": "Hardened power armor is a type of armor in Fallout."
+  },
+  {
+    "name": "Joshua Graham's Armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "DR 25",
+    "weight": 4.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Bandage-wrapped vest. Light as faith, tough as the Burned Man."
+  },
+  {
+    "name": "Leather jacket",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 5.0,
+    "value": 250,
+    "rarity": 3,
+    "description": "The leather jacket is a piece of armor in Fallout."
+  },
+  {
+    "name": "Linden's Outcast power armor",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "0",
+    "weight": 45.0,
+    "value": 740,
+    "rarity": 3,
+    "description": "Linden's Outcast power armor is a unique set of power armor ."
+  },
+  {
+    "name": "Marine Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 45",
+    "weight": 18.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Far Harbor pre-war marine gear. Best non-power armor in the waste."
+  },
+  {
+    "name": "Mechanist's Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 35 +energy",
+    "weight": 14.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Robotic-themed power suit. Worn by the robot army's commander."
+  },
+  {
+    "name": "Metal armor Mk II",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 35.0,
+    "value": 1900,
+    "rarity": 3,
+    "description": "Metal armor Mk II is a superior version of the regular metal armor."
+  },
+  {
+    "name": "NCR Ranger Combat Armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "DR 40",
+    "weight": 18.0,
+    "value": 600,
+    "rarity": 3,
+    "description": "Black riot gear with a duster. The most feared silhouette in the Mojave."
+  },
+  {
+    "name": "Power armor",
+    "type": "armor",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 42.0,
+    "value": 15000,
+    "rarity": 3,
+    "description": "Power armor is a type of armor in Fallout 2."
+  },
+  {
+    "name": "Powered armor",
+    "type": "armor",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "0",
+    "weight": 85.0,
+    "value": 12500,
+    "rarity": 3,
+    "description": "Powered armor is a type of armor in Fallout."
+  },
+  {
+    "name": "Railroad Armored Coat",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 30",
+    "weight": 8.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Ballistic-weave lined coat. Freedom has never been so fashionable."
+  },
+  {
+    "name": "Ranger Battle Armor",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "DR 32",
+    "weight": 14.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Reilly's Rangers issue. Combat armor with a distinctive vest."
+  },
+  {
+    "name": "Recon Marine Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 50",
+    "weight": 19.0,
+    "value": 650,
+    "rarity": 3,
+    "description": "Upgraded marine armor with targeting HUD. Top-tier ballistic plate."
+  },
+  {
+    "name": "Remnants Power Armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "DR 70",
+    "weight": 42.0,
+    "value": 1800,
+    "rarity": 3,
+    "description": "Enclave remnant suit. Arcade Gannon's family heirloom."
+  },
+  {
+    "name": "Sierra Madre Armor",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "DR 28",
+    "weight": 10.0,
+    "value": 350,
+    "rarity": 3,
+    "description": "Reinforced security armor from the Sierra Madre casino vault."
+  },
+  {
+    "name": "Silver Shroud Costume",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 15",
+    "weight": 5.0,
+    "value": 300,
+    "rarity": 3,
+    "description": "Silver Shroud radio hero costume. Justice never looked this good."
+  },
+  {
+    "name": "Stealth Suit Mk II",
+    "type": "armor",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "DR 20 +Stealth +Auto",
+    "weight": 12.0,
+    "value": 800,
+    "rarity": 3,
+    "description": "Big MT creation. Auto-stimpaks and friendly chatter included."
+  },
+  {
+    "name": "T-45 Power Armor",
+    "type": "armor",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "DR 50",
+    "weight": 45.0,
+    "value": 800,
+    "rarity": 3,
+    "description": "First-generation power armor. Walking fortress, rusty knees."
+  },
+  {
+    "name": "T-51 Power Armor",
+    "type": "armor",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "DR 60",
+    "weight": 42.0,
+    "value": 1200,
+    "rarity": 3,
+    "description": "Pinnacle of pre-war power armor design. The iconic tin man."
+  },
+  {
+    "name": "T-60 Power Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 65",
+    "weight": 44.0,
+    "value": 1500,
+    "rarity": 3,
+    "description": "Post-war Brotherhood improvement. Solid, dependable, intimidating."
+  },
+  {
+    "name": "Tesla Armor",
+    "type": "armor",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "DR 48 +energy resist",
+    "weight": 38.0,
+    "value": 1200,
+    "rarity": 3,
+    "description": "Enclave power armor with tesla coils. Absorbs energy weapon fire."
+  },
+  {
+    "name": "X-01 Power Armor",
+    "type": "armor",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "DR 75",
+    "weight": 48.0,
+    "value": 2000,
+    "rarity": 3,
+    "description": "Advanced Enclave design. The best protection caps can't buy."
+  },
+  {
+    "name": "Blood Pack",
+    "type": "consumable",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "Heal 20 HP",
+    "weight": 0.5,
+    "value": 25,
+    "rarity": 1,
+    "description": "Bag of preserved blood. Not appetizing. Very effective."
+  },
+  {
+    "name": "Brahmin Steak",
+    "type": "consumable",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Heal 20 HP",
+    "weight": 1.0,
+    "value": 25,
+    "rarity": 1,
+    "description": "Thick-cut two-headed beef. Best served irradiated."
+  },
+  {
+    "name": "Dirty Water",
+    "type": "consumable",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Heal 5 HP, +10 rads",
+    "weight": 1.0,
+    "value": 5,
+    "rarity": 1,
+    "description": "Brown and gritty. Beats dying of thirst. Barely."
+  },
+  {
+    "name": "Grilled Radstag",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Heal 25 HP, +carry",
+    "weight": 1.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Irradiated venison. Extra carry weight for the next trek."
+  },
+  {
+    "name": "Healing Powder",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "NV"
+    ],
+    "damage": "Heal 18 HP",
+    "weight": 0.2,
+    "value": 20,
+    "rarity": 1,
+    "description": "Tribal remedy ground from broc flower and xander root."
+  },
+  {
+    "name": "Howitzer shell",
+    "type": "consumable",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "0",
+    "weight": 40.0,
+    "value": 20,
+    "rarity": 1,
+    "description": "The howitzer shell is a quest item in Fallout 2."
+  },
+  {
+    "name": "Iguana on a Stick",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO3",
+      "NV"
+    ],
+    "damage": "Heal 8 HP",
+    "weight": 0.5,
+    "value": 10,
+    "rarity": 1,
+    "description": "Grilled iguana. Don't ask what kind of iguana."
+  },
+  {
+    "name": "Jet",
+    "type": "consumable",
+    "game_source": [
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "+AP regen 30s",
+    "weight": 0.1,
+    "value": 25,
+    "rarity": 1,
+    "description": "Inhaled brahmin-fume stimulant. Time slows down. Highly addictive."
+  },
+  {
+    "name": "Nuka-Cola",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Heal 10 HP, +5 rads",
+    "weight": 1.0,
+    "value": 20,
+    "rarity": 1,
+    "description": "Pre-war soda. Still fizzy after two centuries. Slightly radioactive."
+  },
+  {
+    "name": "Purified Water",
+    "type": "consumable",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Heal 15 HP",
+    "weight": 1.0,
+    "value": 15,
+    "rarity": 1,
+    "description": "Clean water. The most valuable commodity in the wasteland."
+  },
+  {
+    "name": "Rad-X",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "+100 rad resist",
+    "weight": 0.2,
+    "value": 30,
+    "rarity": 1,
+    "description": "Anti-radiation pills. Pop before entering hot zones."
+  },
+  {
+    "name": "RadAway",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Remove 100 rads",
+    "weight": 0.5,
+    "value": 40,
+    "rarity": 1,
+    "description": "IV bag of chelation chemicals. Flushes radiation from blood."
+  },
+  {
+    "name": "Stimpak",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Heal 30 HP",
+    "weight": 0.5,
+    "value": 50,
+    "rarity": 1,
+    "description": "Standard medical syringe. Heals wounds, doesn't fix everything."
+  },
+  {
+    "name": "Sunset Sarsaparilla",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Heal 10 HP, +2 rads",
+    "weight": 1.0,
+    "value": 15,
+    "rarity": 1,
+    "description": "Mojave's favorite soda. Collect the star caps!"
+  },
+  {
+    "name": "Addictol",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Cure addictions",
+    "weight": 0.2,
+    "value": 100,
+    "rarity": 2,
+    "description": "One syringe clears all addictions. Fresh start in a bottle."
+  },
+  {
+    "name": "Ant Nectar",
+    "type": "consumable",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "+STR 4, -INT 2 60s",
+    "weight": 0.2,
+    "value": 20,
+    "rarity": 2,
+    "description": "Giant ant pheromone secretion. Makes you strong and dumb."
+  },
+  {
+    "name": "Antibiotics",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Cure disease",
+    "weight": 0.2,
+    "value": 75,
+    "rarity": 2,
+    "description": "Pre-war medicine. Cures whatever the wasteland gave you."
+  },
+  {
+    "name": "Berry Mentats",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "+INT 5, highlight 60s",
+    "weight": 0.1,
+    "value": 50,
+    "rarity": 2,
+    "description": "Flavored mentats that highlight living targets. Smart and aware."
+  },
+  {
+    "name": "Buffout",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "+STR, +END 60s",
+    "weight": 0.2,
+    "value": 35,
+    "rarity": 2,
+    "description": "Anabolic steroid pills. Instant strength boost at a cost."
+  },
+  {
+    "name": "Cateye",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Night vision 60s",
+    "weight": 0.1,
+    "value": 35,
+    "rarity": 2,
+    "description": "Improves night vision dramatically. Cat eyes, raider's friend."
+  },
+  {
+    "name": "Deathclaw Steak",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Heal 30 HP, +STR",
+    "weight": 1.0,
+    "value": 40,
+    "rarity": 2,
+    "description": "You killed it, you earned this meal. Grants a strength boost."
+  },
+  {
+    "name": "Doctor's Bag",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Heal all limbs",
+    "weight": 1.0,
+    "value": 100,
+    "rarity": 2,
+    "description": "Professional medical supplies. Fixes broken bones properly."
+  },
+  {
+    "name": "Fixer",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Suppress addictions",
+    "weight": 0.2,
+    "value": 60,
+    "rarity": 2,
+    "description": "Temporarily suppresses withdrawal symptoms. Band-aid, not a cure."
+  },
+  {
+    "name": "Fusion Core",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Power Armor fuel",
+    "weight": 4.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Micro-fusion reactor. Powers armor for about a day of walking."
+  },
+  {
+    "name": "Hydra",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Heal limbs",
+    "weight": 0.3,
+    "value": 80,
+    "rarity": 2,
+    "description": "Tribal medicine that heals crippled limbs. Tastes like regret."
+  },
+  {
+    "name": "Med-X",
+    "type": "consumable",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "+25 DR 60s",
+    "weight": 0.2,
+    "value": 50,
+    "rarity": 2,
+    "description": "Morphine by another name. Dulls pain, dulls everything else too."
+  },
+  {
+    "name": "Mentats",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "+INT, +PER 60s",
+    "weight": 0.1,
+    "value": 30,
+    "rarity": 2,
+    "description": "Chalk-flavored intelligence boosters. The thinking man's chem."
+  },
+  {
+    "name": "Mirelurk Cake",
+    "type": "consumable",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "Heal 30 HP",
+    "weight": 0.5,
+    "value": 30,
+    "rarity": 2,
+    "description": "Crab cake from mutant crustacean. Pre-war recipe, post-war taste."
+  },
+  {
+    "name": "Nuka-Cherry",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Heal 30 HP, +5 rads",
+    "weight": 1.0,
+    "value": 40,
+    "rarity": 2,
+    "description": "Cherry-flavored Nuka variant. Better healing than the original."
+  },
+  {
+    "name": "Psycho",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "+25% damage 60s",
+    "weight": 0.2,
+    "value": 40,
+    "rarity": 2,
+    "description": "Military combat stimulant. Increases damage output. Addictive."
+  },
+  {
+    "name": "Psycho Jet",
+    "type": "consumable",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "+25% dmg, +AP 30s",
+    "weight": 0.2,
+    "value": 60,
+    "rarity": 2,
+    "description": "Psycho and Jet combined. Devastating chemical cocktail."
+  },
+  {
+    "name": "Slasher",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "+25% dmg, +DR 60s",
+    "weight": 0.2,
+    "value": 50,
+    "rarity": 2,
+    "description": "Psycho and Med-X cocktail. Damage boost with pain resistance."
+  },
+  {
+    "name": "Steady",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "No sway 30s",
+    "weight": 0.1,
+    "value": 40,
+    "rarity": 2,
+    "description": "Eliminates weapon sway. Snipers swear by it. Literally."
+  },
+  {
+    "name": "Super Stimpak",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Heal 80 HP",
+    "weight": 0.5,
+    "value": 120,
+    "rarity": 2,
+    "description": "Military-grade stimulant. Heals fast but causes temporary stat drain."
+  },
+  {
+    "name": "Turbo",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Slow time 3s",
+    "weight": 0.1,
+    "value": 60,
+    "rarity": 2,
+    "description": "Homemade stimulant. World goes slow-motion. Brutal withdrawal."
+  },
+  {
+    "name": "Wasteland Omelet",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Heal 50 HP",
+    "weight": 1.0,
+    "value": 75,
+    "rarity": 2,
+    "description": "Deathclaw egg omelet. Tastes incredible. Worth every near-death."
+  },
+  {
+    "name": "Weapon Repair Kit",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Repair weapon",
+    "weight": 0.5,
+    "value": 50,
+    "rarity": 2,
+    "description": "Jury-rigged toolkit. Restores weapon condition in the field."
+  },
+  {
+    "name": "Yao Guai Meat",
+    "type": "consumable",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "Heal 25 HP, +dmg",
+    "weight": 1.0,
+    "value": 35,
+    "rarity": 2,
+    "description": "Mutant bear steak. Boosts melee damage. Tastes like revenge."
+  },
+  {
+    "name": "Nuka-Cola Quantum",
+    "type": "consumable",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "Heal 40 HP, +10 rads",
+    "weight": 1.0,
+    "value": 100,
+    "rarity": 3,
+    "description": "Glows blue. Isotope-infused limited edition. Collectors pay a fortune."
+  },
+  {
+    "name": "Nuka-Cola Quartz",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Heal 20 HP, +lowlight",
+    "weight": 1.0,
+    "value": 60,
+    "rarity": 3,
+    "description": "Glows white. Limited Mojave edition. Grants brief night vision."
+  },
+  {
+    "name": "Nuka-Cola Victory",
+    "type": "consumable",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Heal 20 HP, +DT",
+    "weight": 1.0,
+    "value": 60,
+    "rarity": 3,
+    "description": "Glows orange. Rare Nuka variant. Grants temporary damage threshold."
+  },
+  {
+    "name": "Stealth Boy",
+    "type": "consumable",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Stealth 30s",
+    "weight": 0.5,
+    "value": 200,
+    "rarity": 3,
+    "description": "RobCo personal cloaking device. Renders the user nearly invisible."
+  },
+  {
+    "name": "Adhesive",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Crafting component",
+    "weight": 0.2,
+    "value": 15,
+    "rarity": 1,
+    "description": "Vegetable starch or salvaged glue. The bottleneck of all crafting."
+  },
+  {
+    "name": "Bobby Pin",
+    "type": "junk",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Lockpick tool",
+    "weight": 0.0,
+    "value": 1,
+    "rarity": 1,
+    "description": "Essential for every locked door and chest in the wasteland."
+  },
+  {
+    "name": "Caps",
+    "type": "junk",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Currency",
+    "weight": 0.0,
+    "value": 1,
+    "rarity": 1,
+    "description": "Bottle caps. The wasteland's official currency since water got scarce."
+  },
+  {
+    "name": "Duct Tape",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Adhesive component",
+    "weight": 0.2,
+    "value": 20,
+    "rarity": 1,
+    "description": "Fixes everything. Weapons, armor, relationships. Two out of three."
+  },
+  {
+    "name": "Gear",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Crafting component",
+    "weight": 0.3,
+    "value": 12,
+    "rarity": 1,
+    "description": "Metal cogs and wheels. Found in every clock and typewriter."
+  },
+  {
+    "name": "Holotape",
+    "type": "junk",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Data storage",
+    "weight": 0.1,
+    "value": 5,
+    "rarity": 1,
+    "description": "Pre-war data cartridge. Contains anything from logs to games."
+  },
+  {
+    "name": "Nuka-Cola Bottle",
+    "type": "junk",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Glass component",
+    "weight": 0.5,
+    "value": 2,
+    "rarity": 1,
+    "description": "Empty glass bottle. Worth almost nothing. Somehow everywhere."
+  },
+  {
+    "name": "Oil",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Crafting component",
+    "weight": 0.3,
+    "value": 10,
+    "rarity": 1,
+    "description": "Cutting fluid or lamp oil. Keeps the machines of war running."
+  },
+  {
+    "name": "Pre-War Money",
+    "type": "junk",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Cloth component",
+    "weight": 0.0,
+    "value": 8,
+    "rarity": 1,
+    "description": "Worthless paper from a dead civilization. Good for campfires."
+  },
+  {
+    "name": "Screws",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Crafting component",
+    "weight": 0.1,
+    "value": 10,
+    "rarity": 1,
+    "description": "Tiny metal fasteners. You will never have enough of these."
+  },
+  {
+    "name": "Spring",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Crafting component",
+    "weight": 0.1,
+    "value": 12,
+    "rarity": 1,
+    "description": "Coiled metal. Bouncy and essential. Check every clipboard."
+  },
+  {
+    "name": "Wonderglue",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Adhesive component",
+    "weight": 0.2,
+    "value": 15,
+    "rarity": 1,
+    "description": "Pre-war adhesive. Worth its weight in gold for weapon mods."
+  },
+  {
+    "name": "Biometric Scanner",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Electronics component",
+    "weight": 0.3,
+    "value": 30,
+    "rarity": 2,
+    "description": "Fingerprint and retinal scanner. High-tech salvage for crafting."
+  },
+  {
+    "name": "Circuitry",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Electronics component",
+    "weight": 0.2,
+    "value": 25,
+    "rarity": 2,
+    "description": "Pre-war circuit boards. Vital for anything electronic."
+  },
+  {
+    "name": "Fiber Optics",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Rare component",
+    "weight": 0.1,
+    "value": 35,
+    "rarity": 2,
+    "description": "Thin glass cables. Required for advanced weapon scopes."
+  },
+  {
+    "name": "Sensor Module",
+    "type": "junk",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "Electronics component",
+    "weight": 0.5,
+    "value": 25,
+    "rarity": 2,
+    "description": "Salvaged sensor array. Key component for weapon modifications."
+  },
+  {
+    "name": "Nuclear Material",
+    "type": "junk",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "Rare component",
+    "weight": 0.2,
+    "value": 40,
+    "rarity": 3,
+    "description": "Glowing radioactive substance. Essential for energy weapon mods."
+  },
+  {
+    "name": "Star Bottle Cap",
+    "type": "junk",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "Collectible",
+    "weight": 0.0,
+    "value": 25,
+    "rarity": 3,
+    "description": "Rare cap under Sunset Sarsaparilla lids. Rumored treasure awaits."
+  },
+  {
+    "name": ".44 pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "40-55",
+    "weight": 4.2,
+    "value": 93,
+    "rarity": 1,
+    "description": "The .44 pistol is a weapon appearing in Fallout 4."
+  },
+  {
+    "name": "10mm Pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "12-18",
+    "weight": 3.5,
+    "value": 50,
+    "rarity": 1,
+    "description": "Standard sidearm of the wasteland. Reliable, common, and loud."
+  },
+  {
+    "name": "10mm SMG",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3"
+    ],
+    "damage": "8-14 x4",
+    "weight": 5.0,
+    "value": 120,
+    "rarity": 1,
+    "description": "Compact submachine gun. Empties a mag before you finish blinking."
+  },
+  {
+    "name": "9mm Pistol",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "10-16",
+    "weight": 2.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Browning Hi-Power. Standard Mojave sidearm. Gets the job done."
+  },
+  {
+    "name": "Artillery smoke grenade",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "1-2",
+    "weight": 0.5,
+    "value": 0,
+    "rarity": 1,
+    "description": "The artillery smoke grenade is a weapon in Fallout 4."
+  },
+  {
+    "name": "Assault Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "14-20",
+    "weight": 7.5,
+    "value": 120,
+    "rarity": 1,
+    "description": "Full-auto military rifle. Eats ammo like a raider eats chems."
+  },
+  {
+    "name": "Baseball Bat",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "12-18",
+    "weight": 3.0,
+    "value": 15,
+    "rarity": 1,
+    "description": "America's pastime meets the apocalypse."
+  },
+  {
+    "name": "Baseball grenade",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "85-116",
+    "weight": 1.0,
+    "value": 40,
+    "rarity": 1,
+    "description": "The baseball grenade is a weapon in Fallout 4."
+  },
+  {
+    "name": "Baton",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "9-12",
+    "weight": 2.0,
+    "value": 15,
+    "rarity": 1,
+    "description": "The baton is a weapon ."
+  },
+  {
+    "name": "Board",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "11-16",
+    "weight": 3.0,
+    "value": 20,
+    "rarity": 1,
+    "description": "The board is a melee weapon in Fallout 4."
+  },
+  {
+    "name": "Bottlecap mine",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "255-346",
+    "weight": 0.5,
+    "value": 75,
+    "rarity": 1,
+    "description": "The bottlecap mine is a placed explosive in Fallout 4."
+  },
+  {
+    "name": "Boxing glove",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "7-10",
+    "weight": 1.0,
+    "value": 10,
+    "rarity": 1,
+    "description": "The boxing glove is a weapon in Fallout 4."
+  },
+  {
+    "name": "Caravan Shotgun",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "35-50",
+    "weight": 4.0,
+    "value": 60,
+    "rarity": 1,
+    "description": "Side-by-side shotgun. Caravan guard's best friend."
+  },
+  {
+    "name": "Chinese officer sword",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "13-18",
+    "weight": 3.0,
+    "value": 50,
+    "rarity": 1,
+    "description": "The Chinese officer sword is a melee weapon in Fallout 4."
+  },
+  {
+    "name": "Club",
+    "type": "weapon",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "1-6",
+    "weight": 3.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "A club is a melee weapon in Fallout."
+  },
+  {
+    "name": "Combat Knife",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "10-15",
+    "weight": 1.0,
+    "value": 20,
+    "rarity": 1,
+    "description": "Standard military blade. Quiet and dependable."
+  },
+  {
+    "name": "Cowboy Repeater",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "28-36",
+    "weight": 4.0,
+    "value": 100,
+    "rarity": 1,
+    "description": "Lever-action rifle chambered in .357. Classic frontier firearm."
+  },
+  {
+    "name": "Crowbar",
+    "type": "weapon",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "3-10",
+    "weight": 5.0,
+    "value": 65,
+    "rarity": 1,
+    "description": "The crowbar is a melee weapon in Fallout."
+  },
+  {
+    "name": "Cryo mine",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "85-116",
+    "weight": 0.5,
+    "value": 50,
+    "rarity": 1,
+    "description": "The cryo mine is a weapon in Fallout 4."
+  },
+  {
+    "name": "Double-Barrel Shotgun",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "45-65",
+    "weight": 5.5,
+    "value": 80,
+    "rarity": 1,
+    "description": "Two barrels, two shots, then a long reload. Make them count."
+  },
+  {
+    "name": "Fragmentation grenade",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "1-2",
+    "weight": 0.5,
+    "value": 50,
+    "rarity": 1,
+    "description": "The fragmentation grenade is a weapon in Fallout 4."
+  },
+  {
+    "name": "Fragmentation mine",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "85-116",
+    "weight": 0.5,
+    "value": 50,
+    "rarity": 1,
+    "description": "The fragmentation mine is a placed explosive in Fallout 4."
+  },
+  {
+    "name": "Hunting Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "30-45",
+    "weight": 7.7,
+    "value": 120,
+    "rarity": 1,
+    "description": "Bolt-action rifle. Accurate at range, slow to fire."
+  },
+  {
+    "name": "Knife",
+    "type": "weapon",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "1-6",
+    "weight": 1.0,
+    "value": 40,
+    "rarity": 1,
+    "description": "The knife is a melee weapon in Fallout."
+  },
+  {
+    "name": "Laser Pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "15-22",
+    "weight": 2.5,
+    "value": 80,
+    "rarity": 1,
+    "description": "AER9 energy sidearm. Clean burns, no recoil."
+  },
+  {
+    "name": "Machete",
+    "type": "weapon",
+    "game_source": [
+      "NV",
+      "FO4"
+    ],
+    "damage": "14-20",
+    "weight": 2.0,
+    "value": 30,
+    "rarity": 1,
+    "description": "Heavy chopping blade. Legion's weapon of choice."
+  },
+  {
+    "name": "Old knife",
+    "type": "weapon",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "0",
+    "weight": 0.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "The old knife is a melee weapon which was cut from the final version of Fallout."
+  },
+  {
+    "name": "Pipe Pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "8-13",
+    "weight": 2.0,
+    "value": 15,
+    "rarity": 1,
+    "description": "Handmade from plumbing parts. Unreliable but ubiquitous."
+  },
+  {
+    "name": "Pipe Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "13-20",
+    "weight": 4.5,
+    "value": 25,
+    "rarity": 1,
+    "description": "Pipe gun with a longer barrel. Slightly more accurate, equally ugly."
+  },
+  {
+    "name": "Rock",
+    "type": "weapon",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "1-4",
+    "weight": 1.0,
+    "value": 0,
+    "rarity": 1,
+    "description": "The rock is a weapon in Fallout."
+  },
+  {
+    "name": "Sawed-Off Shotgun",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "50-70",
+    "weight": 4.0,
+    "value": 90,
+    "rarity": 1,
+    "description": "Shortened double-barrel. Maximum spread, minimum subtlety."
+  },
+  {
+    "name": "Service Rifle",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "18-25",
+    "weight": 5.5,
+    "value": 100,
+    "rarity": 1,
+    "description": "NCR standard issue. Semi-auto, dependable, nothing fancy."
+  },
+  {
+    "name": "Sledgehammer",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "22-32",
+    "weight": 8.0,
+    "value": 40,
+    "rarity": 1,
+    "description": "Big heavy hammer. No rocket assist needed for skull-cracking."
+  },
+  {
+    "name": "Spear",
+    "type": "weapon",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "3-10",
+    "weight": 4.0,
+    "value": 80,
+    "rarity": 1,
+    "description": "The spear is a throwing and melee weapon in Fallout."
+  },
+  {
+    "name": "Submachine Gun",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "10-16",
+    "weight": 6.0,
+    "value": 100,
+    "rarity": 1,
+    "description": "Tommy gun. Gangster classic. Sprays .45 rounds with flair."
+  },
+  {
+    "name": "Switchblade",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV"
+    ],
+    "damage": "6-10",
+    "weight": 0.5,
+    "value": 10,
+    "rarity": 1,
+    "description": "Concealed spring-loaded knife. Quick, quiet, desperate."
+  },
+  {
+    "name": "\"Little Jesus\"",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "5-14",
+    "weight": 2.0,
+    "value": 200,
+    "rarity": 2,
+    "description": ""
+  },
+  {
+    "name": ".223 Pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "20-30",
+    "weight": 4.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "One-of-a-kind revolver firing rifle rounds. Hits way above its class."
+  },
+  {
+    "name": "14mm Pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "22-32",
+    "weight": 4.5,
+    "value": 220,
+    "rarity": 2,
+    "description": "SIG-Sauer heavy pistol. Oversized rounds for oversized problems."
+  },
+  {
+    "name": "44 Magnum",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "35-48",
+    "weight": 4.0,
+    "value": 180,
+    "rarity": 2,
+    "description": "Heavy revolver. Six shots of raw stopping power."
+  },
+  {
+    "name": "Brush Gun",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "60-75",
+    "weight": 5.5,
+    "value": 350,
+    "rarity": 2,
+    "description": "Heavy lever-action. Ranger's weapon of choice. Drops deathclaws."
+  },
+  {
+    "name": "Chinese Assault Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "11-16",
+    "weight": 7.0,
+    "value": 150,
+    "rarity": 2,
+    "description": "Full-auto assault rifle. Chinese manufacture, American bullet holes."
+  },
+  {
+    "name": "Cito's Shiny Slugger",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "104-141",
+    "weight": 7.5,
+    "value": 175,
+    "rarity": 2,
+    "description": "The Cito's Shiny Slugger is a weapon in the Fallout 4 add-on Nuka-world."
+  },
+  {
+    "name": "Combat Shotgun",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "40-60",
+    "weight": 7.5,
+    "value": 200,
+    "rarity": 2,
+    "description": "Semi-auto shotgun. Devastating up close, useless at range."
+  },
+  {
+    "name": "Combat rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "28-37",
+    "weight": 11.1,
+    "value": 117,
+    "rarity": 2,
+    "description": "The combat rifle is a weapon in Fallout 4."
+  },
+  {
+    "name": "Cryogenic grenade",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "85-116",
+    "weight": 0.5,
+    "value": 125,
+    "rarity": 2,
+    "description": "A cryogenic grenade is a weapon in Fallout 4."
+  },
+  {
+    "name": "Desert Eagle",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "18-28",
+    "weight": 4.0,
+    "value": 180,
+    "rarity": 2,
+    "description": ".44 semi-auto handcannon. Pre-war prestige in chrome and steel."
+  },
+  {
+    "name": "Flamer",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "15-25",
+    "weight": 15.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Pressurized napalm projector. Sets everything on fire, including you."
+  },
+  {
+    "name": "Gamma gun",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "0",
+    "weight": 3.0,
+    "value": 156,
+    "rarity": 2,
+    "description": "The gamma gun is a weapon in Fallout 4."
+  },
+  {
+    "name": "Grenade Rifle",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "80-100",
+    "weight": 5.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Single-shot 40mm launcher. Lob explosives with precision."
+  },
+  {
+    "name": "Handmade Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "22-30",
+    "weight": 6.0,
+    "value": 150,
+    "rarity": 2,
+    "description": "Nuka-World raider craft. AK-pattern rifle made from scrap."
+  },
+  {
+    "name": "Hunting Revolver",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "52-68",
+    "weight": 4.0,
+    "value": 300,
+    "rarity": 2,
+    "description": "Massive .45-70 revolver. For when handguns need to kill deathclaws."
+  },
+  {
+    "name": "Institute Laser",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "18-25",
+    "weight": 3.0,
+    "value": 100,
+    "rarity": 2,
+    "description": "Sleek white energy weapon. Superior manufacture, inferior soul."
+  },
+  {
+    "name": "Laser Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "28-38",
+    "weight": 5.5,
+    "value": 180,
+    "rarity": 2,
+    "description": "Military-grade directed energy weapon. Brotherhood standard issue."
+  },
+  {
+    "name": "Lever-Action Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "40-55",
+    "weight": 6.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Far Harbor classic. Solid damage with old-world charm."
+  },
+  {
+    "name": "Marksman Carbine",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "28-36",
+    "weight": 5.5,
+    "value": 250,
+    "rarity": 2,
+    "description": "Scoped semi-auto rifle. Accurate, reliable, military-grade."
+  },
+  {
+    "name": "Plasma Pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "22-30",
+    "weight": 3.5,
+    "value": 150,
+    "rarity": 2,
+    "description": "Compact plasma weapon. Green bolts of molecular disruption."
+  },
+  {
+    "name": "Plasma Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "40-55",
+    "weight": 6.0,
+    "value": 300,
+    "rarity": 2,
+    "description": "Superheated plasma bolts that melt through armor. Slow projectile."
+  },
+  {
+    "name": "Power Fist",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "35-50",
+    "weight": 6.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "Pneumatic gauntlet that multiplies punch force by ten."
+  },
+  {
+    "name": "Radium Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "25-35 +rads",
+    "weight": 6.5,
+    "value": 250,
+    "rarity": 2,
+    "description": "Fires irradiated rounds. Ballistic and radiation damage combined."
+  },
+  {
+    "name": "Ripper",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "20-30",
+    "weight": 6.0,
+    "value": 150,
+    "rarity": 2,
+    "description": "Handheld chainsaw. Vibrates through flesh like butter."
+  },
+  {
+    "name": "Rock-It Launcher",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "42-57",
+    "weight": 8.0,
+    "value": 200,
+    "rarity": 2,
+    "description": "The Rock-It Launcher is a weapon ."
+  },
+  {
+    "name": "Sniper Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV"
+    ],
+    "damage": "40-55",
+    "weight": 8.0,
+    "value": 250,
+    "rarity": 2,
+    "description": "Long-range precision rifle. One shot, one kill -- if you're good enough."
+  },
+  {
+    "name": "Super Sledge",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "50-70",
+    "weight": 12.0,
+    "value": 250,
+    "rarity": 2,
+    "description": "Rocket-assisted sledgehammer. Physics-defying blunt trauma."
+  },
+  {
+    "name": "Throwing knife",
+    "type": "weapon",
+    "game_source": [
+      "FO1"
+    ],
+    "damage": "3-6",
+    "weight": 1.0,
+    "value": 100,
+    "rarity": 2,
+    "description": "Throwing knives are a throwing and melee weapon in Fallout."
+  },
+  {
+    "name": "Trail Carbine",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "38-48",
+    "weight": 4.5,
+    "value": 180,
+    "rarity": 2,
+    "description": "Lever-action carbine. Classic Mojave firearm with a satisfying action."
+  },
+  {
+    "name": "A3-21's Plasma Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "48-65",
+    "weight": 6.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Harkness's personal plasma rifle. Institute tech in wastelander hands."
+  },
+  {
+    "name": "AER14 prototype",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "29-40",
+    "weight": 8.5,
+    "value": 2200,
+    "rarity": 3,
+    "description": "The AER14 prototype is a unique weapon ."
+  },
+  {
+    "name": "Alien Blaster",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "60-100",
+    "weight": 2.0,
+    "value": 1500,
+    "rarity": 3,
+    "description": "Extraterrestrial sidearm. Limited ammo, unlimited devastation."
+  },
+  {
+    "name": "Alien atomizer",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "29-40",
+    "weight": 2.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "The alien atomizer is an energy weapon of alien origin which is added to Fallout 3 with the..."
+  },
+  {
+    "name": "Alien disintegrator",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "55-74",
+    "weight": 7.0,
+    "value": 300,
+    "rarity": 3,
+    "description": "The alien disintegrator is an energy weapon in the Fallout 3 add-on Mothership Zeta."
+  },
+  {
+    "name": "All-American",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "28-38",
+    "weight": 5.5,
+    "value": 400,
+    "rarity": 3,
+    "description": "Camouflaged marksman carbine from Vault 34 armory. Accurate and fast."
+  },
+  {
+    "name": "Annabelle",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "110-160",
+    "weight": 15.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Unique missile launcher. Faster fire rate. Wielded by a Nightkin."
+  },
+  {
+    "name": "Anti-Materiel Rifle",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "80-110",
+    "weight": 20.0,
+    "value": 600,
+    "rarity": 3,
+    "description": ".50 cal precision rifle. Punches through power armor at a mile."
+  },
+  {
+    "name": "Arc welder",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "7-10",
+    "weight": 15.0,
+    "value": 3700,
+    "rarity": 3,
+    "description": "The arc welder is a weapon ."
+  },
+  {
+    "name": "Avenger minigun",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "10-14",
+    "weight": 28.0,
+    "value": 5500,
+    "rarity": 3,
+    "description": "The CZ57 Avenger minigunJ.E."
+  },
+  {
+    "name": "Big Boy",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "300-600 x2",
+    "weight": 30.0,
+    "value": 1500,
+    "rarity": 3,
+    "description": "Fat Man that fires two nukes for one. Arturo's pride and joy."
+  },
+  {
+    "name": "Big Mountain Transportalponder!",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "1-2",
+    "weight": 0.0,
+    "value": 0,
+    "rarity": 3,
+    "description": "The Big Mountain Transportalponder!"
+  },
+  {
+    "name": "Blackhawk",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "55-70",
+    "weight": 3.5,
+    "value": 400,
+    "rarity": 3,
+    "description": "Scoped .44 magnum. Agatha's gift for recovering the Soil Stradivarius."
+  },
+  {
+    "name": "Bozar",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "25-35 x3",
+    "weight": 12.0,
+    "value": 700,
+    "rarity": 3,
+    "description": "Light support weapon with burst fire. The ultimate sniper rifle. Somehow."
+  },
+  {
+    "name": "Burnmaster",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "20-27",
+    "weight": 15.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "The Burnmaster is a unique flamer found in Fallout 3."
+  },
+  {
+    "name": "Captain's Sidearm",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "29-40",
+    "weight": 2.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "The Captain's Sidearm is a weapon which is added to Fallout 3 in the Mothership Zeta add-on."
+  },
+  {
+    "name": "Cattle prod",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "12-20",
+    "weight": 3.0,
+    "value": 600,
+    "rarity": 3,
+    "description": "The cattle prod or Farmer's Best Friend model cattle prod is a melee weapon in Fallout."
+  },
+  {
+    "name": "Cleansing Flame",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "12-17",
+    "weight": 22.0,
+    "value": 9500,
+    "rarity": 3,
+    "description": "Cleansing Flame is a unique weapon ."
+  },
+  {
+    "name": "Colonel Autumn's laser pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "8-11",
+    "weight": 3.0,
+    "value": 420,
+    "rarity": 3,
+    "description": "Colonel Autumn's laser pistol is a specially modified laser pistol found on Colonel Autumn."
+  },
+  {
+    "name": "Compliance Regulator",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "6-9",
+    "weight": 3.0,
+    "value": 175,
+    "rarity": 3,
+    "description": "The Compliance Regulator is a unique weapon ."
+  },
+  {
+    "name": "Cryolator",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "25-40 +freeze",
+    "weight": 8.0,
+    "value": 600,
+    "rarity": 3,
+    "description": "Vault 111 prototype. Fires cryo ammo that freezes targets solid."
+  },
+  {
+    "name": "Deathclaw Gauntlet",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "30-50",
+    "weight": 5.0,
+    "value": 250,
+    "rarity": 3,
+    "description": "Severed deathclaw hand strapped to your arm. Ignores armor."
+  },
+  {
+    "name": "Deliverer",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "18-25",
+    "weight": 2.0,
+    "value": 300,
+    "rarity": 3,
+    "description": "Silenced spy pistol. Railroad issue. VATS cost reduced dramatically."
+  },
+  {
+    "name": "Destabilizer",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "25-34",
+    "weight": 7.0,
+    "value": 1199,
+    "rarity": 3,
+    "description": "The Destabilizer is an energy rifle of alien origin in the Fallout 3 add-on Mothership Zeta."
+  },
+  {
+    "name": "Drone cannon",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "34-46",
+    "weight": 18.0,
+    "value": 1999,
+    "rarity": 3,
+    "description": "The drone cannon is a weapon of alien origin in the Fallout 3 add-on Mothership Zeta."
+  },
+  {
+    "name": "Drone cannon Ex-B",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "34-46",
+    "weight": 18.0,
+    "value": 1999,
+    "rarity": 3,
+    "description": "The drone cannon Ex-B, is a unique weapon in the Fallout 3 add-on Mothership Zeta, carried by..."
+  },
+  {
+    "name": "Dynamite",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "30-50",
+    "weight": 5.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Dynamite is a trap in Fallout."
+  },
+  {
+    "name": "Elijah's advanced LAER",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "55-74",
+    "weight": 4.0,
+    "value": 8500,
+    "rarity": 3,
+    "description": "Elijah's advanced LAER is a semi-unique weapon ."
+  },
+  {
+    "name": "Elijah's jury-rigged Tesla cannon",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "72-97",
+    "weight": 8.0,
+    "value": 13500,
+    "rarity": 3,
+    "description": "Elijah's jury-rigged Tesla cannon is a unique weapon ."
+  },
+  {
+    "name": "End Boss plasma gun",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "30-70",
+    "weight": 6.0,
+    "value": 0,
+    "rarity": 3,
+    "description": "The End Boss plasma gun is one of Frank Horrigan's two personal weapons."
+  },
+  {
+    "name": "Euclid's C-Finder",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "1-2",
+    "weight": 15.0,
+    "value": 1,
+    "rarity": 3,
+    "description": "Euclid's C-Finder is a unique weapon ."
+  },
+  {
+    "name": "Eugene",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "5-8",
+    "weight": 18.0,
+    "value": 1500,
+    "rarity": 3,
+    "description": "Eugene is the unique version of the minigun in Fallout 3."
+  },
+  {
+    "name": "Experimental MIRV",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "300-600 x8",
+    "weight": 30.0,
+    "value": 2000,
+    "rarity": 3,
+    "description": "Fat Man variant that fires eight mini nukes at once. Suicidal indoors."
+  },
+  {
+    "name": "Fat Man",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "300-600",
+    "weight": 30.0,
+    "value": 1000,
+    "rarity": 3,
+    "description": "Portable tactical nuclear catapult. Point away from face."
+  },
+  {
+    "name": "Fawkes' Gatling laser",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "7-10",
+    "weight": 10.0,
+    "value": 611,
+    "rarity": 3,
+    "description": "Fawkes' Gatling laser is a non-playable weapon ."
+  },
+  {
+    "name": "Firelance",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "68-92",
+    "weight": 2.0,
+    "value": 750,
+    "rarity": 3,
+    "description": "Firelance is a weapon ."
+  },
+  {
+    "name": "Flare gun",
+    "type": "weapon",
+    "game_source": [
+      "NV",
+      "FO4"
+    ],
+    "damage": "8-11",
+    "weight": 2.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "The flare gun is a weapon ."
+  },
+  {
+    "name": "Gatling Laser",
+    "type": "weapon",
+    "game_source": [
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "12-18 x6",
+    "weight": 18.0,
+    "value": 600,
+    "rarity": 3,
+    "description": "Energy minigun. Melts targets in a sustained beam of destruction."
+  },
+  {
+    "name": "Gauss Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "80-120",
+    "weight": 12.0,
+    "value": 800,
+    "rarity": 3,
+    "description": "Electromagnetic accelerator. Fires projectiles at hypersonic velocity."
+  },
+  {
+    "name": "Grognak's Axe",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "35-50",
+    "weight": 5.0,
+    "value": 300,
+    "rarity": 3,
+    "description": "Barbarian comic hero's axe. Somehow real. Staggers on hit."
+  },
+  {
+    "name": "Heavy incinerator",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "NV"
+    ],
+    "damage": "29-40",
+    "weight": 15.0,
+    "value": 7200,
+    "rarity": 3,
+    "description": "The heavy incinerator is a weapon which is added to Fallout 3 with the Broken Steel add-on."
+  },
+  {
+    "name": "Holorifle",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "55-80",
+    "weight": 7.5,
+    "value": 600,
+    "rarity": 3,
+    "description": "Fires holographic matter. Elijah's masterpiece from the Sierra Madre."
+  },
+  {
+    "name": "Improved flamer",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "45-90",
+    "weight": 19.0,
+    "value": 2000,
+    "rarity": 3,
+    "description": "The improved Flambe 450 is a big gun in Fallout 2."
+  },
+  {
+    "name": "Incinerator",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "1-2",
+    "weight": 12.0,
+    "value": 1300,
+    "rarity": 3,
+    "description": "The incinerator is a weapon ."
+  },
+  {
+    "name": "Kellogg's Pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "28-38",
+    "weight": 3.5,
+    "value": 350,
+    "rarity": 3,
+    "description": "Relentless .44 revolver. Refills AP on crit. Taken from your enemy."
+  },
+  {
+    "name": "Knock-Knock",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "28-40",
+    "weight": 4.0,
+    "value": 250,
+    "rarity": 3,
+    "description": "Unique fire axe with extra damage. Found in a Searchlight firehouse."
+  },
+  {
+    "name": "Kremvh's Tooth",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "30-45 +poison",
+    "weight": 3.0,
+    "value": 350,
+    "rarity": 3,
+    "description": "Eldritch sacrificial blade. Poison damage from an unknowable source."
+  },
+  {
+    "name": "LAER",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "55-74",
+    "weight": 4.0,
+    "value": 8000,
+    "rarity": 3,
+    "description": "The LAER (\"Laser Assisted Electrical Rifle\") is a weapon ."
+  },
+  {
+    "name": "Laser RCW",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "12-17",
+    "weight": 4.0,
+    "value": 2150,
+    "rarity": 3,
+    "description": "The laser RCW (rapid capacitor weapon)A post by Josh Sawyer on the official Bethesda forums is..."
+  },
+  {
+    "name": "Laser detonator",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "1-2",
+    "weight": 0.0,
+    "value": 0,
+    "rarity": 3,
+    "description": "The laser detonator is a \"weapon\" ."
+  },
+  {
+    "name": "Light support weapon",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "20-30",
+    "weight": 20.0,
+    "value": 4750,
+    "rarity": 3,
+    "description": "The light support weapon (or LSW) is a big gun in Fallout 2.Fallout 2 item description..."
+  },
+  {
+    "name": "Lincoln's Repeater",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "50-65",
+    "weight": 5.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Honest Abe's personal lever-action. Freed from a museum, frees souls."
+  },
+  {
+    "name": "Lucky",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "30-42",
+    "weight": 2.5,
+    "value": 350,
+    "rarity": 3,
+    "description": "Ornate .357 revolver. Higher crit chance. Found in a Primm floor safe."
+  },
+  {
+    "name": "M60",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "18-26",
+    "weight": 23.0,
+    "value": 3500,
+    "rarity": 3,
+    "description": "The M60 is a big gun in Fallout 2."
+  },
+  {
+    "name": "MF Hyperbreeder Alpha",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "21-28",
+    "weight": 7.0,
+    "value": 8900,
+    "rarity": 3,
+    "description": "The MF Hyperbreeder Alpha is a unique weapon ."
+  },
+  {
+    "name": "Magneto-laser pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "10-22",
+    "weight": 4.0,
+    "value": 1400,
+    "rarity": 3,
+    "description": "The Wattz 1000 magneto-laser pistol is an energy weapon in Fallout 2."
+  },
+  {
+    "name": "Maria",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "28-38",
+    "weight": 2.5,
+    "value": 300,
+    "rarity": 3,
+    "description": "Benny's engraved 9mm. The gun that shot you in the head. Poetic."
+  },
+  {
+    "name": "Medicine Stick",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "65-80",
+    "weight": 5.5,
+    "value": 500,
+    "rarity": 3,
+    "description": "Unique brush gun with tribal fetishes. Spiritual and very lethal."
+  },
+  {
+    "name": "Minigun",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "8-14 x8",
+    "weight": 18.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Rotary barrel weapon. Five seconds of sustained fire, five hundred rounds gone."
+  },
+  {
+    "name": "Miss Launcher",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "17-23",
+    "weight": 15.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Miss Launcher is a unique missile launcher found in Fallout 3."
+  },
+  {
+    "name": "Missile Launcher",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2",
+      "FO3",
+      "NV",
+      "FO4"
+    ],
+    "damage": "100-150",
+    "weight": 20.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Shoulder-fired anti-armor weapon. One rocket, one crater."
+  },
+  {
+    "name": "Missing laser pistol",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "9-12",
+    "weight": 3.0,
+    "value": 175,
+    "rarity": 3,
+    "description": "The missing laser pistol is a weapon in Fallout: New Vegas, and a quest item relevant to the..."
+  },
+  {
+    "name": "Multiplas rifle",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "89-120",
+    "weight": 7.0,
+    "value": 2500,
+    "rarity": 3,
+    "description": "The multiplas rifle is a weapon ."
+  },
+  {
+    "name": "Mysterious Magnum",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "42-55",
+    "weight": 3.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Ornate .44 magnum that plays a mysterious tune when drawn."
+  },
+  {
+    "name": "Oh Baby!",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "60-85",
+    "weight": 12.0,
+    "value": 350,
+    "rarity": 3,
+    "description": "Unique super sledge. Harder hitting, slightly lighter. Oh baby indeed."
+  },
+  {
+    "name": "Overseer's Guardian",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "35-50 x2",
+    "weight": 7.7,
+    "value": 500,
+    "rarity": 3,
+    "description": "Fires two shots for every round. Vault 81's finest export."
+  },
+  {
+    "name": "Pancor Jackhammer",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "20-30 x5",
+    "weight": 8.0,
+    "value": 450,
+    "rarity": 3,
+    "description": "Fully automatic shotgun. Empties a drum mag in seconds. Pure carnage."
+  },
+  {
+    "name": "Pew Pew",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "63-86",
+    "weight": 3.0,
+    "value": 2500,
+    "rarity": 3,
+    "description": "Pew Pew is a unique weapon ."
+  },
+  {
+    "name": "Phazer",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "20-30",
+    "weight": 4.0,
+    "value": 7500,
+    "rarity": 3,
+    "description": "The phazer is a cut energy weapon in Fallout 2."
+  },
+  {
+    "name": "Pickman's Blade",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "18-28 +bleed",
+    "weight": 1.0,
+    "value": 250,
+    "rarity": 3,
+    "description": "Serial killer's knife. Causes bleeding. Art can be murder."
+  },
+  {
+    "name": "Plastic explosives",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "40-80",
+    "weight": 4.0,
+    "value": 1250,
+    "rarity": 3,
+    "description": "Plastic explosives are a trap in Fallout."
+  },
+  {
+    "name": "Precision Gatling laser",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "6-9",
+    "weight": 18.0,
+    "value": 3000,
+    "rarity": 3,
+    "description": "The precision Gatling laser is a unique Gatling laser, added to Fallout 3 with the add-on..."
+  },
+  {
+    "name": "Pulse pistol",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "32-46",
+    "weight": 5.0,
+    "value": 12500,
+    "rarity": 3,
+    "description": "The YK32 pulse pistol is an energy weapon in Fallout 2."
+  },
+  {
+    "name": "Pulse rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "54-78",
+    "weight": 9.0,
+    "value": 17500,
+    "rarity": 3,
+    "description": "The YK42B pulse rifle is an energy weapon in Fallout 2."
+  },
+  {
+    "name": "Railway Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "40-59",
+    "weight": 9.0,
+    "value": 300,
+    "rarity": 3,
+    "description": "Fires railroad spikes with a steam engine. Pins limbs to walls."
+  },
+  {
+    "name": "Ranger Sequoia",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "55-72",
+    "weight": 4.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Engraved .45-70 revolver. Awarded for 20 years of NCR Ranger service."
+  },
+  {
+    "name": "Rapid-torch flamer",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "13-18",
+    "weight": 15.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "The rapid-torch flamer is a unique weapon added in the Fallout 3 add-on Broken Steel."
+  },
+  {
+    "name": "Righteous Authority",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "30-42",
+    "weight": 5.5,
+    "value": 300,
+    "rarity": 3,
+    "description": "Paladin Danse's laser rifle. Extra crit damage for the faithful."
+  },
+  {
+    "name": "Rocket launcher",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "35-100",
+    "weight": 15.0,
+    "value": 2300,
+    "rarity": 3,
+    "description": "The Rockwell BigBazooka is a Big Gun in Fallout."
+  },
+  {
+    "name": "Shishkebab",
+    "type": "weapon",
+    "game_source": [
+      "FO3",
+      "FO4"
+    ],
+    "damage": "35-55 +fire",
+    "weight": 5.0,
+    "value": 300,
+    "rarity": 3,
+    "description": "Flaming sword built from motorcycle parts. Cuts and cauterizes."
+  },
+  {
+    "name": "Slo-burn flamer",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "15-20",
+    "weight": 15.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "The slo-burn flamer is a unique flamer added in the Fallout 3 add-on Broken Steel."
+  },
+  {
+    "name": "Solar Scorcher",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "20-60",
+    "weight": 5.0,
+    "value": 2000,
+    "rarity": 3,
+    "description": "The Solar Scorcher is a unique energy weapon in Fallout 2."
+  },
+  {
+    "name": "Spray n' Pray",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "15-22 +explode",
+    "weight": 5.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Submachine gun with explosive rounds. Sold by the wandering Cricket."
+  },
+  {
+    "name": "Tesla Cannon",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "60-95",
+    "weight": 12.0,
+    "value": 700,
+    "rarity": 3,
+    "description": "Fires concentrated electrical bolts. Devastates power armor."
+  },
+  {
+    "name": "The Last Minute",
+    "type": "weapon",
+    "game_source": [
+      "FO4"
+    ],
+    "damage": "90-130",
+    "weight": 12.0,
+    "value": 700,
+    "rarity": 3,
+    "description": "Unique Gauss rifle with extra limb damage. Minutemen's heavy hitter."
+  },
+  {
+    "name": "The Terrible Shotgun",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "55-80",
+    "weight": 7.5,
+    "value": 450,
+    "rarity": 3,
+    "description": "Extra-wide spread combat shotgun. Terrible for them, great for you."
+  },
+  {
+    "name": "Thermic Lance",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "50-70",
+    "weight": 15.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Industrial cutting torch repurposed for combat. Ignites on contact."
+  },
+  {
+    "name": "This Machine",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "48-62",
+    "weight": 7.0,
+    "value": 400,
+    "rarity": 3,
+    "description": "Engraved M1 Garand. 'Well this machine kills commies' etched on stock."
+  },
+  {
+    "name": "Turbo Plasma Rifle",
+    "type": "weapon",
+    "game_source": [
+      "FO1",
+      "FO2"
+    ],
+    "damage": "45-65",
+    "weight": 6.0,
+    "value": 500,
+    "rarity": 3,
+    "description": "Modified plasma rifle with faster recycling. Winchester P94 upgraded."
+  },
+  {
+    "name": "Vengeance",
+    "type": "weapon",
+    "game_source": [
+      "FO3"
+    ],
+    "damage": "16-22 x6",
+    "weight": 18.0,
+    "value": 800,
+    "rarity": 3,
+    "description": "Superior gatling laser from the Deathclaw Sanctuary. Worth the trip."
+  },
+  {
+    "name": "Vindicator minigun",
+    "type": "weapon",
+    "game_source": [
+      "FO2"
+    ],
+    "damage": "14-19",
+    "weight": 28.0,
+    "value": 15250,
+    "rarity": 3,
+    "description": "The 4.7mm Vindicator minigun is a big gun in Fallout 2."
+  },
+  {
+    "name": "YCS/186",
+    "type": "weapon",
+    "game_source": [
+      "NV"
+    ],
+    "damage": "90-140",
+    "weight": 12.0,
+    "value": 900,
+    "rarity": 3,
+    "description": "Unique Gauss rifle. Highest single-shot damage in the Mojave."
+  }
+]
