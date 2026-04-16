@@ -4,6 +4,7 @@
 // FSCom rules: use FSCom.open/read/write/close, never fopen/fclose.
 
 #include "FalloutWastelandRPG.h"
+#include "FRPGContent.h"
 #include "BBSPlatform.h"
 #include "FSCommon.h"
 #include "RTC.h"
@@ -15,6 +16,13 @@
 // ─── Announce flag (checked by BBSModule after frpgCommand returns) ───────────
 bool frpgPendingAnnounce = false;
 char frpgAnnounceMsg[120] = {0};
+
+// ─── Flash content combat cache (not persisted, rebuilt on combat start) ──────
+static bool     _flashCombat = false; // true if current enemy is from flash
+static char     _flashEnemyName[24] = {0};
+static uint16_t _flashEnemyXP = 0;
+static uint16_t _flashEnemyCaps = 0;
+static uint8_t  _flashEnemyDef = 0;   // defense_rating for damage reduction
 
 // ─── Game tables (Wastelad themed) ────────────────────────────────────────────
 
@@ -162,7 +170,7 @@ static void frpgDoStimpak(FRPGPlayer &p, char *buf, size_t len);
 static void frpgDoFlee(FRPGPlayer &p, char *buf, size_t len);
 static void frpgEnterVATS(FRPGPlayer &p, char *buf, size_t len);
 static void frpgPickVATS(FRPGPlayer &p, int pick, char *buf, size_t len);
-static void frpgStartExplore(FRPGPlayer &p, char *buf, size_t len);
+static void frpgStartExploreFallback(FRPGPlayer &p, char *buf, size_t len);
 static void frpgHackGuess(FRPGPlayer &p, const char *word, char *buf, size_t len);
 static void frpgDoStats(const FRPGPlayer &p, char *buf, size_t len);
 static void frpgDoShop(const FRPGPlayer &p, char *buf, size_t len);
@@ -175,13 +183,32 @@ static void frpgDoAbout(char *buf, size_t len);
 static void frpgDoHelp(const FRPGPlayer &p, char *buf, size_t len);
 static void frpgDoTavern(char *buf, size_t len);
 static void frpgDoCheng(FRPGPlayer &p, char *buf, size_t len);
+static void frpgShowTravelOptions(FRPGPlayer &p, char *buf, size_t len);
+static void frpgDoTravel(FRPGPlayer &p, const char *arg, char *buf, size_t len);
+static void frpgDoTravelEvent(FRPGPlayer &p, char *buf, size_t len);
+static void frpgArriveAtLocation(FRPGPlayer &p, char *buf, size_t len);
+static void frpgDoRetreat(FRPGPlayer &p, char *buf, size_t len);
+static void frpgDoDungeonRoom(FRPGPlayer &p, char *buf, size_t len);
+static void frpgDoRest(FRPGPlayer &p, char *buf, size_t len);
+static void frpgDoExplore(FRPGPlayer &p, char *buf, size_t len);
 
 // ─── File I/O ─────────────────────────────────────────────────────────────────
 
+// On nRF52, internal LittleFS is too small (~28KB). Use external QSPI flash.
+#ifdef NRF52_SERIES
+#include "BBSExtFlash.h"
+#define FRPG_FS bbsExtFS()
+#else
+#define FRPG_FS FSCom
+#endif
+
 void frpgEnsureDir()
 {
-    if (!FSCom.exists("/bbs"))      FSCom.mkdir("/bbs");
-    if (!FSCom.exists(FRPG_DIR))    FSCom.mkdir(FRPG_DIR);
+#ifdef NRF52_SERIES
+    FRPG_FS.begin(); // ensure ext flash mounted
+#endif
+    if (!FRPG_FS.exists("/bbs"))      FRPG_FS.mkdir("/bbs");
+    if (!FRPG_FS.exists(FRPG_DIR))    FRPG_FS.mkdir(FRPG_DIR);
 }
 
 static void frpgPath(uint32_t nodeNum, char *path, size_t len)
@@ -193,37 +220,35 @@ bool frpgLoadPlayer(uint32_t nodeNum, FRPGPlayer &p)
 {
     char path[40];
     frpgPath(nodeNum, path, sizeof(path));
-    LOG_DEBUG("[FRPG] load path=%s sizeof=%u\n", path, (unsigned)sizeof(FRPGPlayer));
-    (void)0;
-    File f = FSCom.open(path, FILE_O_READ);
-    if (!f) {
-        LOG_DEBUG("[FRPG] load: file not found\n");
-        (void)0;
-        return false;
-    }
+    File f = FRPG_FS.open(path, FILE_O_READ);
+    if (!f) return false;
     size_t n = f.read((uint8_t *)&p, sizeof(FRPGPlayer));
     f.close();
-    LOG_DEBUG("[FRPG] load: read %u bytes (need %u)\n", (unsigned)n, (unsigned)sizeof(FRPGPlayer));
-    (void)0;
-    return (n == sizeof(FRPGPlayer));
+    if (n != sizeof(FRPGPlayer)) return false;
+    // Migrate old saves: locIdx was part of lastHealTime (uint32). Any value > 149 = old format.
+    if (p.locIdx > 149 && p.locIdx != 0xFF) {
+        p.locIdx = 0xFF;
+        p.townIdx = 0xFF;
+        p.dungeonDepth = 0;
+        p.locFlags = 0;
+    }
+    return true;
 }
 
 void frpgSavePlayer(const FRPGPlayer &p)
 {
     char path[40];
     frpgPath(p.nodeNum, path, sizeof(path));
-    LOG_DEBUG("[FRPG] save path=%s nodeNum=0x%08x sizeof=%u\n", path, (unsigned)p.nodeNum, (unsigned)sizeof(FRPGPlayer));
-    (void)0;
-    File f = FSCom.open(path, FILE_O_WRITE);
+    // Open with truncate — avoid remove() which can leave the file in a bad state on QSPI
+    File f = FRPG_FS.open(path, FILE_O_WRITE);
     if (!f) {
-        LOG_DEBUG("[FRPG] save: FAILED to open file\n");
-        (void)0;
-        return;
+        // If open-for-write fails, try remove + reopen
+        FRPG_FS.remove(path);
+        f = FRPG_FS.open(path, FILE_O_WRITE);
+        if (!f) return;
     }
-    size_t n = f.write((const uint8_t *)&p, sizeof(FRPGPlayer));
+    f.write((const uint8_t *)&p, sizeof(FRPGPlayer));
     f.close();
-    LOG_DEBUG("[FRPG] save: wrote %u bytes\n", (unsigned)n);
-    (void)0;
 }
 
 void frpgNewPlayer(uint32_t nodeNum, const char *shortName, FRPGPlayer &p)
@@ -248,6 +273,10 @@ void frpgNewPlayer(uint32_t nodeNum, const char *shortName, FRPGPlayer &p)
     p.vatsMax       = (uint8_t)(2 + p.agi / 4);
     p.vatsCharges   = p.vatsMax;
     p.alive         = 1;
+    p.locIdx        = 0xFF; // overworld
+    p.townIdx       = 0xFF; // no town yet
+    p.dungeonDepth  = 0;
+    p.locFlags      = 0;
     p.apResetTime   = frpgNextMidnightEastern((uint32_t)getTime());
 }
 
@@ -272,7 +301,7 @@ static void frpgResetIfNeeded(FRPGPlayer &p)
 uint32_t frpgTopPlayers(FRPGPlayer *out, uint32_t max)
 {
     uint32_t count = 0;
-    File dir = FSCom.open(FRPG_DIR, FILE_O_READ);
+    File dir = FRPG_FS.open(FRPG_DIR, FILE_O_READ);
     if (!dir) return 0;
     BBS_FILE_VAR(f);
     while ((f = dir.openNextFile()) && count < max) {
@@ -312,6 +341,7 @@ static const char *frpgEnemyName(const FRPGPlayer &p)
 {
     if (p.combat.active == 4) return "Chairman Cheng";
     if (p.combat.active == 2) return FRPG_TRAINERS[p.combat.enemyIdx].name;
+    if (_flashCombat && _flashEnemyName[0]) return _flashEnemyName;
     return FRPG_ENEMIES[p.combat.enemyIdx].name;
 }
 
@@ -446,21 +476,50 @@ static void frpgVictory(FRPGPlayer &p, int pdmg, bool isCrit,
             p.level, p.maxHp, p.str_, p.per, p.end_, p.intel, p.agi,
             cg, (unsigned)xg);
     } else {
-        uint16_t xg = FRPG_ENEMIES[savedIdx].xpReward;
-        uint16_t cg = FRPG_ENEMIES[savedIdx].capReward;
-        p.xp   += xg;
-        p.caps  = (uint16_t)(p.caps + cg);
-        snprintf(buf, len,
-            "%s defeated!%s\n+%uxp +%dc\nHP:%d/%d AP:%d/%d",
-            FRPG_ENEMIES[savedIdx].name, critLabel,
-            (unsigned)xg, cg, p.hp, p.maxHp, p.ap, FRPG_AP_MAX);
+        uint16_t xg, cg;
+        const char *eName;
+        if (_flashCombat) {
+            xg = _flashEnemyXP;
+            cg = _flashEnemyCaps;
+            eName = _flashEnemyName;
+        } else {
+            xg = FRPG_ENEMIES[savedIdx].xpReward;
+            cg = FRPG_ENEMIES[savedIdx].capReward;
+            eName = FRPG_ENEMIES[savedIdx].name;
+        }
+        // Check dungeon boss completion
+        bool dungeonBoss = false;
+        if (p.locIdx != 0xFF && p.dungeonDepth > 0 &&
+            frpgContentHas(FRPG_CONTENT_LOCATIONS) && !(p.locFlags & 1)) {
+            uint8_t maxD = frpgDungeonMaxDepth(frpgGetLocType(p.locIdx));
+            if (p.dungeonDepth >= maxD) dungeonBoss = true;
+        }
+        if (dungeonBoss) {
+            // Boss rewards: already 2x from setup, just mark cleared
+            p.locFlags |= 1;
+            p.xp   += xg;
+            p.caps  = (uint16_t)(p.caps + cg);
+            p.kills++;
+            p.dungeonDepth = 0;
+            p.locIdx = 0xFF;
+            snprintf(buf, len,
+                "BOSS %s slain!%s\n+%uxp +%dc\nLocation cleared!\nHP:%d/%d EX-Travel",
+                eName, critLabel,
+                (unsigned)xg, cg, p.hp, p.maxHp);
+        } else {
+            p.xp   += xg;
+            p.caps  = (uint16_t)(p.caps + cg);
+            snprintf(buf, len,
+                "%s defeated!%s\n+%uxp +%dc\nHP:%d/%d AP:%d/%d",
+                eName, critLabel,
+                (unsigned)xg, cg, p.hp, p.maxHp, p.ap, FRPG_AP_MAX);
+        }
+        _flashCombat = false;
     }
 }
 
 static void frpgDeath(FRPGPlayer &p, const char *eName, char *buf, size_t len)
 {
-    p.hp    = 0;
-    p.alive = 0;
     uint16_t loss = (uint16_t)(p.caps / 5);
     p.caps = (p.caps > loss) ? (uint16_t)(p.caps - loss) : 0;
     p.combat.active      = 0;
@@ -468,9 +527,19 @@ static void frpgDeath(FRPGPlayer &p, const char *eName, char *buf, size_t len)
     p.combat.vatsModeActive = 0;
     p.combat.defending   = 0;
     p.hack.active        = 0;
+    p.dungeonDepth       = 0;
+    p.locFlags           = 0;
+    p.locIdx             = p.townIdx; // respawn at last town
+    p.hp                 = 1;
+    p.alive              = 1;
+    char townName[24] = "the Wasteland";
+    if (p.townIdx != 0xFF && frpgContentHas(FRPG_CONTENT_LOCATIONS)) {
+        frpgReadLocationName(p.townIdx, townName, sizeof(townName));
+        if (!townName[0]) strncpy(townName, "the Wasteland", sizeof(townName));
+    }
     snprintf(buf, len,
-        "%s killed you!\nLost %dc. Respawn tomorrow.\nSH/ST/LB available.",
-        eName, loss);
+        "%s killed you!\nLost %dc. Black out...\nWake at %s\nHP:1/%d DR-Heal EX-Go",
+        eName, loss, townName, p.maxHp);
 }
 
 // ─── VATS ─────────────────────────────────────────────────────────────────────
@@ -1029,10 +1098,9 @@ static void frpgHackGuess(FRPGPlayer &p, const char *rawWord, char *buf, size_t 
 
 // ─── Explore ──────────────────────────────────────────────────────────────────
 
-static void frpgStartExplore(FRPGPlayer &p, char *buf, size_t len)
+static void frpgStartExploreFallback(FRPGPlayer &p, char *buf, size_t len)
 {
-    if (!p.alive) { snprintf(buf, len, "You are dead!\nRest until tomorrow."); return; }
-    if (p.ap == 0) { snprintf(buf, len, "No AP left.\nRest until tomorrow."); return; }
+    // Original explore logic — used when no flash content
     p.ap--;
     p.combat.defending = 0;
 
@@ -1053,7 +1121,12 @@ static void frpgStartExplore(FRPGPlayer &p, char *buf, size_t len)
             case 1: {
                 int found = 15 + p.level * 10;
                 p.caps = (uint16_t)(p.caps + found);
-                snprintf(buf, len, "Scavenged a cache!\n+%dc Caps:%d AP:%d/%d", found, p.caps, p.ap, FRPG_AP_MAX);
+                char lootName[28] = {0};
+                if (frpgReadLootItemName(lootName, sizeof(lootName)) && lootName[0]) {
+                    snprintf(buf, len, "Found %s!\n+%dc Caps:%d AP:%d/%d", lootName, found, p.caps, p.ap, FRPG_AP_MAX);
+                } else {
+                    snprintf(buf, len, "Scavenged a cache!\n+%dc Caps:%d AP:%d/%d", found, p.caps, p.ap, FRPG_AP_MAX);
+                }
                 break;
             }
             case 2: {
@@ -1068,22 +1141,39 @@ static void frpgStartExplore(FRPGPlayer &p, char *buf, size_t len)
                 break;
             }
             default: {
-                static const char *sights[] = {
-                    "Chem addict mumbles\nabout pre-war baseball\nand shuffles off.",
-                    "Scrawled on a wall:\n'VAULT 101 WAS LIE'\nSomeone underlined it.",
-                    "A Raider corpse with\na note: 'told ya so'\nPinned to the chest.",
-                    "Bloatfly buzzes past.\nYou hold your breath.\nIt moves on.",
-                    "Old Protectron rolls\nby on patrol.\n'HAVE A NICE DAY.'",
-                    "A rusted tin labeled\nPork n' Beans. Empty.\nAlways empty.",
-                    "Dust devil kicks up\nnewspaper: WAR ENDS TODAY\n(From 2077.)",
-                    "Feral cat stares at\nyou from the rubble.\nPure judgment.",
-                    "Skeleton in lawn chair\numbrella drink in hand.\nWasted the end right.",
-                    "Nuka-Cola machine\npowers up. Vends nothing.\nPowers back down.",
-                    "Gang tag on the wall:\n'RAIDERS RULE THIS BLOCK'\nYou disagree silently.",
-                    "Somewhere a radio\nplays Big Iron faintly.\nThen static. Silence.",
-                };
-                uint8_t si = (uint8_t)(random(12));
-                snprintf(buf, len, "%s\nAP:%d/%d", sights[si], p.ap, FRPG_AP_MAX);
+                char sight[140];
+                bool gotFlash = false;
+                if (frpgContentHas(FRPG_CONTENT_FLAVOR)) {
+                    // Try location-typed room description
+                    uint8_t tier = frpgGetTier(p.level);
+                    if (frpgContentHas(FRPG_CONTENT_LOCATIONS)) {
+                        uint16_t li = frpgPickLocation(tier);
+                        RPGLocationEntry loc;
+                        if (frpgReadLocation(li, loc)) {
+                            gotFlash = frpgReadRoomDesc(loc.loc_type, sight, sizeof(sight));
+                        }
+                    }
+                    if (!gotFlash) gotFlash = frpgReadRoomDesc(1, sight, sizeof(sight)); // wasteland fallback
+                }
+                if (!gotFlash) {
+                    static const char *sights[] = {
+                        "Chem addict mumbles\nabout pre-war baseball\nand shuffles off.",
+                        "Scrawled on a wall:\n'VAULT 101 WAS LIE'\nSomeone underlined it.",
+                        "A Raider corpse with\na note: 'told ya so'\nPinned to the chest.",
+                        "Bloatfly buzzes past.\nYou hold your breath.\nIt moves on.",
+                        "Old Protectron rolls\nby on patrol.\n'HAVE A NICE DAY.'",
+                        "A rusted tin labeled\nPork n' Beans. Empty.\nAlways empty.",
+                        "Dust devil kicks up\nnewspaper: WAR ENDS TODAY\n(From 2077.)",
+                        "Feral cat stares at\nyou from the rubble.\nPure judgment.",
+                        "Skeleton in lawn chair\numbrella drink in hand.\nWasted the end right.",
+                        "Nuka-Cola machine\npowers up. Vends nothing.\nPowers back down.",
+                        "Gang tag on the wall:\n'RAIDERS RULE THIS BLOCK'\nYou disagree silently.",
+                        "Somewhere a radio\nplays Big Iron faintly.\nThen static. Silence.",
+                    };
+                    strncpy(sight, sights[random(12)], sizeof(sight) - 1);
+                    sight[sizeof(sight) - 1] = '\0';
+                }
+                snprintf(buf, len, "%s\nAP:%d/%d", sight, p.ap, FRPG_AP_MAX);
                 break;
             }
         }
@@ -1116,6 +1206,57 @@ static void frpgStartExplore(FRPGPlayer &p, char *buf, size_t len)
 
     // 60% combat encounter
     uint8_t tier = frpgGetTier(p.level);
+    _flashCombat = false;
+
+    // Try flash content first
+    if (frpgContentHas(FRPG_CONTENT_ENEMIES)) {
+        uint16_t fIdx = frpgPickTierEnemy(tier);
+        RPGEnemyEntry fe;
+        if (frpgReadEnemy(fIdx, fe)) {
+            // Interpolate HP/ATK within entry's range based on player level
+            uint16_t eHp = fe.hp_min + (uint16_t)((int)(fe.hp_max - fe.hp_min) * (p.level - 1) / 11);
+            uint8_t eAtk = (uint8_t)(fe.damage_min + (int)(fe.damage_max - fe.damage_min) * (p.level - 1) / 11);
+
+            frpgReadEnemyName(fIdx, _flashEnemyName, sizeof(_flashEnemyName));
+            _flashEnemyXP = (uint16_t)(fe.xp_reward * (1 + p.level) / 6); // scale XP with level
+            _flashEnemyCaps = (uint16_t)(_flashEnemyXP * 3 / 2); // caps ~1.5x XP
+            _flashEnemyDef = fe.defense_rating;
+            _flashCombat = true;
+
+            p.combat.active       = 1;
+            p.combat.enemyIdx     = (uint8_t)(fIdx & 0xFF); // low byte for reference
+            p.combat.enemyType    = frpgFactionToEtype(fe.faction);
+            p.combat.enemyHp      = eHp;
+            p.combat.baseEnemyAtk = eAtk;
+            p.combat.limbEffects  = 0;
+            p.combat.stunRounds   = 0;
+            p.combat.vatsModeActive = 0;
+
+            // Location prefix if available
+            char locName[24] = {0};
+            if (frpgContentHas(FRPG_CONTENT_LOCATIONS)) {
+                uint16_t li = frpgPickLocation(tier);
+                frpgReadLocationName(li, locName, sizeof(locName));
+            }
+            if (locName[0]) {
+                snprintf(buf, len,
+                    "[%s]\nA %s appears!\nEHP:%d ATK:%d | HP:%d/%d\n"
+                    "[A]tk [D]ef [S]tim [F]lee\n"
+                    "[V]ATS (%d chg)",
+                    locName, _flashEnemyName, eHp, eAtk, p.hp, p.maxHp, p.vatsCharges);
+            } else {
+                snprintf(buf, len,
+                    "A %s appears!\nEHP:%d ATK:%d | HP:%d/%d\n"
+                    "[A]ttack [D]efend\n"
+                    "[S]timpak [F]lee\n"
+                    "[V]ATS targeting (%d chg)",
+                    _flashEnemyName, eHp, eAtk, p.hp, p.maxHp, p.vatsCharges);
+            }
+            return;
+        }
+    }
+
+    // Fallback: hardcoded enemies
     uint8_t pool[4];
     uint8_t poolSz = 0;
     for (uint8_t i = 0; i < FRPG_ENEMY_COUNT && poolSz < 4; i++) {
@@ -1142,22 +1283,469 @@ static void frpgStartExplore(FRPGPlayer &p, char *buf, size_t len)
         FRPG_ENEMIES[eIdx].name, eHp, eAtk, p.hp, p.maxHp, p.vatsCharges);
 }
 
+// ─── Location-based exploration ──────────────────────────────────────────────
+
+static void frpgShowTravelOptions(FRPGPlayer &p, char *buf, size_t len)
+{
+    uint32_t seed = (uint32_t)p.nodeNum * 31u + (uint32_t)p.locIdx + (uint32_t)p.ap;
+    uint8_t tier = frpgGetTier(p.level);
+
+    // Region-aware travel: prefer nearby locations, fall back to global
+    uint8_t curRegion = frpgGetLocRegion(p.locIdx);
+    uint8_t townLoc = frpgPickTownNearby(curRegion, tier, seed);
+    uint8_t adv1 = frpgPickAdventureNearby(curRegion, tier, seed * 7u + 1u);
+    uint8_t adv2 = frpgPickAdventureNearby(curRegion, tier, seed * 13u + 2u);
+    if (adv2 == adv1 && adv2 != 0xFF)
+        adv2 = frpgPickAdventureNearby(curRegion, tier, seed * 19u + 3u);
+
+    char n1[20] = "???", n2[20] = "???", n3[20] = "???";
+    if (townLoc != 0xFF) frpgReadLocationName(townLoc, n1, sizeof(n1));
+    if (adv1 != 0xFF) frpgReadLocationName(adv1, n2, sizeof(n2));
+    if (adv2 != 0xFF) frpgReadLocationName(adv2, n3, sizeof(n3));
+
+    char curLoc[20] = "Overworld";
+    if (p.locIdx != 0xFF) frpgReadLocationName(p.locIdx, curLoc, sizeof(curLoc));
+
+    snprintf(buf, len,
+        "=== WASTELAND ===\n%s [%s]\nWhere to? (1 AP)\n"
+        "1.%s\n2.%s\n3.%s\nGO 1/2/3",
+        curLoc, frpgRegionName(curRegion), n1, n2, n3);
+}
+
+static void frpgDoTravel(FRPGPlayer &p, const char *arg, char *buf, size_t len)
+{
+    if (!p.alive) { snprintf(buf, len, "You are dead!"); return; }
+    if (p.ap == 0) { snprintf(buf, len, "No AP left."); return; }
+    if (!arg || (arg[0] < '1' || arg[0] > '3')) {
+        frpgShowTravelOptions(p, buf, len);
+        return;
+    }
+    int pick = arg[0] - '1'; // 0,1,2
+    // Regenerate same list (must mirror frpgShowTravelOptions exactly)
+    uint32_t seed = (uint32_t)p.nodeNum * 31u + (uint32_t)p.locIdx + (uint32_t)p.ap;
+    uint8_t tier = frpgGetTier(p.level);
+    uint8_t curRegion = frpgGetLocRegion(p.locIdx);
+    uint8_t dests[3];
+    dests[0] = frpgPickTownNearby(curRegion, tier, seed);
+    dests[1] = frpgPickAdventureNearby(curRegion, tier, seed * 7u + 1u);
+    dests[2] = frpgPickAdventureNearby(curRegion, tier, seed * 13u + 2u);
+    if (dests[2] == dests[1] && dests[2] != 0xFF)
+        dests[2] = frpgPickAdventureNearby(curRegion, tier, seed * 19u + 3u);
+
+    uint8_t dest = dests[pick];
+    if (dest == 0xFF) {
+        snprintf(buf, len, "Path blocked. Try another.");
+        return;
+    }
+    p.ap--;
+    p.locIdx = dest;
+    p.dungeonDepth = 0;
+    p.locFlags = 6; // 3 travel events remaining: bits 1-2 = 0b11 = 3
+
+    char locName[24] = {0};
+    frpgReadLocationName(dest, locName, sizeof(locName));
+
+    snprintf(buf, len,
+        "Heading to %s...\nThe wasteland stretches out.\nEX to keep moving (3 left)",
+        locName);
+}
+
+// Travel event — random encounter on the road between locations
+static void frpgDoTravelEvent(FRPGPlayer &p, char *buf, size_t len)
+{
+    if (!p.alive) { snprintf(buf, len, "You are dead!"); return; }
+    if (p.ap == 0) { snprintf(buf, len, "No AP left."); return; }
+    p.ap--;
+
+    uint8_t eventsLeft = (p.locFlags >> 1) & 0x03;
+    eventsLeft--;
+    p.locFlags = (p.locFlags & 0x01) | (eventsLeft << 1);
+
+    int roll = (int)random(100);
+
+    // 66% combat
+    if (roll < 66) {
+        _flashCombat = false;
+        uint8_t tier = frpgGetTier(p.level);
+        if (frpgContentHas(FRPG_CONTENT_ENEMIES)) {
+            uint16_t fIdx = frpgPickTierEnemy(tier);
+            RPGEnemyEntry fe;
+            if (frpgReadEnemy(fIdx, fe)) {
+                uint16_t eHp = fe.hp_min + (uint16_t)((int)(fe.hp_max - fe.hp_min) * (p.level - 1) / 11);
+                uint8_t eAtk = (uint8_t)(fe.damage_min + (int)(fe.damage_max - fe.damage_min) * (p.level - 1) / 11);
+                frpgReadEnemyName(fIdx, _flashEnemyName, sizeof(_flashEnemyName));
+                _flashEnemyXP = (uint16_t)(fe.xp_reward * (1 + p.level) / 6);
+                _flashEnemyCaps = (uint16_t)(_flashEnemyXP * 3 / 2);
+                _flashEnemyDef = fe.defense_rating;
+                _flashCombat = true;
+                p.combat.active = 1;
+                p.combat.enemyIdx = (uint8_t)(fIdx & 0xFF);
+                p.combat.enemyType = frpgFactionToEtype(fe.faction);
+                p.combat.enemyHp = eHp;
+                p.combat.baseEnemyAtk = eAtk;
+                p.combat.limbEffects = 0;
+                p.combat.stunRounds = 0;
+                p.combat.vatsModeActive = 0;
+                p.combat.defending = 0;
+                snprintf(buf, len,
+                    "Road ambush! %s!\n"
+                    "EHP:%d ATK:%d | HP:%d/%d\n"
+                    "[A]tk [D]ef [S]tim [F]lee\n"
+                    "%d more to destination",
+                    _flashEnemyName, eHp, eAtk, p.hp, p.maxHp, eventsLeft);
+                return;
+            }
+        }
+        // Fallback hardcoded
+        uint8_t pool[4], poolSz = 0;
+        for (uint8_t i = 0; i < FRPG_ENEMY_COUNT && poolSz < 4; i++) {
+            if (FRPG_ENEMIES[i].tier == tier) pool[poolSz++] = i;
+        }
+        uint8_t eIdx = poolSz ? pool[random(poolSz)] : 0;
+        uint16_t eHp = (uint16_t)(FRPG_ENEMIES[eIdx].baseHp + p.level * 5);
+        uint8_t eAtk = (uint8_t)(FRPG_ENEMIES[eIdx].baseAtk + p.level * 2);
+        p.combat.active = 1;
+        p.combat.enemyIdx = eIdx;
+        p.combat.enemyType = FRPG_ENEMIES[eIdx].etype;
+        p.combat.enemyHp = eHp;
+        p.combat.baseEnemyAtk = eAtk;
+        p.combat.limbEffects = 0;
+        p.combat.stunRounds = 0;
+        p.combat.vatsModeActive = 0;
+        p.combat.defending = 0;
+        snprintf(buf, len,
+            "Road ambush! %s!\n"
+            "EHP:%d ATK:%d | HP:%d/%d\n"
+            "[A]tk [D]ef [S]tim [F]lee",
+            FRPG_ENEMIES[eIdx].name, eHp, eAtk, p.hp, p.maxHp);
+    }
+    // 20% flavor text
+    else if (roll < 86) {
+        char sight[120] = {0};
+        if (!frpgReadRoomDesc(1, sight, sizeof(sight))) { // wasteland type
+            static const char *roads[] = {
+                "Dust and silence.\nA crow watches from a\ndead telephone pole.",
+                "Rusted car husks line\nthe highway. Wind moans\nthrough broken windows.",
+                "A caravan passed here.\nBrahmin tracks in the\ndirt. Hours old.",
+            };
+            strncpy(sight, roads[random(3)], sizeof(sight) - 1);
+        }
+        if (eventsLeft > 0) {
+            snprintf(buf, len, "%s\n%d more to go. EX-Move", sight, eventsLeft);
+        } else {
+            frpgArriveAtLocation(p, buf, len);
+        }
+    }
+    // 14% loot find
+    else {
+        int found = 10 + p.level * 8;
+        p.caps = (uint16_t)(p.caps + found);
+        char lootName[24] = {0};
+        bool gotName = frpgReadLootItemName(lootName, sizeof(lootName)) && lootName[0];
+        if (eventsLeft > 0) {
+            if (gotName)
+                snprintf(buf, len, "Found %s!\n+%dc Caps:%d\n%d more to go. EX-Move", lootName, found, p.caps, eventsLeft);
+            else
+                snprintf(buf, len, "Roadside cache!\n+%dc Caps:%d\n%d more to go. EX-Move", found, p.caps, eventsLeft);
+        } else {
+            if (gotName)
+                snprintf(buf, len, "Found %s! +%dc\n", lootName, found);
+            else
+                snprintf(buf, len, "Roadside cache! +%dc\n", found);
+            size_t used = strlen(buf);
+            frpgArriveAtLocation(p, buf + used, len - used);
+        }
+    }
+}
+
+// Arrive at destination after travel events complete
+static void frpgArriveAtLocation(FRPGPlayer &p, char *buf, size_t len)
+{
+    char locName[24] = {0};
+    frpgReadLocationName(p.locIdx, locName, sizeof(locName));
+
+    if (frpgIsLocTown(p.locIdx)) {
+        p.townIdx = p.locIdx;
+        p.hp = p.maxHp;
+        snprintf(buf, len,
+            "=== %s ===\nYou made it! HP restored.\nHP:%d/%d AP:%d/%d\nSH DR TR TV EX-Go",
+            locName, p.hp, p.maxHp, p.ap, FRPG_AP_MAX);
+    } else {
+        char desc[80] = {0};
+        frpgReadRoomDesc(frpgGetLocType(p.locIdx), desc, sizeof(desc));
+        snprintf(buf, len,
+            "=== %s ===\nArrived.\n%s\nEX to enter | RT-Retreat",
+            locName, desc[0] ? desc : "A dangerous place...");
+    }
+}
+
+static void frpgDoRetreat(FRPGPlayer &p, char *buf, size_t len)
+{
+    p.dungeonDepth = 0;
+    p.locIdx = 0xFF;
+    p.locFlags = 0;
+    snprintf(buf, len,
+        "You retreat to the wasteland.\nHP:%d/%d AP:%d/%d\nEX-Travel",
+        p.hp, p.maxHp, p.ap, FRPG_AP_MAX);
+}
+
+static void frpgDoDungeonRoom(FRPGPlayer &p, char *buf, size_t len)
+{
+    uint8_t locType = frpgGetLocType(p.locIdx);
+    uint8_t maxD = frpgDungeonMaxDepth(locType);
+    char locName[20] = "Dungeon";
+    frpgReadLocationName(p.locIdx, locName, sizeof(locName));
+
+    bool isBoss = (p.dungeonDepth >= maxD);
+    int roll = isBoss ? 0 : (int)random(100); // boss room = always combat
+
+    // 0-59: Combat (or 100% for boss)
+    if (roll < 60 || isBoss) {
+        _flashCombat = false;
+        uint16_t fIdx;
+        if (frpgContentHas(FRPG_CONTENT_ENEMIES)) {
+            fIdx = frpgPickLocationEnemy(p.locIdx, isBoss);
+            RPGEnemyEntry fe;
+            if (frpgReadEnemy(fIdx, fe)) {
+                uint16_t eHp = fe.hp_min + (uint16_t)((int)(fe.hp_max - fe.hp_min) * (p.level - 1) / 11);
+                uint8_t eAtk = (uint8_t)(fe.damage_min + (int)(fe.damage_max - fe.damage_min) * (p.level - 1) / 11);
+                if (isBoss) { eHp = (uint16_t)(eHp * 3 / 2); eAtk = (uint8_t)(eAtk * 3 / 2); }
+                frpgReadEnemyName(fIdx, _flashEnemyName, sizeof(_flashEnemyName));
+                _flashEnemyXP = (uint16_t)(fe.xp_reward * (1 + p.level) / 6);
+                _flashEnemyCaps = (uint16_t)(_flashEnemyXP * 3 / 2);
+                if (isBoss) { _flashEnemyXP *= 2; _flashEnemyCaps *= 2; }
+                _flashEnemyDef = fe.defense_rating;
+                _flashCombat = true;
+                p.combat.active = 1;
+                p.combat.enemyIdx = (uint8_t)(fIdx & 0xFF);
+                p.combat.enemyType = frpgFactionToEtype(fe.faction);
+                p.combat.enemyHp = eHp;
+                p.combat.baseEnemyAtk = eAtk;
+                p.combat.limbEffects = 0;
+                p.combat.stunRounds = 0;
+                p.combat.vatsModeActive = 0;
+                p.combat.defending = 0;
+                snprintf(buf, len,
+                    "%s %d/%d%s\n%s appears!\nEHP:%d ATK:%d HP:%d/%d\nA/D/S/F/V(%d)",
+                    locName, p.dungeonDepth, maxD,
+                    isBoss ? " BOSS!" : "",
+                    _flashEnemyName, eHp, eAtk,
+                    p.hp, p.maxHp, p.vatsCharges);
+                return;
+            }
+        }
+        // Fallback to hardcoded
+        uint8_t tier = frpgGetTier(p.level);
+        uint8_t pool[4]; uint8_t poolSz = 0;
+        for (uint8_t i = 0; i < FRPG_ENEMY_COUNT && poolSz < 4; i++)
+            if (FRPG_ENEMIES[i].tier == tier) pool[poolSz++] = i;
+        uint8_t eIdx = poolSz ? pool[random(poolSz)] : 0;
+        uint16_t eHp = (uint16_t)(FRPG_ENEMIES[eIdx].baseHp + p.level * 5);
+        uint8_t eAtk = (uint8_t)(FRPG_ENEMIES[eIdx].baseAtk + p.level * 2);
+        if (isBoss) { eHp = (uint16_t)(eHp * 3 / 2); eAtk = (uint8_t)(eAtk * 3 / 2); }
+        p.combat.active = 1;
+        p.combat.enemyIdx = eIdx;
+        p.combat.enemyType = FRPG_ENEMIES[eIdx].etype;
+        p.combat.enemyHp = eHp;
+        p.combat.baseEnemyAtk = eAtk;
+        p.combat.limbEffects = 0;
+        p.combat.stunRounds = 0;
+        p.combat.vatsModeActive = 0;
+        snprintf(buf, len,
+            "%s %d/%d%s\n%s! EHP:%d ATK:%d\nHP:%d/%d A/D/S/F/V(%d)",
+            locName, p.dungeonDepth, maxD,
+            isBoss ? " BOSS!" : "",
+            FRPG_ENEMIES[eIdx].name, eHp, eAtk,
+            p.hp, p.maxHp, p.vatsCharges);
+        return;
+    }
+
+    // 60-79: Terminal hack
+    if (roll < 80 && p.level >= 2) {
+        uint8_t diff;
+        if      (p.level <= 3)  diff = 0;
+        else if (p.level <= 6)  diff = 1;
+        else if (p.level <= 9)  diff = 2;
+        else                    diff = 3;
+        p.hack.active = 1;
+        p.hack.attempts = (diff == 3) ? 3 : 4;
+        p.hack.difficulty = diff;
+        hackPickWords(diff, p.hack);
+        hackApplyINT(p, p.hack);
+        char board[160];
+        frpgShowHackBoard(p.hack, board, sizeof(board));
+        snprintf(buf, len, "%s %d/%d\nTerminal found!\n%s",
+                 locName, p.dungeonDepth, maxD, board);
+        return;
+    }
+
+    // 80-89: Loot
+    if (roll < 90) {
+        int found = 15 + p.level * 10;
+        p.caps = (uint16_t)(p.caps + found);
+        char lootName[24] = {0};
+        frpgReadLootItemName(lootName, sizeof(lootName));
+        snprintf(buf, len,
+            "%s %d/%d\nFound %s!\n+%dc Caps:%d\nEX-Next RT-Leave",
+            locName, p.dungeonDepth, maxD,
+            lootName[0] ? lootName : "a cache",
+            found, p.caps);
+        return;
+    }
+
+    // 90-94: Flavor description
+    if (roll < 95) {
+        char desc[100] = {0};
+        frpgReadRoomDesc(locType, desc, sizeof(desc));
+        snprintf(buf, len,
+            "%s %d/%d\n%s\nEX-Next RT-Leave",
+            locName, p.dungeonDepth, maxD,
+            desc[0] ? desc : "An empty room.");
+        return;
+    }
+
+    // 95-99: Trap
+    int dmg = 5 + p.level * 2;
+    p.hp = (p.hp > (uint16_t)dmg) ? (uint16_t)(p.hp - dmg) : 1;
+    snprintf(buf, len,
+        "%s %d/%d\nTRAP! -%dHP\nHP:%d/%d\nEX-Next RT-Leave",
+        locName, p.dungeonDepth, maxD,
+        dmg, p.hp, p.maxHp);
+}
+
+static void frpgDoRest(FRPGPlayer &p, char *buf, size_t len)
+{
+    bool inTown = (p.locIdx != 0xFF && frpgIsLocTown(p.locIdx));
+    if (!inTown && frpgContentHas(FRPG_CONTENT_LOCATIONS)) {
+        snprintf(buf, len, "Not in town. GO to travel.");
+        return;
+    }
+    if (p.ap < 2) { snprintf(buf, len, "Need 2 AP to rest.\nAP:%d/%d", p.ap, FRPG_AP_MAX); return; }
+    p.ap -= 2;
+    p.hp = p.maxHp;
+    snprintf(buf, len,
+        "Rested! HP restored.\nHP:%d/%d AP:%d/%d",
+        p.hp, p.maxHp, p.ap, FRPG_AP_MAX);
+}
+
+static void frpgDoExplore(FRPGPlayer &p, char *buf, size_t len)
+{
+    if (!p.alive) { snprintf(buf, len, "You are dead!"); return; }
+    if (p.ap == 0) { snprintf(buf, len, "No AP left."); return; }
+
+    // No flash content: use old explore logic
+    if (!frpgContentHas(FRPG_CONTENT_LOCATIONS)) {
+        frpgStartExploreFallback(p, buf, len);
+        return;
+    }
+
+    // Traveling between locations — road events
+    uint8_t travelLeft = (p.locFlags >> 1) & 0x03;
+    if (travelLeft > 0 && p.dungeonDepth == 0) {
+        frpgDoTravelEvent(p, buf, len);
+        return;
+    }
+
+    // Overworld or at a town: show travel options
+    if (p.locIdx == 0xFF || frpgIsLocTown(p.locIdx)) {
+        frpgShowTravelOptions(p, buf, len);
+        return;
+    }
+
+    // At a non-town location
+    uint8_t locType = frpgGetLocType(p.locIdx);
+    uint8_t maxD = frpgDungeonMaxDepth(locType);
+
+    // Boss already killed: completed, return to overworld
+    if (p.locFlags & 1) {
+        p.dungeonDepth = 0;
+        p.locIdx = 0xFF;
+        p.locFlags = 0;
+        snprintf(buf, len,
+            "Location cleared!\nBack to the wasteland.\nEX-Travel");
+        return;
+    }
+
+    // Not yet entered dungeon
+    if (p.dungeonDepth == 0) {
+        p.ap--;
+        p.dungeonDepth = 1;
+        frpgDoDungeonRoom(p, buf, len);
+        return;
+    }
+
+    // Already in dungeon, advance
+    if (p.dungeonDepth < maxD) {
+        p.ap--;
+        p.dungeonDepth++;
+        frpgDoDungeonRoom(p, buf, len);
+        return;
+    }
+
+    // At max depth, boss not killed: boss fight
+    p.ap--;
+    frpgDoDungeonRoom(p, buf, len);
+}
+
 // ─── Settlement actions ───────────────────────────────────────────────────────
 
 static void frpgShowMenu(FRPGPlayer &p, char *buf, size_t len)
 {
     bool trainReady = (p.level < FRPG_MAX_LEVEL) && (p.xp >= FRPG_XP_THRESH[p.level]);
     bool bossReady  = (p.level == FRPG_MAX_LEVEL) && (p.xp >= FRPG_XP_THRESH[FRPG_MAX_LEVEL]);
+    bool hasLocs    = frpgContentHas(FRPG_CONTENT_LOCATIONS);
 
     if (!p.alive) {
-        uint32_t now = (uint32_t)getTime();
-        uint32_t remain = (p.apResetTime > now) ? (p.apResetTime - now) : 0;
         snprintf(buf, len,
             "=== Wasteland RPG ===\n"
-            "DEAD! Respawn in %uh%um\n"
-            "[SH]op [ST]ats [LB]oard\n"
-            "[X]Back to BBS",
-            (unsigned)(remain/3600), (unsigned)((remain%3600)/60));
+            "HP:1 - You blacked out.\n"
+            "DR-Heal EX-Go ST-Stats\n"
+            "[X]Back to BBS");
+        return;
+    }
+
+    // Location-aware menu when flash content available
+    if (hasLocs && p.locIdx != 0xFF) {
+        char locName[20] = {0};
+        frpgReadLocationName(p.locIdx, locName, sizeof(locName));
+        if (frpgIsLocTown(p.locIdx)) {
+            // Town menu
+            snprintf(buf, len,
+                "=== %s ===\n"
+                "[%s] L%d HP:%d/%d AP:%d/%d\n"
+                "SH DR TR TV EX-Go\n"
+                "RS-Rest ST LB%s",
+                locName, p.name, p.level,
+                p.hp, p.maxHp, p.ap, FRPG_AP_MAX,
+                (trainReady||bossReady) ? " TR!" : "");
+        } else if (p.dungeonDepth > 0) {
+            uint8_t maxD = frpgDungeonMaxDepth(frpgGetLocType(p.locIdx));
+            snprintf(buf, len,
+                "=== %s %d/%d ===\n"
+                "[%s] HP:%d/%d AP:%d/%d\n"
+                "EX-Next RT-Retreat\nS-Stim ST-Stats",
+                locName, p.dungeonDepth, maxD,
+                p.name, p.hp, p.maxHp, p.ap, FRPG_AP_MAX);
+        } else {
+            snprintf(buf, len,
+                "=== %s ===\n"
+                "[%s] HP:%d/%d AP:%d/%d\n"
+                "EX-Enter RT-Retreat\nST-Stats",
+                locName,
+                p.name, p.hp, p.maxHp, p.ap, FRPG_AP_MAX);
+        }
+        return;
+    }
+
+    // Overworld or no flash content
+    if (hasLocs) {
+        snprintf(buf, len,
+            "=== Wasteland ===\n"
+            "[%s] L%d HP:%d/%d AP:%d/%d\n"
+            "Caps:%d\nEX-Travel ST LB HELP",
+            p.name, p.level,
+            p.hp, p.maxHp, p.ap, FRPG_AP_MAX,
+            p.caps);
         return;
     }
 
@@ -1189,14 +1777,16 @@ static void frpgDoStats(const FRPGPlayer &p, char *buf, size_t len)
         "Wpn:%s\n"
         "Arm:%s\n"
         "Caps:%d Stim:%d VATS:%d/%d\n"
-        "AP:%d/%d LM:%d Cheng:%d",
+        "AP:%d/%d LM:%d Cheng:%d\n"
+        "Loc:%d Twn:%d D:%d F:%d",
         p.name, p.level,
         (unsigned)p.xp, (unsigned)xpNext, p.hp, p.maxHp,
         p.str_, p.per, p.end_, p.intel, p.agi,
         FRPG_WEAPONS[p.weapon].name,
         FRPG_ARMORS[p.armor].name,
         p.caps, p.stimpaks, p.vatsCharges, p.vatsMax,
-        p.ap, FRPG_AP_MAX, p.kills, p.chengKills);
+        p.ap, FRPG_AP_MAX, p.kills, p.chengKills,
+        p.locIdx, p.townIdx, p.dungeonDepth, p.locFlags);
 }
 
 static void frpgDoShop(const FRPGPlayer &p, char *buf, size_t len)
@@ -1335,7 +1925,7 @@ static void frpgDoArena(FRPGPlayer &p, const char *arg, char *buf, size_t len)
     target[4] = '\0';
     for (int i = 0; i < 4; i++) target[i] = toupper((unsigned char)target[i]);
 
-    File dir = FSCom.open(FRPG_DIR, FILE_O_READ);
+    File dir = FRPG_FS.open(FRPG_DIR, FILE_O_READ);
     FRPGPlayer tgt;
     bool found = false;
     if (dir) {
@@ -1425,13 +2015,15 @@ static void frpgDoBoard(char *buf, size_t len)
 static void frpgDoAbout(char *buf, size_t len)
 {
     snprintf(buf, len,
-        "=== Wastelad RPG ===\n"
-        "Based on the Wastelad holotape\n"
-        "from Fallout 76. You escaped\n"
-        "Vault 1 into a post-war world\n"
-        "ruled by Chairman Cheng.\n"
-        "Fight, level up, defeat bosses,\n"
-        "and take down Cheng!\n"
+        "=== Wasteland RPG ===\n"
+        "A fan-made text RPG inspired\n"
+        "by the Fallout universe.\n"
+        "Not affiliated with Bethesda\n"
+        "Softworks or ZeniMax Media.\n"
+        "Free, non-commercial, made\n"
+        "with love for the wasteland.\n"
+        "Wiki data: CC-BY-SA 3.0\n"
+        "fallout.fandom.com\n"
         "Type HELP for commands.");
 }
 
@@ -1444,6 +2036,25 @@ static void frpgDoHelp(const FRPGPlayer &p, char *buf, size_t len)
             "S)timpak F)lee\n"
             "V)ATS targeting\n"
             "(V costs 1 VATS charge)");
+        return;
+    }
+    bool hasLocs = frpgContentHas(FRPG_CONTENT_LOCATIONS);
+    if (hasLocs && p.locIdx != 0xFF && !frpgIsLocTown(p.locIdx)) {
+        // In dungeon or at adventure location
+        snprintf(buf, len,
+            "=== Dungeon Help ===\n"
+            "EX-Next room (1 AP)\n"
+            "RT-Retreat to wasteland\n"
+            "S-Stimpak ST-Stats\n"
+            "LB-Board HELP [X]Back");
+    } else if (hasLocs && (p.locIdx == 0xFF || frpgIsLocTown(p.locIdx))) {
+        snprintf(buf, len,
+            "=== Wastelad Help ===\n"
+            "EX-Explore GO 1/2/3\n"
+            "SH-Shop DR-Heal TR-Train\n"
+            "RS-Rest(2AP) TV-Tavern\n"
+            "AR-Arena CH-Cheng\n"
+            "ST LB AB [X]Back");
     } else {
         snprintf(buf, len,
             "=== Wastelad RPG ===\n"
@@ -1458,6 +2069,12 @@ static void frpgDoHelp(const FRPGPlayer &p, char *buf, size_t len)
 
 static void frpgDoTavern(char *buf, size_t len)
 {
+    char npcLine[120];
+    if (frpgReadNPCLine(npcLine, sizeof(npcLine)) && npcLine[0]) {
+        snprintf(buf, len, "=== The Rusty Nozzle ===\n\"%s\"", npcLine);
+        return;
+    }
+    // Fallback hardcoded quotes
     static const char *quotes[] = {
         "Major Coot: \"The war didn't\nend. It just moved outside.\"",
         "Doc: \"I've seen worse.\nUsually right before worse.\"",
@@ -1522,18 +2139,23 @@ void frpgCommand(uint32_t nodeNum, const char *text, const char *shortName,
 {
     exitGame = false;
     outBuf[0] = '\0';
+    frpgContentInit(); // idempotent — loads flash content headers on first call
+    frpgEnsureDir();   // ensure /bbs/frpg/ exists on ext flash
 
     FRPGPlayer p;
     bool existing = frpgLoadPlayer(nodeNum, p);
     if (!existing) {
         frpgNewPlayer(nodeNum, shortName, p);
         frpgSavePlayer(p);
-        // Show a brief welcome then the main game menu (not ABOUT)
-        char welcome[80];
-        snprintf(welcome, sizeof(welcome),
-                 "Welcome to the Wasteland, %s!\nType AB for lore. Good luck.", p.name);
-        // Append welcome then menu in caller's buffer
-        snprintf(outBuf, outLen, "%s", welcome);
+        snprintf(outBuf, outLen,
+            "Welcome to the Wasteland, %s!\n"
+            "Fan-made RPG inspired by Fallout.\n"
+            "Not affiliated with Bethesda.\n"
+            "Free & non-commercial.\n"
+            "EX-Explore SH-Shop\n"
+            "DR-Heal TR-Train\n"
+            "TV-Tavern ST-Stats\n"
+            "HELP for more. Good luck!", p.name);
         return;
     }
     // Empty text → show menu
@@ -1609,24 +2231,40 @@ void frpgCommand(uint32_t nodeNum, const char *text, const char *shortName,
     const char *arg = text[ci] ? text + ci + 1 : "";
     while (*arg && isspace((unsigned char)*arg)) arg++;
 
+    // Town-gating: some commands require being at a town when flash content is available
+    bool hasLocs = frpgContentHas(FRPG_CONTENT_LOCATIONS);
+    bool atTown = (p.locIdx != 0xFF && frpgIsLocTown(p.locIdx));
+    bool townOnly = hasLocs && !atTown && p.locIdx != 0xFF;
+
     // Match commands (check longest prefix first to avoid ambiguity)
     if (strcmp(cmd, "X") == 0 || strncasecmp(text, "BACK", 4) == 0) {
         exitGame = true;
         snprintf(outBuf, outLen, "73! Stay safe out there.");
+    } else if (strcmp(cmd, "GO") == 0) {
+        frpgDoTravel(p, arg, outBuf, outLen);
+    } else if (strcmp(cmd, "RT") == 0) {
+        frpgDoRetreat(p, outBuf, outLen);
+    } else if (strcmp(cmd, "RS") == 0 || strcmp(cmd, "REST") == 0) {
+        frpgDoRest(p, outBuf, outLen);
     } else if (strcmp(cmd, "EX") == 0 || strcmp(cmd, "EXPL") == 0) {
-        frpgStartExplore(p, outBuf, outLen);
+        frpgDoExplore(p, outBuf, outLen);
     } else if (strcmp(cmd, "ST") == 0 || strcmp(cmd, "STAT") == 0) {
         frpgDoStats(p, outBuf, outLen);
     } else if (strcmp(cmd, "SH") == 0 || strcmp(cmd, "SHOP") == 0) {
-        frpgDoShop(p, outBuf, outLen);
+        if (townOnly) { snprintf(outBuf, outLen, "Not in town. RT to retreat,\nGO to travel."); }
+        else frpgDoShop(p, outBuf, outLen);
     } else if (strcmp(cmd, "BUY") == 0) {
-        frpgDoBuy(p, arg, outBuf, outLen);
+        if (townOnly) { snprintf(outBuf, outLen, "Not in town. RT to retreat,\nGO to travel."); }
+        else frpgDoBuy(p, arg, outBuf, outLen);
     } else if (strcmp(cmd, "DR") == 0 || strcmp(cmd, "HEAL") == 0) {
-        frpgDoHeal(p, outBuf, outLen);
+        if (townOnly) { snprintf(outBuf, outLen, "Not in town. RT to retreat,\nGO to travel."); }
+        else frpgDoHeal(p, outBuf, outLen);
     } else if (strcmp(cmd, "TR") == 0 || strcmp(cmd, "TRAI") == 0) {
-        frpgDoTrain(p, outBuf, outLen);
+        if (townOnly) { snprintf(outBuf, outLen, "Not in town. RT to retreat,\nGO to travel."); }
+        else frpgDoTrain(p, outBuf, outLen);
     } else if (strcmp(cmd, "AR") == 0 || strcmp(cmd, "AREN") == 0) {
-        frpgDoArena(p, arg, outBuf, outLen);
+        if (townOnly) { snprintf(outBuf, outLen, "Not in town. RT to retreat,\nGO to travel."); }
+        else frpgDoArena(p, arg, outBuf, outLen);
     } else if (strcmp(cmd, "LB") == 0 || strcmp(cmd, "BOAR") == 0 || strcmp(cmd, "B") == 0) {
         frpgDoBoard(outBuf, outLen);
     } else if (strcmp(cmd, "AB") == 0 || strcmp(cmd, "ABOU") == 0) {
@@ -1634,9 +2272,11 @@ void frpgCommand(uint32_t nodeNum, const char *text, const char *shortName,
     } else if (strcmp(cmd, "H") == 0 || strcmp(cmd, "HELP") == 0 || strcmp(cmd, "?") == 0) {
         frpgDoHelp(p, outBuf, outLen);
     } else if (strcmp(cmd, "TV") == 0 || strcmp(cmd, "TAVE") == 0) {
-        frpgDoTavern(outBuf, outLen);
+        if (townOnly) { snprintf(outBuf, outLen, "Not in town. RT to retreat,\nGO to travel."); }
+        else frpgDoTavern(outBuf, outLen);
     } else if (strcmp(cmd, "CH") == 0 || strcmp(cmd, "CHEN") == 0) {
-        frpgDoCheng(p, outBuf, outLen);
+        if (townOnly) { snprintf(outBuf, outLen, "Not in town. RT to retreat,\nGO to travel."); }
+        else frpgDoCheng(p, outBuf, outLen);
     } else if (strcmp(cmd, "S") == 0 || strcmp(cmd, "STIM") == 0) {
         // Stimpak outside combat
         frpgDoStimpak(p, outBuf, outLen);

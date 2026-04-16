@@ -26,6 +26,14 @@ SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR / "rpg_data"
 OUT_DIR = SCRIPT_DIR / "data"
 
+# Region map (optional import — graceful fallback if not found)
+try:
+    sys.path.insert(0, str(SCRIPT_DIR / "fallout_scrape"))
+    import region_map as _rmap
+    _HAVE_REGIONS = True
+except ImportError:
+    _HAVE_REGIONS = False
+
 # Magic numbers
 MAGIC_ENEMIES   = 0x454E454D  # "ENEM"
 MAGIC_ITEMS     = 0x4954454D  # "ITEM"
@@ -293,6 +301,14 @@ def build_locations():
         enemies = loc.get("typical_enemies", [])[:4]
         enemy_count = len(enemies)
 
+        # Region ID: normalise from "region" field + first game source
+        if _HAVE_REGIONS:
+            raw_region = loc.get("region", "")
+            game = (loc.get("game_source") or ["FO3"])[0]
+            region_id = _rmap.normalize_region(raw_region, game)
+        else:
+            region_id = 0
+
         entry = struct.pack('<HH BBB B',
             name_off, desc_off,
             game_mask, loc_type, danger, enemy_count
@@ -302,7 +318,7 @@ def build_locations():
                 entry += struct.pack('<H', pool.add(enemies[i]))
             else:
                 entry += struct.pack('<H', 0xFFFF)
-        entry += struct.pack('<H', 0)  # pad
+        entry += struct.pack('<BB', region_id, 0)  # region_id + pad (replaces old uint16 pad)
         assert len(entry) == 18, f"Location entry size {len(entry)} != 18"
         entries.extend(entry)
 
@@ -503,7 +519,8 @@ struct __attribute__((packed)) RPGLocationEntry {
     uint8_t  danger_level; // 1-4
     uint8_t  enemy_count;
     uint16_t enemies[4];   // string pool offsets of enemy names
-    uint16_t _pad;
+    uint8_t  region_id;    // REGION_* from FRPGRegions.h (0 = unknown)
+    uint8_t  _pad;
 };
 
 // ─── Flavor: room description (6 bytes) ──────────────────────────────────
@@ -613,11 +630,18 @@ def main():
     else:
         print(f"\n  ✓ Under budget by {budget - total:,} bytes")
 
-    # Write C header
+    # Write C header (content_tables.h)
     header_path = SCRIPT_DIR / ".." / "module-src" / "content_tables.h"
     with open(header_path, 'w') as f:
         f.write(generate_c_header())
     print(f"\n  C header: {header_path}")
+
+    # Write FRPGRegions.h (region IDs + adjacency table)
+    if _HAVE_REGIONS:
+        regions_path = SCRIPT_DIR / ".." / "module-src" / "FRPGRegions.h"
+        with open(regions_path, 'w') as f:
+            f.write(_rmap.generate_frpg_regions_h())
+        print(f"  Regions:  {regions_path}")
 
     # Summary
     print(f"\n=== Content Summary ===")

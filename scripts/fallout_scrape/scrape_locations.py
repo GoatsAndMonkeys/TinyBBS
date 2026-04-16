@@ -228,6 +228,11 @@ def parse_location_page(game: str, title: str, wikitext: str) -> dict | None:
     context = f"{raw_type} {name} {factions_text} {intro}"
     danger = danger_from_context(loc_type, context)
 
+    # Region: "part of" field gives the sub-region within the game world.
+    # Clean trailing game-disambiguation suffixes.
+    raw_region = get_field("part of", "part_of", "region", "worldspace")
+    region = re.sub(r"\s*\([^)]+\)\s*$", "", raw_region).strip() if raw_region else ""
+
     return {
         "name": name,
         "type": loc_type,
@@ -235,6 +240,7 @@ def parse_location_page(game: str, title: str, wikitext: str) -> dict | None:
         "typical_enemies": enemies,
         "description": desc,
         "danger_level": danger,
+        "region": region,
         "_wiki_title": title,
     }
 
@@ -292,6 +298,8 @@ def merge_by_name(entries: list[dict]) -> list[dict]:
         cur["typical_enemies"] = cur["typical_enemies"][:4]
         if not cur.get("description") and e.get("description"):
             cur["description"] = e["description"]
+        if not cur.get("region") and e.get("region"):
+            cur["region"] = e["region"]
     order = {"FO1": 0, "FO2": 1, "FO3": 2, "NV": 3, "FO4": 4}
     for v in by_name.values():
         v["game_source"].sort(key=lambda g: order.get(g, 99))
