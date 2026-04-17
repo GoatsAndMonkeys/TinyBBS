@@ -6,6 +6,8 @@
 #include <stdint.h>
 
 static const uint32_t WORDLE_WORD_COUNT = 2000;
+
+#ifndef WORDLE_ON_EXTFLASH
 static const char WORDLE_WORDS[][6] = {
     "abers","abets","abies","ablet","abode","abore","acers","ached","aches","acned",
     "acnes","acred","acres","acted","actin","acton","actor","acute","adept","adieu",
@@ -208,7 +210,9 @@ static const char WORDLE_WORDS[][6] = {
     "yates","yeahs","yeans","yearn","years","yeast","yenta","yente","yetis","yites",
     "yores","yrent","zaire","zante","zetas","zlote","zoeas","zonae","zoner","zones"
 };
+#endif // !WORDLE_ON_EXTFLASH
 
+#ifndef WORDLE_ON_EXTFLASH
 // Bloom filter: 3072 bytes, 8 FNV-1a double-hash functions
 // Matches scripts/gen_wordle.py: h(i,x) = (fnv1a(x,2166136261) + i*fnv1a(x,0xdeadbeef)) % 24576
 static const uint32_t WORDLE_BLOOM_BYTES = 3072;
@@ -407,3 +411,4 @@ static const uint8_t  WORDLE_BLOOM[3072] = {
     0x5e,0x44,0xc5,0x05,0x1d,0x15,0x5c,0x56,0x55,0x55,0x44,0xb0,0x8b,0x44,0xb9,0xc7,
     0x14,0x04,0x54,0xc5,0xd7,0x5e,0xf5,0x57,0x53,0xff,0x75,0x45,0x11,0x65,0x54,0x48
 };
+#endif // !WORDLE_ON_EXTFLASH

@@ -194,19 +194,12 @@ static void frpgDoExplore(FRPGPlayer &p, char *buf, size_t len);
 
 // ─── File I/O ─────────────────────────────────────────────────────────────────
 
-// On nRF52, internal LittleFS is too small (~28KB). Use external QSPI flash.
-#ifdef NRF52_SERIES
-#include "BBSExtFlash.h"
-#define FRPG_FS bbsExtFS()
-#else
+// Player save data uses FSCom (internal LittleFS) on all platforms.
+// Binary content (enemies/items/locations/flavor) uses frpgOpenForRead() from FRPGContent.h.
 #define FRPG_FS FSCom
-#endif
 
 void frpgEnsureDir()
 {
-#ifdef NRF52_SERIES
-    FRPG_FS.begin(); // ensure ext flash mounted
-#endif
     if (!FRPG_FS.exists("/bbs"))      FRPG_FS.mkdir("/bbs");
     if (!FRPG_FS.exists(FRPG_DIR))    FRPG_FS.mkdir(FRPG_DIR);
 }
@@ -1287,51 +1280,45 @@ static void frpgStartExploreFallback(FRPGPlayer &p, char *buf, size_t len)
 
 static void frpgShowTravelOptions(FRPGPlayer &p, char *buf, size_t len)
 {
-    uint32_t seed = (uint32_t)p.nodeNum * 31u + (uint32_t)p.locIdx + (uint32_t)p.ap;
     uint8_t tier = frpgGetTier(p.level);
-
-    // Region-aware travel: prefer nearby locations, fall back to global
     uint8_t curRegion = frpgGetLocRegion(p.locIdx);
-    uint8_t townLoc = frpgPickTownNearby(curRegion, tier, seed);
-    uint8_t adv1 = frpgPickAdventureNearby(curRegion, tier, seed * 7u + 1u);
-    uint8_t adv2 = frpgPickAdventureNearby(curRegion, tier, seed * 13u + 2u);
-    if (adv2 == adv1 && adv2 != 0xFF)
-        adv2 = frpgPickAdventureNearby(curRegion, tier, seed * 19u + 3u);
 
-    char n1[20] = "???", n2[20] = "???", n3[20] = "???";
-    if (townLoc != 0xFF) frpgReadLocationName(townLoc, n1, sizeof(n1));
-    if (adv1 != 0xFF) frpgReadLocationName(adv1, n2, sizeof(n2));
-    if (adv2 != 0xFF) frpgReadLocationName(adv2, n3, sizeof(n3));
+    uint8_t dests[8];
+    uint8_t nDests = frpgListNearbyLocations(curRegion, tier, p.locIdx, dests, 8);
 
     char curLoc[20] = "Overworld";
     if (p.locIdx != 0xFF) frpgReadLocationName(p.locIdx, curLoc, sizeof(curLoc));
 
-    snprintf(buf, len,
-        "=== WASTELAND ===\n%s [%s]\nWhere to? (1 AP)\n"
-        "1.%s\n2.%s\n3.%s\nGO 1/2/3",
-        curLoc, frpgRegionName(curRegion), n1, n2, n3);
+    int pos = snprintf(buf, len,
+        "=== WASTELAND ===\n%s [%s]\nWhere to? (1 AP)\n",
+        curLoc, frpgRegionName(curRegion));
+
+    char locName[20];
+    for (uint8_t i = 0; i < nDests && (size_t)pos < len - 1; i++) {
+        frpgReadLocationName(dests[i], locName, sizeof(locName));
+        pos += snprintf(buf + pos, len - pos, "%d.%s\n", i + 1, locName);
+    }
+    if (nDests > 0)
+        snprintf(buf + pos, len - pos, "GO 1-%d", nDests);
+    else
+        snprintf(buf + pos, len - pos, "No destinations found.");
 }
 
 static void frpgDoTravel(FRPGPlayer &p, const char *arg, char *buf, size_t len)
 {
     if (!p.alive) { snprintf(buf, len, "You are dead!"); return; }
     if (p.ap == 0) { snprintf(buf, len, "No AP left."); return; }
-    if (!arg || (arg[0] < '1' || arg[0] > '3')) {
+
+    uint8_t tier = frpgGetTier(p.level);
+    uint8_t curRegion = frpgGetLocRegion(p.locIdx);
+    uint8_t dests[8];
+    uint8_t nDests = frpgListNearbyLocations(curRegion, tier, p.locIdx, dests, 8);
+
+    if (!arg || arg[0] < '1' || arg[0] > ('0' + nDests)) {
         frpgShowTravelOptions(p, buf, len);
         return;
     }
-    int pick = arg[0] - '1'; // 0,1,2
-    // Regenerate same list (must mirror frpgShowTravelOptions exactly)
-    uint32_t seed = (uint32_t)p.nodeNum * 31u + (uint32_t)p.locIdx + (uint32_t)p.ap;
-    uint8_t tier = frpgGetTier(p.level);
-    uint8_t curRegion = frpgGetLocRegion(p.locIdx);
-    uint8_t dests[3];
-    dests[0] = frpgPickTownNearby(curRegion, tier, seed);
-    dests[1] = frpgPickAdventureNearby(curRegion, tier, seed * 7u + 1u);
-    dests[2] = frpgPickAdventureNearby(curRegion, tier, seed * 13u + 2u);
-    if (dests[2] == dests[1] && dests[2] != 0xFF)
-        dests[2] = frpgPickAdventureNearby(curRegion, tier, seed * 19u + 3u);
-
+    int pick = arg[0] - '1'; // 0-indexed
     uint8_t dest = dests[pick];
     if (dest == 0xFF) {
         snprintf(buf, len, "Path blocked. Try another.");

@@ -7,7 +7,7 @@
 
 #include "BBSExtFlash.h"
 #ifdef BBS_KB_LOAD_WORDLE
-#include "BBSWordleData.h"
+#include "BBSWordleBlob.h"
 #endif
 #ifdef BBS_KB_LOAD_GEO
 #include "BBSGeoData.h"

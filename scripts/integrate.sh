@@ -52,9 +52,19 @@ cp "$MODULE_SRC/BBSKBLoader.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSWordleData.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSGeoData.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSBleUpload.h" "$FIRMWARE_MODULES/"
+[ -f "$MODULE_SRC/BBSWordleBlob.h" ] && cp "$MODULE_SRC/BBSWordleBlob.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSExtFlash.h" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSExtFlash.cpp" "$FIRMWARE_MODULES/"
 cp "$MODULE_SRC/BBSStorageExtFlash.h" "$FIRMWARE_MODULES/"
+# RPG content tables (if present)
+[ -f "$MODULE_SRC/FRPGContent.h" ] && cp "$MODULE_SRC/FRPGContent.h" "$FIRMWARE_MODULES/"
+[ -f "$MODULE_SRC/content_tables.h" ] && cp "$MODULE_SRC/content_tables.h" "$FIRMWARE_MODULES/"
+# MonsterMesh Matchmaking Module
+if [ -f "$MODULE_SRC/MatchmakingModule.h" ]; then
+    cp "$MODULE_SRC/MatchmakingModule.h" "$FIRMWARE_MODULES/"
+    cp "$MODULE_SRC/MatchmakingModule.cpp" "$FIRMWARE_MODULES/"
+    echo "✓ Matchmaking module files copied"
+fi
 echo "✓ Module files copied"
 
 # Patch Modules.cpp if needed
@@ -120,6 +130,62 @@ if [ -n "$SETUP_MODULES_LINE" ]; then
 " "$MODULES_CPP"
         echo "✓ Added BBS module instantiation to setupModules()"
     fi
+fi
+
+# ── Matchmaking Module ────────────────────────────────────────────────────
+if [ -f "$MODULE_SRC/MatchmakingModule.h" ]; then
+    echo ""
+    echo "Patching Modules.cpp for MatchmakingModule..."
+
+    # Remove old patches
+    if grep -q "#include \"MatchmakingModule.h\"" "$MODULES_CPP"; then
+        sed -i '' '/#include "MatchmakingModule.h"/d' "$MODULES_CPP"
+        echo "ℹ Removed old MM include"
+    fi
+    if grep -q "matchmakingModule = new MatchmakingModule()" "$MODULES_CPP"; then
+        sed -i '' '/matchmakingModule = new MatchmakingModule()/d' "$MODULES_CPP"
+        echo "ℹ Removed old MM instantiation"
+    fi
+
+    # Add include after last top-level #include
+    LAST_PLAIN_INCLUDE=$(grep -n "^#include" "$MODULES_CPP" | tail -1 | cut -d: -f1)
+    if [ -n "$LAST_PLAIN_INCLUDE" ]; then
+        INSERT_LINE=$((LAST_PLAIN_INCLUDE + 1))
+        while [ $INSERT_LINE -le $(wc -l <"$MODULES_CPP") ]; do
+            LINE=$(sed -n "${INSERT_LINE}p" "$MODULES_CPP")
+            if [[ "$LINE" =~ ^#(if|else|endif) ]]; then
+                INSERT_LINE=$((INSERT_LINE + 1))
+            else
+                break
+            fi
+        done
+        sed -i '' "${INSERT_LINE}i\\
+#include \"MatchmakingModule.h\"
+" "$MODULES_CPP"
+        echo "✓ Added MM include to Modules.cpp"
+    fi
+
+    # Add instantiation after the BBS one (or after opening brace of setupModules)
+    if grep -q "bbsModule = new BBSModule()" "$MODULES_CPP"; then
+        BBS_LINE=$(grep -n "bbsModule = new BBSModule()" "$MODULES_CPP" | head -1 | cut -d: -f1)
+        sed -i '' "${BBS_LINE}a\\
+    matchmakingModule = new MatchmakingModule();
+" "$MODULES_CPP"
+    else
+        SETUP_MODULES_LINE=$(grep -n "void setupModules()" "$MODULES_CPP" | head -1 | cut -d: -f1)
+        if [ -n "$SETUP_MODULES_LINE" ]; then
+            BRACE_LINE=$((SETUP_MODULES_LINE))
+            while [ $BRACE_LINE -le $(wc -l <"$MODULES_CPP") ]; do
+                LINE=$(sed -n "${BRACE_LINE}p" "$MODULES_CPP")
+                if [[ "$LINE" == *"{"* ]]; then break; fi
+                BRACE_LINE=$((BRACE_LINE + 1))
+            done
+            sed -i '' "${BRACE_LINE}a\\
+    matchmakingModule = new MatchmakingModule();
+" "$MODULES_CPP"
+        fi
+    fi
+    echo "✓ Added MM instantiation to setupModules()"
 fi
 
 echo ""

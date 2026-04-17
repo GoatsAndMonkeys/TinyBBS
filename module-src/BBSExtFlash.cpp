@@ -17,11 +17,18 @@ static bool _qspi_initialised = false;
 
 // ── QSPI hardware init ────────────────────────────────────────────────────
 
+static bool _qspi_probe_failed = false;  // sticky — don't retry if flash is absent
+static char _qspi_diag[48] = "not probed";  // diagnostic string for stats
+
+const char *extFlashDiag() { return _qspi_diag; }
+
 static bool _qspi_hw_init(void) {
     if (_qspi_initialised) return true;
+    if (_qspi_probe_failed) return false;  // already tried, flash not present
 
 #ifndef PIN_QSPI_SCK
     // No QSPI pins defined for this board
+    snprintf(_qspi_diag, sizeof(_qspi_diag), "no QSPI pins");
     return false;
 #else
 
@@ -29,29 +36,95 @@ static bool _qspi_hw_init(void) {
 #define NRFX_QSPI_DEFAULT_CONFIG_IRQ_PRIORITY 6
 #endif
 
+    LOG_INFO("[ExtFlash] Probing QSPI flash...\n");
+
     nrfx_qspi_config_t cfg = NRFX_QSPI_DEFAULT_CONFIG(
         PIN_QSPI_SCK, PIN_QSPI_CS,
         PIN_QSPI_IO0, PIN_QSPI_IO1, PIN_QSPI_IO2, PIN_QSPI_IO3);
 
-    // Use safe single-line mode (FASTREAD + PP).
-    // Quad I/O needs QE bit enabled in flash status register — don't assume it.
-    // Default config already sets FASTREAD + PP, so no overrides needed.
-    // Use conservative clock: 8 MHz (64/8)
+    // Conservative clock: 8 MHz (64/8) in single-line mode
     cfg.phy_if.sck_freq = NRF_QSPI_FREQ_DIV8;
 
     nrfx_err_t err = nrfx_qspi_init(&cfg, NULL, NULL); // blocking mode
     if (err == NRFX_ERROR_INVALID_STATE) {
         // Already initialized (e.g., by bootloader handoff) — that's fine
         _qspi_initialised = true;
-        return true;
-    }
-    if (err != NRFX_SUCCESS) {
+        LOG_INFO("[ExtFlash] QSPI already initialized\n");
+    } else if (err != NRFX_SUCCESS) {
         LOG_ERROR("[ExtFlash] nrfx_qspi_init failed: %d\n", (int)err);
+        snprintf(_qspi_diag, sizeof(_qspi_diag), "init err %d", (int)err);
+        _qspi_probe_failed = true;
         return false;
+    } else {
+        _qspi_initialised = true;
+        LOG_INFO("[ExtFlash] QSPI peripheral initialized at 8 MHz\n");
     }
 
-    _qspi_initialised = true;
-    LOG_INFO("[ExtFlash] QSPI initialized at 8 MHz\n");
+    // Probe: Read JEDEC ID (command 0x9F) — 3 bytes: manufacturer, type, capacity
+    {
+        uint8_t jedec[3] = {0, 0, 0};
+        nrf_qspi_cinstr_conf_t rdid = {
+            .opcode    = 0x9F, // Read JEDEC ID
+            .length    = NRF_QSPI_CINSTR_LEN_4B, // opcode + 3 data bytes
+            .io2_level = true,
+            .io3_level = true,
+            .wipwait   = false,
+            .wren      = false,
+        };
+        nrfx_err_t jerr = nrfx_qspi_cinstr_xfer(&rdid, NULL, jedec);
+        if (jerr != NRFX_SUCCESS) {
+            LOG_ERROR("[ExtFlash] JEDEC ID read failed: %d\n", (int)jerr);
+            snprintf(_qspi_diag, sizeof(_qspi_diag), "JEDEC err %d", (int)jerr);
+            nrfx_qspi_uninit();
+            _qspi_initialised = false;
+            _qspi_probe_failed = true;
+            return false;
+        }
+
+        LOG_INFO("[ExtFlash] JEDEC ID: %02X %02X %02X\n", jedec[0], jedec[1], jedec[2]);
+        snprintf(_qspi_diag, sizeof(_qspi_diag), "JEDEC %02X:%02X:%02X", jedec[0], jedec[1], jedec[2]);
+
+        // Check for valid manufacturer IDs:
+        //   0xC2 = Macronix (MX25R1635F)
+        //   0x9D = ISSI (IS25LP080D)
+        //   0xEF = Winbond (W25Q16JV)
+        //   0x85 = Puya (P25Q16H)
+        //   0xBA = Zetta (ZD25WQ32C)
+        if (jedec[0] == 0x00 || jedec[0] == 0xFF) {
+            LOG_ERROR("[ExtFlash] No flash chip detected (JEDEC=%02X %02X %02X)\n",
+                      jedec[0], jedec[1], jedec[2]);
+            nrfx_qspi_uninit();
+            _qspi_initialised = false;
+            _qspi_probe_failed = true;
+            return false;
+        }
+    }
+
+    // Clear block protection bits — IS25LP080D (RAK4631) may ship with all blocks protected.
+    {
+        nrf_qspi_cinstr_conf_t wren = {
+            .opcode    = 0x06, // Write Enable
+            .length    = NRF_QSPI_CINSTR_LEN_1B,
+            .io2_level = true,
+            .io3_level = true,
+            .wipwait   = false,
+            .wren      = false,
+        };
+        nrfx_qspi_cinstr_xfer(&wren, NULL, NULL);
+
+        uint8_t sr_val = 0x00; // Clear all protection bits
+        nrf_qspi_cinstr_conf_t wrsr = {
+            .opcode    = 0x01, // Write Status Register
+            .length    = NRF_QSPI_CINSTR_LEN_2B, // opcode + 1 data byte
+            .io2_level = true,
+            .io3_level = true,
+            .wipwait   = true,
+            .wren      = false,
+        };
+        nrfx_qspi_cinstr_xfer(&wrsr, &sr_val, NULL);
+        LOG_INFO("[ExtFlash] Cleared block protection bits\n");
+    }
+
     return true;
 #endif // PIN_QSPI_SCK
 }
@@ -182,6 +255,7 @@ ExternalFileSystem::ExternalFileSystem()
     : Adafruit_LittleFS(&_extFlashConfig) {}
 
 bool ExternalFileSystem::begin() {
+    if (_mounted) return true;
     if (!_qspi_hw_init()) {
         LOG_ERROR("[ExtFlash] QSPI init failed\n");
         return false;
@@ -190,6 +264,7 @@ bool ExternalFileSystem::begin() {
     // Try to mount existing filesystem
     if (Adafruit_LittleFS::begin()) {
         LOG_INFO("[ExtFlash] Mounted 2MB external flash\n");
+        _mounted = true;
         return true;
     }
 
@@ -204,7 +279,12 @@ bool ExternalFileSystem::begin() {
         return false;
     }
     LOG_INFO("[ExtFlash] Formatted and mounted 2MB external flash\n");
+    _mounted = true;
     return true;
+}
+
+bool ExternalFileSystem::isAvailable() {
+    return _mounted;
 }
 
 uint32_t ExternalFileSystem::usedBytes() {

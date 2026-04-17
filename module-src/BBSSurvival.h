@@ -20,6 +20,8 @@
 
 #include "BBSExtFlash.h"
 #include <cstring>
+using Adafruit_LittleFS_Namespace::File;
+using Adafruit_LittleFS_Namespace::FILE_O_READ;
 
 #define KB_SURVIVAL_PATH  "/bbs/kb/survival.bin"
 #define KB_SURVIVAL_MAGIC 0x53555256

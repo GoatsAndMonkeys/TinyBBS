@@ -1,7 +1,9 @@
 #pragma once
 
 #include "BBSStorage.h"
+#ifndef BBS_NO_CHESS
 #include "BBSChess.h"
+#endif
 #include "FalloutWastelandRPG.h"
 #include "concurrency/OSThread.h"
 #include "graphics/Screen.h"
@@ -27,7 +29,9 @@ enum BBSMenuState : uint8_t {
     BBS_STATE_WORDLE,
     BBS_STATE_VAULT,            // Vault-Tec hacking game
     BBS_STATE_WASTELAND,        // Fallout Wasteland RPG
+#ifndef BBS_NO_CHESS
     BBS_STATE_CHESS,            // Chess by mail
+#endif
     BBS_STATE_SURVIVAL,         // Emergency survival guide
 };
 
@@ -49,8 +53,10 @@ struct BBSSession {
     char     vaultWords[12][6]; // 12 displayed words (lowercase)
     uint8_t  vaultAnswer;       // index 0-11 of correct word
     uint8_t  vaultGuesses;      // attempts remaining (starts at 5)
+#ifndef BBS_NO_CHESS
     // Chess state
     uint32_t chessGameId;       // current game ID (0 = none selected)
+#endif
 };
 
 /**
@@ -101,8 +107,10 @@ class BBSModule : public SinglePortModule, private concurrency::OSThread {
     ProcessMessage handleStateWordle(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     ProcessMessage handleStateGames(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     ProcessMessage handleStateWasteland(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
+#ifndef BBS_NO_CHESS
     ProcessMessage handleStateChess(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);
     void sendChessStatus(const meshtastic_MeshPacket &req, BBSSession &session);
+#endif
     void sendGamesMenu(const meshtastic_MeshPacket &req);
     void doWordleStart(const meshtastic_MeshPacket &req, BBSSession &session);
     ProcessMessage handleStateVault(const meshtastic_MeshPacket &mp, BBSSession &session, const char *text);

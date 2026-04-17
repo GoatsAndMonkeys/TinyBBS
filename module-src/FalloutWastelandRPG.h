@@ -107,7 +107,11 @@ struct FRPGPlayer {
     uint8_t  _pad0;          // 1  alignment
     // Timestamps
     uint32_t apResetTime;    // 4
-    uint32_t lastHealTime;   // 4
+    // Exploration state (repurposed from lastHealTime)
+    uint8_t  locIdx;         // 1  current location (0-149), 0xFF = overworld
+    uint8_t  townIdx;        // 1  last town visited (respawn), 0xFF = default
+    uint8_t  dungeonDepth;   // 1  0=not in dungeon, 1-5=room number
+    uint8_t  locFlags;       // 1  bit0: boss killed, bits1-2: travel events remaining (0-3)
     uint32_t lastPvpTime;    // 4
     uint32_t lastPvpTarget;  // 4
     // Core stats

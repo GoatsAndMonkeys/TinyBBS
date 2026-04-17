@@ -35,10 +35,12 @@ struct BBSChessRating {
     uint16_t draws;
 };
 
+static const uint16_t CHESS_DEFAULT_RATING   = 1200;
+#ifndef NRF52_SERIES
 static const uint16_t CHESS_AI_RATINGS[3]    = {800, 1200, 1600};
 static const int      CHESS_AI_DEPTHS[3]     = {1, 3, 5};
-static const uint16_t CHESS_DEFAULT_RATING   = 1200;
 static const uint32_t CHESS_AI_TIME_LIMIT_MS = 8000;
+#endif
 
 extern const char *CHESS_PIECE_EMOJI[13]; // indexed by piece+6
 extern const char *CHESS_SQ_WHITE;
@@ -47,7 +49,9 @@ extern const char *CHESS_SQ_BLACK;
 void     chessEnsureDir();
 void     chessBoardInit(ChessBoard b);
 bool     chessApplyMove(BBSChessGame &game, const char *move);
+#ifndef NRF52_SERIES
 bool     chessAIMove(BBSChessGame &game, char *moveOut);
+#endif
 void     chessBuildBoard(const BBSChessGame &game, char *buf, size_t bufLen, bool whiteAtBottom);
 void     chessBuildFEN(const BBSChessGame &game, char *buf, size_t bufLen);
 bool     chessIsInCheck(const ChessBoard b, bool whiteKing);

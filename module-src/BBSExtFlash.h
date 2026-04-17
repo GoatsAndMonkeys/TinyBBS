@@ -15,15 +15,23 @@
 
 #include "Adafruit_LittleFS.h"
 
+// IS25LP080D = 1 MB (RAK4631/WisMesh), MX25R1635F = 2 MB (T-Echo/T114)
+#if defined(RAK_4631)
+#define EXTFLASH_TOTAL_SIZE   (1 * 1024 * 1024)   // 1 MB
+#else
 #define EXTFLASH_TOTAL_SIZE   (2 * 1024 * 1024)   // 2 MB
+#endif
 #define EXTFLASH_SECTOR_SIZE  4096                  // 4 KB erase sector
 
 class ExternalFileSystem : public Adafruit_LittleFS {
   public:
     ExternalFileSystem();
     bool begin();
+    bool isAvailable();           // true only after successful begin()
     uint32_t totalBytes() const { return EXTFLASH_TOTAL_SIZE; }
     uint32_t usedBytes();
+  private:
+    bool _mounted = false;
 };
 
 // Lazy-initialized pointer — avoids global constructor mutex issue with FreeRTOS

@@ -116,8 +116,10 @@ def upload(port_name: str, baud: int, local_path: str, dest_path: str):
     print(f"  Port:   {port_name}  @ {baud} baud")
     print()
 
-    with serial.Serial(port_name, baud, timeout=TIMEOUT_S) as ser:
-        time.sleep(0.2)   # let the port settle
+    with serial.Serial(port_name, baud, timeout=TIMEOUT_S, dsrdtr=False, rtscts=False) as ser:
+        ser.dtr = False  # prevent nRF52 reset on serial open
+        ser.rts = False
+        time.sleep(1.0)   # let the port settle — nRF52 USB CDC needs time
         ser.reset_input_buffer()
 
         # ── OPEN ──────────────────────────────────────────────────────────

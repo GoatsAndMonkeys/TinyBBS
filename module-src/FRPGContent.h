@@ -5,21 +5,35 @@
 
 #include "content_tables.h"
 #include "FRPGRegions.h"
-#ifdef NRF52_SERIES
-#include "BBSExtFlash.h"
-#else
-// ESP32: use FSCom instead of external flash
-#include "FSCommon.h"
-static inline fs::FS &bbsExtFS() { return FSCom; }
-#endif
 #include "FSCommon.h"
 #include <cstring>
 
+// ─── Platform file-open wrapper ───────────────────────────────────────────────
+// NRF52 (MeshEnvy fork): external flash lives at /__ext__/ in the VFS.
+// ESP32 (old build):     FSCom is a flat LittleFS, paths start at /bbs/kb/.
+
+#ifdef NRF52_SERIES
+// MeshEnvy fsRoute() VFS — external flash uses /__ext__/ prefix
+#define FRPG_BIN_DIR       "/__ext__/bbs/kb"
+#define FRPG_ENEMIES_PATH  "/__ext__/bbs/kb/enemies.bin"
+#define FRPG_ITEMS_PATH    "/__ext__/bbs/kb/items.bin"
+#define FRPG_LOCS_PATH     "/__ext__/bbs/kb/locations.bin"
+#define FRPG_FLAVOR_PATH   "/__ext__/bbs/kb/flavor.bin"
+static inline File frpgOpenForRead(const char *path) {
+    FSRoute r = fsRoute(path);
+    return fsGetFS(r).open(r.path, FILE_O_READ);
+}
+#else
+// ESP32: direct FSCom access
 #define FRPG_BIN_DIR       "/bbs/kb"
 #define FRPG_ENEMIES_PATH  "/bbs/kb/enemies.bin"
 #define FRPG_ITEMS_PATH    "/bbs/kb/items.bin"
 #define FRPG_LOCS_PATH     "/bbs/kb/locations.bin"
 #define FRPG_FLAVOR_PATH   "/bbs/kb/flavor.bin"
+static inline File frpgOpenForRead(const char *path) {
+    return FSCom.open(path, FILE_O_READ);
+}
+#endif
 
 #define FRPG_CONTENT_ENEMIES   0x01
 #define FRPG_CONTENT_ITEMS     0x02
@@ -88,7 +102,7 @@ static void frpgContentInit() {
 
     // ── enemies.bin ──
     {
-        File f = bbsExtFS().open(FRPG_ENEMIES_PATH, FILE_O_READ);
+        File f = frpgOpenForRead(FRPG_ENEMIES_PATH);
         if (f) {
             RPGEnemyHeader hdr;
             if (f.read((uint8_t *)&hdr, sizeof(hdr)) == sizeof(hdr) &&
@@ -111,7 +125,7 @@ static void frpgContentInit() {
 
     // ── items.bin ──
     {
-        File f = bbsExtFS().open(FRPG_ITEMS_PATH, FILE_O_READ);
+        File f = frpgOpenForRead(FRPG_ITEMS_PATH);
         if (f) {
             RPGItemHeader hdr;
             if (f.read((uint8_t *)&hdr, sizeof(hdr)) == sizeof(hdr) &&
@@ -126,7 +140,7 @@ static void frpgContentInit() {
 
     // ── locations.bin ──
     {
-        File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+        File f = frpgOpenForRead(FRPG_LOCS_PATH);
         if (f) {
             RPGLocationHeader hdr;
             if (f.read((uint8_t *)&hdr, sizeof(hdr)) == sizeof(hdr) &&
@@ -149,7 +163,7 @@ static void frpgContentInit() {
 
     // ── flavor.bin ──
     {
-        File f = bbsExtFS().open(FRPG_FLAVOR_PATH, FILE_O_READ);
+        File f = frpgOpenForRead(FRPG_FLAVOR_PATH);
         if (f) {
             RPGFlavorHeader hdr;
             if (f.read((uint8_t *)&hdr, sizeof(hdr)) == sizeof(hdr) &&
@@ -179,7 +193,7 @@ static bool frpgContentHas(uint8_t bit) { return (_rpgIdx.available & bit) != 0;
 // Read a full enemy entry by index. Returns false on failure.
 static bool frpgReadEnemy(uint16_t idx, RPGEnemyEntry &out) {
     if (idx >= _rpgIdx.enemyCount) return false;
-    File f = bbsExtFS().open(FRPG_ENEMIES_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_ENEMIES_PATH);
     if (!f) return false;
     uint32_t off = sizeof(RPGEnemyHeader) + (uint32_t)idx * 30;
     f.seek(off);
@@ -193,7 +207,7 @@ static void frpgReadEnemyName(uint16_t idx, char *dst, size_t dstLen) {
     dst[0] = '\0';
     RPGEnemyEntry e;
     if (!frpgReadEnemy(idx, e)) return;
-    File f = bbsExtFS().open(FRPG_ENEMIES_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_ENEMIES_PATH);
     if (!f) return;
     rpgReadStrTo(f, _rpgIdx.enemyPoolOff, e.name_off, dst, dstLen);
     f.close();
@@ -207,7 +221,7 @@ static uint16_t frpgPickTierEnemy(uint8_t tier) {
     if (count == 0) return 0;
     uint16_t pick = (uint16_t)random(count);
     // Scan entries counting matches
-    File f = bbsExtFS().open(FRPG_ENEMIES_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_ENEMIES_PATH);
     if (!f) return 0;
     uint16_t found = 0;
     uint16_t result = 0;
@@ -236,7 +250,7 @@ static uint8_t frpgFactionToEtype(uint8_t faction) {
 
 static bool frpgReadLocation(uint16_t idx, RPGLocationEntry &out) {
     if (idx >= _rpgIdx.locCount) return false;
-    File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
     if (!f) return false;
     uint32_t off = sizeof(RPGLocationHeader) + (uint32_t)idx * 18;
     f.seek(off);
@@ -256,7 +270,7 @@ static uint16_t frpgPickLocation(uint8_t danger) {
         if (count == 0) return 0;
     }
     uint16_t pick = (uint16_t)random(count);
-    File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
     if (!f) return 0;
     uint16_t found = 0;
     uint16_t result = 0;
@@ -278,7 +292,7 @@ static void frpgReadLocationName(uint16_t idx, char *dst, size_t dstLen) {
     dst[0] = '\0';
     RPGLocationEntry loc;
     if (!frpgReadLocation(idx, loc)) return;
-    File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
     if (!f) return;
     rpgReadStrTo(f, _rpgIdx.locPoolOff, loc.name_off, dst, dstLen);
     f.close();
@@ -292,7 +306,7 @@ static bool frpgReadRoomDesc(uint8_t locType, char *dst, size_t dstLen) {
     if (!frpgContentHas(FRPG_CONTENT_FLAVOR) || _rpgIdx.roomCount == 0) return false;
 
     // Count matching rooms (by loc_type at offset 2 within 6-byte entry)
-    File f = bbsExtFS().open(FRPG_FLAVOR_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_FLAVOR_PATH);
     if (!f) return false;
 
     uint16_t matchCount = 0;
@@ -340,7 +354,7 @@ static bool frpgReadFindDesc(char *dst, size_t dstLen) {
     dst[0] = '\0';
     if (!frpgContentHas(FRPG_CONTENT_FLAVOR) || _rpgIdx.findCount == 0) return false;
     uint16_t pick = (uint16_t)random(_rpgIdx.findCount);
-    File f = bbsExtFS().open(FRPG_FLAVOR_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_FLAVOR_PATH);
     if (!f) return false;
     f.seek(_rpgIdx.flavorFindOff + (uint32_t)pick * 4);
     RPGFindDesc fd;
@@ -355,7 +369,7 @@ static bool frpgReadNPCLine(char *dst, size_t dstLen) {
     dst[0] = '\0';
     if (!frpgContentHas(FRPG_CONTENT_FLAVOR) || _rpgIdx.npcCount == 0) return false;
     uint16_t pick = (uint16_t)random(_rpgIdx.npcCount);
-    File f = bbsExtFS().open(FRPG_FLAVOR_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_FLAVOR_PATH);
     if (!f) return false;
     f.seek(_rpgIdx.flavorNpcOff + (uint32_t)pick * 6);
     RPGNPCLine nl;
@@ -370,7 +384,7 @@ static bool frpgReadLootItemName(char *dst, size_t dstLen) {
     dst[0] = '\0';
     if (!frpgContentHas(FRPG_CONTENT_ITEMS) || _rpgIdx.itemCount == 0) return false;
     // Pick a random item that is consumable(2) or junk(3)
-    File f = bbsExtFS().open(FRPG_ITEMS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_ITEMS_PATH);
     if (!f) return false;
     // Try up to 10 times to find a consumable/junk
     for (int attempt = 0; attempt < 10; attempt++) {
@@ -402,12 +416,88 @@ static uint8_t frpgGetLocRegion(uint8_t locIdx) {
     return loc.region_id;
 }
 
+// Forward declarations (defined below, after location pickers)
+static uint8_t frpgPickTown(uint8_t maxDanger, uint32_t seed);
+static uint8_t frpgPickAdventure(uint8_t danger, uint32_t seed);
+
+// Enumerate all nearby locations deterministically into out[].
+// Order: towns (LTYPE_TOWN) first, then non-towns by danger_level asc, all by locIdx asc.
+// Skips curLocIdx. Returns count placed in out[] (capped at maxOut, max 8).
+// Falls back to global picks if curRegion==REGION_UNKNOWN or no nearby entries found.
+static uint8_t frpgListNearbyLocations(uint8_t curRegion, uint8_t maxDanger,
+                                        uint8_t curLocIdx,
+                                        uint8_t *out, uint8_t maxOut)
+{
+    if (!frpgContentHas(FRPG_CONTENT_LOCATIONS) || maxOut == 0) return 0;
+    if (maxOut > 8) maxOut = 8;
+
+    // Unknown region → global fallback (no filtering by adjacency)
+    if (curRegion == REGION_UNKNOWN) {
+        uint8_t count = 0;
+        uint32_t seed = (uint32_t)curLocIdx * 31u;
+        uint8_t t = frpgPickTown(maxDanger, seed);
+        if (t != 0xFF && t != curLocIdx && count < maxOut) out[count++] = t;
+        for (uint8_t d = 1; d <= maxDanger && count < maxOut; d++) {
+            uint8_t a = frpgPickAdventure(d, seed * 7u + d);
+            if (a != 0xFF && a != curLocIdx && count < maxOut) out[count++] = a;
+        }
+        return count;
+    }
+
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
+    if (!f) return 0;
+    uint8_t count = 0;
+
+    // Pass 1: towns
+    for (uint16_t i = 0; i < _rpgIdx.locCount && count < maxOut; i++) {
+        if ((uint8_t)i == curLocIdx) continue;
+        uint32_t off = sizeof(RPGLocationHeader) + (uint32_t)i * 18;
+        f.seek(off + 5);
+        uint8_t lt = 0, dl = 0, rid = 0;
+        f.read(&lt, 1); f.read(&dl, 1);
+        f.seek(off + 16); f.read(&rid, 1);
+        if (lt == LTYPE_TOWN && dl <= maxDanger && frpgRegionsAdjacent(curRegion, rid))
+            out[count++] = (uint8_t)i;
+    }
+    // Pass 2: non-towns, danger level ascending
+    for (uint8_t d = 1; d <= maxDanger && count < maxOut; d++) {
+        for (uint16_t i = 0; i < _rpgIdx.locCount && count < maxOut; i++) {
+            if ((uint8_t)i == curLocIdx) continue;
+            uint32_t off = sizeof(RPGLocationHeader) + (uint32_t)i * 18;
+            f.seek(off + 5);
+            uint8_t lt = 0, dl = 0, rid = 0;
+            f.read(&lt, 1); f.read(&dl, 1);
+            f.seek(off + 16); f.read(&rid, 1);
+            if (lt != LTYPE_TOWN && dl == d && frpgRegionsAdjacent(curRegion, rid))
+                out[count++] = (uint8_t)i;
+        }
+    }
+    f.close();
+
+    // Fallback: no nearby locations found → global picks
+    if (count == 0) {
+        uint32_t seed = (uint32_t)curLocIdx * 31u;
+        uint8_t t = frpgPickTown(maxDanger, seed);
+        if (t != 0xFF && t != curLocIdx) out[count++] = t;
+        if (count < maxOut) {
+            uint8_t a1 = frpgPickAdventure(maxDanger, seed * 7u + 1u);
+            if (a1 != 0xFF && a1 != curLocIdx) out[count++] = a1;
+        }
+        if (count < maxOut) {
+            uint8_t a2 = frpgPickAdventure(maxDanger, seed * 13u + 2u);
+            if (a2 != 0xFF && a2 != curLocIdx && (count < 2 || a2 != out[1]))
+                out[count++] = a2;
+        }
+    }
+    return count;
+}
+
 // Pick a town in or adjacent to curRegion at or below tier-appropriate danger.
 // Falls back to global frpgPickTown if no nearby matches found.
 static uint8_t frpgPickTownNearby(uint8_t curRegion, uint8_t maxDanger, uint32_t seed) {
     if (!frpgContentHas(FRPG_CONTENT_LOCATIONS)) return 0xFF;
     // Count matching towns (same or adjacent region)
-    File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
     if (!f) return 0xFF;
     uint16_t count = 0;
     for (uint16_t i = 0; i < _rpgIdx.locCount; i++) {
@@ -441,7 +531,7 @@ static uint8_t frpgPickTownNearby(uint8_t curRegion, uint8_t maxDanger, uint32_t
 // Falls back to global frpgPickAdventure if no nearby matches found.
 static uint8_t frpgPickAdventureNearby(uint8_t curRegion, uint8_t danger, uint32_t seed) {
     if (!frpgContentHas(FRPG_CONTENT_LOCATIONS)) return 0xFF;
-    File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
     if (!f) return 0xFF;
     uint16_t count = 0;
     for (uint16_t i = 0; i < _rpgIdx.locCount; i++) {
@@ -500,7 +590,7 @@ static uint8_t frpgDungeonMaxDepth(uint8_t locType) {
 // Pick a town location at or below maxDanger. seed for determinism.
 static uint8_t frpgPickTown(uint8_t maxDanger, uint32_t seed) {
     if (!frpgContentHas(FRPG_CONTENT_LOCATIONS)) return 0xFF;
-    File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
     if (!f) return 0xFF;
     uint16_t townCount = 0;
     for (uint16_t i = 0; i < _rpgIdx.locCount; i++) {
@@ -528,7 +618,7 @@ static uint8_t frpgPickTown(uint8_t maxDanger, uint32_t seed) {
 // Pick a non-town adventure location at given danger.
 static uint8_t frpgPickAdventure(uint8_t danger, uint32_t seed) {
     if (!frpgContentHas(FRPG_CONTENT_LOCATIONS)) return 0xFF;
-    File f = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+    File f = frpgOpenForRead(FRPG_LOCS_PATH);
     if (!f) return 0xFF;
     uint16_t count = 0;
     for (uint16_t i = 0; i < _rpgIdx.locCount; i++) {
@@ -566,14 +656,14 @@ static uint16_t frpgPickLocationEnemy(uint8_t locIdx, bool bossPick) {
     // Read target name from location pool
     char targetName[24] = {0};
     {
-        File lf = bbsExtFS().open(FRPG_LOCS_PATH, FILE_O_READ);
+        File lf = frpgOpenForRead(FRPG_LOCS_PATH);
         if (!lf) return frpgPickTierEnemy(loc.danger_level);
         rpgReadStrTo(lf, _rpgIdx.locPoolOff, targetNameOff, targetName, sizeof(targetName));
         lf.close();
     }
     if (!targetName[0]) return frpgPickTierEnemy(loc.danger_level);
     // Scan enemies.bin for name match
-    File ef = bbsExtFS().open(FRPG_ENEMIES_PATH, FILE_O_READ);
+    File ef = frpgOpenForRead(FRPG_ENEMIES_PATH);
     if (!ef) return frpgPickTierEnemy(loc.danger_level);
     for (uint16_t i = 0; i < _rpgIdx.enemyCount; i++) {
         ef.seek(sizeof(RPGEnemyHeader) + (uint32_t)i * 30);

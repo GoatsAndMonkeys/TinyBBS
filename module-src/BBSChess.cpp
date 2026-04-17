@@ -43,6 +43,7 @@ struct ChessMove {
 };
 static const int MAX_MOVES = 220;
 
+#ifndef NRF52_SERIES
 // ---------------------------------------------------------------------------
 // Piece-square tables (white's perspective; black uses mirrored rank)
 // ---------------------------------------------------------------------------
@@ -109,6 +110,7 @@ static const int8_t PST_KING[8][8] = {
 
 // Material values
 static const int PIECE_VALUE[7] = {0, 100, 320, 330, 500, 900, 20000};
+#endif // !NRF52_SERIES
 
 // ---------------------------------------------------------------------------
 // chessEnsureDir
@@ -698,6 +700,7 @@ void chessBuildBoard(const BBSChessGame &game, char *buf, size_t bufLen, bool wh
     else if (bufLen > 0) buf[bufLen-1] = '\0';
 }
 
+#ifndef NRF52_SERIES
 // ---------------------------------------------------------------------------
 // AI: evaluation function
 // ---------------------------------------------------------------------------
@@ -809,6 +812,7 @@ static int chessMinimax(ChessSearchState &state, int depth, int alpha, int beta,
         return best;
     }
 }
+#endif // !NRF52_SERIES (AI code)
 
 // ---------------------------------------------------------------------------
 // chessBuildFEN — encode game state as a FEN string (~50-90 chars)
@@ -865,6 +869,7 @@ void chessBuildFEN(const BBSChessGame &game, char *buf, size_t bufLen) {
     strncat(buf + pos, clocks, bufLen - pos - 1);
 }
 
+#ifndef NRF52_SERIES
 // ---------------------------------------------------------------------------
 // chessAIMove — compute and apply the AI's move
 // Returns true if a move was made, false if no legal moves (game over).
@@ -921,6 +926,7 @@ bool chessAIMove(BBSChessGame &game, char *moveOut) {
     }
     return false;
 }
+#endif // !NRF52_SERIES
 
 // ---------------------------------------------------------------------------
 // Storage helpers
@@ -1156,13 +1162,21 @@ void chessUpdateRatings(uint32_t whiteNode, uint32_t blackNode, uint8_t result, 
     else {
         memset(&white, 0, sizeof(white));
         white.nodeNum = 0;
+#ifndef NRF52_SERIES
         white.rating  = CHESS_AI_RATINGS[difficulty < 3 ? difficulty : 2];
+#else
+        white.rating  = CHESS_DEFAULT_RATING;
+#endif
     }
     if (!blackIsAI) black = chessGetRating(blackNode);
     else {
         memset(&black, 0, sizeof(black));
         black.nodeNum = 0;
+#ifndef NRF52_SERIES
         black.rating  = CHESS_AI_RATINGS[difficulty < 3 ? difficulty : 2];
+#else
+        black.rating  = CHESS_DEFAULT_RATING;
+#endif
     }
 
     // Score from white's perspective
